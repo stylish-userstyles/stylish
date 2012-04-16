@@ -1,0 +1,54 @@
+#styles {
+	overflow-x: auto;
+	background-color: -moz-field;
+	color: -moz-fieldtext;
+	border: 2px solid;
+	-moz-border-top-colors: ThreeDShadow ThreeDDarkShadow;
+	-moz-border-right-colors: ThreeDHighlight ThreeDLightShadow;
+	-moz-border-bottom-colors: ThreeDHighlight ThreeDLightShadow;
+	-moz-border-left-colors: ThreeDShadow ThreeDDarkShadow;
+}
+#styles richlistitem {
+	-moz-binding: url('chrome://stylish/content/style.xbl#regular');
+}
+#styles richlistitem *[anonid="tags"], #styles richlistitem:not([update="true"]) *[anonid="actions"], #styles richlistitem *[anonid="type"], #styles richlistitem[is-disabled="true"] *[anonid="disable"], #styles richlistitem:not([is-disabled="true"]) *[anonid="enable"] {
+	display: none;
+}
+#styles richlistitem[selected="true"]:not([update="true"]):not([tags=""]) *[anonid="tags"] {
+	display: -moz-box;
+}
+#styles richlistitem[selected="true"] *[anonid="actions"] {
+	display: -moz-deck;
+}
+#styles richlistitem[filter-match="false"] {
+	display: none;
+}
+#styles:focus richlistitem[selected="true"] {
+	background-color: highlight;
+	color: highlighttext;
+	background-image: url(chrome://mozapps/skin/extensions/itemEnabledFader.png);
+}
+#new-style {
+	list-style-image: none !important;
+}
+#viewGroup #userstyles-view {
+	list-style-image: url('chrome://stylish/skin/32.png');
+}
+style-container {
+	-moz-binding: url('chrome://stylish/content/style.xbl#container');
+}
+#userstyles-heading {
+	-moz-box-align: center;
+}
+#no-styles-note {
+	margin-top: 3em;
+	margin-left: 5em;
+	margin-right: 5em;
+}
+
+@-moz-document url("chrome://stylish/content/manage-standalone.xul?sidebar") {
+	#styles {
+		margin-left: 0;
+		margin-right: 0;
+	}	
+}

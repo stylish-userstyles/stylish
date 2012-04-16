@@ -1,0 +1,44 @@
+*[anonid="name"] {
+	font-weight: bold;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+*[anonid="tags"] {
+	font-size: smaller;
+	font-style: italic;
+}
+*[anonid="update-area"] hbox {
+	-moz-box-align: center;
+}
+*[closed="true"] *[anonid="children"] {
+	display: none;
+}
+*[anonid="heading"] {
+	background-color: -moz-dialog;
+	padding: 2px;
+	font-weight: bold;
+}
+*[anonid="twisty"] {
+	border: 0px !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	min-width: 0px !important;
+	background-color: transparent;
+	-moz-appearance: none;
+	list-style-image: url("chrome://global/skin/tree/twisty-open.png");
+}
+*[anonid="twisty"] .button-icon {
+	margin-right: 5px;
+}
+*[closed="true"] *[anonid="twisty"] {
+	list-style-image: url("chrome://global/skin/tree/twisty-clsd.png");
+}
+image[anonid="status-icon"] {
+	list-style-image: url("chrome://stylish/skin/16.png");
+}
+*[is-disabled="true"] image[anonid="status-icon"] {
+	filter: url("chrome://mozapps/skin/extensions/extensions.svg#greyscale");
+}
+*[anonid="id"] {
+	display: none;
+}

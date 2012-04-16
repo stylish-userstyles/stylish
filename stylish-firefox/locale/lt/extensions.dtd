@@ -1,0 +1,160 @@
+<!ENTITY addons.title "Papildiniai">
+<!-- Default window size for the addon manager in pixels -->
+<!ENTITY em.width "520">
+<!ENTITY em.height "380">
+<!ENTITY cmd.info.commandKey "i">
+<!ENTITY cmd.options.commandKey ",">
+<!ENTITY cmd.close.commandKey "w">
+<!-- View labels -->
+<!ENTITY search.label "Parsiųsti papildinių">
+<!ENTITY extensions.label "Plėtiniai">
+<!ENTITY themes.label "Temos">
+<!ENTITY locales.label "Kalbos">
+<!ENTITY plugins.label "Įskiepiai">
+<!ENTITY update.label "Atnaujinimai">
+<!ENTITY install.label "Įdiegimas">
+<!-- Command Bar items -->
+<!ENTITY cmd.checkUpdatesAll.label "Ieškoti atnaujinimų">
+<!ENTITY cmd.checkUpdatesAll.accesskey "I">
+<!ENTITY cmd.checkUpdatesAllAddon.tooltip "Ieškoti atnaujinimų jūsų papildiniams">
+<!ENTITY cmd.checkUpdatesAllTheme.tooltip "Ieškoti atnaujinimų jūsų temoms">
+<!ENTITY cmd.checkUpdatesAllPlugin.tooltip "Ieškoti atnaujinimų jūsų įskiepiams">
+<!ENTITY cmd.installLocalFile.label "Įdiegti">
+<!ENTITY cmd.installLocalFile.accesskey "d">
+<!ENTITY cmd.installFileAddon.tooltip "Įdiegti papildinį">
+<!ENTITY cmd.installFileTheme.tooltip "Įdiegti temą">
+<!ENTITY cmd.installUpdatesAll2.label "Įdiegti atnaujinimus">
+<!ENTITY cmd.installUpdatesAll2.accesskey "Į">
+<!ENTITY cmd.installUpdatesAll2.tooltip "Įdiegti pasirinktus atnaujinimus">
+<!ENTITY cmd.restartApp2.label "Iš naujo paleisti &brandShortName;">
+<!ENTITY cmd.restartApp2.accesskey "I">
+<!ENTITY cmd.restartApp2.tooltip "Pakeitimams pritaikyti, paleiskite iš naujo &brandShortName;">
+<!ENTITY cmd.skip.label "Praleisti">
+<!ENTITY cmd.skip.accesskey "P">
+<!ENTITY cmd.skip.tooltip "Praleisti šiuos atnaujinimus">
+<!ENTITY cmd.continue.label "Tęsti">
+<!ENTITY cmd.continue.accesskey "T">
+<!ENTITY cmd.continue.tooltip "Tęsti &brandShortName; įkrovą">
+<!ENTITY cmd.enableAll.label "Įjungti visus">
+<!ENTITY cmd.enableAll.accesskey "v">
+<!ENTITY cmd.enableAll.tooltip "Įjungti visus rodomus papildinius">
+<!ENTITY cmd.disableAll.label "Išjungti visus">
+<!ENTITY cmd.disableAll.accesskey "I">
+<!ENTITY cmd.disableAll.tooltip "Išjungti visus rodomus papildinius">
+<!-- Displayed in the selected Add-on's richlistitem and context menu -->
+<!ENTITY cmd.useTheme.label "Naudoti temą">
+<!ENTITY cmd.useTheme.accesskey "t">
+<!ENTITY cmd.useTheme.tooltip "Keisti &brandShortName; temą">
+<!ENTITY cmd.options.label "Parinktys">
+<!ENTITY cmd.options.accesskey "P">
+<!ENTITY cmd.options.tooltip "Nustatyti pasirinktų plėtinių parinktis">
+<!ENTITY cmd.optionsUnix.label "Nustatymai">
+<!ENTITY cmd.optionsUnix.accesskey "N">
+<!ENTITY cmd.optionsUnix.tooltip "Keisti pasirinktų plėtinių nustatymus">
+<!ENTITY cmd.enable.label "Įjungti">
+<!ENTITY cmd.enable.accesskey "j">
+<!ENTITY cmd.enable.tooltip "Paleidus &brandShortName; iš naujo įjungti šį papildinį">
+<!ENTITY cmd.disable.label "Išjungti">
+<!ENTITY cmd.disable.accesskey "I">
+<!ENTITY cmd.disable.tooltip "Paleidus &brandShortName; iš naujo išjungti šį papildinį">
+<!ENTITY cmd.uninstall.label "Pašalinti">
+<!ENTITY cmd.uninstall2.accesskey "P">
+<!ENTITY cmd.uninstall2.tooltip "Paleidus &brandShortName; iš naujo pašalinti šį papildinį">
+<!ENTITY cmd.cancelUninstall.label "Atšaukti pašalinimą">
+<!ENTITY cmd.cancelUninstall.accesskey "A">
+<!ENTITY cmd.cancelUninstall.tooltip "Atšaukti šio papildinio pašalinimą">
+<!ENTITY cmd.cancelInstall.label "Atšaukti diegimą">
+<!ENTITY cmd.cancelInstall.accesskey "A">
+<!ENTITY cmd.cancelInstall.tooltip "Atšaukti šio papildinio diegimą">
+<!ENTITY cmd.cancelUpgrade.label "Atšaukti atnaujinimą">
+<!ENTITY cmd.cancelUpgrade.accesskey "A">
+<!ENTITY cmd.cancelUpgrade.tooltip "Atšaukti šio papildinio atnaujinimą">
+<!ENTITY cmd.installUpdate.label "Įdiegti atnaujinimą">
+<!ENTITY cmd.installUpdate.accesskey "d">
+<!ENTITY cmd.installUpdate.tooltip "Įdiegti šio papildinio atnaujinimą">
+<!ENTITY cmd.showUpdateInfo.label "Rodyti informaciją">
+<!ENTITY cmd.showUpdateInfo.accesskey "R">
+<!ENTITY cmd.showUpdateInfo.tooltip "Rodyti daugiau informacijos apie šiuos atnaujinimus">
+<!ENTITY cmd.hideUpdateInfo.label "Slėpti informaciją">
+<!ENTITY cmd.hideUpdateInfo.accesskey "S">
+<!ENTITY cmd.hideUpdateInfo.tooltip "Slėpti informaciją apie šiuos atnaujinimus">
+<!ENTITY cmd.installSearchResult.label "Pridėti į &brandShortName;...">
+<!ENTITY cmd.installSearchResult.accesskey "P">
+<!ENTITY cmd.installSearchResult.tooltip "Parsiųsti ir įdiegti šį papildinį">
+<!-- The selected add-on's cancel action button label -->
+<!ENTITY cancel.label "Atsisakyti">
+<!ENTITY cancel.accesskey "A">
+<!ENTITY cancelInstall.label "Atsisakyti">
+<!ENTITY cancelInstall.accesskey "A">
+<!ENTITY cancelUpgrade.label "Atsisakyti">
+<!ENTITY cancelUpgrade.accesskey "A">
+<!-- Only displayed in the selected Add-on's context menu -->
+<!ENTITY cmd.homepage.label "Aplankyti namų puslapį">
+<!ENTITY cmd.homepage.accesskey "n">
+<!ENTITY cmd.about2.label "Apie šį plėtinį">
+<!ENTITY cmd.about.accesskey "A">
+<!ENTITY cmd.checkUpdate.label "Ieškoti atnaujinimų">
+<!ENTITY cmd.checkUpdate.accesskey "I">
+<!ENTITY cmd.includeUpdate.label "Įtraukti atnaujinimą">
+<!ENTITY cmd.includeUpdate.accesskey "r">
+<!ENTITY includeUpdate.label "Įtraukti šį atnaujinimą">
+<!ENTITY includeUpdate.accesskey "a">
+<!ENTITY includeUpdate.tooltip "Įtraukti šį papildinį diegiant atnaujinimus">
+<!-- Status Messsages -->
+<!ENTITY insecureUpdate.label "Neteikia saugumo atnaujinimų.">
+<!ENTITY needsDependencies.label "Reikia papildomų elementų.">
+<!ENTITY blocklisted.label "Išjungta jūsų pačių saugumui.">
+<!ENTITY softBlocklisted.label "Žinoma jog gali sukelti saugumo ar stabilumo problemų.">
+<!ENTITY outdated.label "Niekada, prieinama saugesnė versija.">
+<!ENTITY toBeDisabled.label "Šis papildinys bus išjungtas iš naujo paleidus &brandShortName;.">
+<!ENTITY toBeEnabled.label "Šis papildinys bus įjungtas iš naujo paleidus &brandShortName;.">
+<!ENTITY toBeInstalled.label "Šis papildinys bus įdiegtas iš naujo paleidus &brandShortName;.">
+<!ENTITY toBeUninstalled.label "Šis papildinys bus pašalintas iš naujo paleidus &brandShortName;.">
+<!ENTITY toBeUpdated.label "Šis papildinys bus atnaujintas iš naujo paleidus &brandShortName;.">
+<!ENTITY getExtensions.label "Gauti plėtinių">
+<!ENTITY getThemes.label "Gauti temų">
+<!ENTITY getPlugins.label "Gauti papildinių">
+<!ENTITY searchAddons.label "Ieškoti tarp visų papildinių">
+<!ENTITY browseAddons.label "Naršyti tarp visų papildinių">
+<!ENTITY searchFailed.label "&brandShortName; nesugebėjo parsiųsti papildinių">
+<!ENTITY recommendedHeader.label "Rekomenduojami">
+<!ENTITY recommendedThrobber.label "Gaunami rekomenduojami papildiniai">
+<!ENTITY searchThrobber.label "Ieškoma papildinių">
+<!ENTITY resetSearch.label "Išvalyti rezultatus">
+<!ENTITY noSearchResults.label "Visi rezultatai įdiegti arba nesuderinami.">
+<!ENTITY noRecommendedResults.label "Visi rekomenduojami yra įdiegti arba nesuderinami.">
+<!ENTITY emptySearch.label "Nėra atitinkančių papildinių">
+<!ENTITY emptySearch.button "Gerai">
+<!ENTITY cancelSearch.button "Atsisakyti">
+<!ENTITY searchFailed.button "Gerai">
+<!ENTITY searchResultHomepage.value "Sužinokite daugiau">
+<!ENTITY searchBox.label "Ieškoti tarp visų papildinių">
+<!ENTITY recommendedResults.label "Peržiūrėti visus rekomenduojamus papildinius">
+<!ENTITY searchResultConnecting.label "Jungiamasi…">
+<!ENTITY searchResultInstalling.label "Diegiama...">
+<!ENTITY searchResultFailed.label "Diegimas nepavyko">
+<!ENTITY searchResultInstalled.label "Diegimas baigtas">
+<!ENTITY addonTypeExtension.label "Plėtinys">
+<!ENTITY addonTypeTheme.label "Tema">
+<!ENTITY missingThumbnail.label "Peržiūros nėra">
+<!ENTITY previewNoThemeSelected.label "Nepasirinkta tema">
+<!ENTITY previewNoPreviewImage.label "Ši tema neturi peržiūros paveikslėlio">
+<!ENTITY moreInfo.label "Daugiau informacijos">
+<!ENTITY infoNoAddonSelected.label "Nepasirinktas atnaujinimas">
+<!ENTITY infoNoUpdateInfo.label "Šis atnaujinimas neturi papildomos informacijos">
+<!ENTITY infoUpdateInfoError.label "Įkraunant informaciją apie šį atnaujinimą įvyko klaida">
+<!ENTITY updateSuccess.label "Sėkmingai atnaujinta.">
+<!ENTITY installSuccess.label "Sėkmingai įdiegta.">
+<!ENTITY installSuccessRestart.label "Diegimui užbaigti, paleiskite iš naujo.">
+<!ENTITY updateSuccessRestart.label "Atnaujinimui užbaigti, paleiskite iš naujo.">
+<!ENTITY installWaiting.label "Laukiama...">
+<!ENTITY installIncompatibleUpdate.label "Tikrinamas suderinamumas...">
+<!ENTITY installFinishing.label "Diegiama...">
+<!ENTITY installFailure.label "Įdiegti nepavyko.">
+<!ENTITY progressStatus.label "Ieškoma atnaujinimų">
+<!ENTITY eula.title "Galutinio naudotojo sutikimas">
+<!ENTITY eula.width "560px">
+<!ENTITY eula.height "400px">
+<!ENTITY eula.accept "Sutikti ir įdiegti...">
+<!ENTITY blocklist.blocked.label "Užblokuotas">
+<!ENTITY blocklist.checkbox.label "Išjungti">

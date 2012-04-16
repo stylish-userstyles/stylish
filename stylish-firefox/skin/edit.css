@@ -1,0 +1,28 @@
+sourceeditor {
+  -moz-binding: url('chrome://diavolo/content/sourceeditor.xml#sourceeditor');
+}
+#errors {
+	min-height: 3em;
+	max-height: 8em;
+	overflow: auto;
+	color: red;
+}
+#errors label {
+	cursor: pointer;
+}
+#internal-code {
+	font-family: monospace;
+	margin-bottom: 0;
+}
+.findbar-closebutton, .findbar-highlight, *[anonid="find-case-sensitive"] {
+	display: none;
+}
+#findbar {
+	border-top: 0;
+}
+#editor-tools {
+	margin-top: 3px;
+	padding-top: 2px;
+	border-top: 2px solid -moz-use-text-color;
+	-moz-border-top-colors: threedshadow threedhighlight;
+}

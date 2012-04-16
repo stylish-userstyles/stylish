@@ -1,0 +1,160 @@
+<!ENTITY addons.title "Add-ons">
+<!-- Default window size for the addon manager in pixels -->
+<!ENTITY em.width "520">
+<!ENTITY em.height "380">
+<!ENTITY cmd.info.commandKey "i">
+<!ENTITY cmd.options.commandKey ",">
+<!ENTITY cmd.close.commandKey "S">
+<!-- View labels -->
+<!ENTITY search.label "Add-ons verkrijgen">
+<!ENTITY extensions.label "Extensies">
+<!ENTITY themes.label "Thema\'s">
+<!ENTITY locales.label "Talen">
+<!ENTITY plugins.label "Plugins">
+<!ENTITY update.label "Updates">
+<!ENTITY install.label "Installatie">
+<!-- Command Bar items -->
+<!ENTITY cmd.checkUpdatesAll.label "Updates zoeken">
+<!ENTITY cmd.checkUpdatesAll.accesskey "U">
+<!ENTITY cmd.checkUpdatesAllAddon.tooltip "Updates voor add-ons zoeken">
+<!ENTITY cmd.checkUpdatesAllTheme.tooltip "Updates voor thema\'s zoeken">
+<!ENTITY cmd.checkUpdatesAllPlugin.tooltip "Updates voor plugins zoeken">
+<!ENTITY cmd.installLocalFile.label "Installeren…">
+<!ENTITY cmd.installLocalFile.accesskey "i">
+<!ENTITY cmd.installFileAddon.tooltip "Addon installeren">
+<!ENTITY cmd.installFileTheme.tooltip "Thema installeren">
+<!ENTITY cmd.installUpdatesAll2.label "Updates installeren">
+<!ENTITY cmd.installUpdatesAll2.accesskey "s">
+<!ENTITY cmd.installUpdatesAll2.tooltip "Geselecteerde updates installeren">
+<!ENTITY cmd.restartApp2.label "&brandShortName; herstarten">
+<!ENTITY cmd.restartApp2.accesskey "h">
+<!ENTITY cmd.restartApp2.tooltip "&brandShortName; herstarten om wijzigingen toe te passen">
+<!ENTITY cmd.skip.label "Overslaan">
+<!ENTITY cmd.skip.accesskey "O">
+<!ENTITY cmd.skip.tooltip "Deze updates overslaan">
+<!ENTITY cmd.continue.label "Doorgaan">
+<!ENTITY cmd.continue.accesskey "D">
+<!ENTITY cmd.continue.tooltip "Laden &brandShortName; voortzetten">
+<!ENTITY cmd.enableAll.label "Alles inschakelen">
+<!ENTITY cmd.enableAll.accesskey "A">
+<!ENTITY cmd.enableAll.tooltip "Alle weergegeven add-ons inschakelen">
+<!ENTITY cmd.disableAll.label "Alles uitschakelen">
+<!ENTITY cmd.disableAll.accesskey "u">
+<!ENTITY cmd.disableAll.tooltip "Alle weergegeven add-ons uitschakelen">
+<!-- Displayed in the selected Add-on\'s richlistitem and context menu -->
+<!ENTITY cmd.useTheme.label "Thema gebruiken">
+<!ENTITY cmd.useTheme.accesskey "T">
+<!ENTITY cmd.useTheme.tooltip "&brandShortName;\'s thema wijzigen">
+<!ENTITY cmd.options.label "Opties">
+<!ENTITY cmd.options.accesskey "O">
+<!ENTITY cmd.options.tooltip "Opties voor geselecteerde extensies instellen">
+<!ENTITY cmd.optionsUnix.label "Voorkeuren">
+<!ENTITY cmd.optionsUnix.accesskey "V">
+<!ENTITY cmd.optionsUnix.tooltip "Voorkeuren van geselecteerde extensies wijzigen">
+<!ENTITY cmd.enable.label "Inschakelen">
+<!ENTITY cmd.enable.accesskey "I">
+<!ENTITY cmd.enable.tooltip "Deze add-on inschakelen als &brandShortName; wordt herstart">
+<!ENTITY cmd.disable.label "UitschakelenU">
+<!ENTITY cmd.disable.accesskey "U">
+<!ENTITY cmd.disable.tooltip "Deze add-on uitschakelen als &brandShortName;  wordt herstart">
+<!ENTITY cmd.uninstall.label "Deïnstalleren">
+<!ENTITY cmd.uninstall2.accesskey "D">
+<!ENTITY cmd.uninstall2.tooltip "Deze add-on deïnstalleren als &brandShortName; wordt herstart">
+<!ENTITY cmd.cancelUninstall.label "Deïnstalleren annuleren">
+<!ENTITY cmd.cancelUninstall.accesskey "a">
+<!ENTITY cmd.cancelUninstall.tooltip "Het deïnstalleren van deze add-on annuleren">
+<!ENTITY cmd.cancelInstall.label "Installeren annuleren">
+<!ENTITY cmd.cancelInstall.accesskey "a">
+<!ENTITY cmd.cancelInstall.tooltip "Het installeren van deze add-on annuleren">
+<!ENTITY cmd.cancelUpgrade.label "Update annuleren">
+<!ENTITY cmd.cancelUpgrade.accesskey "a">
+<!ENTITY cmd.cancelUpgrade.tooltip "Updaten van deze add-on annuleren">
+<!ENTITY cmd.installUpdate.label "Update installeren">
+<!ENTITY cmd.installUpdate.accesskey "i">
+<!ENTITY cmd.installUpdate.tooltip "Update voor deze add-on installeren">
+<!ENTITY cmd.showUpdateInfo.label "Informatie weergeven">
+<!ENTITY cmd.showUpdateInfo.accesskey "w">
+<!ENTITY cmd.showUpdateInfo.tooltip "Meer informatie over deze updates weergeven">
+<!ENTITY cmd.hideUpdateInfo.label "Informatie verbergen">
+<!ENTITY cmd.hideUpdateInfo.accesskey "V">
+<!ENTITY cmd.hideUpdateInfo.tooltip "Informatie over deze updates verbergen">
+<!ENTITY cmd.installSearchResult.label "Aan &brandShortName; toevoegen…">
+<!ENTITY cmd.installSearchResult.accesskey "t">
+<!ENTITY cmd.installSearchResult.tooltip "Deze add-on downloaden en installeren">
+<!-- The selected add-on\'s cancel action button label -->
+<!ENTITY cancel.label "Annuleren">
+<!ENTITY cancel.accesskey "A">
+<!ENTITY cancelInstall.label "Annuleren">
+<!ENTITY cancelInstall.accesskey "A">
+<!ENTITY cancelUpgrade.label "Annuleren">
+<!ENTITY cancelUpgrade.accesskey "A">
+<!-- Only displayed in the selected Add-on\'s context menu -->
+<!ENTITY cmd.homepage.label "Startpagina bezoeken">
+<!ENTITY cmd.homepage.accesskey "S">
+<!ENTITY cmd.about2.label "Over deze add-on">
+<!ENTITY cmd.about.accesskey "O">
+<!ENTITY cmd.checkUpdate.label "Update zoeken">
+<!ENTITY cmd.checkUpdate.accesskey "z">
+<!ENTITY cmd.includeUpdate.label "Update toevoegen">
+<!ENTITY cmd.includeUpdate.accesskey "t">
+<!ENTITY includeUpdate.label "Deze update toevoegen">
+<!ENTITY includeUpdate.accesskey "t">
+<!ENTITY includeUpdate.tooltip "Deze add-on toevoegen bij het installeren van de updates">
+<!-- Status Messsages -->
+<!ENTITY insecureUpdate.label "Bevat geen beveiligde updates.">
+<!ENTITY needsDependencies.label "Vereist aanvullende onderdelen.">
+<!ENTITY blocklisted.label "Uitgeschakeld ter bescherming.">
+<!ENTITY softBlocklisted.label "Bekend om het veroorzaken van veiligheids- of stabiliteitsproblemen.">
+<!ENTITY outdated.label "Een nieuwere, veiligere versie is beschikbaar.">
+<!ENTITY toBeDisabled.label "Deze add-on wordt uitgeschakeld als &brandShortName; wordt herstart.">
+<!ENTITY toBeEnabled.label "Deze add-on wordt ingeschakeld als &brandShortName; wordt herstart.">
+<!ENTITY toBeInstalled.label "Deze add-on wordt geïnstalleerd als &brandShortName; wordt herstart.">
+<!ENTITY toBeUninstalled.label "Deze add-on wordt gedeïnstalleerd als &brandShortName; wordt herstart.">
+<!ENTITY toBeUpdated.label "Deze add-on wordt geüpdated als &brandShortName; wordt herstart.">
+<!ENTITY getExtensions.label "Extensies verkrijgen">
+<!ENTITY getThemes.label "Thema\'s verkrijgen">
+<!ENTITY getPlugins.label "Plugins verkrijgen">
+<!ENTITY searchAddons.label "Door alle add-ons zoeken">
+<!ENTITY browseAddons.label "Door alle add-ons bladeren">
+<!ENTITY searchFailed.label "&brandShortName; kon de add-ons niet ophalen">
+<!ENTITY recommendedHeader.label "Aanbevolen">
+<!ENTITY recommendedThrobber.label "Aanbevolen add-ons ophalen…">
+<!ENTITY searchThrobber.label "Zoeken naar add-ons…">
+<!ENTITY resetSearch.label "Resultaten wissen">
+<!ENTITY noSearchResults.label "Alle resultaten zijn al geïnstalleerd of niet compatibel.">
+<!ENTITY noRecommendedResults.label "Alle aanbevelingen zijn al geïnstalleerd of niet compatibel.">
+<!ENTITY emptySearch.label "Geen overeenkomende add-ons">
+<!ENTITY emptySearch.button "OK">
+<!ENTITY cancelSearch.button "Annuleren">
+<!ENTITY searchFailed.button "OK">
+<!ENTITY searchResultHomepage.value "Meer informatie">
+<!ENTITY searchBox.label "Door alle add-ons zoeken">
+<!ENTITY recommendedResults.label "Alle aanbevolen add-ons bekijken">
+<!ENTITY searchResultConnecting.label "Verbinden…">
+<!ENTITY searchResultInstalling.label "Installeren…">
+<!ENTITY searchResultFailed.label "Installeren mislukt">
+<!ENTITY searchResultInstalled.label "Installeren voltooid">
+<!ENTITY addonTypeExtension.label "Extensie">
+<!ENTITY addonTypeTheme.label "Thema">
+<!ENTITY missingThumbnail.label "Geen voorbeeld">
+<!ENTITY previewNoThemeSelected.label "Geen thema geselecteerd">
+<!ENTITY previewNoPreviewImage.label "Dit thema heeft geen voorbeeld afbeelding">
+<!ENTITY moreInfo.label "Meer informatie">
+<!ENTITY infoNoAddonSelected.label "Geen update geselecteerd">
+<!ENTITY infoNoUpdateInfo.label "Deze update heeft geen enkele aanvullende informatie">
+<!ENTITY infoUpdateInfoError.label "Er is een fout opgetreden bij het laden van de informatie van deze update">
+<!ENTITY updateSuccess.label "Update succesvol voltooid.">
+<!ENTITY installSuccess.label "Installatie succesvol voltooid.">
+<!ENTITY installSuccessRestart.label "Herstarten om de installatie te voltooien.">
+<!ENTITY updateSuccessRestart.label "Herstarten om de update te voltooien.">
+<!ENTITY installWaiting.label "Even geduld…">
+<!ENTITY installIncompatibleUpdate.label "Compatibiliteit controleren…">
+<!ENTITY installFinishing.label "Installeren…">
+<!ENTITY installFailure.label "Installatie mislukt.">
+<!ENTITY progressStatus.label "Op updates controleren…">
+<!ENTITY eula.title "Eindgebruiker licentie overeenkomst">
+<!ENTITY eula.width "560px">
+<!ENTITY eula.height "400px">
+<!ENTITY eula.accept "Accepteren en installeren…">
+<!ENTITY blocklist.blocked.label "Geblokkeerd">
+<!ENTITY blocklist.checkbox.label "Uitschakelen">

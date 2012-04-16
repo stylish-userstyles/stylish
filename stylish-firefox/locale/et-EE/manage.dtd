@@ -1,0 +1,20 @@
+<!ENTITY changetags "Muuda silte">
+<!ENTITY changetags.ak "C">
+<!ENTITY copyinfo "Kopeeri stiili info">
+<!ENTITY copyinfo.ak "C">
+<!ENTITY done "Valmis">
+<!ENTITY done.ak "D">
+<!ENTITY filter "Otsi">
+<!ENTITY manageaddonstitle "Kasutaja stiilid">
+<!ENTITY managetitle "Stylish">
+<!ENTITY nostylesstart "Külasta">
+<!ENTITY nostylesend "informatsiooniks, kuidas kasutada Stylishi">
+<!ENTITY sortenabled "Lubatud">
+<!ENTITY sortname "Nimi">
+<!ENTITY sorttag "Silt">
+<!ENTITY sorttype "Tüüp">
+<!ENTITY sortgroup "Sorteeri:">
+<!ENTITY update "Uuendus">
+<!ENTITY update.ak "U">
+<!ENTITY writenew "kirjuta uus stiil">
+<!ENTITY writenew.ak "W">

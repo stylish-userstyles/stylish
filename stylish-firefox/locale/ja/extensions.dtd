@@ -1,0 +1,160 @@
+<!ENTITY addons.title "アドオン">
+<!-- Default window size for the addon manager in pixels -->
+<!ENTITY em.width "680">
+<!ENTITY em.height "450">
+<!ENTITY cmd.info.commandKey "i">
+<!ENTITY cmd.options.commandKey ",">
+<!ENTITY cmd.close.commandKey "w">
+<!-- View labels -->
+<!ENTITY search.label "アドオンを入手">
+<!ENTITY extensions.label "拡張機能">
+<!ENTITY themes.label "テーマ">
+<!ENTITY locales.label "言語パック">
+<!ENTITY plugins.label "プラグイン">
+<!ENTITY update.label "更新">
+<!ENTITY install.label "インストール">
+<!-- Command Bar items -->
+<!ENTITY cmd.checkUpdatesAll.label "更新を確認">
+<!ENTITY cmd.checkUpdatesAll.accesskey "F">
+<!ENTITY cmd.checkUpdatesAllAddon.tooltip "アドオンの更新がないか確認します">
+<!ENTITY cmd.checkUpdatesAllTheme.tooltip "テーマの更新がないか確認します">
+<!ENTITY cmd.checkUpdatesAllPlugin.tooltip "プラグインの更新がないか確認します">
+<!ENTITY cmd.installLocalFile.label "インストール...">
+<!ENTITY cmd.installLocalFile.accesskey "n">
+<!ENTITY cmd.installFileAddon.tooltip "アドオンをインストールします">
+<!ENTITY cmd.installFileTheme.tooltip "テーマをインストールします">
+<!ENTITY cmd.installUpdatesAll2.label "更新をインストール">
+<!ENTITY cmd.installUpdatesAll2.accesskey "I">
+<!ENTITY cmd.installUpdatesAll2.tooltip "選択した更新をインストールします">
+<!ENTITY cmd.restartApp2.label "&brandShortName; を再起動">
+<!ENTITY cmd.restartApp2.accesskey "R">
+<!ENTITY cmd.restartApp2.tooltip "&brandShortName; を再起動して変更を適用します">
+<!ENTITY cmd.skip.label "スキップ">
+<!ENTITY cmd.skip.accesskey "k">
+<!ENTITY cmd.skip.tooltip "更新をインストールせずに起動します">
+<!ENTITY cmd.continue.label "続行">
+<!ENTITY cmd.continue.accesskey "C">
+<!ENTITY cmd.continue.tooltip "&brandShortName; を起動します">
+<!ENTITY cmd.enableAll.label "すべて有効">
+<!ENTITY cmd.enableAll.accesskey "a">
+<!ENTITY cmd.enableAll.tooltip "表示されているすべてのアドオンを有効にします">
+<!ENTITY cmd.disableAll.label "すべて無効">
+<!ENTITY cmd.disableAll.accesskey "s">
+<!ENTITY cmd.disableAll.tooltip "表示されているすべてのアドオンを無効にします">
+<!-- Displayed in the selected Add-on\'s richlistitem and context menu -->
+<!ENTITY cmd.useTheme.label "テーマを使用">
+<!ENTITY cmd.useTheme.accesskey "T">
+<!ENTITY cmd.useTheme.tooltip "&brandShortName; のテーマを変更します">
+<!ENTITY cmd.options.label "設定">
+<!ENTITY cmd.options.accesskey "O">
+<!ENTITY cmd.options.tooltip "選択した拡張機能の設定を変更します">
+<!ENTITY cmd.optionsUnix.label "設定">
+<!ENTITY cmd.optionsUnix.accesskey "P">
+<!ENTITY cmd.optionsUnix.tooltip "選択した拡張機能の設定を変更します">
+<!ENTITY cmd.enable.label "有効化">
+<!ENTITY cmd.enable.accesskey "E">
+<!ENTITY cmd.enable.tooltip "&brandShortName; の再起動後にこのアドオンを有効にします">
+<!ENTITY cmd.disable.label "無効化">
+<!ENTITY cmd.disable.accesskey "D">
+<!ENTITY cmd.disable.tooltip "&brandShortName; の再起動後にこのアドオンを無効にします">
+<!ENTITY cmd.uninstall.label "削除">
+<!ENTITY cmd.uninstall2.accesskey "U">
+<!ENTITY cmd.uninstall2.tooltip "&brandShortName; の再起動後にこのアドオンをアンインストールします">
+<!ENTITY cmd.cancelUninstall.label "削除を中止">
+<!ENTITY cmd.cancelUninstall.accesskey "C">
+<!ENTITY cmd.cancelUninstall.tooltip "このアドオンの削除を取りやめます">
+<!ENTITY cmd.cancelInstall.label "インストールを中止">
+<!ENTITY cmd.cancelInstall.accesskey "C">
+<!ENTITY cmd.cancelInstall.tooltip "このアドオンのインストールを取りやめます">
+<!ENTITY cmd.cancelUpgrade.label "更新を中止">
+<!ENTITY cmd.cancelUpgrade.accesskey "C">
+<!ENTITY cmd.cancelUpgrade.tooltip "このアドオンの更新を取りやめます">
+<!ENTITY cmd.installUpdate.label "更新をインストール">
+<!ENTITY cmd.installUpdate.accesskey "I">
+<!ENTITY cmd.installUpdate.tooltip "このアドオンの更新をインストールします">
+<!ENTITY cmd.showUpdateInfo.label "情報を表示">
+<!ENTITY cmd.showUpdateInfo.accesskey "S">
+<!ENTITY cmd.showUpdateInfo.tooltip "更新についての詳細情報を表示します">
+<!ENTITY cmd.hideUpdateInfo.label "情報を隠す">
+<!ENTITY cmd.hideUpdateInfo.accesskey "H">
+<!ENTITY cmd.hideUpdateInfo.tooltip "更新についての詳細情報を表示しません">
+<!ENTITY cmd.installSearchResult.label "&brandShortName; に追加">
+<!ENTITY cmd.installSearchResult.accesskey "A">
+<!ENTITY cmd.installSearchResult.tooltip "このアドオンをダウンロードしてインストールします">
+<!-- The selected add-on\'s cancel action button label -->
+<!ENTITY cancel.label "キャンセル">
+<!ENTITY cancel.accesskey "C">
+<!ENTITY cancelInstall.label "キャンセル">
+<!ENTITY cancelInstall.accesskey "C">
+<!ENTITY cancelUpgrade.label "キャンセル">
+<!ENTITY cancelUpgrade.accesskey "C">
+<!-- Only displayed in the selected Add-on\'s context menu -->
+<!ENTITY cmd.homepage.label "サイトを表示">
+<!ENTITY cmd.homepage.accesskey "H">
+<!ENTITY cmd.about2.label "このアドオンについて">
+<!ENTITY cmd.about.accesskey "A">
+<!ENTITY cmd.checkUpdate.label "更新を確認">
+<!ENTITY cmd.checkUpdate.accesskey "F">
+<!ENTITY cmd.includeUpdate.label "更新を含める">
+<!ENTITY cmd.includeUpdate.accesskey "n">
+<!ENTITY includeUpdate.label "この更新を含める">
+<!ENTITY includeUpdate.accesskey "n">
+<!ENTITY includeUpdate.tooltip "このアドオンを更新のインストール時に含めます">
+<!-- Status Messsages -->
+<!ENTITY insecureUpdate.label "このアドオンには安全な更新方法が用意されていません。">
+<!ENTITY needsDependencies.label "このアドオンの動作に必要なアドオンがありません。">
+<!ENTITY blocklisted.label "ユーザ保護のために無効化されています。">
+<!ENTITY softBlocklisted.label "セキュリティまたは安定性に問題を生じることが知られています。">
+<!ENTITY outdated.label "新しくより安全なバージョンがリリースされています。">
+<!ENTITY toBeDisabled.label "このアドオンは &brandShortName; の再起動後に無効になります。">
+<!ENTITY toBeEnabled.label "このアドオンは &brandShortName; の再起動後に有効になります。">
+<!ENTITY toBeInstalled.label "このアドオンは &brandShortName; の再起動後にインストールされます。">
+<!ENTITY toBeUninstalled.label "このアドオンは &brandShortName; の再起動後に削除されます。">
+<!ENTITY toBeUpdated.label "このアドオンは &brandShortName; の再起動後に更新されます。">
+<!ENTITY getExtensions.label "新しい拡張機能を入手">
+<!ENTITY getThemes.label "新しいテーマを入手">
+<!ENTITY getPlugins.label "新しいプラグインを入手">
+<!ENTITY searchAddons.label "すべてのアドオンを検索">
+<!ENTITY browseAddons.label "すべてのアドオンを参照">
+<!ENTITY searchFailed.label "アドオンを取得できませんでした">
+<!ENTITY recommendedHeader.label "おすすめのアドオン">
+<!ENTITY recommendedThrobber.label "おすすめのアドオン一覧を取得しています...">
+<!ENTITY searchThrobber.label "アドオンを検索しています...">
+<!ENTITY resetSearch.label "検索結果を消去">
+<!ENTITY noSearchResults.label "見つかったアドオンはすべてインストールされているか、互換性がありません。">
+<!ENTITY noRecommendedResults.label "おすすめのアドオンはすべてインストールされているか、互換性がありません。">
+<!ENTITY emptySearch.label "該当するアドオンが見つかりませんでした">
+<!ENTITY emptySearch.button "OK">
+<!ENTITY cancelSearch.button "キャンセル">
+<!ENTITY searchFailed.button "OK">
+<!ENTITY searchResultHomepage.value "詳細を表示">
+<!ENTITY searchBox.label "すべてのアドオンから検索">
+<!ENTITY recommendedResults.label "すべてのおすすめアドオンを参照">
+<!ENTITY searchResultConnecting.label "接続しています...">
+<!ENTITY searchResultInstalling.label "インストールしています...">
+<!ENTITY searchResultFailed.label "正常にインストールできませんでした">
+<!ENTITY searchResultInstalled.label "正常にインストールを完了しました">
+<!ENTITY addonTypeExtension.label "拡張機能">
+<!ENTITY addonTypeTheme.label "テーマ">
+<!ENTITY missingThumbnail.label "プレビューなし">
+<!ENTITY previewNoThemeSelected.label "テーマが選択されていません">
+<!ENTITY previewNoPreviewImage.label "このテーマにはプレビュー画像がありません">
+<!ENTITY moreInfo.label "追加情報">
+<!ENTITY infoNoAddonSelected.label "更新を選択してください">
+<!ENTITY infoNoUpdateInfo.label "この更新には追加情報はありません">
+<!ENTITY infoUpdateInfoError.label "この更新についての追加情報を読み込めませんでした">
+<!ENTITY updateSuccess.label "更新が正常に完了しました。">
+<!ENTITY installSuccess.label "インストールが正常に完了しました。">
+<!ENTITY installSuccessRestart.label "再起動してインストールを完了してください。">
+<!ENTITY updateSuccessRestart.label "再起動して更新を完了してください。">
+<!ENTITY installWaiting.label "待機しています...">
+<!ENTITY installIncompatibleUpdate.label "互換性を確認しています...">
+<!ENTITY installFinishing.label "インストールしています...">
+<!ENTITY installFailure.label "インストールできませんでした。">
+<!ENTITY progressStatus.label "更新を確認しています">
+<!ENTITY eula.title "エンドユーザライセンス契約">
+<!ENTITY eula.width "560px">
+<!ENTITY eula.height "400px">
+<!ENTITY eula.accept "同意してインストール...">
+<!ENTITY blocklist.blocked.label "ブロックされています">
+<!ENTITY blocklist.checkbox.label "無効化">

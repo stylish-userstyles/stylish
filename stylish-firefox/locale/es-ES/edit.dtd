@@ -1,0 +1,24 @@
+<!ENTITY chromefolder "Ruta de la carpeta chrome">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "URI de los datos...">
+<!ENTITY dataURI.ak "D">
+<!ENTITY htmlnamespace "Nombre de espacios HTML por defecto">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "Insertar">
+<!ENTITY insert.ak "I">
+<!ENTITY name "Nombre">
+<!ENTITY name.ak "n">
+<!ENTITY openintexternaleditor "Abrir en un editor externo">
+<!ENTITY openintexternaleditor.ak "A">
+<!ENTITY preview "Vista previa">
+<!ENTITY preview.ak "P">
+<!ENTITY save "Guardar">
+<!ENTITY save.ak "G">
+<!ENTITY switchtoinstall "Cambiar a instalación">
+<!ENTITY switchtoinstall.ak "I">
+<!ENTITY tags "Etiquetas">
+<!ENTITY tags.ak "T">
+<!ENTITY wraplines "Cortar líneas">
+<!ENTITY wraplines.ak "C">
+<!ENTITY xulnamespace "Nombre de espacio XUL por defecto">
+<!ENTITY xulnamespace.ak "X">

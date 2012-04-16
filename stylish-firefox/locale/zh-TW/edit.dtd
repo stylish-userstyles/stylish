@@ -1,0 +1,24 @@
+<!ENTITY chromefolder "Chrome 資料夾路徑">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "資料 URI…(D)">
+<!ENTITY dataURI.ak "D">
+<!ENTITY htmlnamespace "預設的 HTML 命名空間">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "插入(I)">
+<!ENTITY insert.ak "I">
+<!ENTITY name "名稱(N)">
+<!ENTITY name.ak "n">
+<!ENTITY openintexternaleditor "以外部編輯器開啟(O)">
+<!ENTITY openintexternaleditor.ak "O">
+<!ENTITY preview "預覽(P)">
+<!ENTITY preview.ak "P">
+<!ENTITY save "儲存(S)">
+<!ENTITY save.ak "S">
+<!ENTITY switchtoinstall "切換到安裝模式(I)">
+<!ENTITY switchtoinstall.ak "I">
+<!ENTITY tags "標籤(T)">
+<!ENTITY tags.ak "T">
+<!ENTITY wraplines "換行(W)">
+<!ENTITY wraplines.ak "W">
+<!ENTITY xulnamespace "預設的 XUL 命名空間">
+<!ENTITY xulnamespace.ak "X">

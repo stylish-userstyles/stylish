@@ -1,0 +1,25 @@
+#stylish-toolbar-button {
+	list-style-image: url("chrome://stylish/skin/24w.png");
+}
+toolbar[iconsize="small"] #stylish-toolbar-button {
+	list-style-image: url("chrome://stylish/skin/16w.png");
+}
+
+#stylish-toolbar-button[styles-applied~="site"] {
+	list-style-image: url("chrome://stylish/skin/24.png");
+}
+toolbar[iconsize="small"] #stylish-toolbar-button[styles-applied~="site"] {
+	list-style-image: url("chrome://stylish/skin/16.png");
+}
+
+#stylish-panel {
+	list-style-image: url("chrome://stylish/skin/16w.png");
+}
+#stylish-panel[styles-applied~="site"] {
+	list-style-image: url("chrome://stylish/skin/16.png");
+}
+
+/* Things that don't make sense in a non-browser */
+#messengerWindow #stylish-find-styles, #messengerWindow #stylish-write-style-menu, #messengerWindow #stylish-panel {
+	display: none;
+}

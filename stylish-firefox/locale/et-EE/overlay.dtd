@@ -1,0 +1,12 @@
+<!ENTITY addfile "Installi fail ...">
+<!ENTITY addfile.ak "I">
+<!ENTITY findstylebrowser "Leia stiile sellele lehele">
+<!ENTITY findstylebrowser.ak "F">
+<!ENTITY managestyles "korralda stiile ...">
+<!ENTITY managestyles.ak "M">
+<!ENTITY turnon "Lülita kõik stiilid sisse.">
+<!ENTITY turnon.ak "T">
+<!ENTITY turnoff "Lülita kõik stiilid välja">
+<!ENTITY turnoff.ak "T">
+<!ENTITY writestyle "Kirjuta uus stiil">
+<!ENTITY writestyle.ak "W">

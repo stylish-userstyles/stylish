@@ -1,0 +1,20 @@
+<!ENTITY changetags "Změnit štítky">
+<!ENTITY changetags.ak "Z">
+<!ENTITY copyinfo "Kopírovat informace o stylu">
+<!ENTITY copyinfo.ak "K">
+<!ENTITY done "Dokončeno">
+<!ENTITY done.ak "D">
+<!ENTITY filter "Hledat">
+<!ENTITY manageaddonstitle "Uživatelské styly">
+<!ENTITY managetitle "Stylish">
+<!ENTITY nostylesstart "Navštivte">
+<!ENTITY nostylesend "pro informace jak používat Stylish.">
+<!ENTITY sortenabled "Povoleno">
+<!ENTITY sortname "Název">
+<!ENTITY sorttag "Štítek">
+<!ENTITY sorttype "Typ">
+<!ENTITY sortgroup "Řadit podle:">
+<!ENTITY update "Aktualizovat">
+<!ENTITY update.ak "A">
+<!ENTITY writenew "Napsat nový styl">
+<!ENTITY writenew.ak "N">

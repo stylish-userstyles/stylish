@@ -1,0 +1,24 @@
+<!ENTITY chromefolder "Chrome mappa útvonala">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "Adat URL">
+<!ENTITY dataURI.ak "D">
+<!ENTITY htmlnamespace "HTML névtér beállítása alapértelmezettként">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "Beillesztés">
+<!ENTITY insert.ak "I">
+<!ENTITY name "Név">
+<!ENTITY name.ak "n">
+<!ENTITY openintexternaleditor "Megnyitás külső szerkesztőprogrammal">
+<!ENTITY openintexternaleditor.ak "O">
+<!ENTITY preview "Előnézet">
+<!ENTITY preview.ak "P">
+<!ENTITY save "Mentés">
+<!ENTITY save.ak "S">
+<!ENTITY switchtoinstall "Váltás telepítésre">
+<!ENTITY switchtoinstall.ak "I">
+<!ENTITY tags "Címkék">
+<!ENTITY tags.ak "T">
+<!ENTITY wraplines "Sorok tördelése">
+<!ENTITY wraplines.ak "W">
+<!ENTITY xulnamespace "XUL névtér beállítása alapértelmezettként">
+<!ENTITY xulnamespace.ak "X">

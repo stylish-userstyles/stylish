@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<?xul-overlay href="chrome://stylish/content/manage.xul"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://mozapps/skin/extensions/extensions.css" type="text/css"?>
+
+<!DOCTYPE window [
+	<!ENTITY % extensionsDTD SYSTEM "chrome://stylish/locale/extensions.dtd">
+	%extensionsDTD;
+	<!ENTITY % manage SYSTEM "chrome://stylish/locale/manage.dtd">
+	%manage;
+]>
+
+<window
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="stylish-manage-standalone"
+	persist="screenX screenY width height sizemode"
+	width="600"
+	height="400"
+	title="&managetitle;"
+	windowtype="stylishManage">
+
+	<script type="application/javascript" src="chrome://global/content/contentAreaUtils.js"/>
+
+	<stringbundleset id="stylish-stringbundleset"/>
+	<stringbundle id="extensionsStrings" src="chrome://mozapps/locale/extensions/extensions.properties"/>
+
+	<notificationbox id="styles-container"/>
+
+	<hbox>
+		<button id="update-all" label="&cmd.checkUpdatesAll.label;" accesskey="&cmd.checkUpdatesAll.accesskey;" oncommand="stylishManage.updateAll()"/>
+		<spacer flex="1"/>
+		<button id="copy-style-info" label="&copyinfo;" accesskey="&copyinfo.ak;" oncommand="stylishManage.copyInfo()"/>
+		<button id="new-style" label="&writenew;" accesskey="&writenew.ak;" oncommand="stylishManage.newStyle()"/>
+	</hbox>
+
+</window>

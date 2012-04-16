@@ -1,0 +1,44 @@
+#category-userstyles > .category-icon, #category-userstyle > .category-icon {
+	list-style-image: url("chrome://stylish/skin/32.png");
+}
+richlistitem[type="userstyle"]:not([pending]) {
+	-moz-binding: url("chrome://stylish/content/addon.xbl#addon-item");
+}
+richlistitem[type="userstyle"] .control-container {
+	-moz-binding: url("chrome://stylish/content/addon.xbl#addon-buttons");
+}
+richlistitem[type="userstyle"] [anonid="date-updated"] {
+	display: none;
+}
+#menuitem_userstyle_edit {
+	display: none;
+}
+#addonitem-popup[addontype="userstyle"] #menuitem_userstyle_edit {
+	display: -moz-popup;
+}
+#userstyle-footer {
+	display: none;
+	border-top: 1px solid threedshadow;
+}
+#list-view[type="userstyle"] #addon-list ~ #userstyle-footer {
+	display: -moz-box;
+}
+#no-styles-note {
+	padding-left: 1em;
+	display: none;
+}
+#list-view[type="userstyle"] #no-styles-note {
+	display: -moz-box;
+}
+#userstyle-sorting {
+	display: none;
+}
+#list-view[type="userstyle"] #addon-list-empty[hidden] ~ #userstyle-sorting {
+	display: -moz-box;
+}
+#list-view[type="userstyle"] .alert {
+	display: none;
+}
+#list-view[type="userstyle"] #addon-list-empty:not([hidden]) ~ #userstyle-footer {
+	display: none;
+}

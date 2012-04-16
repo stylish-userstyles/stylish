@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://stylish/skin/install.css" type="text/css"?>
+
+<!DOCTYPE dialog [
+	<!ENTITY % edit SYSTEM "chrome://stylish/locale/install.dtd">
+	%edit;
+]>
+
+<dialog
+	id="stylish"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	persist="screenX screenY width height sizemode"
+	width="500"
+	height="300"
+	buttons="accept,cancel,extra1,extra2"
+	onload="init()"
+	title="&title;"
+	ondialogaccept="return save(true)"
+	ondialogextra2="preview();"
+	ondialogextra1="switchToEdit();"
+	ondialogcancel="style.setPreview(false)"
+	buttonlabelaccept="&install;"
+	buttonaccesskeyaccept="&install.ak;"
+	buttonlabelextra2="&preview;"
+	buttonaccesskeyextra2="&preview.ak;"
+	buttonlabelextra1="&switchtoedit;"
+	buttonaccesskeyextra1="&switchtoedit.ak;">
+	
+	<script type="application/javascript" src="common.js"/>
+	<script type="application/javascript" src="install.js"/>
+
+	<stringbundle id="strings" src="chrome://stylish/locale/install.properties"/>
+
+	<description id="install-intro"/>
+	<vbox id="applies-to-container" flex="1">
+		<html:ul id="applies-to" style="display: none"/>
+	</vbox>
+	<vbox id="name-container" style="display: none">
+		<label value="&entername;"/>
+		<textbox id="name"/>
+	</vbox>
+
+</dialog>

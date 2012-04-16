@@ -1,0 +1,24 @@
+<!ENTITY chromefolder "크롬 폴더 경로">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "데이터 URI">
+<!ENTITY dataURI.ak "D">
+<!ENTITY htmlnamespace "HTML 이름공간 선언">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "삽입">
+<!ENTITY insert.ak "I">
+<!ENTITY name "이름">
+<!ENTITY name.ak "n">
+<!ENTITY openintexternaleditor "외부 에디터로 열기">
+<!ENTITY openintexternaleditor.ak "O">
+<!ENTITY preview "미리보기">
+<!ENTITY preview.ak "P">
+<!ENTITY save "저장">
+<!ENTITY save.ak "S">
+<!ENTITY switchtoinstall "설치로 전환">
+<!ENTITY switchtoinstall.ak "I">
+<!ENTITY tags "태그">
+<!ENTITY tags.ak "T">
+<!ENTITY wraplines "자동 줄 바꿈">
+<!ENTITY wraplines.ak "W">
+<!ENTITY xulnamespace "XUL 이름공간 선언">
+<!ENTITY xulnamespace.ak "X">

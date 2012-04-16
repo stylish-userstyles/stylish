@@ -1,0 +1,24 @@
+<!ENTITY chromefolder "Đường dẫn thư mục Chrome">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "URI dữ liệu...">
+<!ENTITY dataURI.ak "U">
+<!ENTITY htmlnamespace "Không gian tên HTML làm mặc định">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "Chèn">
+<!ENTITY insert.ak "C">
+<!ENTITY name "Tên">
+<!ENTITY name.ak "T">
+<!ENTITY openintexternaleditor "Mở trong trình soạn thảo bên ngoài">
+<!ENTITY openintexternaleditor.ak "M">
+<!ENTITY preview "Xem thử">
+<!ENTITY preview.ak "X">
+<!ENTITY save "Lưu">
+<!ENTITY save.ak "L">
+<!ENTITY switchtoinstall "Chuyển sang Cài đặt">
+<!ENTITY switchtoinstall.ak "y">
+<!ENTITY tags "Tag">
+<!ENTITY tags.ak "T">
+<!ENTITY wraplines "Bẻ dòng">
+<!ENTITY wraplines.ak "B">
+<!ENTITY xulnamespace "Không gian tên XML làm mặc định">
+<!ENTITY xulnamespace.ak "X">

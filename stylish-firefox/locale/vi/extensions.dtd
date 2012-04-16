@@ -1,0 +1,160 @@
+<!ENTITY addons.title "Tiện ích">
+<!-- Default window size for the addon manager in pixels -->
+<!ENTITY em.width "520">
+<!ENTITY em.height "380">
+<!ENTITY cmd.info.commandKey "i">
+<!ENTITY cmd.options.commandKey ",">
+<!ENTITY cmd.close.commandKey "w">
+<!-- View labels -->
+<!ENTITY search.label "Lấy thêm Tiện ích">
+<!ENTITY extensions.label "Phần mở rộng">
+<!ENTITY themes.label "Giao diện">
+<!ENTITY locales.label "Ngôn ngữ">
+<!ENTITY plugins.label "Phần bổ trợ">
+<!ENTITY update.label "Cập nhật">
+<!ENTITY install.label "Cài đặt">
+<!-- Command Bar items -->
+<!ENTITY cmd.checkUpdatesAll.label "Tìm bản Cập nhật">
+<!ENTITY cmd.checkUpdatesAll.accesskey "T">
+<!ENTITY cmd.checkUpdatesAllAddon.tooltip "Tìm cập nhật cho Tiện ích của bạn">
+<!ENTITY cmd.checkUpdatesAllTheme.tooltip "Tìm cập nhật cho Giao diện của bạn">
+<!ENTITY cmd.checkUpdatesAllPlugin.tooltip "Tìm cập nhật cho Phần bổ trợ của bạn">
+<!ENTITY cmd.installLocalFile.label "Cài đặt…">
+<!ENTITY cmd.installLocalFile.accesskey "C">
+<!ENTITY cmd.installFileAddon.tooltip "Cài đặt một Tiện ích">
+<!ENTITY cmd.installFileTheme.tooltip "Cài đặt một Giao diện">
+<!ENTITY cmd.installUpdatesAll2.label "Cài đặt Cập nhật">
+<!ENTITY cmd.installUpdatesAll2.accesskey "C">
+<!ENTITY cmd.installUpdatesAll2.tooltip "Cài đặt các bản cập nhật đã chọn">
+<!ENTITY cmd.restartApp2.label "Khởi động lại &brandShortName;">
+<!ENTITY cmd.restartApp2.accesskey "K">
+<!ENTITY cmd.restartApp2.tooltip "Khởi động lại &brandShortName; để tiến hành thay đổi">
+<!ENTITY cmd.skip.label "Bỏ qua">
+<!ENTITY cmd.skip.accesskey "B">
+<!ENTITY cmd.skip.tooltip "Bỏ qua những cập nhật này">
+<!ENTITY cmd.continue.label "Tiếp tục">
+<!ENTITY cmd.continue.accesskey "T">
+<!ENTITY cmd.continue.tooltip "Tiếp tục chạy &brandShortName;">
+<!ENTITY cmd.enableAll.label "Kích hoạt Tất cả">
+<!ENTITY cmd.enableAll.accesskey "h">
+<!ENTITY cmd.enableAll.tooltip "Kích hoạt tất cả các Tiện ích được hiển thị">
+<!ENTITY cmd.disableAll.label "Vô hiệu hóa Tất cả">
+<!ENTITY cmd.disableAll.accesskey "u">
+<!ENTITY cmd.disableAll.tooltip "Vô hiệu hóa tất cả các Tiện ích được hiển thị">
+<!-- Displayed in the selected Add-on\'s richlistitem and context menu -->
+<!ENTITY cmd.useTheme.label "Dùng Giao diện">
+<!ENTITY cmd.useTheme.accesskey "D">
+<!ENTITY cmd.useTheme.tooltip "Đổi Giao diện của &brandShortName;">
+<!ENTITY cmd.options.label "Tùy chọn">
+<!ENTITY cmd.options.accesskey "y">
+<!ENTITY cmd.options.tooltip "Thiết lập Tùy chọn của Phần mở rộng được chọn">
+<!ENTITY cmd.optionsUnix.label "Tùy chỉnh">
+<!ENTITY cmd.optionsUnix.accesskey "y">
+<!ENTITY cmd.optionsUnix.tooltip "Thay đổi các Tùy chỉnh của Phần mở rộng được chọn">
+<!ENTITY cmd.enable.label "Bật">
+<!ENTITY cmd.enable.accesskey "B">
+<!ENTITY cmd.enable.tooltip "Kích hoạt Tiện ích này khi &brandShortName; được khởi động lại">
+<!ENTITY cmd.disable.label "Vô hiệu hóa">
+<!ENTITY cmd.disable.accesskey "V">
+<!ENTITY cmd.disable.tooltip "Vô hiệu hóa Tiện ích này khi &brandShortName; được khởi động lại">
+<!ENTITY cmd.uninstall.label "Gỡ bỏ">
+<!ENTITY cmd.uninstall2.accesskey "G">
+<!ENTITY cmd.uninstall2.tooltip "Gỡ bỏ Tiện ích này khi &brandShortName; được khởi động lại">
+<!ENTITY cmd.cancelUninstall.label "Hủy việc Gỡ bỏ">
+<!ENTITY cmd.cancelUninstall.accesskey "H">
+<!ENTITY cmd.cancelUninstall.tooltip "Hủy việc gỡ bỏ Tiện ích này">
+<!ENTITY cmd.cancelInstall.label "Hủy việc Cài đặt">
+<!ENTITY cmd.cancelInstall.accesskey "H">
+<!ENTITY cmd.cancelInstall.tooltip "Hủy việc cài đặt Tiện ích này">
+<!ENTITY cmd.cancelUpgrade.label "Hủy việc Nâng cấp">
+<!ENTITY cmd.cancelUpgrade.accesskey "H">
+<!ENTITY cmd.cancelUpgrade.tooltip "Hủy việc nâng cấp Tiện ích này">
+<!ENTITY cmd.installUpdate.label "Cài đặt bản Cập nhật">
+<!ENTITY cmd.installUpdate.accesskey "C">
+<!ENTITY cmd.installUpdate.tooltip "Cài đặt bản cập nhật cho Tiện ích này">
+<!ENTITY cmd.showUpdateInfo.label "Hiện Thông tin">
+<!ENTITY cmd.showUpdateInfo.accesskey "H">
+<!ENTITY cmd.showUpdateInfo.tooltip "Hiện thêm thông tin về các bản cập nhật này">
+<!ENTITY cmd.hideUpdateInfo.label "Ẩn Thông tin">
+<!ENTITY cmd.hideUpdateInfo.accesskey "n">
+<!ENTITY cmd.hideUpdateInfo.tooltip "Ẩn thông tin về các bản cập nhật này">
+<!ENTITY cmd.installSearchResult.label "Thêm vào &brandShortName;…">
+<!ENTITY cmd.installSearchResult.accesskey "T">
+<!ENTITY cmd.installSearchResult.tooltip "Tải về và cài đặt tiện ích này">
+<!-- The selected add-on\'s cancel action button label -->
+<!ENTITY cancel.label "Hủy bỏ">
+<!ENTITY cancel.accesskey "H">
+<!ENTITY cancelInstall.label "Hủy bỏ">
+<!ENTITY cancelInstall.accesskey "H">
+<!ENTITY cancelUpgrade.label "Hủy bỏ">
+<!ENTITY cancelUpgrade.accesskey "H">
+<!-- Only displayed in the selected Add-on\'s context menu -->
+<!ENTITY cmd.homepage.label "Vào Trang Chủ">
+<!ENTITY cmd.homepage.accesskey "a">
+<!ENTITY cmd.about2.label "Thông tin về Tiện ích này">
+<!ENTITY cmd.about.accesskey "v">
+<!ENTITY cmd.checkUpdate.label "Tìm bản Cập nhật">
+<!ENTITY cmd.checkUpdate.accesskey "T">
+<!ENTITY cmd.includeUpdate.label "Bao gồm bản Cập nhật">
+<!ENTITY cmd.includeUpdate.accesskey "a">
+<!ENTITY includeUpdate.label "Bao gồm bản cập nhật này">
+<!ENTITY includeUpdate.accesskey "a">
+<!ENTITY includeUpdate.tooltip "Bao gồm Tiện ích này khi cài đặt các bản cập nhật">
+<!-- Status Messsages -->
+<!ENTITY insecureUpdate.label "Không cung cấp bản cập nhật bảo mật.">
+<!ENTITY needsDependencies.label "Cần các mục phụ.">
+<!ENTITY blocklisted.label "Đã vô hiệu hóa để bảo vệ bạn.">
+<!ENTITY softBlocklisted.label "Được biết đến như là nguyên nhân gây ra các vấn đề bảo mật và ổn định.">
+<!ENTITY outdated.label "Hiện đang có một phiên bản mới hơn, an toàn hơn.">
+<!ENTITY toBeDisabled.label "Tiện ích này sẽ bị vô hiệu hóa khi &brandShortName; được khởi động lại.">
+<!ENTITY toBeEnabled.label "Tiện ích này sẽ được kích hoạt khi &brandShortName; được khởi động lại.">
+<!ENTITY toBeInstalled.label "Tiện ích này sẽ được cài đặt khi &brandShortName; được khởi động lại.">
+<!ENTITY toBeUninstalled.label "Tiện ích này sẽ được gỡ bỏ khi &brandShortName; được khởi động lại.">
+<!ENTITY toBeUpdated.label "Tiện ích này sẽ được cập nhật khi &brandShortName; khởi động lại.">
+<!ENTITY getExtensions.label "Lấy thêm Phần mở rộng">
+<!ENTITY getThemes.label "Lấy thêm Giao diện">
+<!ENTITY getPlugins.label "Lấy thêm Phần bổ trợ">
+<!ENTITY searchAddons.label "Tìm Tất cả các Tiện ích">
+<!ENTITY browseAddons.label "Duyệt xem Tất cả Tiện ích">
+<!ENTITY searchFailed.label "&brandShortName; không thể lấy Tiện ích về">
+<!ENTITY recommendedHeader.label "Khuyên dùng">
+<!ENTITY recommendedThrobber.label "Đang lấy về những tiện ích được khuyên dùng">
+<!ENTITY searchThrobber.label "Đang tìm các tiện ích">
+<!ENTITY resetSearch.label "Xóa kết quả">
+<!ENTITY noSearchResults.label "Tất cả đã được cài đặt rồi hoặc do không tương thích.">
+<!ENTITY noRecommendedResults.label "Tất cả đã được cài đặt rồi hoặc do không tương thích.">
+<!ENTITY emptySearch.label "Không tìm thấy tiện ích phù hợp">
+<!ENTITY emptySearch.button "OK">
+<!ENTITY cancelSearch.button "Hủy bỏ">
+<!ENTITY searchFailed.button "OK">
+<!ENTITY searchResultHomepage.value "Tìm hiểu thêm">
+<!ENTITY searchBox.label "Tìm Tất cả các Tiện ích">
+<!ENTITY recommendedResults.label "Xem Tất cả các Tiện ích được khuyên dùng">
+<!ENTITY searchResultConnecting.label "Đang kết nối…">
+<!ENTITY searchResultInstalling.label "Đang cài…">
+<!ENTITY searchResultFailed.label "Cài đặt Thất bại">
+<!ENTITY searchResultInstalled.label "Cài đặt Hoàn tất">
+<!ENTITY addonTypeExtension.label "Phần mở rộng">
+<!ENTITY addonTypeTheme.label "Giao diện">
+<!ENTITY missingThumbnail.label "Không thể Xem trước">
+<!ENTITY previewNoThemeSelected.label "Chưa chọn Giao diện">
+<!ENTITY previewNoPreviewImage.label "Giao diện này không có Ảnh Xem trước">
+<!ENTITY moreInfo.label "Thông tin Chi tiết">
+<!ENTITY infoNoAddonSelected.label "Không có Cập nhật nào được chọn">
+<!ENTITY infoNoUpdateInfo.label "Cập nhật này không có thông tin chi tiết">
+<!ENTITY infoUpdateInfoError.label "Gặp lỗi khi đang lấy thông tin về bản cập nhật này">
+<!ENTITY updateSuccess.label "Hoàn tất thành công việc Cập nhật.">
+<!ENTITY installSuccess.label "Hoàn tất thành công việc Cài đặt.">
+<!ENTITY installSuccessRestart.label "Khởi động lại để hoàn tất việc cài đặt.">
+<!ENTITY updateSuccessRestart.label "Khởi động lại để hoàn tất việc cập nhật.">
+<!ENTITY installWaiting.label "Đang chờ…">
+<!ENTITY installIncompatibleUpdate.label "Đang kiểm tra tính tương thích…">
+<!ENTITY installFinishing.label "Đang cài…">
+<!ENTITY installFailure.label "Cài đặt thất bại.">
+<!ENTITY progressStatus.label "Đang tìm kiếm Cập nhật mới">
+<!ENTITY eula.title "Thỏa thuận Giấy phép Người dùng cuối">
+<!ENTITY eula.width "560px">
+<!ENTITY eula.height "400px">
+<!ENTITY eula.accept "Đồng ý và Cài đặt…">
+<!ENTITY blocklist.blocked.label "Đã bị chặn">
+<!ENTITY blocklist.checkbox.label "Vô hiệu hóa">

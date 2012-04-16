@@ -1,0 +1,12 @@
+<!ENTITY addfile "安裝檔案…(I)">
+<!ENTITY addfile.ak "I">
+<!ENTITY findstylebrowser "尋找此網站的樣式…(F)">
+<!ENTITY findstylebrowser.ak "F">
+<!ENTITY managestyles "管理樣式…(M)">
+<!ENTITY managestyles.ak "M">
+<!ENTITY turnon "啟用所有樣式(T)">
+<!ENTITY turnon.ak "T">
+<!ENTITY turnoff "停用所有樣式(T)">
+<!ENTITY turnoff.ak "T">
+<!ENTITY writestyle "編寫新樣式(W)">
+<!ENTITY writestyle.ak "W">

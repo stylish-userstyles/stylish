@@ -1,0 +1,12 @@
+<!ENTITY addfile "파일 설치">
+<!ENTITY addfile.ak "I">
+<!ENTITY findstylebrowser "이 사이트의 스타일 검색">
+<!ENTITY findstylebrowser.ak "F">
+<!ENTITY managestyles "스타일 관리">
+<!ENTITY managestyles.ak "M">
+<!ENTITY turnon "모든 스타일 적용함">
+<!ENTITY turnon.ak "T">
+<!ENTITY turnoff "모든 스타일 적용 안 함">
+<!ENTITY turnoff.ak "T">
+<!ENTITY writestyle "새 스타일 작성">
+<!ENTITY writestyle.ak "W">

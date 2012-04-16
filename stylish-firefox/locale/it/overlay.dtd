@@ -1,0 +1,12 @@
+<!ENTITY addfile "Aggiungi stile a &stylish;…">
+<!ENTITY addfile.ak "A">
+<!ENTITY findstylebrowser "Trova stili per questa pagina">
+<!ENTITY findstylebrowser.ak "T">
+<!ENTITY managestyles "Gestione degli stili…">
+<!ENTITY managestyles.ak "G">
+<!ENTITY turnon "Attiva tutti gli stili">
+<!ENTITY turnon.ak "t">
+<!ENTITY turnoff "Disattiva tutti gli stili">
+<!ENTITY turnoff.ak "D">
+<!ENTITY writestyle "Crea uno stile">
+<!ENTITY writestyle.ak "s">

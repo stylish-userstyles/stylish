@@ -1,0 +1,12 @@
+<!ENTITY addfile "Instalar archivo...">
+<!ENTITY addfile.ak "I">
+<!ENTITY findstylebrowser "Buscar estilos para esta página...">
+<!ENTITY findstylebrowser.ak "B">
+<!ENTITY managestyles "Administrar estilos...">
+<!ENTITY managestyles.ak "A">
+<!ENTITY turnon "Activar todos los estilos">
+<!ENTITY turnon.ak "A">
+<!ENTITY turnoff "Desactivar todos los estilos">
+<!ENTITY turnoff.ak "D">
+<!ENTITY writestyle "Escribir nuevo estilo">
+<!ENTITY writestyle.ak "E">

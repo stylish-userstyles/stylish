@@ -1,0 +1,12 @@
+<!ENTITY addfile "Įdiegti failą...">
+<!ENTITY addfile.ak "I">
+<!ENTITY findstylebrowser "Ieškoti stilių šiai svetainei...">
+<!ENTITY findstylebrowser.ak "E">
+<!ENTITY managestyles "Tvarkyti stilius...">
+<!ENTITY managestyles.ak "T">
+<!ENTITY turnon "Įjungti visus stilius">
+<!ENTITY turnon.ak "I">
+<!ENTITY turnoff "Išjungti visus stilius">
+<!ENTITY turnoff.ak "I">
+<!ENTITY writestyle "Kurti naują stilių">
+<!ENTITY writestyle.ak "K">

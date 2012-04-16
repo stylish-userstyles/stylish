@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://stylish/skin/overlay.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+	<!ENTITY % extensions SYSTEM "chrome://stylish/locale/extensions.dtd">
+	<!ENTITY % overlay SYSTEM "chrome://stylish/locale/overlay.dtd">
+	<!ENTITY % common SYSTEM "chrome://stylish/locale/common.dtd">
+	%extensions;
+	%overlay;
+	%common;
+]>
+
+<overlay id="stylish-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/javascript" src="common.js"/>
+	<script type="application/javascript" src="overlay.js"/>
+
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="stylish-strings" src="chrome://stylish/locale/overlay.properties"/>
+		<stringbundle id="stylish-common-strings" src="chrome://stylish/locale/common.properties"/>
+		<stringbundle id="stylish-url-strings" src="chrome://stylish/content/urls.properties"/>
+	</stringbundleset>
+
+	<popupset id="mainPopupSet">
+		<menupopup id="stylish-popup" onpopupshowing="stylishOverlay.popupShowing(event)" onpopuphiding="stylishOverlay.popupHiding(event)" position="after_start">
+			<menuitem id="stylish-manage" label="&managestyles;" accesskey="&managestyles.ak;" oncommand="stylishOverlay.openManage()"/>
+			<menuitem id="stylish-turn-on" label="&turnon;" accesskey="&turnon.ak;" oncommand="stylishOverlay.turnOnOff(true)"/>
+			<menuitem id="stylish-turn-off" label="&turnoff;" accesskey="&turnoff.ak;" oncommand="stylishOverlay.turnOnOff(false)"/>
+			<menuitem id="stylish-add-file" label="&addfile;" accesskey="&addfile.ak;" oncommand="stylishOverlay.installFromFile(event)"/>
+			<menuitem id="stylish-find-styles" label="&findstylebrowser;" accesskey="&findstylebrowser.ak;" oncommand="stylishOverlay.findStyle(event)" onclick="checkForMiddleClick(this, event)"/>
+			<menu id="stylish-write-style-menu" label="&writestyle;" accesskey="&writestyle.ak;">
+				<menupopup onpopupshowing="stylishOverlay.writeStylePopupShowing(event)" onpopuphiding="stylishCommon.clearAllMenuItems(event)"/>
+			</menu>
+		</menupopup>
+		<menupopup id="stylish-style-context" onpopupshowing="stylishOverlay.showApplicableContextItems(event)">
+			<menuitem id="stylish-style-context-enable" label="&cmd.enable.label;" accesskey="&cmd.enable.accesskey;" oncommand="stylishOverlay.contextSetEnabled(true)" class="menuitem-non-iconic" default="true"/>
+			<menuitem id="stylish-style-context-disable" label="&cmd.disable.label;" accesskey="&cmd.disable.accesskey;" oncommand="stylishOverlay.contextSetEnabled(false)" class="menuitem-non-iconic" default="true"/>
+			<menuitem id="stylish-style-context-edit" label="&editstyle;" accesskey="&editstyle.ak;" oncommand="stylishOverlay.contextEdit()" class="menuitem-non-iconic"/>
+			<menuitem id="stylish-style-context-uninstall" label="&cmd.uninstall.label;" accesskey="&cmd.uninstall2.accesskey;" oncommand="stylishOverlay.contextDelete()" class="menuitem-non-iconic"/>
+		</menupopup>
+		<tooltip id="stylish-tooltip">
+			<label class="tooltip-label"/>
+		</tooltip>
+	</popupset>
+
+	<!-- for tb single message window -->
+	<popupset insertafter="mailContext">
+		<menupopup id="stylish-popup" onpopupshowing="stylishOverlay.popupShowing(event)" onpopuphiding="stylishOverlay.popupHiding(event)" position="after_start">
+			<menuitem id="stylish-manage" label="&managestyles;" accesskey="&managestyles.ak;" oncommand="stylishOverlay.openManage()"/>
+			<menuitem id="stylish-turn-on" label="&turnon;" accesskey="&turnon.ak;" oncommand="stylishOverlay.turnOnOff(true)"/>
+			<menuitem id="stylish-turn-off" label="&turnoff;" accesskey="&turnoff.ak;" oncommand="stylishOverlay.turnOnOff(false)"/>
+			<menuitem id="stylish-add-file" label="&addfile;" accesskey="&addfile.ak;" oncommand="stylishOverlay.installFromFile(event)"/>
+			<menuitem id="stylish-find-styles" label="&findstylebrowser;" accesskey="&findstylebrowser.ak;" oncommand="stylishOverlay.findStyle(event)" onclick="checkForMiddleClick(this, event)"/>
+			<menu id="stylish-write-style-menu" label="&writestyle;" accesskey="&writestyle.ak;">
+				<menupopup onpopupshowing="stylishOverlay.writeStylePopupShowing(event)" onpopuphiding="stylishCommon.clearAllMenuItems(event)"/>
+			</menu>
+		</menupopup>
+		<menupopup id="stylish-style-context" onpopupshowing="stylishOverlay.showApplicableContextItems(event)">
+			<menuitem id="stylish-style-context-enable" label="&cmd.enable.label;" accesskey="&cmd.enable.accesskey;" oncommand="stylishOverlay.contextSetEnabled(true)" class="menuitem-non-iconic" default="true"/>
+			<menuitem id="stylish-style-context-disable" label="&cmd.disable.label;" accesskey="&cmd.disable.accesskey;" oncommand="stylishOverlay.contextSetEnabled(false)" class="menuitem-non-iconic" default="true"/>
+			<menuitem id="stylish-style-context-edit" label="&editstyle;" accesskey="&editstyle.ak;" oncommand="stylishOverlay.contextEdit()" class="menuitem-non-iconic"/>
+			<menuitem id="stylish-style-context-uninstall" label="&cmd.uninstall.label;" accesskey="&cmd.uninstall2.accesskey;" oncommand="stylishOverlay.contextDelete()" class="menuitem-non-iconic"/>
+		</menupopup>
+		<tooltip id="stylish-tooltip">
+			<label class="tooltip-label"/>
+		</tooltip>
+	</popupset>
+
+	<toolbarpalette id="BrowserToolbarPalette">
+		<toolbarbutton id="stylish-toolbar-button" label="&stylish;" orient="horizontal" popup="stylish-popup" tooltip="stylish-tooltip" onclick="stylishOverlay.handleStatusClick(event)" class="toolbarbutton-1" type="menu"/>
+	</toolbarpalette>
+
+	<toolbarpalette id="MailToolbarPalette">
+		<toolbarbutton id="stylish-toolbar-button" label="&stylish;" orient="horizontal" popup="stylish-popup" tooltip="stylish-tooltip" onclick="stylishOverlay.handleStatusClick(event)" class="toolbarbutton-1" type="menu"/>
+	</toolbarpalette>
+
+	<broadcasterset id="mainBroadcasterSet">
+		<broadcaster id="viewStylishSidebar" autoCheck="false" label="&stylish;" type="checkbox" group="sidebar" sidebarurl="chrome://stylish/content/manage-standalone.xul?sidebar" sidebartitle="&stylish;" oncommand="toggleSidebar('viewStylishSidebar');"/>
+	</broadcasterset>
+
+	<menupopup id="viewSidebarMenu">
+		<menuitem id="stylish-view-sidebar" observes="viewStylishSidebar"/>
+	</menupopup>
+
+</overlay>

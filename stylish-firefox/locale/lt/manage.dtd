@@ -1,0 +1,20 @@
+<!ENTITY changetags "Keisti žymes">
+<!ENTITY changetags.ak "K">
+<!ENTITY copyinfo "Kopijuot stiliaus informaciją">
+<!ENTITY copyinfo.ak "K">
+<!ENTITY done "Atlikta">
+<!ENTITY done.ak "A">
+<!ENTITY filter "Ieškoti">
+<!ENTITY manageaddonstitle "Naudotojo stiliai">
+<!ENTITY managetitle "Stylish">
+<!ENTITY nostylesstart "Aplankykite">
+<!ENTITY nostylesend "informacijai apie tai kaip naudoti Stylish.">
+<!ENTITY sortenabled "Būsena">
+<!ENTITY sortname "Pavadinimas">
+<!ENTITY sorttag "Žymė">
+<!ENTITY sorttype "Tipas">
+<!ENTITY sortgroup "Rikiuoti pagal:">
+<!ENTITY update "Atnaujinti">
+<!ENTITY update.ak "A">
+<!ENTITY writenew "Kurti naują stilių">
+<!ENTITY writenew.ak "N">

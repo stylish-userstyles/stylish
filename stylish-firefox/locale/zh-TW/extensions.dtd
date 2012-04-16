@@ -1,0 +1,160 @@
+<!ENTITY addons.title "附加元件">
+<!-- Default window size for the addon manager in pixels -->
+<!ENTITY em.width "520">
+<!ENTITY em.height "380">
+<!ENTITY cmd.info.commandKey "i">
+<!ENTITY cmd.options.commandKey ",">
+<!ENTITY cmd.close.commandKey "w">
+<!-- View labels -->
+<!ENTITY search.label "取得更多附加元件">
+<!ENTITY extensions.label "擴充套件">
+<!ENTITY themes.label "佈景主題">
+<!ENTITY locales.label "語言">
+<!ENTITY plugins.label "外掛程式">
+<!ENTITY update.label "更新">
+<!ENTITY install.label "安裝">
+<!-- Command Bar items -->
+<!ENTITY cmd.checkUpdatesAll.label "搜尋更新(F)">
+<!ENTITY cmd.checkUpdatesAll.accesskey "F">
+<!ENTITY cmd.checkUpdatesAllAddon.tooltip "搜尋您附加元件的更新">
+<!ENTITY cmd.checkUpdatesAllTheme.tooltip "搜尋您佈景主題的更新">
+<!ENTITY cmd.checkUpdatesAllPlugin.tooltip "搜尋您擴充套件的更新">
+<!ENTITY cmd.installLocalFile.label "安裝(n)…">
+<!ENTITY cmd.installLocalFile.accesskey "n">
+<!ENTITY cmd.installFileAddon.tooltip "安裝附加元件">
+<!ENTITY cmd.installFileTheme.tooltip "安裝佈景主題">
+<!ENTITY cmd.installUpdatesAll2.label "安裝更新(I)">
+<!ENTITY cmd.installUpdatesAll2.accesskey "I">
+<!ENTITY cmd.installUpdatesAll2.tooltip "安裝已選擇的更新">
+<!ENTITY cmd.restartApp2.label "重新啟動 &brandShortName; (R)">
+<!ENTITY cmd.restartApp2.accesskey "R">
+<!ENTITY cmd.restartApp2.tooltip "重新啟動 &brandShortName; 以套用變更">
+<!ENTITY cmd.skip.label "略過(k)">
+<!ENTITY cmd.skip.accesskey "k">
+<!ENTITY cmd.skip.tooltip "忽略這些更新">
+<!ENTITY cmd.continue.label "繼續(C)">
+<!ENTITY cmd.continue.accesskey "C">
+<!ENTITY cmd.continue.tooltip "繼續載入 &brandShortName;">
+<!ENTITY cmd.enableAll.label "全部啟用(a)">
+<!ENTITY cmd.enableAll.accesskey "a">
+<!ENTITY cmd.enableAll.tooltip "啟用所有顯示的附加元件">
+<!ENTITY cmd.disableAll.label "全部停用(s)">
+<!ENTITY cmd.disableAll.accesskey "s">
+<!ENTITY cmd.disableAll.tooltip "停用所有顯示的附加元件">
+<!-- Displayed in the selected Add-on\'s richlistitem and context menu -->
+<!ENTITY cmd.useTheme.label "使用佈景主題(T)">
+<!ENTITY cmd.useTheme.accesskey "T">
+<!ENTITY cmd.useTheme.tooltip "修改 &brandShortName; 的佈景主題">
+<!ENTITY cmd.options.label "選項(O)">
+<!ENTITY cmd.options.accesskey "O">
+<!ENTITY cmd.options.tooltip "設定所選擇的外掛程式選項">
+<!ENTITY cmd.optionsUnix.label "偏好設定(P)">
+<!ENTITY cmd.optionsUnix.accesskey "P">
+<!ENTITY cmd.optionsUnix.tooltip "編輯所選擇的外掛程式選項">
+<!ENTITY cmd.enable.label "啟用(E)">
+<!ENTITY cmd.enable.accesskey "E">
+<!ENTITY cmd.enable.tooltip "重新啟動 &brandShortName; 時啟用此附加元件">
+<!ENTITY cmd.disable.label "停用(D)">
+<!ENTITY cmd.disable.accesskey "D">
+<!ENTITY cmd.disable.tooltip "重新啟動 &brandShortName; 時停用此附加元件">
+<!ENTITY cmd.uninstall.label "移除(U)">
+<!ENTITY cmd.uninstall2.accesskey "U">
+<!ENTITY cmd.uninstall2.tooltip "重新啟動 &brandShortName; 時移除此附加元件">
+<!ENTITY cmd.cancelUninstall.label "取消移除(C)">
+<!ENTITY cmd.cancelUninstall.accesskey "C">
+<!ENTITY cmd.cancelUninstall.tooltip "取消此附加元件的移除">
+<!ENTITY cmd.cancelInstall.label "取消安裝(C)">
+<!ENTITY cmd.cancelInstall.accesskey "C">
+<!ENTITY cmd.cancelInstall.tooltip "取消此附加元件的安裝">
+<!ENTITY cmd.cancelUpgrade.label "取消升級(C)">
+<!ENTITY cmd.cancelUpgrade.accesskey "C">
+<!ENTITY cmd.cancelUpgrade.tooltip "取消此附加元件的升級">
+<!ENTITY cmd.installUpdate.label "安裝更新(I)">
+<!ENTITY cmd.installUpdate.accesskey "I">
+<!ENTITY cmd.installUpdate.tooltip "安裝此附加元件的更新">
+<!ENTITY cmd.showUpdateInfo.label "顯示資訊(S)">
+<!ENTITY cmd.showUpdateInfo.accesskey "S">
+<!ENTITY cmd.showUpdateInfo.tooltip "顯示關於這些更新的更多資訊">
+<!ENTITY cmd.hideUpdateInfo.label "隱藏資訊(H)">
+<!ENTITY cmd.hideUpdateInfo.accesskey "H">
+<!ENTITY cmd.hideUpdateInfo.tooltip "隱藏關於這些更新的更多資訊">
+<!ENTITY cmd.installSearchResult.label "新增至 &brandShortName;…(A)">
+<!ENTITY cmd.installSearchResult.accesskey "A">
+<!ENTITY cmd.installSearchResult.tooltip "下載並安裝此附加元件">
+<!-- The selected add-on\'s cancel action button label -->
+<!ENTITY cancel.label "取消(C)">
+<!ENTITY cancel.accesskey "C">
+<!ENTITY cancelInstall.label "取消(C)">
+<!ENTITY cancelInstall.accesskey "C">
+<!ENTITY cancelUpgrade.label "取消(C)">
+<!ENTITY cancelUpgrade.accesskey "C">
+<!-- Only displayed in the selected Add-on\'s context menu -->
+<!ENTITY cmd.homepage.label "瀏覽主頁(H)">
+<!ENTITY cmd.homepage.accesskey "H">
+<!ENTITY cmd.about2.label "關於此附加元件(A)">
+<!ENTITY cmd.about.accesskey "A">
+<!ENTITY cmd.checkUpdate.label "檢查更新(F)">
+<!ENTITY cmd.checkUpdate.accesskey "F">
+<!ENTITY cmd.includeUpdate.label "包含更新(n)">
+<!ENTITY cmd.includeUpdate.accesskey "n">
+<!ENTITY includeUpdate.label "包含此更新(n)">
+<!ENTITY includeUpdate.accesskey "n">
+<!ENTITY includeUpdate.tooltip "在安裝更新時包含此附加元件">
+<!-- Status Messsages -->
+<!ENTITY insecureUpdate.label "不提供安全性更新。">
+<!ENTITY needsDependencies.label "需要更多項目。">
+<!ENTITY blocklisted.label "已停用以保護您。">
+<!ENTITY softBlocklisted.label "已知會造成安全性或穩定性問題。">
+<!ENTITY outdated.label "已有更新、更安全的版本可用。">
+<!ENTITY toBeDisabled.label "此附加元件將會在 &brandShortName; 重新啟動後被停用。">
+<!ENTITY toBeEnabled.label "此附加元件將會在 &brandShortName; 重新啟動後被啟用。">
+<!ENTITY toBeInstalled.label "此附加元件將會在 &brandShortName; 重新啟動後被安裝。">
+<!ENTITY toBeUninstalled.label "此附加元件將會在 &brandShortName; 重新啟動後被移除。">
+<!ENTITY toBeUpdated.label "此附加元件將會在 &brandShortName; 重新啟動後被更新。">
+<!ENTITY getExtensions.label "取得擴充套件">
+<!ENTITY getThemes.label "取得佈景主題">
+<!ENTITY getPlugins.label "取得外掛程式">
+<!ENTITY searchAddons.label "搜尋所有附加元件">
+<!ENTITY browseAddons.label "瀏覽所有附加元件">
+<!ENTITY searchFailed.label "&brandShortName; 無法取得附加元件">
+<!ENTITY recommendedHeader.label "推薦">
+<!ENTITY recommendedThrobber.label "正在取得推薦的附加元件">
+<!ENTITY searchThrobber.label "正在搜尋附加元件">
+<!ENTITY resetSearch.label "清除結果">
+<!ENTITY noSearchResults.label "所有的搜尋結果都已被安裝，或不相容。">
+<!ENTITY noRecommendedResults.label "所有的推薦都已被安裝，或不相容。">
+<!ENTITY emptySearch.label "找不到附加元件">
+<!ENTITY emptySearch.button "確定">
+<!ENTITY cancelSearch.button "取消">
+<!ENTITY searchFailed.button "確定">
+<!ENTITY searchResultHomepage.value "取得更多資訊">
+<!ENTITY searchBox.label "搜尋所有附加元件">
+<!ENTITY recommendedResults.label "顯示所有推薦的附加元件">
+<!ENTITY searchResultConnecting.label "連線中…">
+<!ENTITY searchResultInstalling.label "安裝中…">
+<!ENTITY searchResultFailed.label "安裝失敗">
+<!ENTITY searchResultInstalled.label "安裝完成">
+<!ENTITY addonTypeExtension.label "擴充套件">
+<!ENTITY addonTypeTheme.label "佈景主題">
+<!ENTITY missingThumbnail.label "無預覽圖">
+<!ENTITY previewNoThemeSelected.label "沒有已選的佈景主題">
+<!ENTITY previewNoPreviewImage.label "此佈景主題沒有預覽圖">
+<!ENTITY moreInfo.label "更多資訊">
+<!ENTITY infoNoAddonSelected.label "未選擇更新">
+<!ENTITY infoNoUpdateInfo.label "此更新沒有更多資訊">
+<!ENTITY infoUpdateInfoError.label "載入此更新的資訊時發生錯誤">
+<!ENTITY updateSuccess.label "更新已完成。">
+<!ENTITY installSuccess.label "安裝已完成。">
+<!ENTITY installSuccessRestart.label "重新啟用以完成安裝。">
+<!ENTITY updateSuccessRestart.label "重新啟用以完成更新。">
+<!ENTITY installWaiting.label "等待中…">
+<!ENTITY installIncompatibleUpdate.label "正在檢查相容性…">
+<!ENTITY installFinishing.label "安裝中…">
+<!ENTITY installFailure.label "安裝失敗.">
+<!ENTITY progressStatus.label "正在檢查更新">
+<!ENTITY eula.title "終端使用者授權合約">
+<!ENTITY eula.width "560px">
+<!ENTITY eula.height "400px">
+<!ENTITY eula.accept "接受並安裝…">
+<!ENTITY blocklist.blocked.label "已阻擋">
+<!ENTITY blocklist.checkbox.label "停用">

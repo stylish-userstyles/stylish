@@ -1,0 +1,54 @@
+#include "nsISupports.idl"
+#include "nsIClassInfo.idl"
+#include "nsIConsoleListener.idl"
+#include "nsIObserver.idl"
+
+[scriptable, uuid(6af398eb-bc14-4001-b40b-4e830b3863b1)]
+interface stylishStyle : nsIClassInfo
+{
+	attribute unsigned long id;
+	attribute AString url;
+	// url to be used for "already installed" checks
+	attribute AString idUrl;
+	attribute AString updateUrl;
+	attribute AString md5Url;
+	attribute AString name;
+	attribute AString code;
+	attribute boolean enabled;
+	// the original code installed. can be null if it's the same as "code" or this wasn't an install
+	attribute AString originalCode;
+
+	//see the flags below. you can set this before initing the style
+	attribute short mode;
+
+	//modes
+	attribute short CALCULATE_META;
+	attribute short REGISTER_STYLE_ON_CHANGE;
+	attribute short REGISTER_STYLE_ON_LOAD;
+	attribute short UNREGISTER_STYLE_ON_LOAD;
+
+	void list(in short mode, out unsigned long count, [array, size_is(count), retval] out stylishStyle retv);
+	stylishStyle find(in unsigned long id, in short mode);
+	stylishStyle findByUrl(in AString url, in short mode);
+	void findForUrl(in AString url, in boolean includeGlobal, in short mode, out unsigned long count, [array, size_is(count), retval] out stylishStyle retv);
+	void findEnabled(in boolean enabled, in short mode, out unsigned long count, [array, size_is(count), retval] out stylishStyle retv);
+	void findByMeta(in AString name, in AString value, in short mode, out unsigned long count, [array, size_is(count), retval] out stylishStyle retv);
+	void checkForErrors(in AString css, in nsIConsoleListener listener);
+	void copyListToClipboard();
+	AString regexToSample(in AString regex);
+
+	void init(in AString url, in AString idUrl, in AString updateUrl, in AString md5Url, in AString name, in AString code, in boolean enabled, in AString originalCode);
+	void save();
+	void delete();
+	boolean appliesToUrl(in AString url);
+	void checkForUpdates(in nsIObserver observer);
+	void applyUpdate();
+	void setPreview(in boolean on);
+	void revert();
+	void addMeta(in AString name, in AString value);
+	void removeMeta(in AString name, in AString value);
+	void removeAllMeta(in AString name);
+	//XXX this is a string instead of AString. problem?
+	void getMeta(in AString name, out unsigned long count, [array, size_is(count), retval] out string retv);
+	void getTypes(out unsigned long count, [array, size_is(count), retval] out string retv);
+};

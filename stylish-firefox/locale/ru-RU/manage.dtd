@@ -1,0 +1,20 @@
+<!ENTITY changetags "Изменить теги">
+<!ENTITY changetags.ak "И">
+<!ENTITY copyinfo "Копировать информацию о стилях">
+<!ENTITY copyinfo.ak "К">
+<!ENTITY done "Завершено">
+<!ENTITY done.ak "З">
+<!ENTITY filter "Поиск">
+<!ENTITY manageaddonstitle "Стили">
+<!ENTITY managetitle "Stylish">
+<!ENTITY nostylesstart "Для информации о том, как использовать Stylish, посетите">
+<!ENTITY nostylesend ".">
+<!ENTITY sortenabled "Состоянию">
+<!ENTITY sortname "Названию">
+<!ENTITY sorttag "Тегу">
+<!ENTITY sorttype "Типу">
+<!ENTITY sortgroup "Упорядочить по:">
+<!ENTITY update "Обновить">
+<!ENTITY update.ak "О">
+<!ENTITY writenew "Создать новый стиль">
+<!ENTITY writenew.ak "С">

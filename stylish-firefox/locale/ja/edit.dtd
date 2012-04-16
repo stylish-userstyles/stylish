@@ -1,0 +1,24 @@
+<!ENTITY chromefolder "Chrome フォルダパス">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "データ URI...">
+<!ENTITY dataURI.ak "D">
+<!ENTITY htmlnamespace "HTML 名前空間を標準とする">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "挿入">
+<!ENTITY insert.ak "I">
+<!ENTITY name "名前">
+<!ENTITY name.ak "n">
+<!ENTITY openintexternaleditor "外部エディタで開く">
+<!ENTITY openintexternaleditor.ak "O">
+<!ENTITY preview "お試し">
+<!ENTITY preview.ak "P">
+<!ENTITY save "保存">
+<!ENTITY save.ak "S">
+<!ENTITY switchtoinstall "インストールに切り替える">
+<!ENTITY switchtoinstall.ak "I">
+<!ENTITY tags "タグ">
+<!ENTITY tags.ak "T">
+<!ENTITY wraplines "行を折り返す">
+<!ENTITY wraplines.ak "W">
+<!ENTITY xulnamespace "XUL 名前空間を標準とする">
+<!ENTITY xulnamespace.ak "X">

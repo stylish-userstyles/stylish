@@ -1,0 +1,20 @@
+<!ENTITY changetags "Címkék megváltoztatása">
+<!ENTITY changetags.ak "C">
+<!ENTITY copyinfo "Stílusfájl információinak másolása">
+<!ENTITY copyinfo.ak "C">
+<!ENTITY done "Kész">
+<!ENTITY done.ak "D">
+<!ENTITY filter "Keresés">
+<!ENTITY manageaddonstitle "Stílusfájlok">
+<!ENTITY managetitle "Stylish">
+<!ENTITY nostylesstart "Látogassa meg">
+<!ENTITY nostylesend "információért, hogy hogyan használható a Stylish.">
+<!ENTITY sortenabled "Engedélyezve">
+<!ENTITY sortname "Név">
+<!ENTITY sorttag "Címke">
+<!ENTITY sorttype "Típus">
+<!ENTITY sortgroup "Rendezés">
+<!ENTITY update "Frissítés">
+<!ENTITY update.ak "U">
+<!ENTITY writenew "Új stílusfájl készítése">
+<!ENTITY writenew.ak "W">

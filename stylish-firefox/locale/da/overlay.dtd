@@ -1,0 +1,12 @@
+<!ENTITY addfile "Installer fil...">
+<!ENTITY addfile.ak "I">
+<!ENTITY findstylebrowser "Find styles til denne hjemmeside...">
+<!ENTITY findstylebrowser.ak "F">
+<!ENTITY managestyles "Håndtér styles">
+<!ENTITY managestyles.ak "H">
+<!ENTITY turnon "Aktivér alle styles">
+<!ENTITY turnon.ak "T">
+<!ENTITY turnoff "Deaktivér alle styles">
+<!ENTITY turnoff.ak "T">
+<!ENTITY writestyle "Skriv en ny style">
+<!ENTITY writestyle.ak "S">

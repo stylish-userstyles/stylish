@@ -1,0 +1,20 @@
+<!ENTITY changetags "Cambiar etiquetas">
+<!ENTITY changetags.ak "C">
+<!ENTITY copyinfo "Copiar información de estilo">
+<!ENTITY copyinfo.ak "C">
+<!ENTITY done "Hecho">
+<!ENTITY done.ak "H">
+<!ENTITY filter "Buscar">
+<!ENTITY manageaddonstitle "Estilos de usuario">
+<!ENTITY managetitle "Stylish">
+<!ENTITY nostylesstart "Visite">
+<!ENTITY nostylesend "para información sobre cómo usar Stylish.">
+<!ENTITY sortenabled "Habilitado">
+<!ENTITY sortname "Nombre">
+<!ENTITY sorttag "Etiqueta">
+<!ENTITY sorttype "Tipo">
+<!ENTITY sortgroup "Ordenar por:">
+<!ENTITY update "Actualizar">
+<!ENTITY update.ak "A">
+<!ENTITY writenew "Escribir nuevo estilo">
+<!ENTITY writenew.ak "E">

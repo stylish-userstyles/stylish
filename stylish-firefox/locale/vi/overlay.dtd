@@ -1,0 +1,12 @@
+<!ENTITY addfile "Cài đặt tập tin...">
+<!ENTITY addfile.ak "C">
+<!ENTITY findstylebrowser "Tìm style cho trang này...">
+<!ENTITY findstylebrowser.ak "m">
+<!ENTITY managestyles "Quản lí style...">
+<!ENTITY managestyles.ak "Q">
+<!ENTITY turnon "Bật tất cả style">
+<!ENTITY turnon.ak "t">
+<!ENTITY turnoff "Tắt tất cả style">
+<!ENTITY turnoff.ak "t">
+<!ENTITY writestyle "Viết style mới">
+<!ENTITY writestyle.ak "V">

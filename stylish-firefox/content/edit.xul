@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://stylish/skin/edit.css" type="text/css"?>
+<?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>
+
+<!DOCTYPE dialog [
+	<!ENTITY % edit SYSTEM "chrome://stylish/locale/edit.dtd">
+	<!ENTITY % internaledit SYSTEM "chrome://global/locale/editMenuOverlay.dtd">
+	%edit;
+	%internaledit;
+]>
+
+<dialog
+	id="stylish"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	buttons="accept,cancel,extra1,extra2"
+	persist="screenX screenY width height sizemode"
+	width="600"
+	height="400"
+	onload="init()"
+	onunload="dialogClosing()"
+	ondialogaccept="return save()"
+	ondialogcancel="return cancelDialog()"
+	ondialogextra2="preview();"
+	ondialogextra1="switchToInstall();"
+	buttonlabelaccept="&save;"
+	buttonaccesskeyaccept="&save.ak;"
+	buttonlabelextra2="&preview;"
+	buttonaccesskeyextra2="&preview.ak;"
+	buttonlabelextra1="&switchtoinstall;"
+	buttonaccesskeyextra1="&switchtoinstall.ak;">
+	
+	<script type="application/javascript" src="chrome://global/content/globalOverlay.js"/>
+	<script type="application/javascript" src="edit.js"/>
+	<script type="application/javascript" src="common.js"/>
+
+	<script type="application/javascript" src="chrome://itsalltext/content/API.js"/>
+
+	<stringbundle id="strings" src="chrome://stylish/locale/edit.properties"/>
+
+	<keyset>
+		<key id="save-key" modifiers="control" key="S" oncommand="save()"/>
+		<key id="find-key" modifiers="control" key="F" oncommand="document.getElementById('findbar')._findField.focus()"/>
+	</keyset>
+
+	<commandset>
+		<command id="stylish_cmd_undo" oncommand="goDoCommand('stylish_cmd_undo')" disabled="true"/>
+	</commandset>
+
+	<menupopup id="orion-context">
+		<menuitem id="stylish_menu_undo" label="&undoCmd.label;" key="key_undo" accesskey="&undoCmd.accesskey;" command="stylish_cmd_undo"/>
+		<menuseparator/>
+		<menuitem id="menu_cut"/>
+		<menuitem id="menu_copy"/>
+		<menuitem id="menu_paste"/>
+		<menuitem id="menu_delete"/>
+		<menuseparator/>
+		<menuitem id="menu_selectAll"/>
+	</menupopup>
+
+	<commandset id="editMenuCommands"/>
+
+	<vbox flex="1">
+		<grid>
+			<columns>
+				<column/>
+				<column flex="1"/>
+			</columns>
+			<rows>
+				<row align="center">
+					<label control="name" accesskey="&name.ak;">&name;</label>
+					<textbox id="name" flex="1"/>
+				</row>
+				<row align="center">
+					<label control="tags" accesskey="&tags.ak;">&tags;</label>
+					<textbox id="tags" flex="1"/>
+				</row>
+			</rows>
+		</grid>
+		<textbox id="update-url" style="display:none"/>
+		<hbox id="editor-tools">
+			<button label="&insert;" accesskey="&insert.ak;" type="menu">
+				<menupopup>
+					<menuitem id="insert-html" label="&htmlnamespace;" accesskey="&htmlnamespace.ak;" oncommand="insertCodeAtStart(CSSHTMLNS);"/>
+					<menuitem id="insert-xul" label="&xulnamespace;" accesskey="&xulnamespace.ak;" oncommand="insertCodeAtStart(CSSXULNS);"/>
+					<menuitem id="insert-chrome-folder" label="&chromefolder;" accesskey="&chromefolder.ak;" oncommand="insertChromePath()"/>
+					<menuitem id="insert-data-uri" label="&dataURI;" accesskey="&dataURI.ak;" oncommand="insertDataURI()"/>
+				</menupopup>
+			</button>
+			<button id="itsalltext" label="&openintexternaleditor;" accesskey="&openintexternaleditor.ak;" itsalltext-control="internal-code" itsalltext-extension=".css" style="display: none;"/>
+			<checkbox id="wrap-lines" label="&wraplines;" accesskey="&wraplines.ak;" oncommand="changeWordWrap(this.checked)" style="display: none"/>
+		</hbox>
+		<deck id="editor" flex="1">
+			<textbox id="internal-code" multiline="true" flex="1"/>
+			<hbox id="orion" flex="1"/>
+		</deck>
+		<findbar id="findbar" browserid="internal-code"/>
+		<vbox id="errors" style="display:none;"/>
+	</vbox>
+
+</dialog>

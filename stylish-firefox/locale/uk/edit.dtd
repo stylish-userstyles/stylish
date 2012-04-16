@@ -1,0 +1,24 @@
+<!ENTITY chromefolder "Шлях до теки Chrome">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "URI…">
+<!ENTITY dataURI.ak "U">
+<!ENTITY htmlnamespace "Простір імен HTML">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "Вставити">
+<!ENTITY insert.ak "В">
+<!ENTITY name "Назва">
+<!ENTITY name.ak "Н">
+<!ENTITY openintexternaleditor "Відкрити у зовнішньому редакторі">
+<!ENTITY openintexternaleditor.ak "з">
+<!ENTITY preview "Переглянути">
+<!ENTITY preview.ak "П">
+<!ENTITY save "Зберегти">
+<!ENTITY save.ak "З">
+<!ENTITY switchtoinstall "Перемкніть щоб встановити">
+<!ENTITY switchtoinstall.ak "П">
+<!ENTITY tags "Мітки">
+<!ENTITY tags.ak "М">
+<!ENTITY wraplines "Переноси для довгих рядків">
+<!ENTITY wraplines.ak "П">
+<!ENTITY xulnamespace "Простір імен XUL">
+<!ENTITY xulnamespace.ak "X">

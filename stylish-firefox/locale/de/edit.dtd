@@ -1,0 +1,24 @@
+<!ENTITY chromefolder "Chrome-Pfad">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "Daten-URI…">
+<!ENTITY dataURI.ak "D">
+<!ENTITY htmlnamespace "HTML-Namensraum als Vorgabe">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "Einfügen">
+<!ENTITY insert.ak "E">
+<!ENTITY name "Name">
+<!ENTITY name.ak "n">
+<!ENTITY openintexternaleditor "In externem Editor öffnen">
+<!ENTITY openintexternaleditor.ak "I">
+<!ENTITY preview "Vorschau">
+<!ENTITY preview.ak "V">
+<!ENTITY save "Speichern">
+<!ENTITY save.ak "S">
+<!ENTITY switchtoinstall "Zur Installation wechseln">
+<!ENTITY switchtoinstall.ak "w">
+<!ENTITY tags "Schlagwörter">
+<!ENTITY tags.ak "S">
+<!ENTITY wraplines "Zeilen umbrechen">
+<!ENTITY wraplines.ak "Z">
+<!ENTITY xulnamespace "XUL-Namensraum als Vorgabe">
+<!ENTITY xulnamespace.ak "X">

@@ -1,0 +1,24 @@
+<!ENTITY chromefolder "Путања фасцикле Chrome">
+<!ENTITY chromefolder.ak "Ф">
+<!ENTITY dataURI "URI података...">
+<!ENTITY dataURI.ak "А">
+<!ENTITY htmlnamespace "HTML именски простор као подразумевани">
+<!ENTITY htmlnamespace.ak "Х">
+<!ENTITY insert "Уметни">
+<!ENTITY insert.ak "У">
+<!ENTITY name "Назив">
+<!ENTITY name.ak "Н">
+<!ENTITY openintexternaleditor "Отвори у спољном уређивачу">
+<!ENTITY openintexternaleditor.ak "О">
+<!ENTITY preview "Преглед">
+<!ENTITY preview.ak "П">
+<!ENTITY save "Сачувај">
+<!ENTITY save.ak "С">
+<!ENTITY switchtoinstall "Пребаци на инсталирање">
+<!ENTITY switchtoinstall.ak "И">
+<!ENTITY tags "Ознаке">
+<!ENTITY tags.ak "З">
+<!ENTITY wraplines "Преламање текста">
+<!ENTITY wraplines.ak "Т">
+<!ENTITY xulnamespace "XUL именски простор као подразумевани">
+<!ENTITY xulnamespace.ak "М">

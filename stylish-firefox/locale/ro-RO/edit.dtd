@@ -1,0 +1,24 @@
+<!ENTITY chromefolder "Calea folderului Chrome">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "URI date..">
+<!ENTITY dataURI.ak "D">
+<!ENTITY htmlnamespace "Spaţiu de nume HTML ca valoare implicită">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "Inserare">
+<!ENTITY insert.ak "I">
+<!ENTITY name "Nume">
+<!ENTITY name.ak "n">
+<!ENTITY openintexternaleditor "Deschide în editor extern">
+<!ENTITY openintexternaleditor.ak "O">
+<!ENTITY preview "Previzualizare">
+<!ENTITY preview.ak "P">
+<!ENTITY save "Salvare">
+<!ENTITY save.ak "S">
+<!ENTITY switchtoinstall "Schimbă pentru a instala">
+<!ENTITY switchtoinstall.ak "I">
+<!ENTITY tags "Etichete">
+<!ENTITY tags.ak "T">
+<!ENTITY wraplines "Împachetează liniile">
+<!ENTITY wraplines.ak "W">
+<!ENTITY xulnamespace "Spaţiu de nume XUL ca valoare implicită">
+<!ENTITY xulnamespace.ak "X">

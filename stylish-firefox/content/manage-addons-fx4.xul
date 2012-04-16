@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://stylish/skin/manage-addons-fx4.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+	<!ENTITY % manage SYSTEM "chrome://stylish/locale/manage.dtd">
+	<!ENTITY % common SYSTEM "chrome://stylish/locale/common.dtd">
+	%manage;
+	%common;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script src="chrome://stylish/content/common.js"></script>
+	<script src="chrome://stylish/content/manage-addons-fx4.js"></script>
+
+	<richlistbox id="categories">
+		<richlistitem id="category-userstyles" insertafter="category-plugins" name="&manageaddonstitle;" class="category" value="addons://list/userstyle"/>
+	</richlistbox>
+
+	<vbox id="list-view">
+		<hbox id="userstyle-sorting" class="view-header" insertafter="addon-list-empty">
+			<button id="new-userstyle" label="&writenew;" oncommand="stylishCommon.addCode('')" class="addon-control"/>
+			<spacer flex="1"/>
+			<button id="userstyle-sorting-status" label="&sortenabled;" tooltiptext="&sortenabled;"
+				class="sorter" sortBy="uiState,name"
+				onclick="stylishManageAddonsFx4.changeSort(event)" persist="checkState,checked"/>
+			<button id="userstyle-sorting-name" label="&sortname;" tooltiptext="&sortname;"
+				class="sorter" sortBy="name" onclick="stylishManageAddonsFx4.changeSort(event)" persist="checkState,checked"/>
+			<button id="userstyle-sorting-type" label="&sorttype;" tooltiptext="&sorttype;"
+				class="sorter" sortBy="styleTypes,name" onclick="stylishManageAddonsFx4.changeSort(event)" persist="checkState,checked"/>
+		</hbox>
+		<hbox id="userstyle-footer" insertafter="addon-list">
+			<description id="userstyles-note">&nostylesstart;<label href="http://userstyles.org/" class="text-link">userstyles.org</label>&nostylesend;</description>
+		</hbox>
+
+	</vbox>
+
+	<vbox id="addon-list-empty">
+		<hbox position="3">
+			<description id="no-styles-note">&nostylesstart;<label href="http://userstyles.org/" class="text-link">userstyles.org</label>&nostylesend;</description>
+		</hbox>
+		<button position="4" label="&writenew;" oncommand="stylishCommon.addCode('')" class="addon-control"/>
+	</vbox>
+
+	<menupopup id="addonitem-popup">
+		<menuitem id="menuitem_userstyle_edit" insertafter="menuitem_disableTheme" label="&editstyle;" oncommand="stylishCommon.openEditForId(document.getElementById('addon-list').selectedItem.getAttribute('value'))"/>
+	</menupopup>
+
+</overlay>

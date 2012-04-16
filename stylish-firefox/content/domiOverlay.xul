@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://stylish/skin/overlay.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+	<!ENTITY % common SYSTEM "chrome://stylish/locale/domi.dtd">
+	%common;
+]>
+
+<overlay id="stylish-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/javascript" src="common.js"/>
+	<script type="application/javascript" src="domiOverlay.js"/>
+
+	<popup id="ppDOMContext">
+		<menu id="copy-selector" label="&copyselector;" insertafter="mnEditCopy">
+			<menupopup onpopupshowing="stylishDomi.showSelectors(event)" onpopuphiding="stylishCommon.clearAllMenuItems(event)">
+				<menuitem stylish-dont-clear="true" hidden="true" reason-why-this-is-here="https://bugzilla.mozilla.org/show_bug.cgi?id=635503"/>
+			</menupopup>
+		</menu>
+	</popup>
+
+</overlay>

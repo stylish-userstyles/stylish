@@ -1,0 +1,12 @@
+<!ENTITY addfile "ファイルをインストール...">
+<!ENTITY addfile.ak "I">
+<!ENTITY findstylebrowser "このサイト用のスタイルを探す">
+<!ENTITY findstylebrowser.ak "F">
+<!ENTITY managestyles "スタイルの管理...">
+<!ENTITY managestyles.ak "M">
+<!ENTITY turnon "すべてのスタイルを作動させる">
+<!ENTITY turnon.ak "T">
+<!ENTITY turnoff "すべてのスタイルを停止する">
+<!ENTITY turnoff.ak "T">
+<!ENTITY writestyle "新しいスタイルを書く">
+<!ENTITY writestyle.ak "W">

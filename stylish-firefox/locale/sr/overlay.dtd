@@ -1,0 +1,12 @@
+<!ENTITY addfile "Инсталирај датотеку...">
+<!ENTITY addfile.ak "Д">
+<!ENTITY findstylebrowser "Нађи стилове за ову страницу...">
+<!ENTITY findstylebrowser.ak "Н">
+<!ENTITY managestyles "Управљање стиловима...">
+<!ENTITY managestyles.ak "У">
+<!ENTITY turnon "Укључи све стилове">
+<!ENTITY turnon.ak "У">
+<!ENTITY turnoff "Искључи све стилове">
+<!ENTITY turnoff.ak "И">
+<!ENTITY writestyle "Упиши нови стил">
+<!ENTITY writestyle.ak "Н">

@@ -1,0 +1,24 @@
+<!ENTITY chromefolder "Chrome aplanko kelias">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "Duomenų URI...">
+<!ENTITY dataURI.ak "D">
+<!ENTITY htmlnamespace "HTML vardai kaip numatyta">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "Įterpti">
+<!ENTITY insert.ak "I">
+<!ENTITY name "Pavadinimas">
+<!ENTITY name.ak "p">
+<!ENTITY openintexternaleditor "Atverti išorinį redaktorių">
+<!ENTITY openintexternaleditor.ak "A">
+<!ENTITY preview "Peržiūra">
+<!ENTITY preview.ak "P">
+<!ENTITY save "Įrašyti">
+<!ENTITY save.ak "I">
+<!ENTITY switchtoinstall "Perjungti į diegimą">
+<!ENTITY switchtoinstall.ak "E">
+<!ENTITY tags "Žymos">
+<!ENTITY tags.ak "m">
+<!ENTITY wraplines "Laužyti eilutes">
+<!ENTITY wraplines.ak "L">
+<!ENTITY xulnamespace "XUL vardai kaip numatyta">
+<!ENTITY xulnamespace.ak "X">

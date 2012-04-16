@@ -1,0 +1,160 @@
+<!ENTITY addons.title "Tilføjelser">
+<!-- Default window size for the addon manager in pixels -->
+<!ENTITY em.width "520">
+<!ENTITY em.height "380">
+<!ENTITY cmd.info.commandKey "i">
+<!ENTITY cmd.options.commandKey ",">
+<!ENTITY cmd.close.commandKey "w">
+<!-- View labels -->
+<!ENTITY search.label "Hent tilføjelser">
+<!ENTITY extensions.label "Udvidelser">
+<!ENTITY themes.label "Temaer">
+<!ENTITY locales.label "Sprog">
+<!ENTITY plugins.label "Plugins">
+<!ENTITY update.label "Opdateringer">
+<!ENTITY install.label "Installering">
+<!-- Command Bar items -->
+<!ENTITY cmd.checkUpdatesAll.label "Tjek for opdateringer">
+<!ENTITY cmd.checkUpdatesAll.accesskey "T">
+<!ENTITY cmd.checkUpdatesAllAddon.tooltip "Tjekker for opdateringer til dine tilføjelser">
+<!ENTITY cmd.checkUpdatesAllTheme.tooltip "Tjekker for opdateringer til dine temaer">
+<!ENTITY cmd.checkUpdatesAllPlugin.tooltip "Tjekker for opdateringer til fine plugins">
+<!ENTITY cmd.installLocalFile.label "Installer…">
+<!ENTITY cmd.installLocalFile.accesskey "I">
+<!ENTITY cmd.installFileAddon.tooltip "Installer en tilføjelse">
+<!ENTITY cmd.installFileTheme.tooltip "Installer et tema">
+<!ENTITY cmd.installUpdatesAll2.label "Installer opdateringer">
+<!ENTITY cmd.installUpdatesAll2.accesskey "I">
+<!ENTITY cmd.installUpdatesAll2.tooltip "Installerer de valgte opdateringer">
+<!ENTITY cmd.restartApp2.label "Genstart &brandShortName;">
+<!ENTITY cmd.restartApp2.accesskey "G">
+<!ENTITY cmd.restartApp2.tooltip "Genstart &brandShortName; for at tage ændringerne i brug">
+<!ENTITY cmd.skip.label "Spring over">
+<!ENTITY cmd.skip.accesskey "o">
+<!ENTITY cmd.skip.tooltip "Spring disse opdateringer over">
+<!ENTITY cmd.continue.label "Fortsæt">
+<!ENTITY cmd.continue.accesskey "F">
+<!ENTITY cmd.continue.tooltip "Fortsæt indlæsning af &brandShortName;">
+<!ENTITY cmd.enableAll.label "Aktiver alle">
+<!ENTITY cmd.enableAll.accesskey "A">
+<!ENTITY cmd.enableAll.tooltip "Aktiverer alle viste tilføjelser">
+<!ENTITY cmd.disableAll.label "Deaktiver alle">
+<!ENTITY cmd.disableAll.accesskey "D">
+<!ENTITY cmd.disableAll.tooltip "Deaktiverer alle viste tilføjelser">
+<!-- Displayed in the selected Add-on\'s richlistitem and context menu -->
+<!ENTITY cmd.useTheme.label "Brug tema">
+<!ENTITY cmd.useTheme.accesskey "U">
+<!ENTITY cmd.useTheme.tooltip "Ændrer &brandShortName;\'s tema.">
+<!ENTITY cmd.options.label "Indstillinger">
+<!ENTITY cmd.options.accesskey "I">
+<!ENTITY cmd.options.tooltip "Rediger indstillinger for den valgte udvidelse">
+<!ENTITY cmd.optionsUnix.label "Præferencer">
+<!ENTITY cmd.optionsUnix.accesskey "r">
+<!ENTITY cmd.optionsUnix.tooltip "Rediger præferencer for den valgte udvidelse">
+<!ENTITY cmd.enable.label "Aktiver">
+<!ENTITY cmd.enable.accesskey "A">
+<!ENTITY cmd.enable.tooltip "Aktiver denne tilføjelse når &brandShortName; bliver genstartet">
+<!ENTITY cmd.disable.label "Deaktiver">
+<!ENTITY cmd.disable.accesskey "D">
+<!ENTITY cmd.disable.tooltip "Deaktiver denne tilføjelse når &brandShortName; bliver genstartet">
+<!ENTITY cmd.uninstall.label "Afinstaller">
+<!ENTITY cmd.uninstall2.accesskey "f">
+<!ENTITY cmd.uninstall2.tooltip "Afinstaller denne tilføjelse når &brandShortName; bliver genstartet">
+<!ENTITY cmd.cancelUninstall.label "Afbryd afinstallation">
+<!ENTITY cmd.cancelUninstall.accesskey "b">
+<!ENTITY cmd.cancelUninstall.tooltip "Afbryd afinstallation af denne tilføjelse">
+<!ENTITY cmd.cancelInstall.label "Afbryd installation">
+<!ENTITY cmd.cancelInstall.accesskey "b">
+<!ENTITY cmd.cancelInstall.tooltip "Afbryd installationen af denne tilføjelse">
+<!ENTITY cmd.cancelUpgrade.label "Afbryd opdatering">
+<!ENTITY cmd.cancelUpgrade.accesskey "b">
+<!ENTITY cmd.cancelUpgrade.tooltip "Afbryd opdateringen af denne tilføjelse">
+<!ENTITY cmd.installUpdate.label "Installer opdatering">
+<!ENTITY cmd.installUpdate.accesskey "I">
+<!ENTITY cmd.installUpdate.tooltip "Installer en opdatering til denne tilføjelse">
+<!ENTITY cmd.showUpdateInfo.label "Vis information">
+<!ENTITY cmd.showUpdateInfo.accesskey "V">
+<!ENTITY cmd.showUpdateInfo.tooltip "Vis mere information om disse opdateringer">
+<!ENTITY cmd.hideUpdateInfo.label "Skjul information">
+<!ENTITY cmd.hideUpdateInfo.accesskey "S">
+<!ENTITY cmd.hideUpdateInfo.tooltip "Skjul information om disse opdateringer">
+<!ENTITY cmd.installSearchResult.label "Føj til &brandShortName;…">
+<!ENTITY cmd.installSearchResult.accesskey "F">
+<!ENTITY cmd.installSearchResult.tooltip "Hent og installer denne tilføjelse">
+<!-- The selected add-on\'s cancel action button label -->
+<!ENTITY cancel.label "Afbryd">
+<!ENTITY cancel.accesskey "b">
+<!ENTITY cancelInstall.label "Afbryd">
+<!ENTITY cancelInstall.accesskey "b">
+<!ENTITY cancelUpgrade.label "Afbryd">
+<!ENTITY cancelUpgrade.accesskey "b">
+<!-- Only displayed in the selected Add-on\'s context menu -->
+<!ENTITY cmd.homepage.label "Besøg hjemmeside">
+<!ENTITY cmd.homepage.accesskey "h">
+<!ENTITY cmd.about2.label "Om denne tilføjelse">
+<!ENTITY cmd.about.accesskey "O">
+<!ENTITY cmd.checkUpdate.label "Tjek for opdatering">
+<!ENTITY cmd.checkUpdate.accesskey "T">
+<!ENTITY cmd.includeUpdate.label "Inkluder opdatering">
+<!ENTITY cmd.includeUpdate.accesskey "n">
+<!ENTITY includeUpdate.label "Inkluder denne opdatering">
+<!ENTITY includeUpdate.accesskey "d">
+<!ENTITY includeUpdate.tooltip "Inkluder denne tilføjelse når opdateringerne installeres">
+<!-- Status Messsages -->
+<!ENTITY insecureUpdate.label "Anvender ikke sikre opdateringer.">
+<!ENTITY needsDependencies.label "Yderligere moduler påkrævet.">
+<!ENTITY blocklisted.label "Deaktiveret for din sikkerheds skyld.">
+<!ENTITY softBlocklisted.label "Kendt for at være skyld i sikkerheds- eller stabilitetsproblemer.">
+<!ENTITY outdated.label "En nyere, mere sikker version er tilgængelig.">
+<!ENTITY toBeDisabled.label "Denne tilføjelse vil blive deaktiveret når &brandShortName; bliver genstartet.">
+<!ENTITY toBeEnabled.label "Denne tilføjelse vil blive aktiveret når &brandShortName; bliver genstartet.">
+<!ENTITY toBeInstalled.label "Denne tilføjelse vil blive installeret når &brandShortName; bliver genstartet.">
+<!ENTITY toBeUninstalled.label "Denne tilføjelse vil blive afinstalleret når &brandShortName; bliver genstartet.">
+<!ENTITY toBeUpdated.label "Denne tilføjelse vil blive opdateret når &brandShortName; bliver genstartet.">
+<!ENTITY getExtensions.label "Hent udvidelser">
+<!ENTITY getThemes.label "Hent temaer">
+<!ENTITY getPlugins.label "Hent plugins">
+<!ENTITY searchAddons.label "Søg i alle tilføjelser">
+<!ENTITY browseAddons.label "Gennemse alle tilføjelser">
+<!ENTITY searchFailed.label "&brandShortName; kunne ikke hente tilføjelser">
+<!ENTITY recommendedHeader.label "Anbefalet">
+<!ENTITY recommendedThrobber.label "Henter anbefalede tilføjelser">
+<!ENTITY searchThrobber.label "Søger i tilføjelser">
+<!ENTITY resetSearch.label "Ryd resultater">
+<!ENTITY noSearchResults.label "Alle resultater er allerede installeret eller inkompatible.">
+<!ENTITY noRecommendedResults.label "Alle anbefalinger er allerede installeret eller inkompatible.">
+<!ENTITY emptySearch.label "Ingen matchende tilføjelser">
+<!ENTITY emptySearch.button "OK">
+<!ENTITY cancelSearch.button "Annuller">
+<!ENTITY searchFailed.button "OK">
+<!ENTITY searchResultHomepage.value "Se mere">
+<!ENTITY searchBox.label "Søg i alle tilføjelser">
+<!ENTITY recommendedResults.label "Se alle anbefalede tilføjelser">
+<!ENTITY searchResultConnecting.label "Tilslutter…">
+<!ENTITY searchResultInstalling.label "Installerer…">
+<!ENTITY searchResultFailed.label "Installationen fejlede">
+<!ENTITY searchResultInstalled.label "Installationen er fuldendt">
+<!ENTITY addonTypeExtension.label "Udvidelse">
+<!ENTITY addonTypeTheme.label "Tema">
+<!ENTITY missingThumbnail.label "Intet billede">
+<!ENTITY previewNoThemeSelected.label "Intet tema valgt">
+<!ENTITY previewNoPreviewImage.label "Dette tema her ikke et prøvebillede">
+<!ENTITY moreInfo.label "Mere information">
+<!ENTITY infoNoAddonSelected.label "Ingen opdateringer valgt">
+<!ENTITY infoNoUpdateInfo.label "Denne opdatering indeholder ingen yderligere information">
+<!ENTITY infoUpdateInfoError.label "Der opstod en fejl under indlæsningen af information omkring denne opdatering">
+<!ENTITY updateSuccess.label "Opdatering blev afsluttet uden problemer.">
+<!ENTITY installSuccess.label "Installationen blev fuldført.">
+<!ENTITY installSuccessRestart.label "Genstart for at færdiggøre installationen.">
+<!ENTITY updateSuccessRestart.label "Genstart for at færdiggøre opdateringen.">
+<!ENTITY installWaiting.label "Venter…">
+<!ENTITY installIncompatibleUpdate.label "Undersøger kompatibilitet…">
+<!ENTITY installFinishing.label "Installerer…">
+<!ENTITY installFailure.label "Installationen fejlede.">
+<!ENTITY progressStatus.label "Kontrollerer om der er opdateringer">
+<!ENTITY eula.title "Slutbrugerlicensaftale">
+<!ENTITY eula.width "560px">
+<!ENTITY eula.height "400px">
+<!ENTITY eula.accept "Accepter og installer…">
+<!ENTITY blocklist.blocked.label "Blokeret">
+<!ENTITY blocklist.checkbox.label "Deaktiver">

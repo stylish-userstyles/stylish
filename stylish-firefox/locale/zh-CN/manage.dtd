@@ -1,0 +1,20 @@
+<!ENTITY changetags "更改标签">
+<!ENTITY changetags.ak "C">
+<!ENTITY copyinfo "复制样式信息">
+<!ENTITY copyinfo.ak "C">
+<!ENTITY done "完成">
+<!ENTITY done.ak "D">
+<!ENTITY filter "搜索">
+<!ENTITY manageaddonstitle "用户样式">
+<!ENTITY managetitle "Stylish">
+<!ENTITY nostylesstart "浏览">
+<!ENTITY nostylesend "查看关于如何使用 Stylish 的信息。">
+<!ENTITY sortenabled "启用">
+<!ENTITY sortname "名称">
+<!ENTITY sorttag "标签">
+<!ENTITY sorttype "类型">
+<!ENTITY sortgroup "分类：">
+<!ENTITY update "更新">
+<!ENTITY update.ak "U">
+<!ENTITY writenew "编写新样式">
+<!ENTITY writenew.ak "W">

@@ -1,0 +1,24 @@
+<!ENTITY chromefolder "Cesta ke složce chrome">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "Datová URI...">
+<!ENTITY dataURI.ak "D">
+<!ENTITY htmlnamespace "Jmenný prostor HTML jako výchozí">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "Vložit">
+<!ENTITY insert.ak "V">
+<!ENTITY name "Název">
+<!ENTITY name.ak "n">
+<!ENTITY openintexternaleditor "Otevřít v externím editoru">
+<!ENTITY openintexternaleditor.ak "O">
+<!ENTITY preview "Náhled">
+<!ENTITY preview.ak "N">
+<!ENTITY save "Uložit">
+<!ENTITY save.ak "U">
+<!ENTITY switchtoinstall "Přepnout na instalaci">
+<!ENTITY switchtoinstall.ak "i">
+<!ENTITY tags "Štítky">
+<!ENTITY tags.ak "š">
+<!ENTITY wraplines "Zalamovat řádky">
+<!ENTITY wraplines.ak "Z">
+<!ENTITY xulnamespace "Jmenný prostor XUL jako výchozí">
+<!ENTITY xulnamespace.ak "X">

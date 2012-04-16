@@ -1,0 +1,12 @@
+<!ENTITY addfile "安装文件...">
+<!ENTITY addfile.ak "I">
+<!ENTITY findstylebrowser "查找适合该页面的样式...">
+<!ENTITY findstylebrowser.ak "F">
+<!ENTITY managestyles "管理样式...">
+<!ENTITY managestyles.ak "M">
+<!ENTITY turnon "启用所有样式">
+<!ENTITY turnon.ak "T">
+<!ENTITY turnoff "停用所有样式">
+<!ENTITY turnoff.ak "T">
+<!ENTITY writestyle "编写新样式">
+<!ENTITY writestyle.ak "W">

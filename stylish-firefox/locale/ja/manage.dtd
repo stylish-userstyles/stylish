@@ -1,0 +1,20 @@
+<!ENTITY changetags "タグを変更">
+<!ENTITY changetags.ak "C">
+<!ENTITY copyinfo "スタイル情報をコピー">
+<!ENTITY copyinfo.ak "C">
+<!ENTITY done "完了">
+<!ENTITY done.ak "D">
+<!ENTITY filter "検索">
+<!ENTITY manageaddonstitle "ユーザースタイル">
+<!ENTITY managetitle "Stylish">
+<!ENTITY nostylesstart "Stylish の使い方に関する情報は">
+<!ENTITY nostylesend "をご覧ください。">
+<!ENTITY sortenabled "有効無効">
+<!ENTITY sortname "名前">
+<!ENTITY sorttag "タグ">
+<!ENTITY sorttype "種類">
+<!ENTITY sortgroup "並べ替え:">
+<!ENTITY update "更新">
+<!ENTITY update.ak "U">
+<!ENTITY writenew "新しいスタイルを書く">
+<!ENTITY writenew.ak "W">

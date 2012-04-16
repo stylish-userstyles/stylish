@@ -1,0 +1,11 @@
+#include "nsISupports.idl"
+#include "nsIClassInfo.idl"
+#include "nsIFile.idl"
+interface mozIStorageConnection;
+
+[scriptable, uuid(d6fe57ea-1126-4dc6-8636-d25d5b901929)]
+interface stylishDataSource : nsIClassInfo
+{
+	mozIStorageConnection getConnection();
+	nsIFile getFile();
+};  

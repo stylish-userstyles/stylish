@@ -1,0 +1,12 @@
+<!ENTITY addfile "Fájl telepítése...">
+<!ENTITY addfile.ak "I">
+<!ENTITY findstylebrowser "Stílusfájlok keresése ehhez az oldalhoz">
+<!ENTITY findstylebrowser.ak "F">
+<!ENTITY managestyles "Stílusfájlok kezelése">
+<!ENTITY managestyles.ak "M">
+<!ENTITY turnon "Stílusfájlok bekapcsolása">
+<!ENTITY turnon.ak "T">
+<!ENTITY turnoff "Stílusfájlok kikapcsolása.">
+<!ENTITY turnoff.ak "T">
+<!ENTITY writestyle "Új stílusfájl készítése">
+<!ENTITY writestyle.ak "W">

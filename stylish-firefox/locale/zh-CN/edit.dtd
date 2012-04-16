@@ -1,0 +1,24 @@
+<!ENTITY chromefolder "Chrome 文件夹路径">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "数据 URL...">
+<!ENTITY dataURI.ak "D">
+<!ENTITY htmlnamespace "默认 HTML 命名空间">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "插入">
+<!ENTITY insert.ak "I">
+<!ENTITY name "名称">
+<!ENTITY name.ak "n">
+<!ENTITY openintexternaleditor "打开于外部编辑器">
+<!ENTITY openintexternaleditor.ak "O">
+<!ENTITY preview "预览">
+<!ENTITY preview.ak "P">
+<!ENTITY save "保存">
+<!ENTITY save.ak "S">
+<!ENTITY switchtoinstall "切换到安装">
+<!ENTITY switchtoinstall.ak "I">
+<!ENTITY tags "标签">
+<!ENTITY tags.ak "T">
+<!ENTITY wraplines "自动换行">
+<!ENTITY wraplines.ak "W">
+<!ENTITY xulnamespace "默认 XUL 命名空间">
+<!ENTITY xulnamespace.ak "X">

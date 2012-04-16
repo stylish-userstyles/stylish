@@ -1,0 +1,12 @@
+<!ENTITY addfile "Instalovat soubor...">
+<!ENTITY addfile.ak "I">
+<!ENTITY findstylebrowser "Najít styly pro tuto stránku...">
+<!ENTITY findstylebrowser.ak "N">
+<!ENTITY managestyles "Spravovat styly...">
+<!ENTITY managestyles.ak "S">
+<!ENTITY turnon "Zapnout všechny styly">
+<!ENTITY turnon.ak "Z">
+<!ENTITY turnoff "Vypnout všechny styly">
+<!ENTITY turnoff.ak "V">
+<!ENTITY writestyle "Napsat nový styl">
+<!ENTITY writestyle.ak "N">

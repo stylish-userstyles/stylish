@@ -1,0 +1,12 @@
+<!ENTITY addfile "Installera fil…">
+<!ENTITY addfile.ak "I">
+<!ENTITY findstylebrowser "Hitta skal för denna webbplats…">
+<!ENTITY findstylebrowser.ak "w">
+<!ENTITY managestyles "Hantera skal…">
+<!ENTITY managestyles.ak "H">
+<!ENTITY turnon "Använd alla skal">
+<!ENTITY turnon.ak "s">
+<!ENTITY turnoff "Stäng av alla skal">
+<!ENTITY turnoff.ak "s">
+<!ENTITY writestyle "Skriv ny Style">
+<!ENTITY writestyle.ak "n">

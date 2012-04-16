@@ -1,0 +1,160 @@
+<!ENTITY addons.title "Дополнения">
+<!-- Default window size for the addon manager in pixels -->
+<!ENTITY em.width "630">
+<!ENTITY em.height "380">
+<!ENTITY cmd.info.commandKey "i">
+<!ENTITY cmd.options.commandKey ",">
+<!ENTITY cmd.close.commandKey "w">
+<!-- View labels -->
+<!ENTITY search.label "Поиск дополнений">
+<!ENTITY extensions.label "Расширения">
+<!ENTITY themes.label "Темы">
+<!ENTITY locales.label "Локализации">
+<!ENTITY plugins.label "Плагины">
+<!ENTITY update.label "Обновления">
+<!ENTITY install.label "Установка">
+<!-- Command Bar items -->
+<!ENTITY cmd.checkUpdatesAll.label "Найти обновления">
+<!ENTITY cmd.checkUpdatesAll.accesskey "а">
+<!ENTITY cmd.checkUpdatesAllAddon.tooltip "Производит поиск обновлений для ваших дополнений">
+<!ENTITY cmd.checkUpdatesAllTheme.tooltip "Производит поиск обновлений для ваших тем">
+<!ENTITY cmd.checkUpdatesAllPlugin.tooltip "Производит поиск обновлений для ваших плагинов">
+<!ENTITY cmd.installLocalFile.label "Установить…">
+<!ENTITY cmd.installLocalFile.accesskey "с">
+<!ENTITY cmd.installFileAddon.tooltip "Установить дополнение">
+<!ENTITY cmd.installFileTheme.tooltip "Установить тему">
+<!ENTITY cmd.installUpdatesAll2.label "Установить обновления">
+<!ENTITY cmd.installUpdatesAll2.accesskey "т">
+<!ENTITY cmd.installUpdatesAll2.tooltip "Установить выбранные обновления">
+<!ENTITY cmd.restartApp2.label "Перезапустить &brandShortName;">
+<!ENTITY cmd.restartApp2.accesskey "е">
+<!ENTITY cmd.restartApp2.tooltip "Перезапустить &brandShortName; для применения изменений">
+<!ENTITY cmd.skip.label "Пропустить">
+<!ENTITY cmd.skip.accesskey "р">
+<!ENTITY cmd.skip.tooltip "Пропустить эти обновления">
+<!ENTITY cmd.continue.label "Продолжить">
+<!ENTITY cmd.continue.accesskey "о">
+<!ENTITY cmd.continue.tooltip "Продолжить загрузку &brandShortName;">
+<!ENTITY cmd.enableAll.label "Включить все">
+<!ENTITY cmd.enableAll.accesskey "к">
+<!ENTITY cmd.enableAll.tooltip "Включает все показанные дополнения">
+<!ENTITY cmd.disableAll.label "Отключить все">
+<!ENTITY cmd.disableAll.accesskey "ю">
+<!ENTITY cmd.disableAll.tooltip "Отключает все показанные дополнения">
+<!-- Displayed in the selected Add-on\'s richlistitem and context menu -->
+<!ENTITY cmd.useTheme.label "Использовать">
+<!ENTITY cmd.useTheme.accesskey "с">
+<!ENTITY cmd.useTheme.tooltip "Изменяет тему &brandShortName; ">
+<!ENTITY cmd.options.label "Настройки">
+<!ENTITY cmd.options.accesskey "й">
+<!ENTITY cmd.options.tooltip "Изменить настройки выделенного расширения">
+<!ENTITY cmd.optionsUnix.label "Настройки">
+<!ENTITY cmd.optionsUnix.accesskey "й">
+<!ENTITY cmd.optionsUnix.tooltip "Изменить настройки выделенного расширения">
+<!ENTITY cmd.enable.label "Включить">
+<!ENTITY cmd.enable.accesskey "ч">
+<!ENTITY cmd.enable.tooltip "Включает это дополнение после перезапуска &brandShortName;">
+<!ENTITY cmd.disable.label "Отключить">
+<!ENTITY cmd.disable.accesskey "т">
+<!ENTITY cmd.disable.tooltip "Отключает это дополнение после перезапуска &brandShortName;">
+<!ENTITY cmd.uninstall.label "Удалить">
+<!ENTITY cmd.uninstall2.accesskey "д">
+<!ENTITY cmd.uninstall2.tooltip "Удаляет это дополнение после перезапуска &brandShortName;">
+<!ENTITY cmd.cancelUninstall.label "Отменить удаление">
+<!ENTITY cmd.cancelUninstall.accesskey "м">
+<!ENTITY cmd.cancelUninstall.tooltip "Отменить удаление этого дополнения">
+<!ENTITY cmd.cancelInstall.label "Отменить установку">
+<!ENTITY cmd.cancelInstall.accesskey "н">
+<!ENTITY cmd.cancelInstall.tooltip "Отменить установку этого дополнения">
+<!ENTITY cmd.cancelUpgrade.label "Отменить обновление">
+<!ENTITY cmd.cancelUpgrade.accesskey "н">
+<!ENTITY cmd.cancelUpgrade.tooltip "Отменить обновление этого дополнения">
+<!ENTITY cmd.installUpdate.label "Установить обновление">
+<!ENTITY cmd.installUpdate.accesskey "е">
+<!ENTITY cmd.installUpdate.tooltip "Установить обновление для дополнения">
+<!ENTITY cmd.showUpdateInfo.label "Показать информацию">
+<!ENTITY cmd.showUpdateInfo.accesskey "к">
+<!ENTITY cmd.showUpdateInfo.tooltip "Показать подробную информацию об этих обновлениях">
+<!ENTITY cmd.hideUpdateInfo.label "Скрыть информацию">
+<!ENTITY cmd.hideUpdateInfo.accesskey "т">
+<!ENTITY cmd.hideUpdateInfo.tooltip "Скрыть информацию об этих обновлениях">
+<!ENTITY cmd.installSearchResult.label "Добавить в &brandShortName;…">
+<!ENTITY cmd.installSearchResult.accesskey "б">
+<!ENTITY cmd.installSearchResult.tooltip "Загрузить и установить это дополнение">
+<!-- The selected add-on\'s cancel action button label -->
+<!ENTITY cancel.label "Отмена">
+<!ENTITY cancel.accesskey "н">
+<!ENTITY cancelInstall.label "Отмена">
+<!ENTITY cancelInstall.accesskey "н">
+<!ENTITY cancelUpgrade.label "Отмена">
+<!ENTITY cancelUpgrade.accesskey "н">
+<!-- Only displayed in the selected Add-on\'s context menu -->
+<!ENTITY cmd.homepage.label "Открыть домашнюю страницу">
+<!ENTITY cmd.homepage.accesskey "д">
+<!ENTITY cmd.about2.label "Об этом дополнении">
+<!ENTITY cmd.about.accesskey "О">
+<!ENTITY cmd.checkUpdate.label "Найти обновление">
+<!ENTITY cmd.checkUpdate.accesskey "т">
+<!ENTITY cmd.includeUpdate.label "Устанавливать обновление">
+<!ENTITY cmd.includeUpdate.accesskey "о">
+<!ENTITY includeUpdate.label "Устанавливать это обновление">
+<!ENTITY includeUpdate.accesskey "о">
+<!ENTITY includeUpdate.tooltip "Обновлять это дополнение при установке обновлений">
+<!-- Status Messsages -->
+<!ENTITY insecureUpdate.label "Не обеспечивает безопасные обновления.">
+<!ENTITY needsDependencies.label "Требует дополнительных компонентов.">
+<!ENTITY blocklisted.label "Отключено в целях вашей безопасности.">
+<!ENTITY softBlocklisted.label "Вызывает проблемы со стабильностью или безопасностью.">
+<!ENTITY outdated.label "Имеется более новая и безопасная версия.">
+<!ENTITY toBeDisabled.label "Это дополнение будет отключено при перезапуске &brandShortName;.">
+<!ENTITY toBeEnabled.label "Это дополнение будет включено при перезапуске &brandShortName;.">
+<!ENTITY toBeInstalled.label "Это дополнение будет установлено при перезапуске &brandShortName;.">
+<!ENTITY toBeUninstalled.label "Это дополнение будет удалено при перезапуске &brandShortName;.">
+<!ENTITY toBeUpdated.label "Это дополнение будет обновлено при перезапуске &brandShortName;.">
+<!ENTITY getExtensions.label "Загрузить расширения">
+<!ENTITY getThemes.label "Загрузить темы">
+<!ENTITY getPlugins.label "Загрузить плагины">
+<!ENTITY searchAddons.label "Поиск по всем дополнениям">
+<!ENTITY browseAddons.label "Обзор всех дополнений">
+<!ENTITY searchFailed.label "&brandShortName; не смог отыскать дополнения">
+<!ENTITY recommendedHeader.label "Рекомендуемые">
+<!ENTITY recommendedThrobber.label "Получение рекомендуемых дополнений">
+<!ENTITY searchThrobber.label "Идёт поиск дополнений">
+<!ENTITY resetSearch.label "Очистить результаты">
+<!ENTITY noSearchResults.label "Все найденные дополнения уже установлены или несовместимы.">
+<!ENTITY noRecommendedResults.label "Все рекомендуемые дополнения уже установлены или несовместимы.">
+<!ENTITY emptySearch.label "Нет подходящих дополнений">
+<!ENTITY emptySearch.button "OK">
+<!ENTITY cancelSearch.button "Отмена">
+<!ENTITY searchFailed.button "OK">
+<!ENTITY searchResultHomepage.value "Узнать больше">
+<!ENTITY searchBox.label "Поиск по всем дополнениям">
+<!ENTITY recommendedResults.label "Просмотреть все рекомендуемые дополнения">
+<!ENTITY searchResultConnecting.label "Идёт соединение…">
+<!ENTITY searchResultInstalling.label "Идёт установка…">
+<!ENTITY searchResultFailed.label "Установка не удалась">
+<!ENTITY searchResultInstalled.label "Установка завершена">
+<!ENTITY addonTypeExtension.label "Расширение">
+<!ENTITY addonTypeTheme.label "Тема">
+<!ENTITY missingThumbnail.label "Нет предпросмотра">
+<!ENTITY previewNoThemeSelected.label "Тема не выбрана">
+<!ENTITY previewNoPreviewImage.label "Для данной темы предварительный просмотр невозможен">
+<!ENTITY moreInfo.label "Подробная информация">
+<!ENTITY infoNoAddonSelected.label "Обновление не выбрано">
+<!ENTITY infoNoUpdateInfo.label "Дополнительная информация об этом обновлении отсутствует">
+<!ENTITY infoUpdateInfoError.label "При загрузке информации об этом обновлении произошла ошибка">
+<!ENTITY updateSuccess.label "Обновление успешно завершено.">
+<!ENTITY installSuccess.label "Установка успешно завершена.">
+<!ENTITY installSuccessRestart.label "Для завершения установки требуется перезапуск.">
+<!ENTITY updateSuccessRestart.label "Для завершения обновления требуется перезапуск.">
+<!ENTITY installWaiting.label "Ожидание…">
+<!ENTITY installIncompatibleUpdate.label "Идёт проверка совместимости…">
+<!ENTITY installFinishing.label "Идёт установка…">
+<!ENTITY installFailure.label "Установка не удалась.">
+<!ENTITY progressStatus.label "Проверяется наличие обновлений">
+<!ENTITY eula.title "Лицензионное соглашение конечного пользователя">
+<!ENTITY eula.width "560px">
+<!ENTITY eula.height "400px">
+<!ENTITY eula.accept "Принять и установить…">
+<!ENTITY blocklist.blocked.label "Заблокировано">
+<!ENTITY blocklist.checkbox.label "Отключить">

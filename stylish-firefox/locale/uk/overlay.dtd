@@ -1,0 +1,12 @@
+<!ENTITY addfile "Встановити файл…">
+<!ENTITY addfile.ak "В">
+<!ENTITY findstylebrowser "Знайти стилі для цього сайта…">
+<!ENTITY findstylebrowser.ak "З">
+<!ENTITY managestyles "Керування стилями…">
+<!ENTITY managestyles.ak "К">
+<!ENTITY turnon "Увімкнути всі стилі">
+<!ENTITY turnon.ak "У">
+<!ENTITY turnoff "Вимкнути всі стилі">
+<!ENTITY turnoff.ak "В">
+<!ENTITY writestyle "Написати новий стиль">
+<!ENTITY writestyle.ak "Н">
