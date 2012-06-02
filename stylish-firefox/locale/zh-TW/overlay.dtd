@@ -10,3 +10,5 @@
 <!ENTITY turnoff.ak "T">
 <!ENTITY writestyle "編寫新樣式(W)">
 <!ENTITY writestyle.ak "W">
+<!ENTITY stylishhelp "Help">
+<!ENTITY stylishhelp.ak "H">

@@ -29,6 +29,7 @@
 			<menuitem id="stylish-turn-off" label="&turnoff;" accesskey="&turnoff.ak;" oncommand="stylishOverlay.turnOnOff(false)"/>
 			<menuitem id="stylish-add-file" label="&addfile;" accesskey="&addfile.ak;" oncommand="stylishOverlay.installFromFile(event)"/>
 			<menuitem id="stylish-find-styles" label="&findstylebrowser;" accesskey="&findstylebrowser.ak;" oncommand="stylishOverlay.findStyle(event)" onclick="checkForMiddleClick(this, event)"/>
+			<menuitem id="stylish-help" label="&stylishhelp;" accesskey="&stylishhelp.ak;" oncommand="stylishOverlay.getHelp()" onclick="checkForMiddleClick(this, event)"/>
 			<menu id="stylish-write-style-menu" label="&writestyle;" accesskey="&writestyle.ak;">
 				<menupopup onpopupshowing="stylishOverlay.writeStylePopupShowing(event)" onpopuphiding="stylishCommon.clearAllMenuItems(event)"/>
 			</menu>

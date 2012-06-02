@@ -486,6 +486,10 @@ var stylishOverlay = {
 		openUILinkIn(stylishOverlay.URL_STRINGS.getFormattedString("findstylesforthissiteurl", [encodeURIComponent(content.location.href)]), "tab");
 	},
 
+  getHelp: function(e) {
+    openUILinkIn("http://userstyles.org/help/stylish_firefox", "tab");
+  },
+
 	menuItemClassesToClear: ["stylish-menuseparator", "style-menu-item", "no-style-menu-item"],
 	clearStyleMenuItems: function(event) {
 		var popup = event.target;

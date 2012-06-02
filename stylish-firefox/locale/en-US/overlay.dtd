@@ -10,3 +10,5 @@
 <!ENTITY turnoff.ak "T">
 <!ENTITY writestyle "Write new style">
 <!ENTITY writestyle.ak "W">
+<!ENTITY stylishhelp "Help">
+<!ENTITY stylishhelp.ak "H">
