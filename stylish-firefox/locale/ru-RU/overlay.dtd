@@ -10,3 +10,5 @@
 <!ENTITY turnoff.ak "О">
 <!ENTITY writestyle "Создать новый стиль">
 <!ENTITY writestyle.ak "С">
+<!ENTITY stylishhelp "Help">
+<!ENTITY stylishhelp.ak "H">
