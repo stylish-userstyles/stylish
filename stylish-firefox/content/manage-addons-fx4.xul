@@ -39,7 +39,7 @@
 		<hbox position="3">
 			<description id="no-styles-note">&nostylesstart;<label href="http://userstyles.org/" class="text-link">userstyles.org</label>&nostylesend;</description>
 		</hbox>
-		<button position="4" label="&writenew;" oncommand="stylishCommon.addCode('')" class="addon-control"/>
+		<button id="no-styles-write-new" position="4" label="&writenew;" oncommand="stylishCommon.addCode('')" class="addon-control"/>
 	</vbox>
 
 	<menupopup id="addonitem-popup">

@@ -27,7 +27,10 @@ richlistitem[type="userstyle"] [anonid="date-updated"] {
 	padding-left: 1em;
 	display: none;
 }
-#list-view[type="userstyle"] #no-styles-note {
+#no-styles-write-new {
+	display: none;
+}
+#list-view[type="userstyle"] #no-styles-note, #list-view[type="userstyle"] #no-styles-write-new {
 	display: -moz-box;
 }
 #userstyle-sorting {
