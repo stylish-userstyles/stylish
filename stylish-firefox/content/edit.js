@@ -530,3 +530,17 @@ window.addEventListener("load", function() {
 	document.getElementById("internal-code").fastFind = finder;
 	findBar.open();
 }, false);
+
+// if the style we're editing has been deleted, turn off preview and close the window
+var deleteObserver = {
+	observe: function(subject, topic, data) {
+		if (subject.id == style.id) {
+			style.enabled = false;
+			style.setPreview(false);
+			// just so the user is not prompted to save
+			saved = true;
+			window.close();
+		}
+	}
+};
+Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService).addObserver(deleteObserver, "stylish-style-delete", false);
