@@ -1,8 +1,8 @@
 <!ENTITY entername "A stílusfájl neve legyen:">
 <!ENTITY install "Telepítés">
-<!ENTITY install.ak "I">
+<!ENTITY install.ak "T">
 <!ENTITY preview "Előnézet">
-<!ENTITY preview.ak "P">
+<!ENTITY preview.ak "E">
 <!ENTITY switchtoedit "Váltás szerkesztésre">
-<!ENTITY switchtoedit.ak "E">
+<!ENTITY switchtoedit.ak "V">
 <!ENTITY title "Stílusfájl telepítése">

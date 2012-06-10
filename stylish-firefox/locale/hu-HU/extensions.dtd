@@ -4,7 +4,7 @@
 <!ENTITY em.height "380">
 <!ENTITY cmd.info.commandKey "i">
 <!ENTITY cmd.options.commandKey ",">
-<!ENTITY cmd.close.commandKey "w">
+<!ENTITY cmd.close.commandKey "b">
 <!-- View labels -->
 <!ENTITY search.label "Kiegészítők letöltése">
 <!ENTITY extensions.label "Kiterjesztések">
@@ -19,27 +19,27 @@
 <!ENTITY cmd.checkUpdatesAllAddon.tooltip "A kiegészítők újabb változatainak keresése">
 <!ENTITY cmd.checkUpdatesAllTheme.tooltip "A témák újabb változatainak keresése">
 <!ENTITY cmd.checkUpdatesAllPlugin.tooltip "A bővítmények újabb változatainak keresése">
-<!ENTITY cmd.installLocalFile.label "Telepítés...">
+<!ENTITY cmd.installLocalFile.label "Telepítés…">
 <!ENTITY cmd.installLocalFile.accesskey "T">
 <!ENTITY cmd.installFileAddon.tooltip "Kiegészítő telepítése">
 <!ENTITY cmd.installFileTheme.tooltip "Téma telepítése">
 <!ENTITY cmd.installUpdatesAll2.label "Frissítések telepítése">
-<!ENTITY cmd.installUpdatesAll2.accesskey "F">
+<!ENTITY cmd.installUpdatesAll2.accesskey "e">
 <!ENTITY cmd.installUpdatesAll2.tooltip "Kijelölt frissítések telepítése">
 <!ENTITY cmd.restartApp2.label "A &brandShortName; újraindítása">
-<!ENTITY cmd.restartApp2.accesskey "R">
+<!ENTITY cmd.restartApp2.accesskey "r">
 <!ENTITY cmd.restartApp2.tooltip "A &brandShortName; újraindítása a változások érvényesítéséhez">
 <!ENTITY cmd.skip.label "Kihagyás">
 <!ENTITY cmd.skip.accesskey "K">
-<!ENTITY cmd.skip.tooltip "E frissítés kihagyása">
+<!ENTITY cmd.skip.tooltip "Ezen frissítések kihagyása">
 <!ENTITY cmd.continue.label "Folytatás">
-<!ENTITY cmd.continue.accesskey "F">
+<!ENTITY cmd.continue.accesskey "o">
 <!ENTITY cmd.continue.tooltip "A &brandShortName; betöltésének folytatása">
 <!ENTITY cmd.enableAll.label "Mindet bekapcsolja">
-<!ENTITY cmd.enableAll.accesskey "b">
+<!ENTITY cmd.enableAll.accesskey "j">
 <!ENTITY cmd.enableAll.tooltip "Minden megjelenített kiegészítő engedélyezése">
 <!ENTITY cmd.disableAll.label "Mindet kikapcsolja">
-<!ENTITY cmd.disableAll.accesskey "k">
+<!ENTITY cmd.disableAll.accesskey "p">
 <!ENTITY cmd.disableAll.tooltip "Minden megjelenített kiegészítő letiltása">
 <!-- Displayed in the selected Add-on\'s richlistitem and context menu -->
 <!ENTITY cmd.useTheme.label "Téma használata">
@@ -49,36 +49,36 @@
 <!ENTITY cmd.options.accesskey "B">
 <!ENTITY cmd.options.tooltip "A kijelölt kiterjesztés beállításai">
 <!ENTITY cmd.optionsUnix.label "Beállítások">
-<!ENTITY cmd.optionsUnix.accesskey "e">
+<!ENTITY cmd.optionsUnix.accesskey "B">
 <!ENTITY cmd.optionsUnix.tooltip "A kijelölt kiterjesztés beállításainak szerkesztése">
 <!ENTITY cmd.enable.label "Engedélyezés">
 <!ENTITY cmd.enable.accesskey "E">
-<!ENTITY cmd.enable.tooltip "E kiegészítő engedélyezése a &brandShortName; újraindítása után">
+<!ENTITY cmd.enable.tooltip "Ezen kiegészítő engedélyezése a &brandShortName; újraindítása után">
 <!ENTITY cmd.disable.label "Letiltás">
-<!ENTITY cmd.disable.accesskey "t">
-<!ENTITY cmd.disable.tooltip "E kiegészítő letiltása a &brandShortName; újraindítása után">
+<!ENTITY cmd.disable.accesskey "s">
+<!ENTITY cmd.disable.tooltip "Ezen kiegészítő letiltása a &brandShortName; újraindítása után">
 <!ENTITY cmd.uninstall.label "Eltávolítás">
 <!ENTITY cmd.uninstall2.accesskey "l">
-<!ENTITY cmd.uninstall2.tooltip "E kiegészítő eltávolítása a &brandShortName; újraindítása után">
+<!ENTITY cmd.uninstall2.tooltip "Ezen kiegészítő eltávolítása a &brandShortName; újraindítása után">
 <!ENTITY cmd.cancelUninstall.label "Eltávolítás visszavonása">
 <!ENTITY cmd.cancelUninstall.accesskey "v">
-<!ENTITY cmd.cancelUninstall.tooltip "E kiegészítő eltávolításának visszavonása">
+<!ENTITY cmd.cancelUninstall.tooltip "Ezen kiegészítő eltávolításának visszavonása">
 <!ENTITY cmd.cancelInstall.label "Telepítés visszavonása">
-<!ENTITY cmd.cancelInstall.accesskey "T">
-<!ENTITY cmd.cancelInstall.tooltip "E kiegészítő telepítésének visszavonása">
+<!ENTITY cmd.cancelInstall.accesskey "z">
+<!ENTITY cmd.cancelInstall.tooltip "Ezen kiegészítő telepítésének visszavonása">
 <!ENTITY cmd.cancelUpgrade.label "Frissítés visszavonása">
 <!ENTITY cmd.cancelUpgrade.accesskey "F">
-<!ENTITY cmd.cancelUpgrade.tooltip "E kiegészítő frissítésének visszavonása">
+<!ENTITY cmd.cancelUpgrade.tooltip "Ezen kiegészítő frissítésének visszavonása">
 <!ENTITY cmd.installUpdate.label "Frissítés telepítése">
-<!ENTITY cmd.installUpdate.accesskey "F">
+<!ENTITY cmd.installUpdate.accesskey "i">
 <!ENTITY cmd.installUpdate.tooltip "Frissítés telepítése e kiegészítőhöz">
 <!ENTITY cmd.showUpdateInfo.label "Információ megjelenítése">
-<!ENTITY cmd.showUpdateInfo.accesskey "I">
+<!ENTITY cmd.showUpdateInfo.accesskey "j">
 <!ENTITY cmd.showUpdateInfo.tooltip "Részletesebb információ megjelenítése ezekről a frissítésekről">
 <!ENTITY cmd.hideUpdateInfo.label "Információ elrejtése">
-<!ENTITY cmd.hideUpdateInfo.accesskey "n">
+<!ENTITY cmd.hideUpdateInfo.accesskey "c">
 <!ENTITY cmd.hideUpdateInfo.tooltip "Az információ elrejtése ezekről a frissítésekről">
-<!ENTITY cmd.installSearchResult.label "Hozzáadás a &brandShortName; programhoz...">
+<!ENTITY cmd.installSearchResult.label "Hozzáadás a &brandShortName; programhoz…">
 <!ENTITY cmd.installSearchResult.accesskey "H">
 <!ENTITY cmd.installSearchResult.tooltip "Kiegészítő letöltése és telepítése">
 <!-- The selected add-on\'s cancel action button label -->
@@ -99,7 +99,7 @@
 <!ENTITY cmd.includeUpdate.accesskey "r">
 <!ENTITY includeUpdate.label "Ezzel a frissítéssel">
 <!ENTITY includeUpdate.accesskey "z">
-<!ENTITY includeUpdate.tooltip "E kiegészítőt is a frissítések telepítésekor">
+<!ENTITY includeUpdate.tooltip "Ezt a kiegészítőt is frissítse">
 <!-- Status Messsages -->
 <!ENTITY insecureUpdate.label "Nem biztosít biztonságos frissítéseket.">
 <!ENTITY needsDependencies.label "További elemek szükségesek.">
@@ -130,8 +130,8 @@
 <!ENTITY searchResultHomepage.value "További információ">
 <!ENTITY searchBox.label "Keresés a kiegészítők között">
 <!ENTITY recommendedResults.label "Minden ajánlott kiegészítő megjelenítése">
-<!ENTITY searchResultConnecting.label "Kapcsolódás...">
-<!ENTITY searchResultInstalling.label "Telepítés...">
+<!ENTITY searchResultConnecting.label "Kapcsolódás…">
+<!ENTITY searchResultInstalling.label "Telepítés…">
 <!ENTITY searchResultFailed.label "Sikertelen telepítés">
 <!ENTITY searchResultInstalled.label "A telepítés kész">
 <!ENTITY addonTypeExtension.label "Kiterjesztés">
@@ -147,14 +147,14 @@
 <!ENTITY installSuccess.label "A telepítés sikeresen befejeződött.">
 <!ENTITY installSuccessRestart.label "Indítsa újra a telepítés befejezéséhez.">
 <!ENTITY updateSuccessRestart.label "Indítsa újra a frissítés befejezéséhez.">
-<!ENTITY installWaiting.label "Kérem, várjon...">
-<!ENTITY installIncompatibleUpdate.label "Kompatibilitás ellenőrzése...">
-<!ENTITY installFinishing.label "Telepítés...">
+<!ENTITY installWaiting.label "Kérem, várjon…">
+<!ENTITY installIncompatibleUpdate.label "Kompatibilitás ellenőrzése…">
+<!ENTITY installFinishing.label "Telepítés…">
 <!ENTITY installFailure.label "A telepítés nem sikerült.">
 <!ENTITY progressStatus.label "Frissítések keresése">
 <!ENTITY eula.title "Végfelhasználói licencszerződés">
 <!ENTITY eula.width "560px">
 <!ENTITY eula.height "400px">
-<!ENTITY eula.accept "Elfogadás és telepítés...">
+<!ENTITY eula.accept "Elfogadás és telepítés…">
 <!ENTITY blocklist.blocked.label "Blokkolva">
 <!ENTITY blocklist.checkbox.label "Letiltás">
