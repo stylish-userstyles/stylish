@@ -5,8 +5,8 @@ var saved = false;
 var style = null;
 var strings = null;
 var codeE, nameE, tagsE, updateUrlE;
-var triggeringDocument = null;
 var installPingURL = null;
+var installCallback = null;
 //because some editors can have different CRLF settings than what we've saved as, we'll only save if the code in the editor has changed. this will prevent update notifications when there are none
 var initialCode;
 var prefs = Services.prefs.getBranch("extensions.stylish.");
@@ -77,8 +77,8 @@ function initStyle() {
 			style = window.arguments[0].style;
 			style.mode = service.CALCULATE_META | service.REGISTER_STYLE_ON_CHANGE;
 		}
-		triggeringDocument = window.arguments[0].triggeringDocument;
 		installPingURL = window.arguments[0].installPingURL;
+		installCallback = window.arguments[0].installCallback;
 		document.documentElement.setAttribute("windowtype", window.arguments[0].windowType);
 	}
 
@@ -233,7 +233,7 @@ function switchToInstall() {
 	if (codeElementWrapper.value != initialCode) {
 		style.code = codeElementWrapper.value;
 	}
-	stylishCommon.openInstall({style: style, triggeringDocument: triggeringDocument, installPingURL: installPingURL});
+	stylishCommon.openInstall({style: style, installPingURL: installPingURL, installCallback: installCallback});
 	window.close();
 }
 
@@ -270,14 +270,14 @@ function save() {
 	style.updateUrl = updateUrlE.value;
 	style.save();
 	saved = true;
-	if (triggeringDocument) {
-		stylishCommon.dispatchEvent(triggeringDocument, "styleInstalled");
-	}
 	if (installPingURL) {
 		var req = new XMLHttpRequest();
 		req.open("GET", installPingURL, true);
 		stylishCommon.fixXHR(req);
 		req.send(null);
+	}
+	if (installCallback) {
+		installCallback();
 	}
 
 	return true;

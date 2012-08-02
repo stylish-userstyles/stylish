@@ -5,6 +5,8 @@ var stylishOverlay = {
 	//cached number of global styles
 	globalCount: null,
 
+	uiElementIds: ["stylish-panel", "stylish-toolbar-button"],
+
 	init: function() {
 		stylishOverlay.STRINGS = document.getElementById("stylish-strings");
 		stylishOverlay.URL_STRINGS = document.getElementById("stylish-url-strings");
@@ -41,15 +43,6 @@ var stylishOverlay = {
 			"class": "style-menu-item",
 			"context": "stylish-style-context"
 		});
-
-		//page load listener
-		var appcontent = document.getElementById("appcontent"); // browser
-		if (!appcontent) {
-			appcontent = document.getElementById("frame_main_pane"); // songbird
-		}
-		if (appcontent) {
-			appcontent.addEventListener("DOMContentLoaded", stylishOverlay.onPageLoad, true);
-		}
 
 		// sets an attribute for 24-based hour of the day
 		function updateHour() {
@@ -148,7 +141,7 @@ var stylishOverlay = {
 
 	updateStatus: function() {
 		function updateAttribute(value) {
-			["stylish-panel", "stylish-toolbar-button"].forEach(function(id) {
+			stylishOverlay.uiElementIds.forEach(function(id) {
 				var e = document.getElementById(id);
 				if (e) {
 					e.setAttribute("styles-applied", value);
@@ -192,177 +185,6 @@ var stylishOverlay = {
 	toggleStyle: function(style) {
 		style.enabled = !style.enabled;
 		style.save();
-	},
-
-	isAllowedToInstall: function(doc) {
-		//this can throw for some reason
-		try {
-			var domain = doc.domain;
-		} catch (ex) {
-			return false;
-		}
-		if (!domain) {
-			return false;
-		}
-		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
-		prefs = prefs.getBranch("extensions.stylish.install.");
-		var allowedDomains = prefs.getCharPref("allowedDomains").split(" ");
-		if (allowedDomains.indexOf(doc.domain) > -1) {
-			return true;
-		}
-		//maybe this is a subdomain 
-		for (var i = 0; i < allowedDomains.length; i++) {
-			var subdomain = "." + allowedDomains[i];
-
-			var subdomainIndex = doc.domain.lastIndexOf(subdomain);
-			if (subdomainIndex > -1 && subdomainIndex == doc.domain.length - subdomain.length) {
-				return true;
-			}
-		}
-		return false;
-	},
-
-	getCodeFromPage: function(doc) {
-		//workaround for bug 194231 
-		var codeTextNodes = doc.getElementById("stylish-code").childNodes;
-		var code = "";
-		for (var i = 0; i < codeTextNodes.length; i++) {
-			code += codeTextNodes[i].nodeValue;
-		}
-		return code;
-	},
-
-	checkUpdateEvent: function(doc, style) {
-		var code = stylishOverlay.getCodeFromPage(doc);
-		if (!stylishCommon.cssAreEqual((style.originalCode || style.code), code)) {
-			stylishCommon.dispatchEvent(doc, "styleCanBeUpdated");
-			doc.addEventListener("stylishUpdate", stylishOverlay.updateFromSite, false);
-		} else {
-			stylishCommon.dispatchEvent(doc, "styleAlreadyInstalled");
-		}
-	},
-
-	getIdUrl: function(doc) {
-		var idUrlElement = doc.querySelector("link[rel='stylish-id-url']");
-		return idUrlElement ? idUrlElement.href : stylishCommon.cleanURI(doc.location.href);
-	},
-
-	onPageLoad: function(event) {
-		if (event.originalTarget.nodeName == "#document" && stylishOverlay.isAllowedToInstall(event.originalTarget)) {
-			var doc = event.originalTarget;
-
-			//style installed status
-			var style = stylishOverlay.service.findByUrl(stylishOverlay.getIdUrl(doc), 0);
-			if (style) {
-				//if the code isn't available, ask for it and wait
-				var code = stylishOverlay.getCodeFromPage(doc);
-				if (code) {
-					stylishOverlay.checkUpdateEvent(doc, style);
-				} else {
-					doc.addEventListener("stylishCodeLoaded", function(){stylishOverlay.checkUpdateEvent(doc, style)}, false);
-					stylishCommon.dispatchEvent(doc, "styleLoadCode");
-				}
-			} else {
-				stylishCommon.dispatchEvent(doc, "styleCanBeInstalled");
-				doc.addEventListener("stylishInstall", stylishOverlay.installFromSite, false);
-			}
-		}
-	},
-
-	installFromSite: function(event) {
-		var doc;
-		if (event.target.nodeName == "#document") {
-			doc = event.target;
-		}
-		var uri = stylishCommon.cleanURI(doc.location.href);
-		var links = doc.getElementsByTagName("link");
-		var code = null;
-		var description = null;
-		var updateURL = null;
-		var md5URL = null;
-		var installPingURL = null;
-		var triggeringDocument = null;
-		var idUrl = null;
-		for (var i = 0; i < links.length; i++) {
-			switch (links[i].rel) {
-				case "stylish-code":
-					var id = links[i].getAttribute("href").replace("#", "");
-					var element = doc.getElementById(id);
-					if (element) {
-						code = element.textContent;
-					}
-					break;
-				case "stylish-description":
-					var id = links[i].getAttribute("href").replace("#", "");
-					var element = doc.getElementById(id);
-					if (element) {
-						description = element.textContent;
-					}
-					break;
-				case "stylish-install-ping-url":
-					installPingURL = links[i].href;
-					break;
-				case "stylish-update-url":
-					updateURL = links[i].href;
-					break;
-				case "stylish-md5-url":
-					md5URL = links[i].href;
-					break;
-				case "stylish-id-url":
-					idUrl = links[i].href;
-					break;
-			}
-		}
-		if (idUrl == null) {
-			idUrl = uri;
-		}
-
-		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
-		style.init(uri, idUrl, updateURL, md5URL, description, code, false, code);
-		stylishCommon.openInstall({style: style, installPingURL: installPingURL, triggeringDocument: doc});
-	},
-
-	updateFromSite: function(event) {
-		var doc = event.target;
-		style = stylishOverlay.service.findByUrl(stylishOverlay.getIdUrl(doc), stylishOverlay.service.REGISTER_STYLE_ON_CHANGE + stylishOverlay.service.CALCULATE_META);
-		if (!style) {
-			return;
-		}
-		var links = doc.getElementsByTagName("link");
-		var code;
-		for (i in links) {
-			switch (links[i].rel) {
-				case "stylish-code":
-					var id = links[i].getAttribute("href").replace("#", "");
-					var element = doc.getElementById(id);
-					if (element) {
-						code = element.textContent;
-					}
-					break;
-			}
-		}
-		if (!code) {
-			return;
-		}
-		var prompt = stylishOverlay.STRINGS.getFormattedString("updatestyle", [style.name]);
-		var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-		if (prompts.confirmEx(window, stylishOverlay.STRINGS.getString("updatestyletitle"), prompt, prompts.BUTTON_POS_0 * prompts.BUTTON_TITLE_IS_STRING + prompts.BUTTON_POS_1 * prompts.BUTTON_TITLE_CANCEL, stylishOverlay.STRINGS.getString("updatestyleok"), null, null, null, {}) == 0) {
-			style.code = code;
-			//we're now in sync with the remote style
-			style.originalCode = code;
-			style.save();
-			stylishCommon.dispatchEvent(doc, "styleInstalled");
-		}
-	},
-
-	installFromFile: function(event) {
-		var doc = content.document;
-		var uri = stylishCommon.cleanURI(doc.location.href);
-		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
-		style.init(uri, uri, uri, null, null, doc.body.textContent, false, doc.body.textContent);
-		stylishCommon.openInstall({style: style, triggeringDocument: doc});
 	},
 
 	writeStylePopupShowing: function(event) {
@@ -524,14 +346,6 @@ var stylishOverlay = {
 		}
 		// seamonkey 2 can't do add-ons dialog
 		if (manageView == 0 && appInfo.ID == "{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}" && versionChecker.compare(appInfo.version, "2.1b1") < 0) {
-			manageView = 1;
-		}
-		// firefox 3.6 can't open it right
-		if (manageView == 0 && appInfo.ID == "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}" && versionChecker.compare(appInfo.version, "3.7a5pre") < 0) {
-			manageView = 1;
-		}
-		// thunderbird 3.1 can't open it right
-		if (manageView == 0 && appInfo.ID == "{3550f703-e582-4d05-9a08-453d09bdfdc6}" && versionChecker.compare(appInfo.version, "3.3a1") < 0) {
 			manageView = 1;
 		}
 		switch (manageView) {

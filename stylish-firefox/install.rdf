@@ -9,7 +9,8 @@
 		<em:creator>Jason Barnabe</em:creator>
 		<em:homepageURL>http://userstyles.org/</em:homepageURL>
 		<em:iconURL>chrome://stylish/skin/32.png</em:iconURL>
-		<em:optionsURL>chrome://stylish/content/manage-standalone.xul</em:optionsURL>
+		<em:optionsType>2</em:optionsType>
+		<em:optionsURL>chrome://stylish/content/options.xul</em:optionsURL>
 		<em:translator>Team erweiterungen.de - de</em:translator>
 		<em:translator>Fux - de</em:translator>
 		<em:translator>drry - ja</em:translator>
@@ -56,7 +57,7 @@
 			<Description>
 				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
 				<em:minVersion>4.0</em:minVersion>
-				<em:maxVersion>14.0a1</em:maxVersion>
+				<em:maxVersion>17.0a1</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 		<!--Thunderbird-->
@@ -64,7 +65,7 @@
 			<Description>
 				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
 				<em:minVersion>5.0</em:minVersion>
-				<em:maxVersion>14.0a1</em:maxVersion>
+				<em:maxVersion>17.0a1</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 		<!--SeaMonkey-->
@@ -72,7 +73,7 @@
 			<Description>
 				<em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
 				<em:minVersion>2.1</em:minVersion>
-				<em:maxVersion>2.9a1</em:maxVersion>
+				<em:maxVersion>2.14a1</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 		<!--Toolkit-->
@@ -80,7 +81,7 @@
 			<Description>
 				<em:id>toolkit@mozilla.org</em:id>
 				<em:minVersion>2.0</em:minVersion>
-				<em:maxVersion>14.*</em:maxVersion>
+				<em:maxVersion>17.0a1</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 		<!-- Postbox -->
@@ -97,6 +98,14 @@
 				<em:id>express@postbox-inc.com</em:id>
 				<em:minVersion>1.0b13</em:minVersion>
 				<em:maxVersion>6.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+		<!-- Fennec Native -->
+		<em:targetApplication>
+			<Description>
+				<em:id>{aa3c5121-dab2-40e2-81ca-7ea25febc110}</em:id>
+				<em:minVersion>14.0</em:minVersion>
+				<em:maxVersion>16.*</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 	</Description>

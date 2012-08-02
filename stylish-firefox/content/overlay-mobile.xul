@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay [
+	<!ENTITY % install SYSTEM "chrome://stylish/locale/install.dtd">
+	%install;
+]>
+
+<overlay id="stylish-mobile-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script>
+		var stylishStrings = {
+			install: "&install;",
+			title: "&title;"
+		};
+	</script>
+	<script type="application/javascript" src="common.js"/>
+	<script type="application/javascript" src="install-overlay.js"/>
+
+</overlay>

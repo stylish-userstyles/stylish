@@ -1,10 +1,10 @@
 var style, strings, name;
-var triggeringDocument = null;
 var installPingURL = null;
+var installCallback = null;
 
 function init() {
 	style = window.arguments[0].style;
-	triggeringDocument = window.arguments[0].triggeringDocument;
+	installCallback = window.arguments[0].installCallback;
 	installPingURL = window.arguments[0].installPingURL;
 
 	document.documentElement.setAttribute("windowtype", window.arguments[0].windowType);
@@ -64,7 +64,7 @@ function init() {
 
 function switchToEdit() {
 	Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).setBoolPref("extensions.stylish.editOnInstall", true);
-	stylishCommon.openEdit(stylishCommon.getWindowName("stylishEdit", triggeringDocument ? triggeringDocument.location.href : null), {style: style, triggeringDocument: triggeringDocument, installPingURL: installPingURL});
+	stylishCommon.openEdit(stylishCommon.getWindowName("stylishEdit", style.idUrl), {style: style, installPingURL: installPingURL, installCallback: installCallback});
 	window.close();
 }
 
@@ -76,14 +76,14 @@ function save(andClose) {
 	style.name = name.value;
 	style.enabled = true;
 	style.save();
-	if (triggeringDocument) {
-		stylishCommon.dispatchEvent(triggeringDocument, "styleInstalled");
-	}
 	if (installPingURL) {
 		var req = new XMLHttpRequest();
 		req.open("GET", installPingURL, true);
 		stylishCommon.fixXHR(req);
 		req.send(null);
+	}
+	if (installCallback) {
+		installCallback();
 	}
 	// do it this way otherwise the ping doesn't work
 	if (andClose) {

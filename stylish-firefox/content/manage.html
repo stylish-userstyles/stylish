@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Stylish Manage</title>
+	<style>
+		.style-enabled .enable-style {
+			display: none;
+		}
+		.style-disabled .disable-style {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<h1>Stylish</h1>
+<script>
+	function escapeHtml(s) {
+		return s
+			.replace(/&/g, "&amp;")
+			.replace(/'/g, "&apos;")
+			.replace(/"/g, "&quot;")
+			.replace(/>/g, "&gt;")
+			.replace(/</g, "&lt;")
+	}
+
+	function get(id) {
+		return service.find(id, service.REGISTER_STYLE_ON_CHANGE);
+	}
+
+	function getUI(id) {
+		return document.getElementById("style-" + id);
+	}
+
+	function refreshUI(id) {
+		var frag = document.createDocumentFragment();
+		frag.appendChild(document.createElement("div"));
+		frag.firstChild.innerHTML = getCode(get(id));
+		var oldUi = getUI(id);
+		oldUi.parentNode.replaceChild(frag.firstChild.firstChild, oldUi);
+	}
+
+	function enable(id) {
+		var style = get(id);
+		style.enabled = true;
+		style.save();
+		refreshUI(id);
+	}
+
+	function disable(id) {
+		var style = get(id);
+		style.enabled = false;
+		style.save();
+		refreshUI(id);
+	}
+
+	function remove(id) {
+		var style = get(id);
+		style.delete();
+		var e = getUI(id);
+		e.parentNode.removeChild(e);
+	}
+
+	function getCode(style) {
+		return styleTemplate
+			.replace(/STYLE_STATUS/g, style.enabled ? 'enabled' : 'disabled')
+			.replace(/STYLE_ID/g, style.id)
+			.replace(/STYLE_NAME/g, escapeHtml(style.name));
+	}
+
+	var styleTemplate = "<div id='style-STYLE_ID' class='style-STYLE_STATUS'>STYLE_NAME <button class='enable-style' onclick='enable(\"STYLE_ID\")'>Enable</button><button class='disable-style' onclick='disable(\"STYLE_ID\")'>Disable</button><button class='remove-style' onclick='remove(\"STYLE_ID\")'>Remove</button></div>";
+	var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
+	var styles = service.list(0, {});
+	var html = styles.map(getCode).join("\n");
+	document.write(html);
+
+</script>
+</body>
+</html>
