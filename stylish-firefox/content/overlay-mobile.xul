@@ -8,7 +8,6 @@
 <overlay id="stylish-mobile-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	<script>
 		var stylishStrings = {
-			install: "&install;",
 			title: "&title;"
 		};
 	</script>

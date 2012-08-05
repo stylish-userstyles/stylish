@@ -4,6 +4,8 @@ var stylishInstallOverlay = {
 
 	init: function() {
 		stylishInstallOverlay.STRINGS = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://stylish/locale/overlay.properties");
+		stylishInstallOverlay.INSTALL_STRINGS = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://stylish/locale/install.properties");
+
 
 		//page load listener
 		var appcontent = document.getElementById("appcontent"); // browser
@@ -150,8 +152,9 @@ var stylishInstallOverlay = {
 
 		if (typeof stylishStrings != "undefined") {
 			// stylishStrings is set in overlay-mobile.xul, in which case XUL is not available
+			var installPrompt = stylishInstallOverlay.INSTALL_STRINGS.formatStringFromName("installintro", [style.name], 1);
 			var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-			if (promptService.confirm(window, stylishStrings.title, stylishStrings.install)) {
+			if (promptService.confirm(window, stylishStrings.title, installPrompt)) {
 				style.enabled = true;
 				style.save();
 				if (installPingURL) {

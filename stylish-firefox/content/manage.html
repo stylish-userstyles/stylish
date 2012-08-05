@@ -2,7 +2,30 @@
 <html>
 <head>
 	<title>Stylish Manage</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="../skin/32.png" rel="icon">
 	<style>
+		table {
+			border-spacing: 0;
+		}
+		#styles td {
+			border-top: 1px solid #BBB;
+		}
+		#styles tr:last-child td {
+			border-bottom: 1px solid #BBB;
+		}
+		.style-item td {
+			padding-top: 0.5em;
+			padding-bottom: 0.5em;
+		}
+		.style-item .enable-disable-column, .style-item .remove-column {
+			text-align: center;
+		}
+		.style-item .enable-disable-column button {
+			margin-left: 1em;
+			margin-right: 1em;
+		}
 		.style-enabled .enable-style {
 			display: none;
 		}
@@ -13,6 +36,12 @@
 </head>
 <body>
 <h1>Stylish</h1>
+
+<table>
+	<tbody id="styles">
+	</tbody>
+</table>
+
 <script>
 	function escapeHtml(s) {
 		return s
@@ -33,7 +62,7 @@
 
 	function refreshUI(id) {
 		var frag = document.createDocumentFragment();
-		frag.appendChild(document.createElement("div"));
+		frag.appendChild(document.createElement("tbody"));
 		frag.firstChild.innerHTML = getCode(get(id));
 		var oldUi = getUI(id);
 		oldUi.parentNode.replaceChild(frag.firstChild.firstChild, oldUi);
@@ -64,15 +93,19 @@
 		return styleTemplate
 			.replace(/STYLE_STATUS/g, style.enabled ? 'enabled' : 'disabled')
 			.replace(/STYLE_ID/g, style.id)
-			.replace(/STYLE_NAME/g, escapeHtml(style.name));
+			.replace(/STYLE_NAME/g, escapeHtml(style.name))
+			.replace(/STYLE_LINK/g, style.url == null ? "" : "<a href=\"" + escapeHtml(style.url) + "\">[→]</a>");
 	}
 
-	var styleTemplate = "<div id='style-STYLE_ID' class='style-STYLE_STATUS'>STYLE_NAME <button class='enable-style' onclick='enable(\"STYLE_ID\")'>Enable</button><button class='disable-style' onclick='disable(\"STYLE_ID\")'>Disable</button><button class='remove-style' onclick='remove(\"STYLE_ID\")'>Remove</button></div>";
+	var styleTemplate = "<tr id='style-STYLE_ID' class='style-item style-STYLE_STATUS'><td class='style-name'>STYLE_NAME STYLE_LINK</td><td class='enable-disable-column'><button class='enable-style' onclick='enable(\"STYLE_ID\")'>Enable</button><button class='disable-style' onclick='disable(\"STYLE_ID\")'>Disable</button></td><td class='remove-column'><button class='remove-style' onclick='remove(\"STYLE_ID\")'>Remove</button></td></tr>";
 	var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
 	var styles = service.list(0, {});
 	var html = styles.map(getCode).join("\n");
-	document.write(html);
+	document.getElementById("styles").innerHTML = html;
 
 </script>
+
+<p>Visit <a href="http://userstyles.org">userstyles.org</a> to install styles.</p>
+
 </body>
 </html>
