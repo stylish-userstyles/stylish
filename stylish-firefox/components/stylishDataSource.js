@@ -68,7 +68,7 @@ StylishDataSource.prototype = {
 	_file: null,
 
 	migrate: function(connection) {
-		var expectedDataVersion = 4;
+		var expectedDataVersion = 5;
 		var currentDataVersion = connection.schemaVersion;
 		if (currentDataVersion >= expectedDataVersion)
 			return;
@@ -90,6 +90,10 @@ StylishDataSource.prototype = {
 				} catch (ex) {}
 			case 3:
 					connection.executeSimpleSQL("UPDATE styles SET md5Url = REPLACE(md5Url, 'http://userstyles.org/styles/', 'http://update.userstyles.org/') WHERE md5Url LIKE 'http://userstyles.org/styles/%.md5';");
+			case 4:
+				try {
+					connection.executeSimpleSQL("ALTER TABLE styles ADD COLUMN applyBackgroundUpdates INTEGER NOT NULL DEFAULT 1;"); // 1 = AddonManager.AUTOUPDATE_DEFAULT
+				} catch (ex) {}
 		}
 		connection.schemaVersion = expectedDataVersion;
 		connection.commitTransaction();

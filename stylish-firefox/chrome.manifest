@@ -37,8 +37,8 @@ locale	stylish	zh-CN	locale/zh-CN/
 locale	stylish	zh-TW	locale/zh-TW/
 
 interfaces components/stylishStyle.xpt
-component {6af398eb-bc14-4001-b40b-4e830b3863b1} components/stylishStyle.js
-contract @userstyles.org/style;1 {6af398eb-bc14-4001-b40b-4e830b3863b1}
+component {ea17a766-cdd4-444b-8d8d-b5bb935a2a22} components/stylishStyle.js
+contract @userstyles.org/style;1 {ea17a766-cdd4-444b-8d8d-b5bb935a2a22}
 
 interfaces components/stylishDataSource.xpt
 component {d6fe57ea-1126-4dc6-8636-d25d5b901929} components/stylishDataSource.js

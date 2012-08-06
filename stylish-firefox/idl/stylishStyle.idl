@@ -3,7 +3,7 @@
 #include "nsIConsoleListener.idl"
 #include "nsIObserver.idl"
 
-[scriptable, uuid(6af398eb-bc14-4001-b40b-4e830b3863b1)]
+[scriptable, uuid(ea17a766-cdd4-444b-8d8d-b5bb935a2a22)]
 interface stylishStyle : nsIClassInfo
 {
 	attribute unsigned long id;
@@ -17,6 +17,7 @@ interface stylishStyle : nsIClassInfo
 	attribute boolean enabled;
 	// the original code installed. can be null if it's the same as "code" or this wasn't an install
 	attribute AString originalCode;
+	attribute short applyBackgroundUpdates;
 
 	//see the flags below. you can set this before initing the style
 	attribute short mode;
@@ -37,7 +38,8 @@ interface stylishStyle : nsIClassInfo
 	void copyListToClipboard();
 	AString regexToSample(in AString regex);
 
-	void init(in AString url, in AString idUrl, in AString updateUrl, in AString md5Url, in AString name, in AString code, in boolean enabled, in AString originalCode);
+	// applyBackgroundUpdates is really a short, but set as a string here so that we can pass null for default
+	void init(in AString url, in AString idUrl, in AString updateUrl, in AString md5Url, in AString name, in AString code, in boolean enabled, in AString originalCode, in AString applyBackgroundUpdates);
 	void save();
 	void delete();
 	boolean appliesToUrl(in AString url);

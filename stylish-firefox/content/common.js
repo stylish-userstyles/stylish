@@ -142,7 +142,7 @@ var stylishCommon = {
 	addCode: function(code) {
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
-		style.init(null, null, null, null, null, code, false, null);
+		style.init(null, null, null, null, null, code, false, null, null);
 		stylishCommon.openEdit(stylishCommon.getWindowName("stylishEdit"), {style: style});
 	},
 

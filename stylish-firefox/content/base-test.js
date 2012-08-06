@@ -11,7 +11,7 @@ function testStyleSave() {
 	const md5Url = "http://example.com/md5";
 	const name = "Example style";
 	const code = "#example { color: red;}";
-	style.init(url, url, updateUrl, md5Url, name, code, false, null);
+	style.init(url, url, updateUrl, md5Url, name, code, false, null, null);
 	checkValues(style, url, updateUrl, md5Url, name, code);
 	style.save();
 	assert("Style didn't get an ID", style.id != null && style.id != 0);
@@ -32,7 +32,7 @@ function testStyleSave() {
 //Test styles getting applied
 function testStyleApplied() {
 	var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	style.init(null, null, null, null, "Unit test", "button { text-decoration: underline !important;}", true, null);
+	style.init(null, null, null, null, "Unit test", "button { text-decoration: underline !important;}", true, null, null);
 	assert("Style was not enabled", style.enabled);
 	assert("Style was not applied", getButtonStyle().textDecoration == "underline");
 	style.enabled = false;
@@ -53,7 +53,7 @@ function testStyleApplied() {
 //Tests that deleted styles get unapplied
 function testDeleteAndUnapply() {
 	var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	style.init(null, null, null, null, "Unit test", "button { text-decoration: underline !important;}", true, null);
+	style.init(null, null, null, null, "Unit test", "button { text-decoration: underline !important;}", true, null, null);
 	style.save();
 	style = Style.find(style.id, Style.REGISTER_STYLE_ON_CHANGE);
 	style.delete();
@@ -63,7 +63,7 @@ function testDeleteAndUnapply() {
 //Test appliesToUrl on url rules
 function testUrlMatch() {
 	var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	style.init(null, null, null, null, "Unit test", "@-moz-document url('http://google.com') { * {color: blue}}", false, null);
+	style.init(null, null, null, null, "Unit test", "@-moz-document url('http://google.com') { * {color: blue}}", false, null, null);
 	function v() {
 		assert("Style not marked as applied.", style.appliesToUrl("http://google.com"));
 		assert("Style incorrectly marked as applied.", !style.appliesToUrl("http://yahoo.com"));
@@ -82,7 +82,7 @@ function testUrlMatch() {
 //Test appliesToUrl on url prefix rules
 function testUrlPrefixMatch() {
 	var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	style.init(null, null, null, null, "Unit test", "@-moz-document url-prefix('http://google.com') { * {color: blue}}", false, null);
+	style.init(null, null, null, null, "Unit test", "@-moz-document url-prefix('http://google.com') { * {color: blue}}", false, null, null);
 	function v() {
 		assert("Style not marked as applied.", style.appliesToUrl("http://google.com"));
 		assert("Style not marked as applied.", style.appliesToUrl("http://google.com/foo"));
@@ -101,7 +101,7 @@ function testUrlPrefixMatch() {
 //Test appliesToUrl on domain rules
 function testDomainMatch() {
 	var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	style.init(null, null, null, null, "Unit test", "@-moz-document domain('google.com') { * {color: blue}}", false, null);
+	style.init(null, null, null, null, "Unit test", "@-moz-document domain('google.com') { * {color: blue}}", false, null, null);
 	function v() {
 		assert("Style not marked as applied 1.", style.appliesToUrl("http://google.com"));
 		assert("Style not marked as applied 2.", style.appliesToUrl("http://google.com/foo"));
@@ -127,7 +127,7 @@ function testLoadAndUpdateCode() {
 		//first make the style
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		var code = "* {font-style: italic;}";
-		style.init(null, null, null, null, "Unit test - load and update code", code, true, null);
+		style.init(null, null, null, null, "Unit test - load and update code", code, true, null, null);
 		style.save();
 		//now load it
 		style = Style.find(style.id, Style.REGISTER_STYLE_ON_CHANGE);
@@ -147,7 +147,7 @@ function testLoadAndUpdateName() {
 		//first make the style
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		var code = "* {font-style: italic;}";
-		style.init(null, null, null, null, "Unit test - load and update name", code, true, null);
+		style.init(null, null, null, null, "Unit test - load and update name", code, true, null, null);
 		style.save();
 		//now load it
 		style = Style.find(style.id, Style.REGISTER_STYLE_ON_CHANGE);
@@ -167,7 +167,7 @@ function testPreviewEnabled() {
 	try {
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		var code = "* {font-style: italic;}";
-		style.init(null, null, null, null, "Unit test - preview", code, true, null);
+		style.init(null, null, null, null, "Unit test - preview", code, true, null, null);
 		assert("Style not initially applied", getButtonStyle().fontStyle == "italic");
 		style.setPreview(true);
 		assert("Style no longer applied after preview turned on", getButtonStyle().fontStyle == "italic");
@@ -187,7 +187,7 @@ function testPreviewDisabled() {
 	try {
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		var code = "* {font-style: italic;}";
-		style.init(null, null, null, null, "Unit test - preview", code, false, null);
+		style.init(null, null, null, null, "Unit test - preview", code, false, null, null);
 		assert("Style initially applied", getButtonStyle().fontStyle != "italic");
 		style.setPreview(true);
 		assert("Style not applied after preview turned on", getButtonStyle().fontStyle == "italic");
@@ -207,7 +207,7 @@ function testPreviewDisabledSaved() {
 	try {
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		var code = "* {font-style: italic;}";
-		style.init(null, null, null, null, "Unit test - preview", code, false, null);
+		style.init(null, null, null, null, "Unit test - preview", code, false, null, null);
 		assert("Style applied on init", getButtonStyle().fontStyle != "italic");
 		style.save();
 		assert("Style applied on init", getButtonStyle().fontStyle != "italic");
@@ -329,7 +329,7 @@ function testType() {
 		assert(message + " - expected '" + type + "' got '" + currentType +"'", arraysEqual(currentType, type));
 	}
 	var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	style.init(null, null, null, null, "Unit test", "* {color: blue}", false, null);
+	style.init(null, null, null, null, "Unit test", "* {color: blue}", false, null, null);
 	ensureType("No namespace no moz-doc", "global");
 	style.code = "@namespace url('http://www.w3.org/1999/xhtml');* {color: blue}";
 	ensureType("HTML namespace no moz-doc", "global");
@@ -359,7 +359,7 @@ function testFindByUrl() {
 	try {
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		const url = "http://example.com/foo/bar";
-		style.init(url, url, null, null, "Unit test", "/**/", false, null);
+		style.init(url, url, null, null, "Unit test", "/**/", false, null, null);
 		style.save();
 		style = Style.findByUrl(url, 0);
 		assert("Style not found", style);
@@ -372,7 +372,7 @@ function testSaveOriginalCodeNoUpdate() {
 	try {
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		const url = "http://example.com/foo/bar";
-		style.init(url, url, null, null, "Unit test - save original code no update", "/* original code */", false, null);
+		style.init(url, url, null, null, "Unit test - save original code no update", "/* original code */", false, null, null);
 		style.save();
 		assert("Style got original code for no reason", style.originalCode == null);
 		style.code = "/* new code */";
@@ -388,7 +388,7 @@ function testSaveOriginalCodeWithUpdate() {
 	try {
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		const url = "http://example.com/foo/bar";
-		style.init(url, url, "http://example.com/update", "http://example.com/update", "Unit test - save original code with update", "/* original code */", false, null);
+		style.init(url, url, "http://example.com/update", "http://example.com/update", "Unit test - save original code with update", "/* original code */", false, null, null);
 		style.save();
 		assert("Style got original code for no reason", style.originalCode == null);
 		style.code = "/* new code */";
@@ -407,7 +407,7 @@ function testSaveOriginalCodeInitial() {
 	try {
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		const url = "http://example.com/foo/bar";
-		style.init(url, url, "http://example.com/update", "http://example.com/update", "Unit test - save original code initial", "/* original code */", false, "/* original code */");
+		style.init(url, url, "http://example.com/update", "http://example.com/update", "Unit test - save original code initial", "/* original code */", false, "/* original code */", null);
 		style.code = "/* new code */";
 		style.save();
 		assert("Style didn't get new code", style.code == "/* new code */");
@@ -420,7 +420,7 @@ function testSaveOriginalCodeInitial() {
 function testLineBreak() {
 	try {
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-		style.init(null, null, null, null, "Unit test - whitespace", "#test {\nbackground-image: url('data:image/png;base64,\niVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A\n/wD/oL2nkwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB9kHGBYWMPyCHp4AAAGVSURBVDjL\ntZM/S5tBHMc/jzkxSynRteASOtSOlg4ZBIlB6htw7dI4dHGza1+CFMzTsRAVFHRSsOQtJLhkESqF\nLl2a8Dw+9+R57rk7h2gS8+TRIvqb7o7vffn+uYMnGOd2Uau5Ngu0sVF17iMRo5tq9VMK4LrfH1Ry\nhySU8lF2xKgVz/cmgsattlpNXNd1UkoqlRWkDFMElcpK6qzVak62c3b2M1PuzosqACbOYXs5Snyc\nTDL/finbdBvWy5sA/Ki72cEuv32N0pBoi9KWOAGlLZG20O5joji8vx1lLImBWIPS8OF0WJyJc0Qq\nJIg8dCBoFA4obs1aczXNr29/nQEySfqX+yr6ZdxaiOKQIPTwZZd35QU8+Q9fdrk8FmNKbizE2qIS\ni1FTNwSSoOfjyy6+7AwIHEDLMZI4sSgzzMH2BLsn2+jODDoQLJbf4MkO5/UAG+bRvVw6k69fPt8J\na7TGRuEQL+hwFXYxMs/ay1XcveFjc/7nWRe35uyrksABLup5/uz/djL/TtboQHB5JNBSYCLBs8w1\nd7/MECNU588AAAAASUVORK5CYII=\n')\n}", false, "null");
+		style.init(null, null, null, null, "Unit test - whitespace", "#test {\nbackground-image: url('data:image/png;base64,\niVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A\n/wD/oL2nkwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB9kHGBYWMPyCHp4AAAGVSURBVDjL\ntZM/S5tBHMc/jzkxSynRteASOtSOlg4ZBIlB6htw7dI4dHGza1+CFMzTsRAVFHRSsOQtJLhkESqF\nLl2a8Dw+9+R57rk7h2gS8+TRIvqb7o7vffn+uYMnGOd2Uau5Ngu0sVF17iMRo5tq9VMK4LrfH1Ry\nhySU8lF2xKgVz/cmgsattlpNXNd1UkoqlRWkDFMElcpK6qzVak62c3b2M1PuzosqACbOYXs5Snyc\nTDL/finbdBvWy5sA/Ki72cEuv32N0pBoi9KWOAGlLZG20O5joji8vx1lLImBWIPS8OF0WJyJc0Qq\nJIg8dCBoFA4obs1aczXNr29/nQEySfqX+yr6ZdxaiOKQIPTwZZd35QU8+Q9fdrk8FmNKbizE2qIS\ni1FTNwSSoOfjyy6+7AwIHEDLMZI4sSgzzMH2BLsn2+jODDoQLJbf4MkO5/UAG+bRvVw6k69fPt8J\na7TGRuEQL+hwFXYxMs/ay1XcveFjc/7nWRe35uyrksABLup5/uz/djL/TtboQHB5JNBSYCLBs8w1\nd7/MECNU588AAAAASUVORK5CYII=\n')\n}", false, "null", null);
 		style.enabled = true;
 		delay(100);
 		assert("Style with line breaks worked", getButtonStyle().backgroundImage == "none");
@@ -441,7 +441,7 @@ var updateMd5NoUpdateObserver = {
 }
 function testUpdateMd5NoUpdate() {
 	var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	style.init(null, null, null, "data:text/plain,2642306a8b25001880ccb55e68456165", "testUpdateMd5NoUpdate", "* {color: blue}", false, null);
+	style.init(null, null, null, "data:text/plain,2642306a8b25001880ccb55e68456165", "testUpdateMd5NoUpdate", "* {color: blue}", false, null, null);
 	observerService.addObserver(updateMd5NoUpdateObserver, "stylish-style-update-check-done", false);
 	style.checkForUpdates(null);
 }
@@ -461,7 +461,7 @@ var updateMd5WithUpdateObserver = {
 }
 function testUpdateMd5WithUpdate() {
 	var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	style.init(null, null, null, "data:text/plain,adifferentchecksum", "testUpdateMd5WithUpdate", "* {color: blue}", false, null);
+	style.init(null, null, null, "data:text/plain,adifferentchecksum", "testUpdateMd5WithUpdate", "* {color: blue}", false, null, null);
 	observerService.addObserver(updateMd5WithUpdateObserver, "stylish-style-update-check-done", false);
 	style.checkForUpdates(null);
 }
@@ -481,7 +481,7 @@ var updateUrlNoUpdateObserver = {
 }
 function testUpdateUrlNoUpdate() {
 	var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	style.init(null, null, "data:text/css,* {color: blue}", null, "testUpdateUrlNoUpdate", "* {color: blue}", false, null);
+	style.init(null, null, "data:text/css,* {color: blue}", null, "testUpdateUrlNoUpdate", "* {color: blue}", false, null, null);
 	observerService.addObserver(updateUrlNoUpdateObserver, "stylish-style-update-check-done", false);
 	style.checkForUpdates(null);
 }
@@ -501,7 +501,7 @@ var updateUrlWithUpdateObserver = {
 }
 function testUpdateUrlWithUpdate() {
 	var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	style.init(null, null, "data:text/css,* { color: red}", null, "testUpdateUrlWithUpdate", "* {color: blue}", false, null);
+	style.init(null, null, "data:text/css,* { color: red}", null, "testUpdateUrlWithUpdate", "* {color: blue}", false, null, null);
 	observerService.addObserver(updateUrlWithUpdateObserver, "stylish-style-update-check-done", false);
 	style.checkForUpdates(null);
 }
@@ -521,7 +521,7 @@ var updateNotAvailableObserver = {
 }
 function testUpdateNotAvailable() {
 	var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	style.init(null, null, null, null, "testUpdateNotAvailable", "* {color: blue}", false, null);
+	style.init(null, null, null, null, "testUpdateNotAvailable", "* {color: blue}", false, null, null);
 	observerService.addObserver(updateNotAvailableObserver, "stylish-style-update-check-done", false);
 	style.checkForUpdates(null);
 }
@@ -543,7 +543,7 @@ var runUpdateAvailableObserver = {
 }
 function testRunUpdateAvailable() {
 	runUpdateAvailableStyle = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	runUpdateAvailableStyle.init(null, null, "data:text/css,* {color: red}", null, "Unit test testRunUpdateAvailable", "* {color: blue}", false, null);
+	runUpdateAvailableStyle.init(null, null, "data:text/css,* {color: red}", null, "Unit test testRunUpdateAvailable", "* {color: blue}", false, null, null);
 	observerService.addObserver(runUpdateAvailableObserver, "stylish-style-update-done", false);
 	runUpdateAvailableStyle.applyUpdate();
 }
@@ -567,7 +567,7 @@ var runUpdateNotAvailableObserver = {
 };
 function testRunUpdateNotAvailable() {
 	runUpdateNotAvailableStyle = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	runUpdateNotAvailableStyle.init(null, null, null, null, "Unit test testRunUpdateNotAvailable", "* {color: blue}", false, null);
+	runUpdateNotAvailableStyle.init(null, null, null, null, "Unit test testRunUpdateNotAvailable", "* {color: blue}", false, null, null);
 	observerService.addObserver(runUpdateNotAvailableObserver, "stylish-style-update-done", false);
 	runUpdateNotAvailableStyle.applyUpdate();
 }

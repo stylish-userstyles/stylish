@@ -144,7 +144,7 @@ var stylishInstallOverlay = {
 
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
-		style.init(uri, idUrl, updateURL, md5URL, description, code, false, code);
+		style.init(uri, idUrl, updateURL, md5URL, description, code, false, code, null);
 
 		var installCallback = function() {
 			stylishCommon.dispatchEvent(doc, "styleInstalled");
@@ -208,7 +208,7 @@ var stylishInstallOverlay = {
 		var uri = stylishCommon.cleanURI(doc.location.href);
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
-		style.init(uri, uri, uri, null, null, doc.body.textContent, false, doc.body.textContent);
+		style.init(uri, uri, uri, null, null, doc.body.textContent, false, doc.body.textContent, null);
 		stylishCommon.openInstall({style: style});
 	}
 

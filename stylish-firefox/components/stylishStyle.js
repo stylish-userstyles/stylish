@@ -8,6 +8,7 @@ function Style() {
 	this.md5Url = null;
 	this.appliedUrl = null;
 	this.lastSavedCode = null;
+	this.applyBackgroundUpdates = null;
 	this.mode = this.CALCULATE_META | this.REGISTER_STYLE_ON_CHANGE;
 
 	//these have getters and setters
@@ -42,7 +43,7 @@ Style.prototype = {
 		return null;
 	},
 	classDescription: "Stylish Style",
-	classID: Components.ID("{6af398eb-bc14-4001-b40b-4e830b3863b1}"),
+	classID: Components.ID("{ea17a766-cdd4-444b-8d8d-b5bb935a2a22}"),
 	contractID: "@userstyles.org/style;1",
 	implementationLanguage: Components.interfaces.nsIProgrammingLanguage.JAVASCRIPT,
 	flags: 0,
@@ -182,7 +183,7 @@ Style.prototype = {
 	/*
 		stylishStyle instance methods
 	*/
-	init: function(url, idUrl, updateUrl, md5Url, name, code, enabled, originalCode) {
+	init: function(url, idUrl, updateUrl, md5Url, name, code, enabled, originalCode, applyBackgroundUpdates) {
 		//the mode may contain a flag that indicates that this is a load rather than a new style
 		var shouldRegister;
 		if (this.mode & this.INTERNAL_LOAD_EVENT) {
@@ -191,7 +192,7 @@ Style.prototype = {
 		} else {
 			shouldRegister = this.shouldRegisterOnChange()
 		}
-		this.initInternal(url, idUrl, updateUrl, md5Url, name, code, enabled, originalCode, shouldRegister);
+		this.initInternal(url, idUrl, updateUrl, md5Url, name, code, enabled, originalCode, shouldRegister, applyBackgroundUpdates);
 	},
 
 	get name() {
@@ -271,9 +272,9 @@ Style.prototype = {
 			that.bind(statement, name, value);
 		}
 		if (this.id == 0) {
-			statement = connection.createStatement("INSERT INTO styles (`url`, `idUrl`, `updateUrl`, `md5Url`, `name`, `code`, `enabled`, `originalCode`) VALUES (:url, :idUrl, :updateUrl, :md5Url, :name, :code, :enabled, :originalCode);");
+			statement = connection.createStatement("INSERT INTO styles (`url`, `idUrl`, `updateUrl`, `md5Url`, `name`, `code`, `enabled`, `originalCode`, `applyBackgroundUpdates`) VALUES (:url, :idUrl, :updateUrl, :md5Url, :name, :code, :enabled, :originalCode, :applyBackgroundUpdates);");
 		} else {
-			statement = connection.createStatement("UPDATE styles SET `url` = :url, `idUrl` = :idUrl, `updateUrl` = :updateUrl, `md5Url` = :md5Url, `name` = :name, `code` = :code, `enabled` = :enabled, `originalCode` = :originalCode WHERE `id` = :id;");
+			statement = connection.createStatement("UPDATE styles SET `url` = :url, `idUrl` = :idUrl, `updateUrl` = :updateUrl, `md5Url` = :md5Url, `name` = :name, `code` = :code, `enabled` = :enabled, `originalCode` = :originalCode, `applyBackgroundUpdates` = :applyBackgroundUpdates WHERE `id` = :id;");
 			b("id", this.id);
 		}
 
@@ -303,6 +304,7 @@ Style.prototype = {
 		b("name", this.name);
 		b("code", this.code);
 		b("enabled", this.enabled);
+		b("applyBackgroundUpdates", this.applyBackgroundUpdates);
 
 		try {
 			statement.execute();
@@ -758,7 +760,7 @@ Style.prototype = {
 					style.mode = mode;
 				// since we can't call initInternal because we're not "inside" the new style, we'll pass a secret flag in the mode
 				style.mode += this.INTERNAL_LOAD_EVENT
-				style.init(e("url"), e("idUrl"), e("updateUrl"), e("md5Url"), e("name"), e("code"), e("enabled"), e("originalCode"));
+				style.init(e("url"), e("idUrl"), e("updateUrl"), e("md5Url"), e("name"), e("code"), e("enabled"), e("originalCode"), e("applyBackgroundUpdates"));
 				style.id = e("id");
 				styles.push(style);
 				styleMap[style.id] = style;
@@ -826,7 +828,7 @@ Style.prototype = {
 		this.calculateInternalMeta();
 	},
 
-	initInternal: function(url, idUrl, updateUrl, md5Url, name, code, enabled, originalCode, shouldRegister) {
+	initInternal: function(url, idUrl, updateUrl, md5Url, name, code, enabled, originalCode, shouldRegister, applyBackgroundUpdates) {
 		this.url = url;
 		this.idUrl = idUrl;
 		this.updateUrl = updateUrl;
@@ -841,6 +843,14 @@ Style.prototype = {
 		if (this.shouldUnregisterOnLoad()) {
 			this.unregister();
 		};
+		// this is a string so that we can pass in null - null becomes 1 (AddonManager.AUTOUPDATE_DEFAULT)
+		var abu = 1;
+		if (applyBackgroundUpdates != null) {
+			try {
+			 abu = parseInt(applyBackgroundUpdates);
+			} catch (ex) {}
+		}
+		this.applyBackgroundUpdates = abu;
 	},
 
 	get urlRules() {

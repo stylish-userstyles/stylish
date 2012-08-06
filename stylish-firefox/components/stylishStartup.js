@@ -138,7 +138,6 @@ function getUserStyleWrapper(style) {
 		pendingOperations: AddonManager.PENDING_NONE,
 		providesUpdatesSecurely: style.updateUrl == null || style.updateUrl == "",
 		version: "",
-		applyBackgroundUpdates: AddonManager.AUTOUPDATE_DISABLE,
 		operationsRequiringRestart: AddonManager.OP_NEEDS_RESTART_NONE,
 		styleTypes: style.getTypes({}).sort().join(","),
 
@@ -216,6 +215,15 @@ function getUserStyleWrapper(style) {
 
 		isCompatibleWith: function(appVersion, platformVersion) {
 			return true;
+		},
+
+		get applyBackgroundUpdates() {
+			return parseInt(style.applyBackgroundUpdates);
+		},
+
+		set applyBackgroundUpdates(abu) {
+			style.applyBackgroundUpdates = abu;
+			style.save();
 		}
 	};
 }
@@ -235,21 +243,36 @@ function getUserStyleObserver(addonItem, listener) {
 								state: AddonManager.STATE_AVAILABLE,
 								addon: addonItem,
 								existingAddon: addonItem,
+								listeners: [],
 								install: function() {
+									this.listeners.forEach(function(l) {
+										if ("onInstallStarted" in l) {
+											l.onInstallStarted(this, this.addon);
+										}
+									}, this);
 									var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
 									service.find(this.existingAddon.id, service.CALCULATE_META | service.REGISTER_STYLE_ON_CHANGE).applyUpdate();
 									pendingUpdates = pendingUpdates.filter(function(item) {
 										return item.addon.id != this.addon.id;
+									}, this);
+									this.listeners.forEach(function(l) {
+										if ("onInstallEnded" in l) {
+											l.onInstallEnded(this, this.addon);
+										}
 									}, this);
 								},
 								cancel: function() {
 									throw "Cancelling updates not implemented.";
 								},
 								addListener: function(listener) {
-									throw "addListener not implemented.";
+									if (this.listeners.indexOf(listener) == -1) {
+										this.listeners.push(listener);
+									}
 								},
 								removeListener: function(listener) {
-									throw "removeListener not implemented.";
+									this.listeners = this.listeners.filter(function(l) {
+										return l != listener;
+									});
 								}
 							}
 							if (!pendingUpdates.some(function(item) {
@@ -302,7 +325,6 @@ var observerService = Components.classes["@mozilla.org/observer-service;1"].getS
 observerService.addObserver(addonsObserver, "stylish-style-add", false);
 observerService.addObserver(addonsObserver, "stylish-style-change", false);
 observerService.addObserver(addonsObserver, "stylish-style-delete", false);
-
 
 Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).QueryInterface(Components.interfaces.nsIPrefBranch2).addObserver("extensions.stylish.styleRegistrationEnabled", turnOnOffObserver, false);
 
