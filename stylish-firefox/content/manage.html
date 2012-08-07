@@ -32,6 +32,9 @@
 		.style-disabled .disable-style {
 			display: none;
 		}
+		.style-disabled .style-name {
+			color: gray;
+		}
 	</style>
 </head>
 <body>
@@ -43,6 +46,8 @@
 </table>
 
 <script>
+	// None of the actions we can perform from this page will directly change the UI. Instead, we will listen to the observer service so we can change ourselves not only from actions from this page, but actions from anywhere.
+
 	function escapeHtml(s) {
 		return s
 			.replace(/&/g, "&amp;")
@@ -60,33 +65,42 @@
 		return document.getElementById("style-" + id);
 	}
 
-	function refreshUI(id) {
+	function getNodeForStyle(id) {
 		var frag = document.createDocumentFragment();
 		frag.appendChild(document.createElement("tbody"));
 		frag.firstChild.innerHTML = getCode(get(id));
+		return frag.firstChild.firstChild;
+	}
+
+	function refreshUI(id) {
 		var oldUi = getUI(id);
-		oldUi.parentNode.replaceChild(frag.firstChild.firstChild, oldUi);
+		oldUi.parentNode.replaceChild(getNodeForStyle(id), oldUi);
 	}
 
 	function enable(id) {
 		var style = get(id);
 		style.enabled = true;
 		style.save();
-		refreshUI(id);
 	}
 
 	function disable(id) {
 		var style = get(id);
 		style.enabled = false;
 		style.save();
-		refreshUI(id);
 	}
 
 	function remove(id) {
 		var style = get(id);
 		style.delete();
+	}
+
+	function removeUI(id) {
 		var e = getUI(id);
 		e.parentNode.removeChild(e);
+	}
+
+	function addUI(id) {
+		document.getElementById("styles").appendChild(getNodeForStyle(id));
 	}
 
 	function getCode(style) {
@@ -102,6 +116,29 @@
 	var styles = service.list(0, {});
 	var html = styles.map(getCode).join("\n");
 	document.getElementById("styles").innerHTML = html;
+
+	var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
+
+	var deleteObserver = {
+		observe: function(subject, topic, data) {
+			removeUI(subject.id);
+		}
+	};
+	observerService.addObserver(deleteObserver, "stylish-style-delete", false);
+
+	var addObserver = {
+		observe: function(subject, topic, data) {
+			addUI(subject.id);
+		}
+	};
+	observerService.addObserver(addObserver, "stylish-style-add", false);
+
+	var updateObserver = {
+		observe: function(subject, topic, data) {
+			refreshUI(subject.id);
+		}
+	};
+	observerService.addObserver(updateObserver, "stylish-style-change", false);
 
 </script>
 
