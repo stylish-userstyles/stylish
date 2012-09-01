@@ -1,0 +1,12 @@
+<!ENTITY addfile "Asenna tiedosto...">
+<!ENTITY addfile.ak "A">
+<!ENTITY findstylebrowser "Etsi tyylejä tälle sivustolle...">
+<!ENTITY findstylebrowser.ak "E">
+<!ENTITY managestyles "Hallitse tyylejä...">
+<!ENTITY managestyles.ak "H">
+<!ENTITY turnon "Ota kaikki tyylit käyttöön">
+<!ENTITY turnon.ak "O">
+<!ENTITY turnoff "Ota kaikki tyylit pois käytöstä">
+<!ENTITY turnoff.ak "O">
+<!ENTITY writestyle "Kirjoita tyyli">
+<!ENTITY writestyle.ak "K">

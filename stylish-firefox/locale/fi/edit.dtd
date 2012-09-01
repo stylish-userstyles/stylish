@@ -1,0 +1,24 @@
+<!ENTITY chromefolder "Asetuskansion polku">
+<!ENTITY chromefolder.ak "A">
+<!ENTITY dataURI "Data URI...">
+<!ENTITY dataURI.ak "D">
+<!ENTITY htmlnamespace "HTML-nimiavaruus">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "Lisää">
+<!ENTITY insert.ak "L">
+<!ENTITY name "Nimi">
+<!ENTITY name.ak "N">
+<!ENTITY openintexternaleditor "Avaa ulkoisessa muokkausohjelmassa">
+<!ENTITY openintexternaleditor.ak "v">
+<!ENTITY preview "Esikatsele">
+<!ENTITY preview.ak "E">
+<!ENTITY save "Tallenna">
+<!ENTITY save.ak "T">
+<!ENTITY switchtoinstall "Muuta asennukseen">
+<!ENTITY switchtoinstall.ak "u">
+<!ENTITY tags "Tunnukset">
+<!ENTITY tags.ak "u">
+<!ENTITY wraplines "Mahduta rivit">
+<!ENTITY wraplines.ak "M">
+<!ENTITY xulnamespace "XUL-nimiavaruus">
+<!ENTITY xulnamespace.ak "X">

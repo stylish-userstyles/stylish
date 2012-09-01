@@ -1,0 +1,160 @@
+<!ENTITY addons.title "Lisäosat">
+<!-- Default window size for the addon manager in pixels -->
+<!ENTITY em.width "520">
+<!ENTITY em.height "380">
+<!ENTITY cmd.info.commandKey "i">
+<!ENTITY cmd.options.commandKey ",">
+<!ENTITY cmd.close.commandKey "w">
+<!-- View labels -->
+<!ENTITY search.label "Hae lisäosia">
+<!ENTITY extensions.label "Laajennukset">
+<!ENTITY themes.label "Teemat">
+<!ENTITY locales.label "Kielet">
+<!ENTITY plugins.label "Liitännäiset">
+<!ENTITY update.label "Päivitykset">
+<!ENTITY install.label "Asentaminen">
+<!-- Command Bar items -->
+<!ENTITY cmd.checkUpdatesAll.label "Etsi päivityksiä">
+<!ENTITY cmd.checkUpdatesAll.accesskey "E">
+<!ENTITY cmd.checkUpdatesAllAddon.tooltip "Etsi päivityksiä lisäosiin">
+<!ENTITY cmd.checkUpdatesAllTheme.tooltip "Etsi päivityksiä teemoihin">
+<!ENTITY cmd.checkUpdatesAllPlugin.tooltip "Etsi päivityksiä liitännäisiin">
+<!ENTITY cmd.installLocalFile.label "Asenna...">
+<!ENTITY cmd.installLocalFile.accesskey "s">
+<!ENTITY cmd.installFileAddon.tooltip "Asenna lisäosa">
+<!ENTITY cmd.installFileTheme.tooltip "Asenna teema">
+<!ENTITY cmd.installUpdatesAll2.label "Asenna päivitykset">
+<!ENTITY cmd.installUpdatesAll2.accesskey "A">
+<!ENTITY cmd.installUpdatesAll2.tooltip "Asenna valitut päivitykset">
+<!ENTITY cmd.restartApp2.label "Käynnistä &brandShortName; uudelleen">
+<!ENTITY cmd.restartApp2.accesskey "K">
+<!ENTITY cmd.restartApp2.tooltip "Käynnistä &brandShortName; uudelleen, jotta muutokset tulevat voimaan">
+<!ENTITY cmd.skip.label "Ohita">
+<!ENTITY cmd.skip.accesskey "O">
+<!ENTITY cmd.skip.tooltip "Ohita nämä päivitykset">
+<!ENTITY cmd.continue.label "Jatka">
+<!ENTITY cmd.continue.accesskey "J">
+<!ENTITY cmd.continue.tooltip "Jatka ohjelman &brandShortName; lataamista">
+<!ENTITY cmd.enableAll.label "Ota kaikki käyttöön">
+<!ENTITY cmd.enableAll.accesskey "k">
+<!ENTITY cmd.enableAll.tooltip "Ota kaikki esillä olevat laajennukset käyttöön">
+<!ENTITY cmd.disableAll.label "Poista kaikki käytöstä">
+<!ENTITY cmd.disableAll.accesskey "s">
+<!ENTITY cmd.disableAll.tooltip "Poista kaikki esillä olevat laajennukset käytöstä">
+<!-- Displayed in the selected Add-on\'s richlistitem and context menu -->
+<!ENTITY cmd.useTheme.label "Käytä teemaa">
+<!ENTITY cmd.useTheme.accesskey "t">
+<!ENTITY cmd.useTheme.tooltip "Muuta sovelluksen &brandShortName; teeman">
+<!ENTITY cmd.options.label "Valinnat">
+<!ENTITY cmd.options.accesskey "v">
+<!ENTITY cmd.options.tooltip "Aseta valinnat kuten valitulla lisäosalla">
+<!ENTITY cmd.optionsUnix.label "Asetukset">
+<!ENTITY cmd.optionsUnix.accesskey "A">
+<!ENTITY cmd.optionsUnix.tooltip "Muokkaa valitun laajennuksen asetuksia">
+<!ENTITY cmd.enable.label "Ota käyttöön">
+<!ENTITY cmd.enable.accesskey "O">
+<!ENTITY cmd.enable.tooltip "Käynnistettäessä &brandShortName; uudelleen tämä lisäosa otetaan käyttöön">
+<!ENTITY cmd.disable.label "Poista käytöstä">
+<!ENTITY cmd.disable.accesskey "P">
+<!ENTITY cmd.disable.tooltip "Käynnistettäessä &brandShortName; uudelleen tämä lisäosa poistetaan käytöstä">
+<!ENTITY cmd.uninstall.label "Poista">
+<!ENTITY cmd.uninstall2.accesskey "o">
+<!ENTITY cmd.uninstall2.tooltip "Käynnistettäessä &brandShortName; uudelleen tämä lisäosa poistetaan">
+<!ENTITY cmd.cancelUninstall.label "Peruuta poistaminen">
+<!ENTITY cmd.cancelUninstall.accesskey "P">
+<!ENTITY cmd.cancelUninstall.tooltip "Peruuttaa tämän lisäosan poistamisen">
+<!ENTITY cmd.cancelInstall.label "Peruuta asennus">
+<!ENTITY cmd.cancelInstall.accesskey "P">
+<!ENTITY cmd.cancelInstall.tooltip "Peruuttaa tämän lisäosan asentamisen">
+<!ENTITY cmd.cancelUpgrade.label "Peruuta päivitys">
+<!ENTITY cmd.cancelUpgrade.accesskey "P">
+<!ENTITY cmd.cancelUpgrade.tooltip "Peruuttaa tämän lisäosan päivittämisen">
+<!ENTITY cmd.installUpdate.label "Asenna päivitys">
+<!ENTITY cmd.installUpdate.accesskey "A">
+<!ENTITY cmd.installUpdate.tooltip "Asentaa tämän lisäosan päivityksen">
+<!ENTITY cmd.showUpdateInfo.label "Näytä tiedot">
+<!ENTITY cmd.showUpdateInfo.accesskey "N">
+<!ENTITY cmd.showUpdateInfo.tooltip "Näytä lisää tietoja näistä päivityksistä">
+<!ENTITY cmd.hideUpdateInfo.label "Piilota tiedot">
+<!ENTITY cmd.hideUpdateInfo.accesskey "i">
+<!ENTITY cmd.hideUpdateInfo.tooltip "Piilottaa tiedot näistä päivityksistä">
+<!ENTITY cmd.installSearchResult.label "Lisää ohjelmaan &brandShortName;…">
+<!ENTITY cmd.installSearchResult.accesskey "L">
+<!ENTITY cmd.installSearchResult.tooltip "Lataa ja asenna tämä lisäosa">
+<!-- The selected add-on\'s cancel action button label -->
+<!ENTITY cancel.label "Peruuta">
+<!ENTITY cancel.accesskey "P">
+<!ENTITY cancelInstall.label "Peruuta">
+<!ENTITY cancelInstall.accesskey "P">
+<!ENTITY cancelUpgrade.label "Peruuta">
+<!ENTITY cancelUpgrade.accesskey "P">
+<!-- Only displayed in the selected Add-on\'s context menu -->
+<!ENTITY cmd.homepage.label "Vieraile kotisivulla">
+<!ENTITY cmd.homepage.accesskey "V">
+<!ENTITY cmd.about2.label "Tietoja tästä laajennuksesta">
+<!ENTITY cmd.about.accesskey "T">
+<!ENTITY cmd.checkUpdate.label "Etsi päivityksiä">
+<!ENTITY cmd.checkUpdate.accesskey "E">
+<!ENTITY cmd.includeUpdate.label "Sisällytä päivitykseen">
+<!ENTITY cmd.includeUpdate.accesskey "i">
+<!ENTITY includeUpdate.label "Sisällytä tähän päivitykseen">
+<!ENTITY includeUpdate.accesskey "i">
+<!ENTITY includeUpdate.tooltip "Sisällytä tämä lisäosa asennettaessa päivityksiä">
+<!-- Status Messsages -->
+<!ENTITY insecureUpdate.label "Ei tarjoa turvallista asentamista.">
+<!ENTITY needsDependencies.label "Vaatii lisää tietoa.">
+<!ENTITY blocklisted.label "Poista suojaus käytöstä.">
+<!ENTITY softBlocklisted.label "Tiedetään aiheuttavan turvallisuus- tai vakausongelmia.">
+<!ENTITY outdated.label "Uudempi, turvallisempi vaihtoehto on ladattavissa.">
+<!ENTITY toBeDisabled.label "Käynnistettäessä &brandShortName; uudelleen tämä lisäosa poistetaan käytöstä.">
+<!ENTITY toBeEnabled.label "Käynnistettäessä &brandShortName; uudelleen tämä lisäosa otetaan käyttöön.">
+<!ENTITY toBeInstalled.label "Käynnistettäessä &brandShortName; uudelleen tämä lisäosa asennetaan.">
+<!ENTITY toBeUninstalled.label "Käynnistettäessä &brandShortName; uudelleen tämä lisäosa poistetaan.">
+<!ENTITY toBeUpdated.label "Käynnistettäessä &brandShortName; uudelleen tämä lisäosa päivitetään.">
+<!ENTITY getExtensions.label "Hae lisäosia">
+<!ENTITY getThemes.label "Hae teemoja">
+<!ENTITY getPlugins.label "Hae liitännäisiä">
+<!ENTITY searchAddons.label "Etsi kaikista lisäosista">
+<!ENTITY browseAddons.label "Selaa kaikki lisäosia">
+<!ENTITY searchFailed.label "&brandShortName; ei voinut noutaa lisäosia">
+<!ENTITY recommendedHeader.label "Suositeltu">
+<!ENTITY recommendedThrobber.label "Noudetaan suositeltuja lisäosia">
+<!ENTITY searchThrobber.label "Etsi lisäosia">
+<!ENTITY resetSearch.label "Tyhjennä hakutulokset">
+<!ENTITY noSearchResults.label "Kaikki haun tulokset on jo asennettu tai ovat yhteensopimattomia.">
+<!ENTITY noRecommendedResults.label "Kaikki suositukseton jo asennettu tai ovat yhteensopimattomia.">
+<!ENTITY emptySearch.label "Ei hakua vastaavia lisäosia">
+<!ENTITY emptySearch.button "OK">
+<!ENTITY cancelSearch.button "Peruuta">
+<!ENTITY searchFailed.button "OK">
+<!ENTITY searchResultHomepage.value "Hanki lisätietoa">
+<!ENTITY searchBox.label "Etsi kaikista lisäosista">
+<!ENTITY recommendedResults.label "Näytä kaikki suositellut lisäosat">
+<!ENTITY searchResultConnecting.label "Yhdistetään…">
+<!ENTITY searchResultInstalling.label "Asennetaan…">
+<!ENTITY searchResultFailed.label "Asennus epäonnistui">
+<!ENTITY searchResultInstalled.label "Asennus valmis">
+<!ENTITY addonTypeExtension.label "Laajennus">
+<!ENTITY addonTypeTheme.label "Teema">
+<!ENTITY missingThumbnail.label "Ei esikatselua">
+<!ENTITY previewNoThemeSelected.label "Yhtään teemaa ei valittuna">
+<!ENTITY previewNoPreviewImage.label "Tällä teemalla ei ole esikatselukuvaa">
+<!ENTITY moreInfo.label "Lisätietoa">
+<!ENTITY infoNoAddonSelected.label "Yhtään päivitystä ei valittuna">
+<!ENTITY infoNoUpdateInfo.label "Tästä päivityksestä ei ole lisätietoa">
+<!ENTITY infoUpdateInfoError.label "Tämän laajennuksen päivityksen tietojen lataamisessa tapahtui virhe">
+<!ENTITY updateSuccess.label "Päivitys onnistui.">
+<!ENTITY installSuccess.label "Asennus onnistui.">
+<!ENTITY installSuccessRestart.label "Käynnistä uudelleen viimeistelläksesi asennuksen.">
+<!ENTITY updateSuccessRestart.label "Käynnistä uudelleen viimeistelläksesi päivityksen.">
+<!ENTITY installWaiting.label "Odottaa…">
+<!ENTITY installIncompatibleUpdate.label "Tarkistetaan yhteensopivuutta…">
+<!ENTITY installFinishing.label "Asennetaan…">
+<!ENTITY installFailure.label "Asennus epäonnistui.">
+<!ENTITY progressStatus.label "Etsitään päivityksiä">
+<!ENTITY eula.title "End-User License Agreement">
+<!ENTITY eula.width "560px">
+<!ENTITY eula.height "400px">
+<!ENTITY eula.accept "Hyväksy ja asenna…">
+<!ENTITY blocklist.blocked.label "Estetty">
+<!ENTITY blocklist.checkbox.label "Poista käytöstä">
