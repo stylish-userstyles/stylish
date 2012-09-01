@@ -1,19 +1,19 @@
 <!ENTITY addons.title "Tillägg">
-<!--n   - The contents of this file are subject to the Mozilla Publicn   - License Version 1.1 (the "License"); you may not use this filen   - except in compliance with the License. You may obtain a copy ofn   - the License at http://www.mozilla.org/MPL/n   - n   - Software distributed under the License is distributed on an "ASn   - IS" basis, WITHOUT WARRANTY OF ANY KIND, either express orn   - implied. See the License for the specific language governingn   - rights and limitations under the License.n   - n   - Alternatively, the contents of this file may be used under the terms ofn   - either the GNU General Public License Version 2 or later (the "GPL"), orn   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),n   - in which case the provisions of the GPL or the LGPL are applicable insteadn   - of those above. If you wish to allow use of your version of this file onlyn   - under the terms of either the GPL or the LGPL, and not to allow others ton   - use your version of this file under the terms of the MPL, indicate yourn   - decision by deleting the provisions above and replace them with the noticen   - and other provisions required by the LGPL or the GPL. If you do not deleten   - the provisions above, a recipient may use your version of this file undern   - the terms of any one of the MPL, the GPL or the LGPL.n   - n   - The Original Code is the Mozilla Swedish translation for Mozilla Firefox.n   - n   - The Initial Developer of the Original Code is Hasse Wallanger.n   - n   - Contributor(s):n   - Hasse Wallanger <jasajudeju@telia.com>n  nn-->
+<!-- Default window size for the addon manager in pixels -->
 <!ENTITY em.width "520">
 <!ENTITY em.height "380">
 <!ENTITY cmd.info.commandKey "i">
 <!ENTITY cmd.options.commandKey ",">
 <!ENTITY cmd.close.commandKey "w">
-<!-- Default window size for the addon manager in pixels -->
+<!-- View labels -->
 <!ENTITY search.label "Hämta tillägg">
 <!ENTITY extensions.label "Tillägg">
 <!ENTITY themes.label "Teman">
 <!ENTITY locales.label "Språk">
 <!ENTITY plugins.label "Insticksmoduler">
 <!ENTITY update.label "Uppdateringar">
-<!ENTITY install.label "Installation">
-<!-- View labels -->
+<!ENTITY install.label "Installering">
+<!-- Command Bar items -->
 <!ENTITY cmd.checkUpdatesAll.label "Sök efter uppdateringar">
 <!ENTITY cmd.checkUpdatesAll.accesskey "S">
 <!ENTITY cmd.checkUpdatesAllAddon.tooltip "Söker efter uppdateringar till dina tillägg">
@@ -34,17 +34,17 @@
 <!ENTITY cmd.skip.tooltip "Hoppa över dessa uppdateringar">
 <!ENTITY cmd.continue.label "Fortsätt">
 <!ENTITY cmd.continue.accesskey "F">
-<!ENTITY cmd.continue.tooltip "Fortsätt programstarten av &brandShortName;">
+<!ENTITY cmd.continue.tooltip "Fortsätt starten av &brandShortName;">
 <!ENTITY cmd.enableAll.label "Aktivera alla">
 <!ENTITY cmd.enableAll.accesskey "A">
 <!ENTITY cmd.enableAll.tooltip "Aktiverar alla visade tillägg">
 <!ENTITY cmd.disableAll.label "Inaktivera alla">
 <!ENTITY cmd.disableAll.accesskey "v">
 <!ENTITY cmd.disableAll.tooltip "Inaktiverar alla visade tillägg">
-<!-- Command Bar items -->
+<!-- Displayed in the selected Add-on's richlistitem and context menu -->
 <!ENTITY cmd.useTheme.label "Använd tema">
 <!ENTITY cmd.useTheme.accesskey "t">
-<!ENTITY cmd.useTheme.tooltip "Byter temat för &brandShortName;">
+<!ENTITY cmd.useTheme.tooltip "Ändrar temat för &brandShortName;">
 <!ENTITY cmd.options.label "Inställningar">
 <!ENTITY cmd.options.accesskey "ä">
 <!ENTITY cmd.options.tooltip "Redigera inställningarna för det markerade tillägget">
@@ -65,10 +65,10 @@
 <!ENTITY cmd.cancelUninstall.tooltip "Avbryter avinstallationen av det här tillägget">
 <!ENTITY cmd.cancelInstall.label "Avbryt installationen">
 <!ENTITY cmd.cancelInstall.accesskey "b">
-<!ENTITY cmd.cancelInstall.tooltip "Avbryter installationen av det här tillägget">
+<!ENTITY cmd.cancelInstall.tooltip "Avbryt installationen av det här tillägget">
 <!ENTITY cmd.cancelUpgrade.label "Avbryt uppdateringen">
 <!ENTITY cmd.cancelUpgrade.accesskey "b">
-<!ENTITY cmd.cancelUpgrade.tooltip "Avbryter uppdateringen av det här tillägget">
+<!ENTITY cmd.cancelUpgrade.tooltip "Avbryt uppdateringen av det här tillägget">
 <!ENTITY cmd.installUpdate.label "Installera uppdateringen">
 <!ENTITY cmd.installUpdate.accesskey "u">
 <!ENTITY cmd.installUpdate.tooltip "Installerar en uppdatering för det här tillägget">
@@ -81,14 +81,14 @@
 <!ENTITY cmd.installSearchResult.label "Lägg till i &brandShortName;…">
 <!ENTITY cmd.installSearchResult.accesskey "L">
 <!ENTITY cmd.installSearchResult.tooltip "Hämta och installera detta tillägg">
-<!-- Displayed in the selected Add-on's richlistitem and context menu -->
+<!-- The selected add-on's cancel action button label -->
 <!ENTITY cancel.label "Avbryt">
 <!ENTITY cancel.accesskey "b">
 <!ENTITY cancelInstall.label "Avbryt">
 <!ENTITY cancelInstall.accesskey "b">
 <!ENTITY cancelUpgrade.label "Avbryt">
 <!ENTITY cancelUpgrade.accesskey "b">
-<!-- The selected add-on's cancel action button label -->
+<!-- Only displayed in the selected Add-on's context menu -->
 <!ENTITY cmd.homepage.label "Besök webbplats">
 <!ENTITY cmd.homepage.accesskey "w">
 <!ENTITY cmd.about2.label "Om det här tillägget">
@@ -100,11 +100,11 @@
 <!ENTITY includeUpdate.label "Inkludera den här uppdateringen">
 <!ENTITY includeUpdate.accesskey "n">
 <!ENTITY includeUpdate.tooltip "Inkluderar det här tillägget vid installation av uppdateringar">
-<!-- Only displayed in the selected Add-on's context menu -->
+<!-- Status Messsages -->
 <!ENTITY insecureUpdate.label "Tillhandahåller inga säkra uppdateringar.">
 <!ENTITY needsDependencies.label "Kräver ytterligare poster.">
-<!ENTITY blocklisted.label "Inaktiverat av säkerhetsskäl.">
-<!ENTITY softBlocklisted.label "Känt för att orsaka säkerhets- eller stabilitetsproblem.">
+<!ENTITY blocklisted.label "Inaktiverad av säkerhetsskäl.">
+<!ENTITY softBlocklisted.label "Känd för att orsaka säkerhets- eller stabilitetsproblem.">
 <!ENTITY outdated.label "En ny och bättre version finns tillgänglig.">
 <!ENTITY toBeDisabled.label "Detta tillägg kommer att inaktiveras när &brandShortName; startas om.">
 <!ENTITY toBeEnabled.label "Detta tillägg kommer att aktiveras när &brandShortName; startas om.">
@@ -121,8 +121,8 @@
 <!ENTITY recommendedThrobber.label "Hämtar rekommenderade tillägg">
 <!ENTITY searchThrobber.label "Söker bland tillägg">
 <!ENTITY resetSearch.label "Rensa resultat">
-<!ENTITY noSearchResults.label "Alla sökbara tillägg är antingen redan installerade eller är inkompatibla.">
-<!ENTITY noRecommendedResults.label "Alla rekommenderade tillägg är antingen redan installerade eller är inkompatibla.">
+<!ENTITY noSearchResults.label "Alla resultat finns redan installerade eller är inkompatibla.">
+<!ENTITY noRecommendedResults.label "Alla rekommendationer finns redan installerade eller är inkompatibla.">
 <!ENTITY emptySearch.label "Inga matchande tillägg">
 <!ENTITY emptySearch.button "OK">
 <!ENTITY cancelSearch.button "Avbryt">
@@ -132,19 +132,19 @@
 <!ENTITY recommendedResults.label "Se alla rekommenderade tillägg">
 <!ENTITY searchResultConnecting.label "Ansluter…">
 <!ENTITY searchResultInstalling.label "Installerar…">
-<!ENTITY searchResultFailed.label "Installationen misslyckades">
-<!ENTITY searchResultInstalled.label "Installationen har slutförts">
+<!ENTITY searchResultFailed.label "Installation misslyckades">
+<!ENTITY searchResultInstalled.label "Installation slutförd">
 <!ENTITY addonTypeExtension.label "Tillägg">
 <!ENTITY addonTypeTheme.label "Tema">
 <!ENTITY missingThumbnail.label "Ingen förhandsgranskning">
-<!ENTITY previewNoThemeSelected.label "Inget tema har valts">
-<!ENTITY previewNoPreviewImage.label "Det här temat har ingen förhandsgranskningsbild">
+<!ENTITY previewNoThemeSelected.label "Inget tema är valt">
+<!ENTITY previewNoPreviewImage.label "Det här temat har ingen förhandsbild">
 <!ENTITY moreInfo.label "Mer information">
-<!ENTITY infoNoAddonSelected.label "Ingen uppdatering har valts">
+<!ENTITY infoNoAddonSelected.label "Ingen uppdatering vald">
 <!ENTITY infoNoUpdateInfo.label "Det finns ingen ytterligare information om den här uppdateringen">
-<!ENTITY infoUpdateInfoError.label "Ett fel uppstod vid hämtningen av information om den här uppdateringen">
-<!ENTITY updateSuccess.label "Uppdateringen har slutförts.">
-<!ENTITY installSuccess.label "Installationen har slutförts.">
+<!ENTITY infoUpdateInfoError.label "Ett fel uppstod vid hämtning av information om den här uppdateringen">
+<!ENTITY updateSuccess.label "Uppdateringen är slutförd.">
+<!ENTITY installSuccess.label "Installationen är slutförd.">
 <!ENTITY installSuccessRestart.label "Starta om för att slutföra installationen.">
 <!ENTITY updateSuccessRestart.label "Starta om för att slutföra uppdateringen.">
 <!ENTITY installWaiting.label "Väntar…">
@@ -156,5 +156,5 @@
 <!ENTITY eula.width "560px">
 <!ENTITY eula.height "400px">
 <!ENTITY eula.accept "Acceptera och installera…">
-<!ENTITY blocklist.blocked.label "Blockerat">
-<!ENTITY blocklist.checkbox.label "Inaktiverat">
+<!ENTITY blocklist.blocked.label "Blockerad">
+<!ENTITY blocklist.checkbox.label "Inaktiverad">

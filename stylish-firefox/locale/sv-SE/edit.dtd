@@ -1,13 +1,13 @@
 <!ENTITY chromefolder "Chrome-mappens sökväg">
 <!ENTITY chromefolder.ak "C">
-<!ENTITY dataURI "Data-URI…">
+<!ENTITY dataURI "Data URI…">
 <!ENTITY dataURI.ak "D">
 <!ENTITY htmlnamespace "HTML-namnrymd som standard">
 <!ENTITY htmlnamespace.ak "H">
 <!ENTITY insert "Infoga">
 <!ENTITY insert.ak "I">
 <!ENTITY name "Namn">
-<!ENTITY name.ak "N">
+<!ENTITY name.ak "n">
 <!ENTITY openintexternaleditor "Öppna i extern redigerare">
 <!ENTITY openintexternaleditor.ak "Ö">
 <!ENTITY preview "Förhandsgranska">
@@ -16,9 +16,9 @@
 <!ENTITY save.ak "S">
 <!ENTITY switchtoinstall "Växla till Installation">
 <!ENTITY switchtoinstall.ak "I">
-<!ENTITY tags "Etiketter">
+<!ENTITY tags "Taggar">
 <!ENTITY tags.ak "T">
-<!ENTITY wraplines "Radbryt rader">
+<!ENTITY wraplines "Radbrytning">
 <!ENTITY wraplines.ak "R">
 <!ENTITY xulnamespace "XUL-namnrymd som standard">
 <!ENTITY xulnamespace.ak "X">

@@ -1,8 +1,8 @@
-<!ENTITY entername "Ge detta skal ett namn:">
+<!ENTITY entername "Ge denna style ett namn:">
 <!ENTITY install "Installera">
 <!ENTITY install.ak "I">
 <!ENTITY preview "Förhandsgranska">
 <!ENTITY preview.ak "F">
 <!ENTITY switchtoedit "Växla till Redigering">
 <!ENTITY switchtoedit.ak "R">
-<!ENTITY title "Installera användarskal">
+<!ENTITY title "Installera style">
