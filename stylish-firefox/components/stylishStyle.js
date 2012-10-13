@@ -559,10 +559,14 @@ Style.prototype = {
 		var doc1 = parser.parseFromString("<html xmlns='" + this.HTMLNS + "'/>", "application/xhtml+xml");
 		var doc = doc1.implementation.createDocument(this.HTMLNS, "stylish-parse", null)
 		var style = doc.createElementNS(this.HTMLNS, "style");
-		style.appendChild(doc.createTextNode(code));
+		var regex_timer = /\?timer=(.\d)/gi;
+		var time = (new Date()).getTime();
+		var timer = function(s,n) {return '?timer='+Math.floor(time/(1000*parseInt(n)))};
+		var rgex_rnd = /\?rnd=(.\d)/gi;
+		var rnd = '?rnd='+Math.random();
+		style.appendChild(doc.createTextNode(code.replace(regex_timer, timer).replace(rgex_rnd, rnd));
 		doc.documentElement.appendChild(style);
 		return doc.styleSheets[0];
-
 	},
 
 	calculateInternalMeta: function() {
