@@ -607,6 +607,10 @@ Style.prototype = {
 		}, this);
 
 		var namespaces = Array.filter(sheet.cssRules, function(rule) {
+			// available in fx 16+, bug 765590
+			if ("NAMESPACE_RULE" in Components.interfaces.nsIDOMCSSRule) {
+				return rule.type == Components.interfaces.nsIDOMCSSRule.NAMESPACE_RULE;
+			}
 			return rule.type == Components.interfaces.nsIDOMCSSRule.UNKNOWN_RULE && rule.cssText.indexOf("@namespace") == 0;
 		}).map(function(rule) {
 			var text = rule.cssText.replace(/\"/g, "");
