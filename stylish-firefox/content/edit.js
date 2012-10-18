@@ -219,6 +219,7 @@ function goUpdateCommand(a) {
 }*/
 
 function handleOrionContext(event) {
+	se.focus();
 	goUpdateGlobalEditMenuItems();
 	goUpdateCommand("stylish_cmd_undo");
 	var menu = document.getElementById("orion-context");
