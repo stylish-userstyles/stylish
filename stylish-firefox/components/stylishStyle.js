@@ -645,7 +645,7 @@ Style.prototype = {
 	get dataUrl() {
 		if (!this.code)
 			return null;
-		var nameComment = this.name ? "/*" + this.name.replace("*/", "").replace("#", "") + "*/" : "";
+		var nameComment = this.name ? "/*" + this.name.replace(/\*\//g, "").replace(/#/g, "") + "*/" : "";
 		// this will strip new lines rather than escape - not what we want
 		//return this.ios.newURI("data:text/css," + nameComment + this.code.replace(/\n/g, "%0A"), null, null);
 		return this.ios.newURI("data:text/css," + nameComment + encodeURIComponent(this.code), null, null);
