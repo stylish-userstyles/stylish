@@ -490,7 +490,10 @@ Style.prototype = {
 		//if we have a url for a hash, use that
 		if (this.md5Url) {
 			function handleMd5(text) {
-				if (text == that.md5) {
+				if (text.length != 32) {
+					Components.utils.reportError("Could not update '" + that.name + "' - '" + that.md5Url + "' did not return a md5 hash.");
+					notifyDone("no-update-available");
+				} else if (text == that.md5) {
 					notifyDone("no-update-available");
 				} else {
 					notifyDone("update-available");
@@ -499,8 +502,11 @@ Style.prototype = {
 			this.download(this.md5Url, handleMd5, handleFailure);
 		//otherwise use the update URL which makes us download the full code
 		} else if (this.updateUrl) {
-			function handleUpdateUrl(text) {
-				if (text.replace(/\s/g,"") == (that.originalCode || that.code).replace(/\s/g,"")) {
+			function handleUpdateUrl(text, contentType) {
+				if (contentType != "text/css") {
+					Components.utils.reportError("Could not update '" + that.name + "' - '" + that.updateUrl + "' returned content type '" + contentType + "'.");
+					notifyDone("no-update-available");
+				} else if (text.replace(/\s/g,"") == (that.originalCode || that.code).replace(/\s/g,"")) {
 					notifyDone("no-update-available");
 				} else {
 					notifyDone("update-available");
@@ -525,7 +531,12 @@ Style.prototype = {
 		function handleFailure() {
 			notifyDone("update-failure");
 		}
-		function handleSuccess(code) {
+		function handleSuccess(code, contentType) {
+			if (contentType != "text/css") {
+				Components.utils.reportError("Could not update '" + that.name + "' - '" + that.updateUrl + "' returned content type '" + contentType + "'.");
+				notifyDone("update-failure");
+				return;
+			}
 			that.code = code;
 			//we're back to being in sync
 			that.originalCode = code;
@@ -885,7 +896,12 @@ Style.prototype = {
 		request.addEventListener("readystatechange", function(event) {
 			if (request.readyState == 4) {
 				if ((request.status == 200 || (request.status == 0 && url.indexOf("data:") == 0)) && request.responseText) {
-					successCallback(request.responseText);
+					var contentType = request.getResponseHeader("Content-type");
+					// get rid of charset
+					if (contentType != null && contentType.indexOf(";") > -1) {
+						contentType = contentType.split(";")[0];
+					}
+					successCallback(request.responseText, contentType);
 				} else {
 					Components.utils.reportError("Download of '" + url + "' resulted in status " + request.status);
 					failureCallback();
