@@ -254,8 +254,7 @@ function testBlankApply() {
 //Test arbritrary meta values
 function testMeta() {
 	var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	style.code = "*{}";
-	style.name = "foo";
+	style.init(null, null, null, null, "foo", "* {}", true, null, null);
 	style.addMeta("foo", "bar");
 	style.save();
 	try {
@@ -292,8 +291,7 @@ function testAppliesSearch() {
 	var styles = Style.findForUrl("http://thisisnotarealdomain.com", false, 0, {});
 	assert("Style pre-existing", styles.length == 0);
 	var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	style.code = "@-moz-document domain('thisisnotarealdomain.com') {}";
-	style.name = "foo";
+	style.init(null, null, null, null, "foo", "@-moz-document domain('thisisnotarealdomain.com') {}", true, null, null);
 	style.save();
 	var id = style.id;
 	try {
@@ -461,7 +459,7 @@ var updateMd5WithUpdateObserver = {
 }
 function testUpdateMd5WithUpdate() {
 	var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-	style.init(null, null, null, "data:text/plain,adifferentchecksum", "testUpdateMd5WithUpdate", "* {color: blue}", false, null, null);
+	style.init(null, null, null, "data:text/plain,12345678901234567890123456789012", "testUpdateMd5WithUpdate", "* {color: blue}", false, null, null);
 	observerService.addObserver(updateMd5WithUpdateObserver, "stylish-style-update-check-done", false);
 	style.checkForUpdates(null);
 }
