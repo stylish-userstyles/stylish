@@ -1,7 +1,5 @@
 <!ENTITY changetags "Címkék megváltoztatása">
 <!ENTITY changetags.ak "C">
-<!ENTITY copyinfo "Stílusfájl információinak másolása">
-<!ENTITY copyinfo.ak "m">
 <!ENTITY done "Kész">
 <!ENTITY done.ak "K">
 <!ENTITY filter "Keresés">

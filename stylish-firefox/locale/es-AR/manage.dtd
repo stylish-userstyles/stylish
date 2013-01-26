@@ -1,7 +1,5 @@
 <!ENTITY changetags "Cambiar etiquetas">
 <!ENTITY changetags.ak "C">
-<!ENTITY copyinfo "Copiar información del estilo">
-<!ENTITY copyinfo.ak "C">
 <!ENTITY done "Hecho">
 <!ENTITY done.ak "D">
 <!ENTITY filter "Buscar">

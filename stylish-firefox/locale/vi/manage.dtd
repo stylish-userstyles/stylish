@@ -1,7 +1,5 @@
 <!ENTITY changetags "Thay đổi Thẻ">
 <!ENTITY changetags.ak "a">
-<!ENTITY copyinfo "Chép thông tin Style">
-<!ENTITY copyinfo.ak "C">
 <!ENTITY done "Xong">
 <!ENTITY done.ak "X">
 <!ENTITY filter "Tìm kiếm">

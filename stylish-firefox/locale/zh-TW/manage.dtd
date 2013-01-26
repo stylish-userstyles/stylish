@@ -1,7 +1,5 @@
 <!ENTITY changetags "修改標籤(C)">
 <!ENTITY changetags.ak "C">
-<!ENTITY copyinfo "複製樣式資訊(C)">
-<!ENTITY copyinfo.ak "C">
 <!ENTITY done "完成(D)">
 <!ENTITY done.ak "D">
 <!ENTITY filter "搜尋">

@@ -1,7 +1,5 @@
 <!ENTITY changetags "Змінити мітки">
 <!ENTITY changetags.ak "м">
-<!ENTITY copyinfo "Копіювати перелік стилів">
-<!ENTITY copyinfo.ak "К">
 <!ENTITY done "Готово">
 <!ENTITY done.ak "Г">
 <!ENTITY filter "Шукати:">

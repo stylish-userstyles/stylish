@@ -1,7 +1,5 @@
 <!ENTITY changetags "Изменить теги">
 <!ENTITY changetags.ak "И">
-<!ENTITY copyinfo "Копировать информацию о стилях">
-<!ENTITY copyinfo.ak "К">
 <!ENTITY done "Завершено">
 <!ENTITY done.ak "З">
 <!ENTITY filter "Поиск">

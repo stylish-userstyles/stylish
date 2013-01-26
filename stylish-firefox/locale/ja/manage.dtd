@@ -1,7 +1,5 @@
 <!ENTITY changetags "タグを変更">
 <!ENTITY changetags.ak "C">
-<!ENTITY copyinfo "スタイル情報をコピー">
-<!ENTITY copyinfo.ak "C">
 <!ENTITY done "完了">
 <!ENTITY done.ak "D">
 <!ENTITY filter "検索">

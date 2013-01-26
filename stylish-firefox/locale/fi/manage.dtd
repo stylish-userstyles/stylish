@@ -1,7 +1,5 @@
 <!ENTITY changetags "Muuta tunnuksia">
 <!ENTITY changetags.ak "M">
-<!ENTITY copyinfo "Kopioi tyylin tiedot">
-<!ENTITY copyinfo.ak "k">
 <!ENTITY done "Valmis">
 <!ENTITY done.ak "V">
 <!ENTITY filter "Etsi">

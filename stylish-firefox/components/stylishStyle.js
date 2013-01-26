@@ -121,49 +121,6 @@ Style.prototype = {
 		}
 	},
 
-	copyListToClipboard: function() {
-		function escape(text) {
-			return text.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
-		}
-		var styles = this.list(0, {}).sort(function(a, b) {
-			if (a.name > b.name)
-				return 1;
-			if (b.name > a.name)
-				return -1;
-			return a.id = b.id;
-		});
-
-		listHTML = "<ul><li>" + styles.map(function(style) {
-			var text = "";
-			if (style.url)
-				text += "<a href=\"" + escape(style.url) + "\">" + escape(style.name) + "</a>";
-			else
-				text += escape(style.name);
-			if (!style.enabled)
-				text += " (disabled)";
-		}).join("</li><li>") + "</li></ul>";
-
-		listText = styles.map(function(style) {
-			return "* " + style.name + (style.url ? " <" + style.url + ">" : "") + (style.enabled ? "" : " (disabled)");
-		}).join("\n");
-
-		var text = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);  
-		text.data = listText;
-
-		var html = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);  
-		html.data = listHTML;
-
-		var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
-		trans.addDataFlavor("text/unicode");  
-		trans.setTransferData("text/unicode", text, listText.length * 2);
-
-		trans.addDataFlavor("text/html");  
-		trans.setTransferData("text/html", html, listHTML.length * 2);
-
-		var clipboard = Components.classes["@mozilla.org/widget/clipboard;1"].getService(Components.interfaces.nsIClipboard);  
-		clipboard.setData(trans, null, Components.interfaces.nsIClipboard.kGlobalClipboard); 
-	},
-
 	regexToSample: function(r) {
 		// everything up to the first regex character
 		var re = /[\.\(\)\[\]]/g;

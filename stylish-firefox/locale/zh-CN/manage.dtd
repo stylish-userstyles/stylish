@@ -1,7 +1,5 @@
 <!ENTITY changetags "更改标签">
 <!ENTITY changetags.ak "C">
-<!ENTITY copyinfo "复制样式信息">
-<!ENTITY copyinfo.ak "C">
 <!ENTITY done "完成">
 <!ENTITY done.ak "D">
 <!ENTITY filter "搜索">

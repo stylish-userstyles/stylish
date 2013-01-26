@@ -35,7 +35,6 @@ interface stylishStyle : nsIClassInfo
 	void findEnabled(in boolean enabled, in short mode, out unsigned long count, [array, size_is(count), retval] out stylishStyle retv);
 	void findByMeta(in AString name, in AString value, in short mode, out unsigned long count, [array, size_is(count), retval] out stylishStyle retv);
 	void checkForErrors(in AString css, in nsIConsoleListener listener);
-	void copyListToClipboard();
 	AString regexToSample(in AString regex);
 
 	// applyBackgroundUpdates is really a short, but set as a string here so that we can pass null for default

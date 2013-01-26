@@ -1,7 +1,5 @@
 <!ENTITY changetags "태그 변경">
 <!ENTITY changetags.ak "C">
-<!ENTITY copyinfo "스타일 목록 복사">
-<!ENTITY copyinfo.ak "C">
 <!ENTITY done "완료">
 <!ENTITY done.ak "D">
 <!ENTITY filter "검색">

@@ -29,7 +29,6 @@
 	<hbox>
 		<button id="update-all" label="&cmd.checkUpdatesAll.label;" accesskey="&cmd.checkUpdatesAll.accesskey;" oncommand="stylishManage.updateAll()"/>
 		<spacer flex="1"/>
-		<button id="copy-style-info" label="&copyinfo;" accesskey="&copyinfo.ak;" oncommand="stylishManage.copyInfo()"/>
 		<button id="new-style" label="&writenew;" accesskey="&writenew.ak;" oncommand="stylishManage.newStyle()"/>
 	</hbox>
 

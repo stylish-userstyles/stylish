@@ -312,10 +312,6 @@ var stylishManage = {
 		});
 	},
 
-	copyInfo: function() {
-		Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle).copyListToClipboard();
-	},
-
 	handleKeyPress: function(event) {
 		if (event.keyCode != 38 && event.keyCode != 40)
 			return;

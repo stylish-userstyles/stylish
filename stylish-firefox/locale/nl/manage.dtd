@@ -1,7 +1,5 @@
 <!ENTITY changetags "Labels wijzigen">
 <!ENTITY changetags.ak "w">
-<!ENTITY copyinfo "Stijl informatie kopiëren">
-<!ENTITY copyinfo.ak "k">
 <!ENTITY done "Voltooid">
 <!ENTITY done.ak "V">
 <!ENTITY filter "Zoeken">
