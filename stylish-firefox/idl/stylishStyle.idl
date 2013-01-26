@@ -52,4 +52,5 @@ interface stylishStyle : nsIClassInfo
 	//XXX this is a string instead of AString. problem?
 	void getMeta(in AString name, out unsigned long count, [array, size_is(count), retval] out string retv);
 	void getTypes(out unsigned long count, [array, size_is(count), retval] out string retv);
+	void getPrettyAppliesTo(out unsigned long count, [array, size_is(count), retval] out string retv);
 };

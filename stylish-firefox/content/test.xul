@@ -6,13 +6,13 @@
 <dialog
 	id="startaid-move"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	buttons="accept,cancel"
-	windowtype="startaid-move">
+	buttons="accept,cancel">
 
 	<button id="test" label="test"/>
 
 	<script type="application/javascript" src="base-test.js"/>
+	<script type="application/javascript" src="overlay.js"/>
+	<script type="application/javascript" src="common.js"/>
 	<script type="application/javascript" src="unittest.js"/>
-
 
 </dialog>

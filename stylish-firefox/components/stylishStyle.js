@@ -507,6 +507,44 @@ Style.prototype = {
 		}
 	},
 
+	getPrettyAppliesTo: function(count) {
+		var urls = this.getMeta("url", {});
+		var urlPrefixes = this.getMeta("url-prefix", {});
+		var domains = this.getMeta("domain", {});
+		var regexps = this.getMeta("regexps", {});
+
+		// eliminate subdomains where the root domain is provided
+		domains = domains.filter(function(possibleSubdomain) {
+			return !domains.some(function(possibleRootDomain) {
+				return possibleSubdomain.endsWith("." + possibleRootDomain);
+			});
+		})
+
+		// eliminate urls and url prefixes on that are on a domain specified
+		function doesntMatchDomainRule(url) {
+			var domain;
+			//this can throw for weird urls like about:blank
+			try {
+				domain = this.ios.newURI(url, null, null).host;
+			} catch (ex) {
+				return true;
+			}
+			return !domains.some(function(d) {
+				return domain == d || domain.endsWith("." + d);
+			});
+		}
+		urls = urls.filter(doesntMatchDomainRule, this);
+		urlPrefixes = urlPrefixes.filter(doesntMatchDomainRule, this);
+
+		var r = domains
+			.concat(urlPrefixes.map(function(up) { return up + "*" }))
+			.concat(urls)
+			.concat(regexps.map(function(re) { return "/" + re + "/" }));
+
+		count.value = r.length;
+		return r;
+	},
+
 	/*
 		private
 	*/

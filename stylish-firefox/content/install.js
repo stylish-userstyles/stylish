@@ -36,21 +36,12 @@ function init() {
 	} else if (types.indexOf("site") > -1) {
 		addText(intro, " " + strings.getString("installsite"));
 		var appliesTo = document.getElementById("applies-to");
-		appliesTo.style.display = "";
-		function addItem(text) {
+		style.getPrettyAppliesTo({}).forEach(function(text) {
 			var li = document.createElementNS("http://www.w3.org/1999/xhtml", "li");
 			addText(li, text);
 			appliesTo.appendChild(li);
-		}
-		style.getMeta("url", {}).forEach(function(url) {
-			addItem(url);
 		});
-		style.getMeta("url-prefix", {}).forEach(function(urlPrefix) {
-			addItem(urlPrefix + "*");
-		});
-		style.getMeta("domain", {}).forEach(function(domain) {
-			addItem(domain);
-		});
+		appliesTo.style.display = "";
 	} else {
 		addText(intro, " " + strings.getFormattedString("installnotype", [stylishCommon.getAppName()]));
 	}
