@@ -117,7 +117,8 @@ Style.prototype = {
 		try {
 			this.getStyleSheet(css);
 		} finally {
-			consoleService.unregisterListener(errorListener);
+			// do this on a delay because of https://bugzilla.mozilla.org/show_bug.cgi?id=831428
+			Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer).initWithCallback(function() {consoleService.unregisterListener(errorListener)}, 10, Components.interfaces.nsITimer.TYPE_ONE_SHOT);
 		}
 	},
 
