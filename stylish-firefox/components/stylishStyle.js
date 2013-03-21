@@ -512,7 +512,7 @@ Style.prototype = {
 		var urls = this.getMeta("url", {});
 		var urlPrefixes = this.getMeta("url-prefix", {});
 		var domains = this.getMeta("domain", {});
-		var regexps = this.getMeta("regexps", {});
+		var regexps = this.getMeta("regexp", {});
 
 		// eliminate subdomains where the root domain is provided
 		domains = domains.filter(function(possibleSubdomain) {
@@ -540,7 +540,7 @@ Style.prototype = {
 		var r = domains
 			.concat(urlPrefixes.map(function(up) { return up + "*" }))
 			.concat(urls)
-			.concat(regexps.map(function(re) { return "/" + re + "/" }));
+			.concat(regexps);
 
 		count.value = r.length;
 		return r;
@@ -587,8 +587,19 @@ Style.prototype = {
 		Array.filter(sheet.cssRules, function(rule) {
 			return rule instanceof Components.interfaces.nsIDOMCSSMozDocumentRule;
 		}).forEach(function (rule) {
-			var mozDoc = rule.cssText.substring(0, rule.cssText.indexOf("{") - 1);
-			//var re = /(url|domain|url-prefix|regexp)\s*\([\'\"]?([^)\'\"]+)[\'\"]?\)\s*,?\s*/g;
+			// get the -moz-doc up to its opening bracket. note that the regexps can contain { too...
+			var mozDoc = null;
+			if (rule.cssRules.length > 0) {
+				var firstSubruleIndex = rule.cssText.indexOf(rule.cssRules[0].cssText);
+				if (firstSubruleIndex > -1) {
+					// let's first try to go up to the first child rule and then chop off the last {
+					mozDoc = rule.cssText.substring(0, firstSubruleIndex).substring(0, rule.cssText.lastIndexOf("{"));
+				}
+			}
+			// if that doesn't work, then just go up to the first {
+			if (mozDoc == null) {
+				mozDoc = rule.cssText.substring(0, rule.cssText.indexOf("{"));
+			}
 			var re = /(?:(url|domain|url-prefix|regexp)\s*\('([^']+?)'\)\s*)|(?:(url|domain|url-prefix|regexp)\s*\("([^"]+?)"\)\s*),?\s*|(?:(url|domain|url-prefix)\s*\(([^\)]+?)\)\s*)/g;
 			var match;
 			while ((match = re.exec(mozDoc)) != null) {

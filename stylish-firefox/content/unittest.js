@@ -14,6 +14,10 @@ function assert() {
 		throw new AssertionFailure(comment);
 }
 
+function assertEqual() {
+	assert("Value is '" + arguments[1] + "', expected '" + arguments[0] + "'", arguments[0] == arguments[1]);
+}
+
 var theTests = [];
 var theAsyncs = [];
 for (var i in window) {

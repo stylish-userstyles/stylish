@@ -588,38 +588,44 @@ function getPrettyAppliesToItemsFromCode(code) {
 }
 
 function testUrl() {
-	var meta = getPrettyAppliesToItemsFromCode("@-moz-document url('http://www.example.com/foo') {}");
+	var meta = getPrettyAppliesToItemsFromCode("@-moz-document url('http://www.example.com/foo') {* { color: blue } }");
 	assert(meta.length + " metas found.", meta.length == 1);
-	assert("Meta is " + meta[0], "http://www.example.com/foo");
+	assertEqual("http://www.example.com/foo", meta[0]);
 }
 
 function testUrlPrefix() {
-	var meta = getPrettyAppliesToItemsFromCode("@-moz-document url-prefix('http://www.example.com/foo') {}");
+	var meta = getPrettyAppliesToItemsFromCode("@-moz-document url-prefix('http://www.example.com/foo') {* { color: blue } }");
 	assert(meta.length + " metas found.", meta.length == 1);
-	assert("Meta is " + meta[0], "http://www.example.com/foo*");
+	assert("http://www.example.com/foo*", meta[0]);
 }
 
 function testDomain() {
-	var meta = getPrettyAppliesToItemsFromCode("@-moz-document domain('www.example.com') {}");
+	var meta = getPrettyAppliesToItemsFromCode("@-moz-document domain('www.example.com') {* { color: blue } }");
 	assert(meta.length + " metas found.", meta.length == 1);
-	assert("Meta is " + meta[0], "http://www.example.com/foo");
+	assert("http://www.example.com/foo", meta[0]);
+}
+
+function testRegexpWithBracket() {
+	var meta = getPrettyAppliesToItemsFromCode("@-moz-document regexp('http://userstyles.org/styles/[0-9]{4,5}/edit') { * { color: blue } }");
+	assert(meta.length + " metas found.", meta.length == 1);
+	assertEqual("http://userstyles.org/styles/[0-9]{4,5}/edit", meta[0]);
 }
 
 function testNoOverlap() {
-	var meta = getPrettyAppliesToItemsFromCode("@-moz-document domain('www.example.com'), url('http://www.somethingelse.com/foo') {}");
+	var meta = getPrettyAppliesToItemsFromCode("@-moz-document domain('www.example.com'), url('http://www.somethingelse.com/foo') {* { color: blue } }");
 	assert(meta.length + " metas found.", meta.length == 2);
 }
 
 function testDomainOverridesUrl() {
-	var meta = getPrettyAppliesToItemsFromCode("@-moz-document domain('www.example.com'), url('http://www.example.com/foo') {}");
+	var meta = getPrettyAppliesToItemsFromCode("@-moz-document domain('www.example.com'), url('http://www.example.com/foo') {* { color: blue } }");
 	assert(meta.length + " metas found.", meta.length == 1);
-	assert("Meta is " + meta[0], "www.example.com");
+	assertEqual("www.example.com", meta[0]);
 }
 
 function testDomainOverridesUrlOnSubdomain() {
-	var meta = getPrettyAppliesToItemsFromCode("@-moz-document domain('example.com'), url('http://www.example.com/foo') {}");
+	var meta = getPrettyAppliesToItemsFromCode("@-moz-document domain('example.com'), url('http://www.example.com/foo') {* { color: blue } }");
 	assert(meta.length + " metas found.", meta.length == 1);
-	assert("Meta is " + meta[0], "example.com");
+	assertEqual("example.com", meta[0]);
 }
 
 function testSubDomainDoesntOverrideUrlOnRootDomain() {
@@ -630,13 +636,13 @@ function testSubDomainDoesntOverrideUrlOnRootDomain() {
 function testDomainOverridesUrlPrefix() {
 	var meta = getPrettyAppliesToItemsFromCode("@-moz-document domain('www.example.com'), url-prefix('http://www.example.com/foo') {}");
 	assert(meta.length + " metas found.", meta.length == 1);
-	assert("Meta is " + meta[0], "www.example.com");
+	assertEqual("www.example.com", meta[0]);
 }
 
 function testDomainOverridesSubdomain() {
 	var meta = getPrettyAppliesToItemsFromCode("@-moz-document domain('www.example.com'), domain('example.com') {}");
 	assert(meta.length + " metas found.", meta.length == 1);
-	assert("Meta is " + meta[0], "example.com");
+	assertEqual("example.com", meta[0]);
 }
 
 
