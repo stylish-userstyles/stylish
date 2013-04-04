@@ -44,14 +44,18 @@ var stylishOverlay = {
 			"context": "stylish-style-context"
 		});
 
-		// sets an attribute for 24-based hour of the day
-		function updateHour() {
-			document.documentElement.setAttribute("stylish-hour", (new Date()).getHours());
+		// sets attributes for 24-based hour of the day
+		function updateTimes() {
+			var date = new Date();
+			document.documentElement.setAttribute("stylish-hour", date.getHours());
+			document.documentElement.setAttribute("stylish-day", date.getDay());
+			document.documentElement.setAttribute("stylish-date", date.getDate());
+			document.documentElement.setAttribute("stylish-month", date.getMonth() + 1);
 		}
 		// once a minute
-		setInterval(updateHour, 1000 * 60);
+		setInterval(updateTimes, 1000 * 60);
 		// now
-		updateHour();
+		updateTimes();
 
 		// the ways the current url can change:
 		if (typeof gBrowser != "undefined") {
