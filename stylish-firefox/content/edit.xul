@@ -55,7 +55,7 @@
 		<menuitem id="menu_paste"/>
 		<menuitem id="menu_delete"/>
 		<menuseparator/>
-		<menuitem id="menu_selectAll"/>
+		<menuitem id="menu_selectAll" onclick="codeElementWrapper.setSelectionRange(0,codeElementWrapper.value.length)"/>
 	</menupopup>
 
 	<commandset id="editMenuCommands"/>
