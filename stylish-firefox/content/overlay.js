@@ -327,7 +327,8 @@ var stylishOverlay = {
 
 	addSite: function() {
 		var url = content.location.href;
-		var code = "@namespace url(http://www.w3.org/1999/xhtml);\n\n@-moz-document url(\"" + url + "\") {\n\n}";
+		var namespaceURI = content.document.documentElement.namespaceURI;
+		var code = "@namespace url(" + namespaceURI + ");\n\n@-moz-document url(\"" + url + "\") {\n\n}";
 		stylishOverlay.addCode(code);
 	},
 
