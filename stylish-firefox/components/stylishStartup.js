@@ -123,7 +123,7 @@ var UserStyleManager = {
 
 function getUserStyleWrapper(style) {
 	return {
-		id: style.id,
+		id: style.id.toString(),
 		type: "userstyle",
 		name: style.name,
 		homepageURL: style.url,
