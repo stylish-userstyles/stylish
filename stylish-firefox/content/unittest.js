@@ -64,4 +64,4 @@ var html = results.map(function(result) {
 	var message = result.test + " " + (result.message || "");
 	return "<div style='background-color: " + bg + ";'>" + message + "</div>";
 }).join("\n");
-window.open("data:text/html," + encodeURIComponent(html), "results");
+window.open("data:text/html;charset=utf-8," + encodeURIComponent(html), "results");

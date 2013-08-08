@@ -644,19 +644,20 @@ Style.prototype = {
 		var appPattern = /^(chrome|about|x-jsd)/;
 		var genericPattern = /^[^:]+:?\/*$/; //something like "http:"
 		var that = this;
-		var urlLikeRules = this.urlRules.concat(this.urlPrefixRules).concat(this.regexpRules.map(function(r) {return that.regexToSample(r);}));
-
-		// global styles have something outside of a moz-doc or a generic moz-doc and have either no namespace or include the html namespace
-		if ((hasGlobal && (namespaces.length == 0 || namespaces.indexOf(this.HTMLNS) != -1)) || urlLikeRules.some(function(url) { return genericPattern.test(url) && !appPattern.test(url);}))
-			this.addMeta("type", "global");
+		var urlLikeRules = this.urlRules.concat(this.urlPrefixRules);
 
 		// app styles have the xul namespace or urls with a specific protocol
-		if (namespaces.indexOf("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul") != -1 ||
-		urlLikeRules.some(function(url) { return appPattern.test(url); }))
+		if (namespaces.indexOf("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul") != -1 || urlLikeRules.some(function(url) { return appPattern.test(url); }))
 			this.addMeta("type", "app");
-
-		// site styles have a domain rule or urls with normal protocols, but not just the protocol only
-		if (this.domainRules.length > 0 || urlLikeRules.some(function(url) { return !appPattern.test(url) && !genericPattern.test(url); }))
+		// global styles have something outside of a moz-doc or a generic moz-doc and have either no namespace or include the html namespace
+		else if (
+			(hasGlobal && (namespaces.length == 0 || namespaces.indexOf(this.HTMLNS) != -1))
+			|| urlLikeRules.some(function(url) { return genericPattern.test(url) })
+			|| this.regexpRules.some(function(r) { return (new RegExp(r)).test("http://www.somesiteimadeup.com/");})
+		)
+			this.addMeta("type", "global");
+		// everything else is site
+		else 
 			this.addMeta("type", "site");
 	},
 

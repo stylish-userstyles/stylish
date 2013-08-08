@@ -342,7 +342,7 @@ function testType() {
 	style.code = "@-moz-document url-prefix(chrome://stylish){* {color: blue}}";
 	ensureType("No namespace and chrome URL prefix rule", "app");
 	style.code = "@-moz-document url-prefix(http://google.){* {color: blue}}*{color:blue}";
-	ensureType("No namespace, http URL prefix rule, and no -moz-doc rule", ["global","site"]);
+	ensureType("No namespace, http URL prefix rule, and no -moz-doc rule", "global");
 	style.code = "@-moz-document url-prefix(http://){* {color: blue}}";
 	ensureType("No namespace, http:// only URL prefix rule", "global");
 	style.code = "@-moz-document url-prefix(http:){* {color: blue}}";
@@ -643,6 +643,24 @@ function testDomainOverridesSubdomain() {
 	var meta = getPrettyAppliesToItemsFromCode("@-moz-document domain('www.example.com'), domain('example.com') {}");
 	assert(meta.length + " metas found.", meta.length == 1);
 	assertEqual("example.com", meta[0]);
+}
+
+function testRegexpIsNotGlobal() {
+	function ensureType(message, type) {
+		var currentType = style.getTypes({});
+		if (typeof type == "string")
+			type = [type];
+		assert(message + " - expected '" + type + "' got '" + currentType +"'", arraysEqual(currentType, type));
+	}
+	var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
+	style.init(null, null, null, null, "Unit test - testRegexpIsNotGlobal", '@-moz-document regexp("^https?://((www|gist|help|status).)?github.*") { * { color: blue} }', false, null, null);
+	ensureType('@-moz-document regexp("^https?://((www|gist|help|status).)?github.*") { * { color: blue} }', "site");
+	style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
+	style.init(null, null, null, null, "Unit test - testRegexpIsNotGlobal", '@-moz-document regexp("^http(s)?://((www|gist|help|status).)?github.*") { * { color: blue} }', false, null, null);
+	ensureType('@-moz-document regexp("^http(s)?://((www|gist|help|status).)?github.*") { * { color: blue} }', "site");
+	style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
+	style.init(null, null, null, null, "Unit test - testRegexpIsNotGlobal", '@-moz-document regexp("^http(s)?://.*") { * { color: blue} }', false, null, null);
+	ensureType('@-moz-document regexp("^http(s)?://.*") { * { color: blue} }', "global");
 }
 
 
