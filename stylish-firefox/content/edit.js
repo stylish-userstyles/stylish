@@ -333,7 +333,7 @@ function checkForErrors() {
 				var error = message.QueryInterface(Components.interfaces.nsIScriptError);
 
 				label.appendChild(document.createTextNode(error.lineNumber + ":" + error.columnNumber + " " + error.errorMessage));
-				label.setAttribute("onclick", "goToLine(" + error.lineNumber + "," + error.columnNumber + ");");
+				label.addEventListener("click", function() {goToLine(error.lineNumber, error.columnNumber) }, false);
 				errors.appendChild(label);
 			}
 		}

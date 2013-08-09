@@ -19,7 +19,7 @@ var stylishDomi = {
 	addSelectorMenuItem: function(popup, selector) {
 		var menuitem = document.createElementNS(stylishCommon.XULNS, "menuitem");
 		menuitem.setAttribute("label", selector);
-		menuitem.setAttribute("oncommand", "stylishDomi.copySelectorToClipboard(event)");
+		menuitem.addEventListener("command", function(event) { stylishDomi.copySelectorToClipboard(event) }, false);
 		popup.appendChild(menuitem);
 	},
 
