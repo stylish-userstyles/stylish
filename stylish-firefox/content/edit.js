@@ -103,6 +103,9 @@ function initStyle() {
 }
 
 function initOrion() {
+		// orion and it's all text don't get along. it's all text will update display later, so let's use visibility
+		document.getElementById("itsalltext").style.visibility = "hidden";
+		
 		se = new SourceEditor();
 		var orionElement = document.getElementById("orion");
 		se.init(orionElement, {mode: SourceEditor.MODES.CSS, showLineNumbers: true, placeholderText: style.code}, init2);
