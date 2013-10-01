@@ -3,6 +3,7 @@
 <!ENTITY done "Effectué">
 <!ENTITY done.ak "f">
 <!ENTITY filter "Chercher">
+<!ENTITY installfromurls "Install from URLs...">
 <!ENTITY manageaddonstitle "Styles utilisateurs">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Visitez">

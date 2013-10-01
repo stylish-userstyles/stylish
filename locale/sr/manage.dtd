@@ -3,6 +3,7 @@
 <!ENTITY done "Готово">
 <!ENTITY done.ak "Г">
 <!ENTITY filter "Претражи">
+<!ENTITY installfromurls "Install from URLs...">
 <!ENTITY manageaddonstitle "Кориснички стилови">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Посетите">

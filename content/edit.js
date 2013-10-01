@@ -280,9 +280,6 @@ function save() {
 		stylishCommon.fixXHR(req);
 		req.send(null);
 	}
-	if (installCallback) {
-		installCallback();
-	}
 
 	return true;
 }
@@ -311,14 +308,17 @@ function cancelDialog() {
 	return true;
 }
 
-//turn off preview!
 function dialogClosing() {
+	//turn off preview!
 	style.setPreview(false);
 	if (!saved) {
 		style.revert();
 	}
+	
+	if (installCallback) {
+		installCallback(saved ? "success" : "cancelled");
+	}
 }
-
 
 function checkForErrors() {
 	var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);

@@ -3,6 +3,7 @@
 <!ENTITY done "Voltooid">
 <!ENTITY done.ak "V">
 <!ENTITY filter "Zoeken">
+<!ENTITY installfromurls "Install from URLs...">
 <!ENTITY manageaddonstitle "Stijlen">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Bezoek">

@@ -99,8 +99,210 @@ var stylishCommon = {
 		var style = service.find(id, service.REGISTER_STYLE_ON_CHANGE | service.CALCULATE_META);
 		return stylishCommon.openEditForStyle(style);
 	},
+	
+	installFromUrl: function(url, callback) {
+		// Valid URLs can retrived a CSS file or a HTML file. We'll try HTML first, and if the
+		// content type comes back as CSS, we'll do that instead. These need to be separate requests
+		// because setting responseType to document (for HTML parsing) prevents access to responseText.
+		stylishCommon.installFromUrlHtml(url, function(result) {
+			if (result == "css") {
+				stylishCommon.installFromUrlCss(url, callback);
+				return;
+			}
+			callback(result);
+		});
+	},
+
+	installFromUrlHtml: function(url, callback) {
+		var xhr = new XMLHttpRequest();
+		xhr.onload = function() {
+			if (this.status != 200) {
+				Components.utils.reportError("Stylish install from URL '" + url + "' resulted in HTTP error code " + this.status + ".");
+				callback("failure");
+				return;
+			}
+			var contentType = this.getResponseHeader("Content-Type");
+			if (contentType.indexOf("text/css") == 0) {
+				callback("css");
+				return;
+			}
+			if (contentType.indexOf("text/html") == 0) {
+				stylishCommon.installFromSite(this.responseXML, callback);
+				return;
+			}
+			Components.utils.reportError("Stylish install from URL '" + url + "' resulted in unknown content type " + contentType + ".");
+			callback("failure");
+		}
+		try {
+			xhr.open("GET", url);
+		} catch (ex) {
+			// invalid url
+			Components.utils.reportError("Stylish install from URL '" + url + "' failed - not a valid URL.");
+			callback("failure");
+			return;
+		}
+		xhr.responseType = "document";
+		xhr.send();
+	},
+
+	installFromUrlCss: function(url, callback) {
+		var xhr = new XMLHttpRequest();
+		xhr.onload = function() {
+			if (xhr.status >= 400) {
+				Components.utils.reportError("Stylish install from URL '" + url + "' resulted in HTTP error code " + this.status + ".");
+				callback("failure");
+				return;
+			}
+			stylishCommon.installFromString(this.responseText, url, callback);
+		}
+		xhr.open("GET", url);
+		xhr.send();
+	},
+	
+	// Callback passes a string parameter - installed, failure, cancelled, existing
+	installFromSite: function(doc, callback) {
+		var resourcesNeeded = [{name: "stylish-code", download: true}, {name: "stylish-description", download: true}, {name: "stylish-install-ping-url"}, {name: "stylish-update-url"}, {name: "stylish-md5-url"}, {name: "stylish-id-url"}];
+		
+		stylishCommon.getResourcesFromMetas(doc, resourcesNeeded, function(results) {
+			// This is the only required property
+			if (results["stylish-code"] == null || results["stylish-code"].length == 0) {
+				callback("failure")
+				return;
+			}
+			var uri = stylishCommon.cleanURI("documentURI" in doc ? doc.documentURI : doc.location.href);
+			if (results["stylish-id-url"] == null) {
+				results["stylish-id-url"] = uri
+			}
+
+			var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
+			style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
+			style.init(uri, results["stylish-id-url"], results["stylish-update-url"], results["stylish-md5-url"], results["stylish-description"], results["stylish-code"], false, results["stylish-code"], null);
+
+			if (typeof stylishStrings != "undefined") {
+				// stylishStrings is set in overlay-mobile.xul, in which case XUL is not available
+				var installPrompt = stylishInstallOverlay.INSTALL_STRINGS.formatStringFromName("installintro", [style.name], 1);
+				var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+				if (promptService.confirm(window, stylishStrings.title, installPrompt)) {
+					style.enabled = true;
+					style.save();
+					if (installPingURL) {
+						var req = new XMLHttpRequest();
+						req.open("GET", installPingURL, true);
+						stylishCommon.fixXHR(req);
+						req.send(null);
+					}
+					callback("installed")
+				}
+			} else {
+				stylishCommon.openInstall({style: style, installPingURL: results["stylish-install-ping-url"], installCallback: callback});
+			}
+
+		});
+	},
+	
+	// Results the value of the <link> with a "rel" of the passed name.
+	getMeta: function(doc, name) {
+		var e = doc.querySelector("link[rel='" + name + "']");
+		return e ? e.getAttribute("href") : null;
+	},
+	
+	// Gets the values of the passed meta names.
+	//   doc
+	//   resourcesToGet: an array of:
+	//     name: meta name to get
+	//     download: if true, will download if the value is a remote URL
+	//   callback: called with a hash of name to value
+	getResourcesFromMetas: function(doc, resourcesToGet, callback) {
+		var keyUrls = {};
+		var resourcesToDownload = [];
+		resourcesToGet.forEach(function(r) {
+			var c = stylishCommon.getMeta(doc, r.name);
+			if (r.download) {
+				resourcesToDownload.push({name: r.name, url: c});
+			} else {
+				keyUrls[r.name] = c;
+			}
+		});
+		stylishCommon.getResources(doc, resourcesToDownload, function(results) {
+			results.forEach(function(r) {
+				keyUrls[r.name] = r.value;
+			});
+			callback(keyUrls);
+		});
+	},
+	
+	// Gets the values of the passed URLs.
+	//   doc
+	//   resources: an array of:
+	//     name: name of the resource
+	//     url: url of the resource
+	//   callback: called with a hash of name to value
+	getResources: function(doc, resources, callback) {
+		var results = [];
+		
+		function assembleResults(name, value) {
+			results.push({name: name, value: value});
+			if (results.length == resources.length) {
+				callback(results);
+			}
+		}
+		
+		resources.forEach(function(resource) {
+			stylishCommon.getResource(doc, resource.name, resource.url, assembleResults);
+		});
+	},
+	
+	// Get the value of the passed URL.
+	getResource: function(doc, name, url, callback) {
+		if (url == null) {
+			callback(name, null);
+			return;
+		}
+		if (url.indexOf("#") == 0) {
+			callback(name, doc.getElementById(url.substring(1)).textContent);
+			return;
+		}
+		var xhr = new XMLHttpRequest();
+		xhr.onload = function() {
+			if (xhr.status >= 400) {
+				callback(name, null);
+			} else {
+				callback(name, xhr.responseText);
+			}
+		}
+		if (url.length > 2000) {
+			var parts = url.split("?");
+			xhr.open("POST", parts[0], true);
+			xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xhr.send(parts[1]);
+		} else {
+			xhr.open("GET", url, true);
+			xhr.send();
+		}
+	},
+	
+	installFromFile: function(doc) {
+		stylishCommon.installFromString(doc.body.textContent, doc.location.href);
+	},
+	
+	installFromString: function(css, uri, callback) {
+		uri = stylishCommon.cleanURI(uri);
+		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
+		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
+		style.init(uri, uri, uri, null, null, css, false, css, null);
+		stylishCommon.openInstall({style: style, installCallback: callback});
+	},
 
 	openInstall: function(params) {
+		// let's check if it's already installed
+		var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
+		if (service.findByUrl(params.style.idUrl, 0) != null) {
+			if (params.installCallback) {
+				params.installCallback("existing");
+			}
+			return;
+		}
+		
 		function fillName(prefix) {
 			params.windowType = stylishCommon.getWindowName(prefix, params.triggeringDocument ? stylishCommon.cleanURI(params.triggeringDocument.location.href) : null);
 		}

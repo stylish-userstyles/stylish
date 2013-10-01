@@ -3,6 +3,7 @@
 <!ENTITY done "Valmis">
 <!ENTITY done.ak "D">
 <!ENTITY filter "Otsi">
+<!ENTITY installfromurls "Install from URLs...">
 <!ENTITY manageaddonstitle "Kasutaja stiilid">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Külasta">

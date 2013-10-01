@@ -3,6 +3,7 @@
 <!ENTITY done "Dokončeno">
 <!ENTITY done.ak "D">
 <!ENTITY filter "Hledat">
+<!ENTITY installfromurls "Install from URLs...">
 <!ENTITY manageaddonstitle "Uživatelské styly">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Navštivte">

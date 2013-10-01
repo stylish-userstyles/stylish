@@ -3,6 +3,7 @@
 <!ENTITY done "Xong">
 <!ENTITY done.ak "X">
 <!ENTITY filter "Tìm kiếm">
+<!ENTITY installfromurls "Install from URLs...">
 <!ENTITY manageaddonstitle "Style Người dùng">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Vào">

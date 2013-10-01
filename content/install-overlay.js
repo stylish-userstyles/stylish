@@ -96,78 +96,11 @@ var stylishInstallOverlay = {
 	},
 
 	installFromSite: function(event) {
-		var doc;
-		if (event.target.nodeName == "#document") {
-			doc = event.target;
-		}
-		var uri = stylishCommon.cleanURI(doc.location.href);
-		var links = doc.getElementsByTagName("link");
-		var code = null;
-		var description = null;
-		var updateURL = null;
-		var md5URL = null;
-		var installPingURL = null;
-		var idUrl = null;
-		for (var i = 0; i < links.length; i++) {
-			switch (links[i].rel) {
-				case "stylish-code":
-					var id = links[i].getAttribute("href").replace("#", "");
-					var element = doc.getElementById(id);
-					if (element) {
-						code = element.textContent;
-					}
-					break;
-				case "stylish-description":
-					var id = links[i].getAttribute("href").replace("#", "");
-					var element = doc.getElementById(id);
-					if (element) {
-						description = element.textContent;
-					}
-					break;
-				case "stylish-install-ping-url":
-					installPingURL = links[i].href;
-					break;
-				case "stylish-update-url":
-					updateURL = links[i].href;
-					break;
-				case "stylish-md5-url":
-					md5URL = links[i].href;
-					break;
-				case "stylish-id-url":
-					idUrl = links[i].href;
-					break;
+		stylishCommon.installFromSite(event.target, function(result) {
+			if (result == "installed") {
+				stylishCommon.dispatchEvent(event.target, "styleInstalled");
 			}
-		}
-		if (idUrl == null) {
-			idUrl = uri;
-		}
-
-		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
-		style.init(uri, idUrl, updateURL, md5URL, description, code, false, code, null);
-
-		var installCallback = function() {
-			stylishCommon.dispatchEvent(doc, "styleInstalled");
-		};
-
-		if (typeof stylishStrings != "undefined") {
-			// stylishStrings is set in overlay-mobile.xul, in which case XUL is not available
-			var installPrompt = stylishInstallOverlay.INSTALL_STRINGS.formatStringFromName("installintro", [style.name], 1);
-			var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-			if (promptService.confirm(window, stylishStrings.title, installPrompt)) {
-				style.enabled = true;
-				style.save();
-				if (installPingURL) {
-					var req = new XMLHttpRequest();
-					req.open("GET", installPingURL, true);
-					stylishCommon.fixXHR(req);
-					req.send(null);
-				}
-				installCallback();
-			}		
-		} else {
-			stylishCommon.openInstall({style: style, installPingURL: installPingURL, installCallback: installCallback});
-		}
+		});
 	},
 
 	updateFromSite: function(event) {
@@ -204,12 +137,7 @@ var stylishInstallOverlay = {
 	},
 
 	installFromFile: function(event) {
-		var doc = content.document;
-		var uri = stylishCommon.cleanURI(doc.location.href);
-		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
-		style.init(uri, uri, uri, null, null, doc.body.textContent, false, doc.body.textContent, null);
-		stylishCommon.openInstall({style: style});
+		stylishCommon.installFromFile(content.document);
 	}
 
 };

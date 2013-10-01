@@ -1,6 +1,7 @@
 var style, strings, name;
 var installPingURL = null;
 var installCallback = null;
+var saved = false;
 
 function init() {
 	style = window.arguments[0].style;
@@ -73,9 +74,8 @@ function save(andClose) {
 		stylishCommon.fixXHR(req);
 		req.send(null);
 	}
-	if (installCallback) {
-		installCallback();
-	}
+	saved = true;
+	
 	// do it this way otherwise the ping doesn't work
 	if (andClose) {
 		setTimeout(window.close, 500);
@@ -85,4 +85,8 @@ function save(andClose) {
 
 function preview() {
 	style.setPreview(true);
+}
+
+function callCallback() {
+	installCallback(saved ? "installed" : "cancelled");
 }

@@ -16,6 +16,7 @@
 	height="300"
 	buttons="accept,cancel,extra1,extra2"
 	onload="init()"
+	onunload="callCallback()"
 	title="&title;"
 	ondialogaccept="return save(true)"
 	ondialogextra2="preview();"

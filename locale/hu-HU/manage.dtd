@@ -3,6 +3,7 @@
 <!ENTITY done "Kész">
 <!ENTITY done.ak "K">
 <!ENTITY filter "Keresés">
+<!ENTITY installfromurls "Install from URLs...">
 <!ENTITY manageaddonstitle "Stílusfájlok">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Látogassa meg">

@@ -45,3 +45,11 @@ richlistitem[type="userstyle"] [anonid="date-updated"] {
 #list-view[type="userstyle"] #addon-list-empty:not([hidden]) ~ #userstyle-footer {
 	display: none;
 }
+/* Override add-ons manager's "disabled is display: none" */
+#install-from-url, #no-styles-install-from-url {
+	display: -moz-box;
+}
+/* Override Gnome "no images in buttons" */
+#install-from-url:not([image=""]) .button-icon, #no-styles-install-from-url:not([image=""]) .button-icon {
+	display: -moz-box;
+}

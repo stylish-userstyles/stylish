@@ -3,6 +3,7 @@
 <!ENTITY done "הסתיים">
 <!ENTITY done.ak "ג">
 <!ENTITY filter "חיפוש">
+<!ENTITY installfromurls "Install from URLs...">
 <!ENTITY manageaddonstitle "סגנונות משתמש">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "ביקור">
