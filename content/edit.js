@@ -327,17 +327,26 @@ function checkForErrors() {
 	while (errors.hasChildNodes()) {
 		errors.removeChild(errors.lastChild);
 	}
+	var currentMessages = [];
 	var errorListener = {
 		QueryInterface: XPCOMUtils.generateQI([Components.interfaces.nsIConsoleListener, Components.interfaces.nsISupports]),
 		observe: function(message) {
 			if ("QueryInterface" in message) {
 				errors.style.display = "-moz-box";
-				var label = document.createElementNS(stylishCommon.XULNS, "label");
 				var error = message.QueryInterface(Components.interfaces.nsIScriptError);
-
-				label.appendChild(document.createTextNode(error.lineNumber + ":" + error.columnNumber + " " + error.errorMessage));
-				label.addEventListener("click", function() {goToLine(error.lineNumber, error.columnNumber) }, false);
-				errors.appendChild(label);
+				
+				// ignore other crap
+				if (error.category == "CSS Parser" && error.sourceName == "about:blank") {
+					var message = error.lineNumber + ":" + error.columnNumber + " " + error.errorMessage;
+					// don't duplicate
+					if (currentMessages.indexOf(message) == -1) {
+						currentMessages.push(message);
+						var label = document.createElementNS(stylishCommon.XULNS, "label");
+						label.appendChild(document.createTextNode(message));
+						label.addEventListener("click", function() {goToLine(error.lineNumber, error.columnNumber) }, false);
+						errors.appendChild(label);
+					}
+				}
 			}
 		}
 	}
