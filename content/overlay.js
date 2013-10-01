@@ -19,15 +19,14 @@ var stylishOverlay = {
 					setTimeout(function() {openUILinkIn(stylishOverlay.URL_STRINGS.getString("firstrun"), "tab")}, 100);
 				}
 			case 2:
-				// add to addon bar
-				var addonBar = document.getElementById("addon-bar");
+				// add to nav bar
+				var navbar = document.getElementById("nav-bar");
 				var button = document.getElementById("stylish-toolbar-button");
-				if (addonBar && !button) {
-					var newCurrentSet = ["stylish-toolbar-button"].concat(addonBar.currentSet.split(",")).join(",");
-					addonBar.currentSet = newCurrentSet; // for immediate display
-					addonBar.setAttribute("currentset", newCurrentSet); // for persisting
-					document.persist(addonBar.id, "currentset");
-					setToolbarVisibility(addonBar, true);
+				if (navbar && !button) {
+					var newCurrentSet = navbar.currentSet.split(",").concat(["stylish-toolbar-button"]).join(",");
+					navbar.currentSet = newCurrentSet; // for immediate display
+					navbar.setAttribute("currentset", newCurrentSet); // for persisting
+					document.persist(navbar.id, "currentset");
 					try {
 						BrowserToolboxCustomizeDone(true);
 					} catch (e) {
