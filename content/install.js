@@ -63,7 +63,7 @@ function switchToEdit() {
 function save(andClose) {
 	if (!name.value) {
 		alert(strings.getString("missingname"));
-		return;
+		return false;
 	}
 	style.name = name.value;
 	style.enabled = true;
