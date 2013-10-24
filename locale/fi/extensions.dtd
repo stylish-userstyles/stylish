@@ -122,7 +122,7 @@
 <!ENTITY searchThrobber.label "Etsi lisäosia">
 <!ENTITY resetSearch.label "Tyhjennä hakutulokset">
 <!ENTITY noSearchResults.label "Kaikki haun tulokset on jo asennettu tai ovat yhteensopimattomia.">
-<!ENTITY noRecommendedResults.label "Kaikki suositukseton jo asennettu tai ovat yhteensopimattomia.">
+<!ENTITY noRecommendedResults.label "Kaikki suositukset on jo asennettu tai ovat yhteensopimattomia.">
 <!ENTITY emptySearch.label "Ei hakua vastaavia lisäosia">
 <!ENTITY emptySearch.button "OK">
 <!ENTITY cancelSearch.button "Peruuta">

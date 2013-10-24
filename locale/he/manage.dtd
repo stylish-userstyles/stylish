@@ -1,0 +1,19 @@
+<!ENTITY changetags "שנה תגיות">
+<!ENTITY changetags.ak "ש">
+<!ENTITY done "הושלם">
+<!ENTITY done.ak "ש">
+<!ENTITY filter "חיפוש">
+<!ENTITY installfromurls "התקנת מכתובות Url...">
+<!ENTITY manageaddonstitle "סגנונות משתמש">
+<!ENTITY managetitle "Stylish">
+<!ENTITY nostylesstart "בקר באתר">
+<!ENTITY nostylesend "לקבלת מידע כיצד יש להשתמש ב־ Stylish">
+<!ENTITY sortenabled "פעיל">
+<!ENTITY sortname "שם">
+<!ENTITY sorttag "תגית">
+<!ENTITY sorttype "סוג">
+<!ENTITY sortgroup "סדר לפי:">
+<!ENTITY update "עדכן">
+<!ENTITY update.ak "ע">
+<!ENTITY writenew "כתוב סגנון חדש">
+<!ENTITY writenew.ak "כ">

@@ -49,7 +49,7 @@
 <!ENTITY cmd.options.accesskey "O">
 <!ENTITY cmd.options.tooltip "선택된 확장 기능 설정">
 <!ENTITY cmd.optionsUnix.label "환경 설정">
-<!ENTITY cmd.optionsUnix.accesskey "r">
+<!ENTITY cmd.optionsUnix.accesskey "P">
 <!ENTITY cmd.optionsUnix.tooltip "선택된 확장 기능 설정 편집">
 <!ENTITY cmd.enable.label "사용함">
 <!ENTITY cmd.enable.accesskey "E">

@@ -1,8 +1,8 @@
-<!ENTITY addfile "Instalar archivo...">
+<!ENTITY addfile "Instalar archivo…">
 <!ENTITY addfile.ak "I">
-<!ENTITY findstylebrowser "Encontrar estilos para este estilo...">
-<!ENTITY findstylebrowser.ak "E">
-<!ENTITY managestyles "Administrar estilos...">
+<!ENTITY findstylebrowser "Buscar estilos para este sitio web…">
+<!ENTITY findstylebrowser.ak "B">
+<!ENTITY managestyles "Administrar estilos…">
 <!ENTITY managestyles.ak "A">
 <!ENTITY turnon "Activar todos los estilos">
 <!ENTITY turnon.ak "c">

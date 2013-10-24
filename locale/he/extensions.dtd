@@ -1,0 +1,160 @@
+<!ENTITY addons.title "תוספות">
+<!-- Default window size for the addon manager in pixels -->
+<!ENTITY em.width "520">
+<!ENTITY em.height "380">
+<!ENTITY cmd.info.commandKey "i">
+<!ENTITY cmd.options.commandKey ",">
+<!ENTITY cmd.close.commandKey "w">
+<!-- View labels -->
+<!ENTITY search.label "קבל תוספות">
+<!ENTITY extensions.label "הרחבות">
+<!ENTITY themes.label "ערכות נושא">
+<!ENTITY locales.label "שפות">
+<!ENTITY plugins.label "תוספים">
+<!ENTITY update.label "עדכונים">
+<!ENTITY install.label "התקנה">
+<!-- Command Bar items -->
+<!ENTITY cmd.checkUpdatesAll.label "מצא עדכונים">
+<!ENTITY cmd.checkUpdatesAll.accesskey "מ">
+<!ENTITY cmd.checkUpdatesAllAddon.tooltip "מצא עדכונים לתוספות שלך">
+<!ENTITY cmd.checkUpdatesAllTheme.tooltip "מצא עדכונים לערכות הנושא שלך">
+<!ENTITY cmd.checkUpdatesAllPlugin.tooltip "מצא עדכונים לתוספים שלך">
+<!ENTITY cmd.installLocalFile.label "התקן...">
+<!ENTITY cmd.installLocalFile.accesskey "ק">
+<!ENTITY cmd.installFileAddon.tooltip "התקן תוסף">
+<!ENTITY cmd.installFileTheme.tooltip "התקן ערכת נושא">
+<!ENTITY cmd.installUpdatesAll2.label "התקן עדכונים">
+<!ENTITY cmd.installUpdatesAll2.accesskey "ע">
+<!ENTITY cmd.installUpdatesAll2.tooltip "התקן עדכונים שנבחרו">
+<!ENTITY cmd.restartApp2.label "הפעל מחדש">
+<!ENTITY cmd.restartApp2.accesskey "פ">
+<!ENTITY cmd.restartApp2.tooltip "הפעל מחדש להחיל את השינויים">
+<!ENTITY cmd.skip.label "דלג">
+<!ENTITY cmd.skip.accesskey "ל">
+<!ENTITY cmd.skip.tooltip "דלג על עדכון זה">
+<!ENTITY cmd.continue.label "המשך">
+<!ENTITY cmd.continue.accesskey "ש">
+<!ENTITY cmd.continue.tooltip "המשך לטעון את Firefox">
+<!ENTITY cmd.enableAll.label "אפשר הכל">
+<!ENTITY cmd.enableAll.accesskey "כ">
+<!ENTITY cmd.enableAll.tooltip "אפשר את כל התוספות שמוצגות">
+<!ENTITY cmd.disableAll.label "בטל הכל">
+<!ENTITY cmd.disableAll.accesskey "ב">
+<!ENTITY cmd.disableAll.tooltip "בטל את כל התוספות שמוצגות">
+<!-- Displayed in the selected Add-on\'s richlistitem and context menu -->
+<!ENTITY cmd.useTheme.label "השתמש בערכת נושא">
+<!ENTITY cmd.useTheme.accesskey "נ">
+<!ENTITY cmd.useTheme.tooltip "שינוי ערכת הנושא של Firefox">
+<!ENTITY cmd.options.label "אפשרויות">
+<!ENTITY cmd.options.accesskey "ש">
+<!ENTITY cmd.options.tooltip "הגדר אפשרויות עבור ההרחבה שנבחרה">
+<!ENTITY cmd.optionsUnix.label "מאפיינים">
+<!ENTITY cmd.optionsUnix.accesskey "נ">
+<!ENTITY cmd.optionsUnix.tooltip "עריכת מאפיינים עבור ההרחבה שנבחרה">
+<!ENTITY cmd.enable.label "הפוך לזמין">
+<!ENTITY cmd.enable.accesskey "פ">
+<!ENTITY cmd.enable.tooltip "הפוך הרחבה זו לזמינה כאשר Firefox מופעל מחדש">
+<!ENTITY cmd.disable.label "הפוך ללא זמין">
+<!ENTITY cmd.disable.accesskey "מ">
+<!ENTITY cmd.disable.tooltip "הפוך הרחבה זו ללא זמינה כאשר Firefox מופעל מחדש">
+<!ENTITY cmd.uninstall.label "הסרה">
+<!ENTITY cmd.uninstall2.accesskey "ס">
+<!ENTITY cmd.uninstall2.tooltip "הסר הרחבה זו כאשר Firefox מופעל מחדש">
+<!ENTITY cmd.cancelUninstall.label "בטל הסרה">
+<!ENTITY cmd.cancelUninstall.accesskey "ב">
+<!ENTITY cmd.cancelUninstall.tooltip "בטל את ההסרה הרחבה זו">
+<!ENTITY cmd.cancelInstall.label "בטל התקנה">
+<!ENTITY cmd.cancelInstall.accesskey "נ">
+<!ENTITY cmd.cancelInstall.tooltip "בטל את ההתקנה של הרחבה זו">
+<!ENTITY cmd.cancelUpgrade.label "בטל שדרוג">
+<!ENTITY cmd.cancelUpgrade.accesskey "ש">
+<!ENTITY cmd.cancelUpgrade.tooltip "בטל את השדרוג של הרחבה זו">
+<!ENTITY cmd.installUpdate.label "התקן עדכון">
+<!ENTITY cmd.installUpdate.accesskey "ע">
+<!ENTITY cmd.installUpdate.tooltip "התקן עדכון לתוספת הזאת">
+<!ENTITY cmd.showUpdateInfo.label "הצג מידע">
+<!ENTITY cmd.showUpdateInfo.accesskey "צ">
+<!ENTITY cmd.showUpdateInfo.tooltip "הצג מידע נוסף אודות עדכונים אלה">
+<!ENTITY cmd.hideUpdateInfo.label "הסתר מידע">
+<!ENTITY cmd.hideUpdateInfo.accesskey "ע">
+<!ENTITY cmd.hideUpdateInfo.tooltip "הסתר מידע נוסף אודות עדכונים אלה">
+<!ENTITY cmd.installSearchResult.label "הוסף אל Firefox...">
+<!ENTITY cmd.installSearchResult.accesskey "ס">
+<!ENTITY cmd.installSearchResult.tooltip "הורד והתקן תוספת זו">
+<!-- The selected add-on\'s cancel action button label -->
+<!ENTITY cancel.label "ביטול">
+<!ENTITY cancel.accesskey "ב">
+<!ENTITY cancelInstall.label "ביטול">
+<!ENTITY cancelInstall.accesskey "ב">
+<!ENTITY cancelUpgrade.label "ביטול">
+<!ENTITY cancelUpgrade.accesskey "ב">
+<!-- Only displayed in the selected Add-on\'s context menu -->
+<!ENTITY cmd.homepage.label "בקר בדף בית">
+<!ENTITY cmd.homepage.accesskey "ק">
+<!ENTITY cmd.about2.label "אודות תוספת זו">
+<!ENTITY cmd.about.accesskey "פ">
+<!ENTITY cmd.checkUpdate.label "מצא עדכון">
+<!ENTITY cmd.checkUpdate.accesskey "צ">
+<!ENTITY cmd.includeUpdate.label "כלול עדכון">
+<!ENTITY cmd.includeUpdate.accesskey "כ">
+<!ENTITY includeUpdate.label "כלול עדכון זה">
+<!ENTITY includeUpdate.accesskey "ע">
+<!ENTITY includeUpdate.tooltip "כלול תוספת זו בעת התקנת העדכונים">
+<!-- Status Messsages -->
+<!ENTITY insecureUpdate.label "אינו מספק עדכונים מאובטחים.">
+<!ENTITY needsDependencies.label "דורש פריטים נוספים.">
+<!ENTITY blocklisted.label "לא זמין מטעמי אבטחה.">
+<!ENTITY softBlocklisted.label "ידוע כגורם לבעיות אבטחה או יציבות.">
+<!ENTITY outdated.label "קיימת גירסה חדשה ובטוחה יותר.">
+<!ENTITY toBeDisabled.label "תוספת זו תהפוך ללא זמינה כאשר Firefox יופעל מחדש.">
+<!ENTITY toBeEnabled.label "תוספת זו תהפוך לזמינה כאשר Firefox יופעל מחדש.">
+<!ENTITY toBeInstalled.label "תוספת זו תותקן כאשר Firefox יופעל מחדש.">
+<!ENTITY toBeUninstalled.label "תוספת זו תוסר כאשר תפעיל את Firefox מחדש.">
+<!ENTITY toBeUpdated.label "תוספת זו תעודכן כאשר תפעיל את Firefox מחדש.">
+<!ENTITY getExtensions.label "קבל הרחבות">
+<!ENTITY getThemes.label "קבל ערכות נושא">
+<!ENTITY getPlugins.label "קבל תוספים">
+<!ENTITY searchAddons.label "חפש בכל התוספות">
+<!ENTITY browseAddons.label "נווט בכל התוספות">
+<!ENTITY searchFailed.label "Firefox לא הצליח למצוא מידע ולהציגו עבור התוספות">
+<!ENTITY recommendedHeader.label "מומלץ">
+<!ENTITY recommendedThrobber.label "מחפש ומציג מידע עבור תוספות מומלצות">
+<!ENTITY searchThrobber.label "מחפש תוספות">
+<!ENTITY resetSearch.label "נקה תוצאות">
+<!ENTITY noSearchResults.label "כל התוצאות הן כבר מותקנות או לא תואמות.">
+<!ENTITY noRecommendedResults.label "כל ההמלצות הן כבר מותקנות או לא תואמות.">
+<!ENTITY emptySearch.label "אין תוספות תואמות">
+<!ENTITY emptySearch.button "אישור">
+<!ENTITY cancelSearch.button "ביטול">
+<!ENTITY searchFailed.button "אישור">
+<!ENTITY searchResultHomepage.value "למד עוד">
+<!ENTITY searchBox.label "חפש בכל התוספות">
+<!ENTITY recommendedResults.label "ראה את כל התוספות המומלצות">
+<!ENTITY searchResultConnecting.label "מתחבר...">
+<!ENTITY searchResultInstalling.label "מתקין...">
+<!ENTITY searchResultFailed.label "ההתקנה נכשלה">
+<!ENTITY searchResultInstalled.label "ההתקנה הושלמה">
+<!ENTITY addonTypeExtension.label "הרחבה">
+<!ENTITY addonTypeTheme.label "ערכת נושא">
+<!ENTITY missingThumbnail.label "ללא תצוגה">
+<!ENTITY previewNoThemeSelected.label "לא נבחרה ערכת נושא">
+<!ENTITY previewNoPreviewImage.label "ערכת נושא זו היא ללא תצוגה מקדימה">
+<!ENTITY moreInfo.label "מידע נוסף">
+<!ENTITY infoNoAddonSelected.label "לא נבחר עדכון">
+<!ENTITY infoNoUpdateInfo.label "לא קיים מידע נוסף עבור עדכון זה">
+<!ENTITY infoUpdateInfoError.label "אירעה שגיאה עבור טעינת המידע אודות עדכון זה">
+<!ENTITY updateSuccess.label "העדכון הושלם בהצלחה.">
+<!ENTITY installSuccess.label "ההתקנה הושלמה בהצלחה.">
+<!ENTITY installSuccessRestart.label "הפעל מחדש להשלמת התתקנה.">
+<!ENTITY updateSuccessRestart.label "הפעל מחדש להשלמת העדכון.">
+<!ENTITY installWaiting.label "ממתין...">
+<!ENTITY installIncompatibleUpdate.label "בודק תאימות...">
+<!ENTITY installFinishing.label "מתקין...">
+<!ENTITY installFailure.label "התקנה נכשלה.">
+<!ENTITY progressStatus.label "בודק עבור עדכונים">
+<!ENTITY eula.title "הסכם רשיון למשתמש הקצה">
+<!ENTITY eula.width "560px">
+<!ENTITY eula.height "400px">
+<!ENTITY eula.accept "קבל את תנאי ההסכם והתקן...">
+<!ENTITY blocklist.blocked.label "חסום">
+<!ENTITY blocklist.checkbox.label "לא זמין">

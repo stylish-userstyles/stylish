@@ -3,7 +3,7 @@
 <!ENTITY done "완료">
 <!ENTITY done.ak "D">
 <!ENTITY filter "검색">
-<!ENTITY installfromurls "Install from URLs...">
+<!ENTITY installfromurls "주소에서 설치">
 <!ENTITY manageaddonstitle "사용자 스타일">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "스타일리시 사용법을 알고 싶으면">

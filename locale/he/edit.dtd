@@ -1,0 +1,24 @@
+<!ENTITY chromefolder "נתיב תיקית Chrome">
+<!ENTITY chromefolder.ak "נ">
+<!ENTITY dataURI "Data URI...">
+<!ENTITY dataURI.ak "D">
+<!ENTITY htmlnamespace "שם מרחב HTML כברירת מחדל">
+<!ENTITY htmlnamespace.ak "ש">
+<!ENTITY insert "הכנס">
+<!ENTITY insert.ak "כ">
+<!ENTITY name "שם">
+<!ENTITY name.ak "ש">
+<!ENTITY openintexternaleditor "פתח בעורך (תמליל) חיצוני">
+<!ENTITY openintexternaleditor.ak "פ">
+<!ENTITY preview "תצוגה מקדימה">
+<!ENTITY preview.ak "צ">
+<!ENTITY save "שמור">
+<!ENTITY save.ak "מ">
+<!ENTITY switchtoinstall "עבור להתקנה">
+<!ENTITY switchtoinstall.ak "ע">
+<!ENTITY tags "תגיות">
+<!ENTITY tags.ak "ג">
+<!ENTITY wraplines "גלישת שורות">
+<!ENTITY wraplines.ak "ש">
+<!ENTITY xulnamespace "שם מרחב XUL כברירת מחדל">
+<!ENTITY xulnamespace.ak "מ">

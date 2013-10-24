@@ -1,12 +1,12 @@
 <!ENTITY changetags "Cambiar etiquetas">
 <!ENTITY changetags.ak "C">
 <!ENTITY done "Hecho">
-<!ENTITY done.ak "D">
+<!ENTITY done.ak "H">
 <!ENTITY filter "Buscar">
-<!ENTITY installfromurls "Install from URLs...">
+<!ENTITY installfromurls "Instalar desde direcciones web…">
 <!ENTITY manageaddonstitle "Estilos de usuario">
 <!ENTITY managetitle "Stylish">
-<!ENTITY nostylesstart "Visitar">
+<!ENTITY nostylesstart "Visitá">
 <!ENTITY nostylesend "para obtener información sobre cómo usar Stylish.">
 <!ENTITY sortenabled "Habilitado">
 <!ENTITY sortname "Nombre">

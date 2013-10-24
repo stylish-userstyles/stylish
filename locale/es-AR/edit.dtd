@@ -1,6 +1,6 @@
-<!ENTITY chromefolder "Ruta de la carpeta Chrome">
+<!ENTITY chromefolder "Ruta de la carpeta de chrome">
 <!ENTITY chromefolder.ak "C">
-<!ENTITY dataURI "URI de datos...">
+<!ENTITY dataURI "URI de datos…">
 <!ENTITY dataURI.ak "d">
 <!ENTITY htmlnamespace "Espacio de nombre HTML por defecto">
 <!ENTITY htmlnamespace.ak "H">

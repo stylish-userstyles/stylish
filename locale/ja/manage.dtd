@@ -3,7 +3,7 @@
 <!ENTITY done "完了">
 <!ENTITY done.ak "D">
 <!ENTITY filter "検索">
-<!ENTITY installfromurls "Install from URLs...">
+<!ENTITY installfromurls "URLからインストール...">
 <!ENTITY manageaddonstitle "ユーザースタイル">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Stylish の使い方に関する情報は">

@@ -3,7 +3,7 @@
 <!ENTITY done "Завершено">
 <!ENTITY done.ak "З">
 <!ENTITY filter "Поиск">
-<!ENTITY installfromurls "Install from URLs...">
+<!ENTITY installfromurls "Установка стилей по URL адресам…">
 <!ENTITY manageaddonstitle "Стили">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Для информации о том, как использовать Stylish, посетите">
