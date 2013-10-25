@@ -31,6 +31,8 @@ var stylishCommon = {
 		var appInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo);
 		return appInfo.name;
 	},
+	
+	isXULAvailable: Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULRuntime).OS != "android",
 
 	deleteWithPrompt: function(style) {
 		const STRINGS = document.getElementById("stylish-common-strings");
@@ -100,6 +102,51 @@ var stylishCommon = {
 		return stylishCommon.openEditForStyle(style);
 	},
 	
+	// Installing from URLs, with prompting and UI and such. startedCallback is called after the user has entered their URLs,
+	// endedCallback is called when the process is done.
+	startInstallFromUrls: function(startedCallback, endedCallback) {
+		const STRINGS = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://stylish/locale/manage.properties")
+		var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+		var o = {}
+		if (!promptService.prompt(window, STRINGS.GetStringFromName("installfromurlsprompttitle"), STRINGS.GetStringFromName("installfromurlsprompt"), o, null, {})) {
+			return;
+		}
+		var urls = o.value.split(/\s+/);
+		if (urls.length == 0) {
+			return;
+		}
+		
+		if (startedCallback) {
+			startedCallback();
+		}
+		
+		// Run through each one, one at a time, keeping track of successes or failures
+		var currentIndex = 0;
+		var results = {successes: [], failures: []};
+		function processResult(result) {
+			// We'll consider "cancelled" and "existing" as success, so only "failure" is a failure.
+			(result != "failure" ? results.successes : results.failures).push(urls[currentIndex]);
+			currentIndex++;
+			if (currentIndex < urls.length) {
+				stylishCommon.installFromUrl(urls[currentIndex], processResult);
+			} else {
+				stylishCommon.endInstallFromUrls(results, endedCallback);
+			}
+		}
+		stylishCommon.installFromUrl(urls[currentIndex], processResult);
+	},
+	
+	endInstallFromUrls: function(results, endedCallback) {
+		if (endedCallback) {
+			endedCallback();
+		}
+		if (results.failures.length > 0) {
+			const STRINGS = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://stylish/locale/manage.properties")
+			var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+			promptService.alert(window, STRINGS.GetStringFromName("installfromurlsprompttitle"), STRINGS.formatStringFromName("installfromurlserror", [results.failures.join(", ")], 1));
+		}
+	},
+
 	installFromUrl: function(url, callback) {
 		// Valid URLs can retrived a CSS file or a HTML file. We'll try HTML first, and if the
 		// content type comes back as CSS, we'll do that instead. These need to be separate requests
@@ -178,24 +225,7 @@ var stylishCommon = {
 			style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
 			style.init(uri, results["stylish-id-url"], results["stylish-update-url"], results["stylish-md5-url"], results["stylish-description"], results["stylish-code"], false, results["stylish-code"], null);
 
-			if (typeof stylishStrings != "undefined") {
-				// stylishStrings is set in overlay-mobile.xul, in which case XUL is not available
-				var installPrompt = stylishInstallOverlay.INSTALL_STRINGS.formatStringFromName("installintro", [style.name], 1);
-				var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-				if (promptService.confirm(window, stylishStrings.title, installPrompt)) {
-					style.enabled = true;
-					style.save();
-					if (installPingURL) {
-						var req = new XMLHttpRequest();
-						req.open("GET", installPingURL, true);
-						stylishCommon.fixXHR(req);
-						req.send(null);
-					}
-					callback("installed")
-				}
-			} else {
-				stylishCommon.openInstall({style: style, installPingURL: results["stylish-install-ping-url"], installCallback: callback});
-			}
+			stylishCommon.openInstall({style: style, installPingURL: results["stylish-install-ping-url"], installCallback: callback});
 
 		});
 	},
@@ -294,11 +324,49 @@ var stylishCommon = {
 	},
 
 	openInstall: function(params) {
+		var style = params.style;
 		// let's check if it's already installed
 		var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
-		if (service.findByUrl(params.style.idUrl, 0) != null) {
+		if (service.findByUrl(style.idUrl, 0) != null) {
 			if (params.installCallback) {
 				params.installCallback("existing");
+			}
+			return;
+		}
+		
+		if (!stylishCommon.isXULAvailable) {
+			var installStrings = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://stylish/locale/install.properties");
+			var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+			var promptTitle = typeof stylishStrings == "undefined" ? "Install user style" : stylishStrings.title;
+			var result;
+			if (style.name) {
+				var installPrompt = installStrings.formatStringFromName("installintro", [style.name], 1);
+				// title is read from entity in overlay-mobile.xul, but not available in manage.html (which is not localized anyway!)
+				result = promptService.confirm(window, promptTitle, installPrompt);
+			} else {
+				var installPrompt = "Give the style from '" + style.idUrl + "' a name.";
+				var name = {}
+				result = promptService.prompt(window, promptTitle, installPrompt, name, null, {});
+				if (result) {
+					style.name = name.value;
+				}
+			}
+			if (result) {
+				style.enabled = true;
+				style.save();
+				if (params.installPingURL) {
+					var req = new XMLHttpRequest();
+					req.open("GET", params.installPingURL, true);
+					stylishCommon.fixXHR(req);
+					req.send(null);
+				}
+				if (params.installCallback) {
+					params.installCallback("installed");
+				}
+			} else {
+				if (params.installCallback) {
+					params.installCallback("cancelled");
+				}
 			}
 			return;
 		}

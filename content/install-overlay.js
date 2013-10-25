@@ -4,8 +4,6 @@ var stylishInstallOverlay = {
 
 	init: function() {
 		stylishInstallOverlay.STRINGS = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://stylish/locale/overlay.properties");
-		stylishInstallOverlay.INSTALL_STRINGS = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://stylish/locale/install.properties");
-
 
 		//page load listener
 		var appcontent = document.getElementById("appcontent"); // browser

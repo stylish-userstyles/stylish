@@ -36,6 +36,7 @@
 			color: gray;
 		}
 	</style>
+	<script src="common.js"></script>
 </head>
 <body>
 <h1>Stylish</h1>
@@ -89,7 +90,7 @@
 		style.save();
 	}
 
-	function remove(id) {
+	function removeStyle(id) {
 		var style = get(id);
 		style.delete();
 	}
@@ -111,7 +112,19 @@
 			.replace(/STYLE_LINK/g, style.url == null ? "" : "<a href=\"" + escapeHtml(style.url) + "\">[→]</a>");
 	}
 
-	var styleTemplate = "<tr id='style-STYLE_ID' class='style-item style-STYLE_STATUS'><td class='style-name'>STYLE_NAME STYLE_LINK</td><td class='enable-disable-column'><button class='enable-style' onclick='enable(\"STYLE_ID\")'>Enable</button><button class='disable-style' onclick='disable(\"STYLE_ID\")'>Disable</button></td><td class='remove-column'><button class='remove-style' onclick='remove(\"STYLE_ID\")'>Remove</button></td></tr>";
+	function startInstallFromUrls(button) {
+		var startedCallback = function() {
+			button.setAttribute("image", "chrome://browser/skin/tabbrowser/connecting.png");
+			button.setAttribute("disabled", "true");
+		}
+		var endedCallback = function() {
+			button.setAttribute("image", "");
+			button.removeAttribute("disabled");
+		}
+		stylishCommon.startInstallFromUrls(startedCallback, endedCallback);
+	}
+
+	var styleTemplate = "<tr id='style-STYLE_ID' class='style-item style-STYLE_STATUS'><td class='style-name'>STYLE_NAME STYLE_LINK</td><td class='enable-disable-column'><button class='enable-style' onclick='enable(\"STYLE_ID\")'>Enable</button><button class='disable-style' onclick='disable(\"STYLE_ID\")'>Disable</button></td><td class='remove-column'><button class='remove-style' onclick='removeStyle(\"STYLE_ID\")'>Remove</button></td></tr>";
 	var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
 	var styles = service.list(0, {});
 	var html = styles.map(getCode).join("\n");
@@ -142,7 +155,7 @@
 
 </script>
 
-<p>Visit <a href="http://userstyles.org">userstyles.org</a> to install styles.</p>
+<p>Visit <a href="http://userstyles.org">userstyles.org</a> to install styles, or <button onclick="startInstallFromUrls(this)">install from URLs.</button></p>
 
 </body>
 </html>

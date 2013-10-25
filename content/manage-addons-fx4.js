@@ -41,46 +41,16 @@ var stylishManageAddonsFx4 = {
 	},
 	
 	startInstallFromUrls: function(button) {
-		const STRINGS = document.getElementById("stylishStrings");
-		var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-		var o = {}
-		if (!promptService.prompt(window, STRINGS.getString("installfromurlsprompttitle"), STRINGS.getString("installfromurlsprompt"), o, null, {})) {
-			return;
+		var startedCallback = function() {
+			button.setAttribute("image", "chrome://browser/skin/tabbrowser/connecting.png");
+			button.setAttribute("disabled", "true");
 		}
-		var urls = o.value.split(/\s+/);
-		if (urls.length == 0) {
-			return;
+		var endedCallback = function() {
+			button.setAttribute("image", "");
+			button.setAttribute("disabled", "");
 		}
-		
-		button.setAttribute("image", "chrome://browser/skin/tabbrowser/connecting.png");
-		button.setAttribute("disabled", "true");
-		
-		// Run through each one, one at a time, keeping track of successes or failures
-		var currentIndex = 0;
-		var results = {successes: [], failures: []};
-		function processResult(result) {
-			// We'll consider "cancelled" and "existing" as success, so only "failure" is a failure.
-			(result != "failure" ? results.successes : results.failures).push(urls[currentIndex]);
-			currentIndex++;
-			if (currentIndex < urls.length) {
-				stylishCommon.installFromUrl(urls[currentIndex], processResult);
-			} else {
-				stylishManageAddonsFx4.endInstallFromUrls(results, button);
-			}
-		}
-		stylishCommon.installFromUrl(urls[currentIndex], processResult);
-	},
-	
-	endInstallFromUrls: function(results, button) {
-		button.setAttribute("image", "");
-		button.setAttribute("disabled", "");
-		if (results.failures.length > 0) {
-			var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-			const STRINGS = document.getElementById("stylishStrings");
-			promptService.alert(window, STRINGS.getString("installfromurlsprompttitle"), STRINGS.getFormattedString("installfromurlserror", [results.failures.join(", ")]));
-		}
+		stylishCommon.startInstallFromUrls(startedCallback, endedCallback);
 	}
-	
 }
 
 // add some more properties so we can sort on them
