@@ -32,7 +32,7 @@ var stylishCommon = {
 		return appInfo.name;
 	},
 	
-	isXULAvailable: Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULRuntime).OS != "android",
+	isXULAvailable: Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULRuntime).widgetToolkit.toLowerCase() != "android",
 
 	deleteWithPrompt: function(style) {
 		const STRINGS = document.getElementById("stylish-common-strings");
@@ -107,7 +107,7 @@ var stylishCommon = {
 	startInstallFromUrls: function(startedCallback, endedCallback) {
 		const STRINGS = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://stylish/locale/manage.properties")
 		var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-		var o = {}
+		var o = {value: ""};
 		if (!promptService.prompt(window, STRINGS.GetStringFromName("installfromurlsprompttitle"), STRINGS.GetStringFromName("installfromurlsprompt"), o, null, {})) {
 			return;
 		}
