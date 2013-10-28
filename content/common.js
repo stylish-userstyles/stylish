@@ -345,7 +345,7 @@ var stylishCommon = {
 				result = promptService.confirm(window, promptTitle, installPrompt);
 			} else {
 				var installPrompt = "Give the style from '" + style.idUrl + "' a name.";
-				var name = {}
+				var name = {value: ""};
 				result = promptService.prompt(window, promptTitle, installPrompt, name, null, {});
 				if (result) {
 					style.name = name.value;
