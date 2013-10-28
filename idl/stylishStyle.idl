@@ -42,6 +42,13 @@ interface stylishStyle : nsIClassInfo
 	void save();
 	void delete();
 	boolean appliesToUrl(in AString url);
+	// observer's topics can be:
+	//   - stylish-style-update-check-start
+	//   - stylish-style-update-check-done with data:
+	//     - update-check-error
+	//     - no-update-available
+	//     - update-available
+	//     - no-update-possible
 	void checkForUpdates(in nsIObserver observer);
 	void applyUpdate();
 	void setPreview(in boolean on);

@@ -426,13 +426,13 @@ Style.prototype = {
 	},
 
 	checkForUpdates: function(observer) {
-		var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
-		observerService.notifyObservers(this, "stylish-style-update-check-start", null);
-		if (observer) {
-			observer.observe(this, "stylish-style-update-check-start", null);
-		}
-
 		var that = this;
+		
+		var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
+		observerService.notifyObservers(that, "stylish-style-update-check-start", null);
+		if (observer) {
+			observer.observe(that, "stylish-style-update-check-start", null);
+		}
 
 		function notifyDone(result) {
 			observerService.notifyObservers(that, "stylish-style-update-check-done", result);
@@ -903,11 +903,17 @@ Style.prototype = {
 		request.QueryInterface(Components.interfaces.nsIDOMEventTarget);
 		request.addEventListener("readystatechange", function(event) {
 			if (request.readyState == 4) {
-				if ((request.status == 200 || (request.status == 0 && url.indexOf("data:") == 0)) && request.responseText) {
-					var contentType = request.getResponseHeader("Content-type");
-					// get rid of charset
-					if (contentType != null && contentType.indexOf(";") > -1) {
-						contentType = contentType.split(";")[0];
+				if ((request.status == 200 || (request.status == 0 && (url.indexOf("data:") == 0 || url.indexOf("file:") == 0))) && request.responseText) {
+					var contentType;
+					if (url.indexOf("file:") == 0) {
+						// assume a local file is CSS
+						contentType = "text/css";
+					} else {
+						contentType = request.getResponseHeader("Content-type");
+						// get rid of charset
+						if (contentType != null && contentType.indexOf(";") > -1) {
+							contentType = contentType.split(";")[0];
+						}
 					}
 					successCallback(request.responseText, contentType);
 				} else {

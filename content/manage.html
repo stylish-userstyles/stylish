@@ -19,7 +19,7 @@
 			padding-top: 0.5em;
 			padding-bottom: 0.5em;
 		}
-		.style-item .enable-disable-column, .style-item .remove-column {
+		.style-item .enable-disable-column, .style-item .remove-column, .style-item .enable-disable-column, .style-item .update-column {
 			text-align: center;
 		}
 		.style-item .enable-disable-column button {
@@ -35,16 +35,43 @@
 		.style-disabled .style-name {
 			color: gray;
 		}
+		#check-all-for-updates-container {
+			display: none;
+		}
+		.style-update-status, .checking-for-update-message, .update-style, .updating-message, .updated-message, .no-update-message, .update-error-message, .update-not-possible-message {
+			display: none;
+		}
+		.style-update-status, .checking-for-update-message,  .updating-message, .updated-message, .no-update-message, .update-error-message, .update-not-possible-message {
+			color: gray;
+			font-size: smaller;
+			font-style: italic;
+			text-align: right;
+		}
+		.checking-for-update .checking-for-update-message, .update-error .update-error-message, .no-update .no-update-message, .updatable .update-style, .update-not-possible .update-not-possible-message {
+			display: inline;
+		}
+		.checking-for-update .style-update-status, .update-error .style-update-status, .no-update .style-update-status, .update-not-possible .style-update-status {
+			display: block;
+		}
+		.loading-image {
+			display: none;
+			margin-right: 0.5em;
+		}
+		.loading .loading-image {
+			display: inline;
+		}
 	</style>
 	<script src="common.js"></script>
 </head>
 <body>
-<h1>Stylish</h1>
+<h1><img src="../skin/32.png" alt=""> Stylish</h1>
 
 <table>
 	<tbody id="styles">
 	</tbody>
 </table>
+
+<p id="check-all-for-updates-container"><button id="check-all-for-updates" onclick="checkAllForUpdates()"><img src="chrome://browser/skin/tabbrowser/connecting.png" alt="" class="loading-image">Check all for updates</button></p>
 
 <script>
 	// None of the actions we can perform from this page will directly change the UI. Instead, we will listen to the observer service so we can change ourselves not only from actions from this page, but actions from anywhere.
@@ -114,27 +141,31 @@
 
 	function startInstallFromUrls(button) {
 		var startedCallback = function() {
-			button.setAttribute("image", "chrome://browser/skin/tabbrowser/connecting.png");
-			button.setAttribute("disabled", "true");
+			updateButtonStatus(button, true);
 		}
 		var endedCallback = function() {
-			button.setAttribute("image", "");
-			button.removeAttribute("disabled");
+			updateButtonStatus(button, false);
 		}
 		stylishCommon.startInstallFromUrls(startedCallback, endedCallback);
 	}
 
-	var styleTemplate = "<tr id='style-STYLE_ID' class='style-item style-STYLE_STATUS'><td class='style-name'>STYLE_NAME STYLE_LINK</td><td class='enable-disable-column'><button class='enable-style' onclick='enable(\"STYLE_ID\")'>Enable</button><button class='disable-style' onclick='disable(\"STYLE_ID\")'>Disable</button></td><td class='remove-column'><button class='remove-style' onclick='removeStyle(\"STYLE_ID\")'>Remove</button></td></tr>";
+	var styleTemplate = "<tr id='style-STYLE_ID' class='style-item style-STYLE_STATUS'><td class='style-info'><div class='style-name'>STYLE_NAME STYLE_LINK</div><div class='style-update-status'><span class='checking-for-update-message'>Checking for updates...</span><span class='updated-message'>Updated.</span><span class='no-update-message'>No update available.</span><span class='update-error-message'>Error updating.</span><span class='update-not-possible-message'>No update possible.</span></div></td><td class='update-column'><button class='update-style' onclick='applyUpdate(\"STYLE_ID\")'><img src='chrome://browser/skin/tabbrowser/connecting.png' alt='' class='loading-image'>Update</button></td><td class='enable-disable-column'><button class='enable-style' onclick='enable(\"STYLE_ID\")'>Enable</button><button class='disable-style' onclick='disable(\"STYLE_ID\")'>Disable</button></td><td class='remove-column'><button class='remove-style' onclick='removeStyle(\"STYLE_ID\")'>Remove</button></td></tr>";
 	var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
 	var styles = service.list(0, {});
 	var html = styles.map(getCode).join("\n");
 	document.getElementById("styles").innerHTML = html;
+	updateUpdateAllButton(styles.length > 0);
+	
+	function updateUpdateAllButton(show) {
+		document.getElementById("check-all-for-updates-container").style.display = show ? "block" : "none";
+	}
 
 	var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
 
 	var deleteObserver = {
 		observe: function(subject, topic, data) {
 			removeUI(subject.id);
+			updateUpdateAllButton(document.getElementById("styles").childNodes.length > 0);
 		}
 	};
 	observerService.addObserver(deleteObserver, "stylish-style-delete", false);
@@ -142,6 +173,7 @@
 	var addObserver = {
 		observe: function(subject, topic, data) {
 			addUI(subject.id);
+			updateUpdateAllButton(true);
 		}
 	};
 	observerService.addObserver(addObserver, "stylish-style-add", false);
@@ -152,10 +184,71 @@
 		}
 	};
 	observerService.addObserver(updateObserver, "stylish-style-change", false);
+	
+	var checkForUpdateObserver = {
+		observe: function(subject, topic, data) {
+			var ui = getUI(subject.id);
+			if (topic == "stylish-style-update-check-start") {
+				ui.classList.add("checking-for-update");
+			} else if (topic == "stylish-style-update-check-done") {
+				ui.classList.remove("checking-for-update");
+				switch (data) {
+					case "update-check-error":
+						ui.classList.add("update-error");
+						break;
+					case "no-update-available":
+						ui.classList.add("no-update");
+						break;
+					case "update-available":
+						ui.classList.add("updatable");
+						break;
+					case "no-update-possible":
+						ui.classList.add("update-not-possible");
+						break;
+				}
+			}
+		}
+	};
+	
+	function checkAllForUpdates() {
+		var button = document.getElementById("check-all-for-updates");
+		updateButtonStatus(button, true);
+		var styles = service.list(0, {});
+		styles.forEach(function(style) {
+			// remove any previous update stuff
+			var cl = getUI(style.id).classList;
+			cl.remove("update-error");
+			cl.remove("no-update");
+			cl.remove("updatable");
+			cl.remove("update-not-possible");
+			cl.remove("checking-for-update");
+
+			style.checkForUpdates(checkForUpdateObserver);
+		});
+		updateButtonStatus(button, false);
+	}
+	
+	function applyUpdate(id) {
+		var ui = getUI(id);
+		var button = ui.querySelector('.update-style');
+		updateButtonStatus(button, true);
+		get(id).applyUpdate();
+		// that should fire stylish-style-change when done, which we're listening to above, and refresh it
+	}
+	
+	function updateButtonStatus(button, loading) {
+		if (loading) {
+			button.classList.add("loading");
+			button.setAttribute("disabled", "true");
+		} else {
+			button.classList.remove("loading");
+			button.removeAttribute("disabled");
+		}
+	}
 
 </script>
 
-<p>Visit <a href="http://userstyles.org">userstyles.org</a> to install styles, or <button onclick="startInstallFromUrls(this)">install from URLs.</button></p>
+<p>Visit <a href="http://userstyles.org">userstyles.org</a> to install styles, or <button onclick="startInstallFromUrls(this)"><img src="chrome://browser/skin/tabbrowser/connecting.png" alt="" class="loading-image">install from URLs.</button></p>
 
 </body>
 </html>

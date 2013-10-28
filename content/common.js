@@ -161,6 +161,11 @@ var stylishCommon = {
 	},
 
 	installFromUrlHtml: function(url, callback) {
+		// Assume a local file is a CSS file.
+		if (/^file:.*/i.test(url)) {
+			callback("css");
+			return;
+		}
 		var xhr = new XMLHttpRequest();
 		xhr.onload = function() {
 			if (this.status != 200) {
