@@ -32,9 +32,14 @@ function init() {
 		try {
 			Components.utils.import("resource:///modules/source-editor.jsm", obj);
 		} catch (ex) {
-			// orion not available, use textbox
-			init2();
-			return;
+			try {
+				// (moved circa firefox 27)
+				Components.utils.import("resource:///modules/devtools/sourceeditor/source-editor.jsm", obj);
+			} catch (ex) {
+				// orion not available, use textbox
+				init2();
+				return;
+			}
 		}
 		// check orion's pref
 		if (Services.prefs.getCharPref(obj.SourceEditor.PREFS.COMPONENT) == "textarea") {
