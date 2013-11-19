@@ -31,6 +31,8 @@ function init() {
 		var obj = {};
 		try {
 			Components.utils.import("resource:///modules/source-editor.jsm", obj);
+		} catch (ex if ex.name == "NS_ERROR_FILE_NOT_FOUND") {
+			Components.utils.import("resource:///modules/devtools/sourceeditor/source-editor.jsm", obj);
 		} catch (ex) {
 			try {
 				// (moved circa firefox 27)
