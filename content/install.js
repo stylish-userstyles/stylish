@@ -1,4 +1,4 @@
-var style, strings, name;
+var style, strings, nameElement;
 var installPingURL = null;
 var installCallback = null;
 var saved = false;
@@ -10,7 +10,7 @@ function init() {
 
 	document.documentElement.setAttribute("windowtype", window.arguments[0].windowType);
 
-	name = document.getElementById("name");
+	nameElement = document.getElementById("name");
 
 	strings = document.getElementById("strings");
 
@@ -23,7 +23,7 @@ function init() {
 	//if we don't have a name, prompt for one
 	if (style.name) {
 		//presumably someone will write a user style to edit this even if it's provided, so might as well make it work
-		name.value = style.name;
+		nameElement.value = style.name;
 		addText(intro, strings.getFormattedString("installintro", [style.name]));
 	} else {
 		document.getElementById("name-container").style.display = "";
@@ -61,11 +61,11 @@ function switchToEdit() {
 }
 
 function save(andClose) {
-	if (!name.value) {
+	if (!nameElement.value) {
 		alert(strings.getString("missingname"));
 		return false;
 	}
-	style.name = name.value;
+	style.name = nameElement.value;
 	style.enabled = true;
 	style.save();
 	if (installPingURL) {
