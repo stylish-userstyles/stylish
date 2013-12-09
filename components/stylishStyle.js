@@ -6,7 +6,7 @@ function Style() {
 	this.idUrl = null;
 	this.updateUrl = null;
 	this.md5Url = null;
-	this.appliedUrl = null;
+	this.appliedInfo = null;
 	this.lastSavedCode = null;
 	this.applyBackgroundUpdates = null;
 	this.mode = this.CALCULATE_META | this.REGISTER_STYLE_ON_CHANGE;
@@ -20,8 +20,7 @@ function Style() {
  
 
 	this.previewOn = false;
-	//whether the applied url is yet to be calculated
-	this.appliedUrlToBeCalculated = false;
+	this.appliedInfoToBeCalculated = false;
 }
 Style.prototype = {
 
@@ -158,8 +157,8 @@ Style.prototype = {
 	},
 
 	set name(name) {
-		//reference appliedUrl to make sure it has been calculated before we change the name
-		this.appliedUrl;
+		//reference appliedInfo to make sure it has been calculated before we change the name
+		this.appliedInfo;
 		this._name = name;
 	},
 
@@ -677,21 +676,32 @@ Style.prototype = {
 		var dataUrl = this.dataUrl;
 		if (!dataUrl)
 			return;
-		this.appliedUrl = dataUrl;
-		this.sss.loadAndRegisterSheet(this.appliedUrl, this.sss.AGENT_SHEET);
+		var registrationMethod = this.calculateRegistrationMethod();
+		// Save what we applied so we know what to remove later
+		this.appliedInfo = [dataUrl, registrationMethod];
+		this.sss.loadAndRegisterSheet(dataUrl, registrationMethod);
 	},
 
 	unregister: function() {
-		var unregisterUrl = this.shouldUnregisterOnLoad() ? this.dataUrl : this.appliedUrl;
+		var unregisterUrl;
+		var unregisterMethod;
+		if (this.shouldUnregisterOnLoad()) {
+			unregisterUrl = this.dataUrl;
+			unregisterMethod = this.calculateRegistrationMethod();
+		}
+		else {
+			unregisterUrl = this.appliedInfo[0];
+			unregisterMethod = this.appliedInfo[1];
+		}
 		if (unregisterUrl == null) {
 			return;
 		}
-		if (this.sss.sheetRegistered(unregisterUrl, this.sss.AGENT_SHEET))
-			this.sss.unregisterSheet(unregisterUrl, this.sss.AGENT_SHEET);
+		if (this.sss.sheetRegistered(unregisterUrl, unregisterMethod))
+			this.sss.unregisterSheet(unregisterUrl, unregisterMethod);
 		// ignore unregistered styles if stylish isn't on
 		else if (this.stylishOn)
 			Components.utils.reportError("Stylesheet is supposed to be unregistered, but it's not registered in the first place.");
-		this.appliedUrl = null;
+		this.appliedInfo = null;
 	},
 
 	bind: function(statement, name, value) {
@@ -745,16 +755,16 @@ Style.prototype = {
 		}
 	},
 
-	get appliedUrl() {
-		if (this.appliedUrlToBeCalculated) {
-			this.appliedUrl = this.dataUrl;
-			this.appliedUrlToBeCalculated = false;
+	get appliedInfo() {
+		if (this.appliedInfoToBeCalculated) {
+			this.appliedInfo = [this.dataUrl, this.calculateRegistrationMethod()];
+			this.appliedInfoToBeCalculated = false;
 		}
-		return this._appliedUrl;
+		return this._appliedInfo;
 	},
 
-	set appliedUrl(url) {
-		this._appliedUrl = url;
+	set appliedInfo(info) {
+		this._appliedInfo = info;
 	},
 
 	findSql: function(sql, parameters, mode, connection) {
@@ -838,8 +848,8 @@ Style.prototype = {
 	},
 
 	setCode: function(code, shouldRegister) {
-		//reference appliedUrl to make sure it has been calculated before we change the code
-		this.appliedUrl;
+		//reference appliedInfo to make sure it has been calculated before we change the code
+		this.appliedInfo;
 		//save the last saved code in case we have to revert
 		if (!this.lastSavedCode && this.code && this.id)
 			this.lastSavedCode = this.code;
@@ -861,7 +871,7 @@ Style.prototype = {
 		this.originalCode = originalCode;
 		this.setCode(code, shouldRegister);
 		if (!shouldRegister && this.enabled) {
-			this.appliedUrlToBeCalculated = true;
+			this.appliedInfoToBeCalculated = true;
 		}
 		if (this.shouldUnregisterOnLoad()) {
 			this.unregister();
@@ -956,6 +966,14 @@ Style.prototype = {
 
 	unescapeRegexLiterals: function(s) {
 		return s.replace(/\\/g, "");
+	},
+
+	calculateRegistrationMethod: function() {
+		// Default to AUTHOR_SHEET if available, AGENT_SHEET if not or specifically chosen with a comment like /* AGENT_SHEET */
+		if (!("AUTHOR_SHEET" in this.sss) || /\/\*\s*AGENT_SHEET\s*\*\//.test(this.code)) {
+			return this.sss.AGENT_SHEET;
+		}
+		return this.sss.AUTHOR_SHEET;
 	}
 
 };
