@@ -688,14 +688,14 @@ Style.prototype = {
 		if (this.shouldUnregisterOnLoad()) {
 			unregisterUrl = this.dataUrl;
 			unregisterMethod = this.calculateRegistrationMethod();
-		}
-		else {
+		} else if (this.appliedInfo == null) {
+			// not registered in the first place
+			return;
+		} else {
 			unregisterUrl = this.appliedInfo[0];
 			unregisterMethod = this.appliedInfo[1];
 		}
-		if (unregisterUrl == null) {
-			return;
-		}
+		
 		if (this.sss.sheetRegistered(unregisterUrl, unregisterMethod))
 			this.sss.unregisterSheet(unregisterUrl, unregisterMethod);
 		// ignore unregistered styles if stylish isn't on
