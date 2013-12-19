@@ -1,5 +1,6 @@
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
+var require = Components.utils.import("resource://gre/modules/devtools/Loader.jsm", {}).devtools.require;
 
 var saved = false;
 var style = null;
@@ -14,20 +15,32 @@ var prefs = Services.prefs.getBranch("extensions.stylish.");
 const CSSXULNS = "@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);";
 const CSSHTMLNS = "@namespace url(http://www.w3.org/1999/xhtml);";
 
-var SourceEditor = null;
-var se = null;
+var sourceEditorType = null;
+var sourceEditor = null;
 function init() {
-
 	nameE = document.getElementById("name");
 	tagsE = document.getElementById("tags");
 	updateUrlE = document.getElementById("update-url")
 	strings = document.getElementById("strings");
 	codeE = document.getElementById("internal-code");
 
-	initStyle();
-
 	if (prefs.getIntPref("editor") == 0) {
-		// orion, if available
+		// sourceeditor, firefox 27+
+		let Editor = require("devtools/sourceeditor/editor");
+		if (Editor && ("modes" in Editor)) {
+			document.getElementById("itsalltext").style.visibility = "hidden";
+			sourceEditor = new Editor({
+				mode: Editor.modes.css,
+				lineNumbers: true
+			});
+			var sourceEditorElement = document.getElementById("sourceeditor");
+			document.getElementById("editor").selectedIndex = 2;
+			sourceEditorType = "sourceeditor";
+			sourceEditor.appendTo(sourceEditorElement).then(init2);
+			return;
+		}
+		
+		// orion, firefox 8-26
 		var obj = {};
 		try {
 			Components.utils.import("resource:///modules/source-editor.jsm", obj);
@@ -36,27 +49,25 @@ function init() {
 				// (moved circa firefox 27)
 				Components.utils.import("resource:///modules/devtools/sourceeditor/source-editor.jsm", obj);
 			} catch (ex) {
-				// orion not available, use textbox
-				init2();
-				return;
+				// orion not available
 			}
 		}
 		// check orion's pref
-		if (Services.prefs.getCharPref(obj.SourceEditor.PREFS.COMPONENT) == "textarea") {
-			init2();
-		} else {
+		if ("SourceEditor" in obj && Services.prefs.getCharPref(obj.SourceEditor.PREFS.COMPONENT) != "textarea") {
 			// use orion
-			SourceEditor = obj.SourceEditor;
+			sourceEditor = new obj.SourceEditor();
+			sourceEditorType = "orion";
 			initOrion();
+			return;
 		}
-	} else {
-		// textbox
-		init2()
 	}
+	// textbox
+	sourceEditorType = "textarea";
+	sourceEditor = codeE;
+	setTimeout(init2, 100);
 }
 
 function initStyle() {
-
 	var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
 
 	// See if the ID is in the URL
@@ -111,9 +122,8 @@ function initOrion() {
 		// orion and it's all text don't get along. it's all text will update display later, so let's use visibility
 		document.getElementById("itsalltext").style.visibility = "hidden";
 		
-		se = new SourceEditor();
 		var orionElement = document.getElementById("orion");
-		se.init(orionElement, {mode: SourceEditor.MODES.CSS, showLineNumbers: true, placeholderText: style.code}, init2);
+		sourceEditor.init(orionElement, {mode: sourceEditor.MODES.CSS, showLineNumbers: true}, init2);
 		document.getElementById("editor").selectedIndex = 1;
 		var appInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo);
 		var versionChecker = Components.classes["@mozilla.org/xpcom/version-comparator;1"].getService(Components.interfaces.nsIVersionComparator);
@@ -126,9 +136,10 @@ function initOrion() {
 
 function init2() {
 
-	if (SourceEditor) {
-		se.addEventListener("ContextMenu", handleOrionContext, false);
-	} else {
+	if (sourceEditorType == "orion") {
+		sourceEditor.addEventListener("ContextMenu", handleOrionContext, false);
+	}
+	if (sourceEditorType == "textarea") {
 		var wrapLines = prefs.getBoolPref("wrap_lines");
 		refreshWordWrap(wrapLines);
 		var wrapLinesE = document.getElementById("wrap-lines");
@@ -136,11 +147,15 @@ function init2() {
 		wrapLinesE.style.display = "";
 	}
 
+	initStyle();
+
 	setTimeout(function(){
 		// the code returned is different for some reason a little later...
 		initialCode = codeElementWrapper.value;
 		// this doesn't work till "later" either
-		codeElementWrapper.setSelectionRange(0, 0);
+		if (sourceEditorType != "sourceeditor") {
+			codeElementWrapper.setSelectionRange(0, 0);
+		}
 	},100);
 }
 
@@ -148,12 +163,12 @@ function handleOrionUndo(event) {
 	if (event.ctrlKey) {
 		if (event.which == 122 || event.which == 90) { // Z
 			if (event.shiftKey) {
-				se.redo();
+				sourceEditor.redo();
 			} else {
-				se.undo()
+				sourceEditor.undo()
 			}
 		} else if (event.which == 121 || event.which == 89) { // Y
-			se.redo();
+			sourceEditor.redo();
 		}
 	}
 }
@@ -161,13 +176,13 @@ function handleOrionUndo(event) {
 var undoController = {
 	doCommand: function(command) {
 		if (command == "stylish_cmd_undo") {
-			se.undo();
+			sourceEditor.undo();
 		}
 	},
 
 	isCommandEnabled: function(command) {
 		if (command == "stylish_cmd_undo") {
-			return se.canUndo();
+			return sourceEditor.canUndo();
 		}
 	},
 
@@ -178,56 +193,8 @@ var undoController = {
 	onEvent: function() {}
 }
 
-/*
-gEditUIVisible = false;
-function goDoCommand(a) {
-	switch (a) {
-		case "cmd_undo":
-			se.undo();
-			break;
-		case "cmd_copy":
-			se._view.invokeAction("copy");
-			break;
-		case "cmd_cut":
-			se._view.invokeAction("cut");
-			break;
-		case "cmd_paste":
-			se._view.invokeAction("paste");
-			break;
-		case "cmd_delete":
-			se._view.invokeAction("deleteNext");
-			break;
-		case "cmd_selectAll":
-			se._view.invokeAction("selectAll");
-			break;
-		default:
-			throw "Unknown command " + a;
-	}
-}
-
-function goUpdateCommand(a) {
-	if (!se) {
-		return;
-	}
-	var element = document.getElementById(a);
-	switch (a) {
-		case "cmd_undo":
-			element.setAttribute("disabled", !se.canUndo());
-			break;
-		case "cmd_copy":
-		case "cmd_cut":
-		case "cmd_delete":
-			var s = se.getSelection();
-			element.setAttribute("disabled", s.start == s.end);
-			break;
-		case "cmd_paste":
-			var t = se._view._getClipboardText();
-			element.setAttribute("disabled", t == null || t.length == 0);
-	}
-}*/
-
 function handleOrionContext(event) {
-	se.focus();
+	sourceEditor.focus();
 	goUpdateGlobalEditMenuItems();
 	goUpdateCommand("stylish_cmd_undo");
 	var menu = document.getElementById("orion-context");
@@ -359,6 +326,11 @@ function checkForErrors() {
 }
 
 function goToLine(line, col) {
+	if (sourceEditorType == "sourceeditor") {
+		codeElementWrapper.focus();
+		sourceEditor.setCursor({line: line - 1, ch: col});
+		return;
+	}
 	var index = 0;
 	var currentLine = 1;
 	while (currentLine < line) {
@@ -387,12 +359,18 @@ function insertCodeAtStart(snippet) {
 }
 
 function insertCodeAtCaret(snippet) {
-	var currentScrollTop = codeElementWrapper.scrollTop;
-	var selectionEnd = codeElementWrapper.selectionStart + snippet.length;
+	var selectionStart = codeElementWrapper.selectionStart;
+	var selectionEnd = selectionStart + snippet.length;
+	// sourceditor is good at keeping the scroll position, but others are not
+	if (sourceEditorType != "sourceeditor") {
+		var currentScrollTop = codeElementWrapper.scrollTop;
+	}
 	codeElementWrapper.value = codeElementWrapper.value.substring(0, codeElementWrapper.selectionStart) + snippet + codeElementWrapper.value.substring(codeElementWrapper.selectionEnd, codeElementWrapper.value.length);
 	codeElementWrapper.focus();
-	codeElementWrapper.scrollTop = currentScrollTop;
-	codeElementWrapper.setSelectionRange(selectionEnd, selectionEnd);
+	if (sourceEditorType != "sourceeditor") {
+		codeElementWrapper.scrollTop = currentScrollTop;
+	}
+	codeElementWrapper.setSelectionRange(selectionStart, selectionEnd);
 }
 
 function changeWordWrap(on) {
@@ -483,48 +461,52 @@ var finder = {
 
 var codeElementWrapper = {
 	get value() {
-		if (SourceEditor) {
-			return se.getText();
+		if (sourceEditorType == "orion" || sourceEditorType == "sourceeditor") {
+			return sourceEditor.getText();
 		}
-		return codeE.value;
+		return sourceEditor.value;
 	},
 
 	set value(v) {
-		if (SourceEditor) {
-			se.setText(v);
+		if (sourceEditorType == "orion" || sourceEditorType == "sourceeditor") {
+			sourceEditor.setText(v);
 		} else {
-			codeE.value = v;
+			sourceEditor.value = v;
 		}
 	},
 
 	setSelectionRange: function(start, end) {
-		if (SourceEditor) {
-			se.setSelection(start, end);
+		if (sourceEditorType == "orion") {
+			sourceEditor.setSelection(start, end);
+		} else if (sourceEditorType == "sourceeditor") {
+			sourceEditor.setSelection(sourceEditor.getPosition(start), sourceEditor.getPosition(end));
 		} else {
-			codeE.setSelectionRange(start, end);
+			sourceEditor.setSelectionRange(start, end);
 		}
 	},
 
 	focus: function() {
-		if (SourceEditor) {
-			se.focus();
-		} else {
-			codeE.focus();
-		}
+		sourceEditor.focus();
 	},
 
 	get selectionStart() {
-		if (SourceEditor) {
-			return se.getSelection().start;
+		if (sourceEditorType == "orion") {
+			return sourceEditor.getSelection().start;
 		}
-		return codeE.selectionStart;
+		if (sourceEditorType == "sourceeditor") {
+			return sourceEditor.getOffset(sourceEditor.getCursor("start"));
+		}
+		return sourceEditor.selectionStart;
 	},
 
 	get selectionEnd() {
-		if (SourceEditor) {
-			return se.getSelection().end;
+		if (sourceEditorType == "orion") {
+			return sourceEditor.getSelection().end;
 		}
-		return codeE.selectionEnd;
+		if (sourceEditorType == "sourceeditor") {
+			return sourceEditor.getOffset(sourceEditor.getCursor("end"));
+		}
+		return sourceEditor.selectionEnd;
 	},
 
 	get scrollTop() {
@@ -536,18 +518,21 @@ var codeElementWrapper = {
 	},
 
 	get scrollElement() {
-		if (SourceEditor) {
-			return se._view._viewDiv;
+		if (sourceEditorType == "orion") {
+			return sourceEditor._view._viewDiv;
 		}
-		return codeE.inputField;
+		return sourceEditor.inputField;
 	}
 
 }
 
 window.addEventListener("load", function() {
-	var findBar = document.getElementById("findbar");
-	document.getElementById("internal-code").fastFind = finder;
-	findBar.open();
+	// sourceeditor has its own way of doing this
+	if (sourceEditorType != "sourceeditor") {
+		var findBar = document.getElementById("findbar");
+		document.getElementById("internal-code").fastFind = finder;
+		findBar.open();
+	}
 }, false);
 
 // if the style we're editing has been deleted, turn off preview and close the window

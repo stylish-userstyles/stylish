@@ -93,6 +93,7 @@
 		<deck id="editor" flex="1">
 			<textbox id="internal-code" multiline="true" flex="1"/>
 			<hbox id="orion" flex="1"/>
+			<hbox id="sourceeditor" flex="1"/>
 		</deck>
 		<findbar id="findbar" browserid="internal-code"/>
 		<vbox id="errors" style="display:none;"/>
