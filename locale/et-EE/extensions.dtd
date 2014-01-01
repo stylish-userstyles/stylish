@@ -16,9 +16,9 @@
 <!-- Command Bar items -->
 <!ENTITY cmd.checkUpdatesAll.label "Otsi uuendusi">
 <!ENTITY cmd.checkUpdatesAll.accesskey "O">
-<!ENTITY cmd.checkUpdatesAllAddon.tooltip "Otsi uuendusi lisadele">
-<!ENTITY cmd.checkUpdatesAllTheme.tooltip "Otsi uuendusi teemadele">
-<!ENTITY cmd.checkUpdatesAllPlugin.tooltip "Otsi uuendusi pluginatele">
+<!ENTITY cmd.checkUpdatesAllAddon.tooltip "Otsi lisadele uuendusi">
+<!ENTITY cmd.checkUpdatesAllTheme.tooltip "Otsi teemadele uuendusi">
+<!ENTITY cmd.checkUpdatesAllPlugin.tooltip "Otsi pluginatele uuendusi">
 <!ENTITY cmd.installLocalFile.label "Paigalda...">
 <!ENTITY cmd.installLocalFile.accesskey "i">
 <!ENTITY cmd.installFileAddon.tooltip "Paigalda lisa">
@@ -28,13 +28,13 @@
 <!ENTITY cmd.installUpdatesAll2.tooltip "Paigalda valitud uuendused">
 <!ENTITY cmd.restartApp2.label "Taaskäivita &brandShortName;">
 <!ENTITY cmd.restartApp2.accesskey "T">
-<!ENTITY cmd.restartApp2.tooltip "Paigalduse lõpetamiseks taaskäivita &brandShortName;">
+<!ENTITY cmd.restartApp2.tooltip "Muudatuste rakendamiseks taaskäivita &brandShortName;">
 <!ENTITY cmd.skip.label "Jäta vahele">
 <!ENTITY cmd.skip.accesskey "J">
 <!ENTITY cmd.skip.tooltip "Jäta need uuendused vahele">
 <!ENTITY cmd.continue.label "Jätka">
 <!ENTITY cmd.continue.accesskey "t">
-<!ENTITY cmd.continue.tooltip "Jätka &brandShortName;\'i laadimist">
+<!ENTITY cmd.continue.tooltip "Jätka &brandShortName;i laadimist">
 <!ENTITY cmd.enableAll.label "Luba kõik">
 <!ENTITY cmd.enableAll.accesskey "k">
 <!ENTITY cmd.enableAll.tooltip "Luba kõik kuvatud lisad">
@@ -44,22 +44,22 @@
 <!-- Displayed in the selected Add-on\'s richlistitem and context menu -->
 <!ENTITY cmd.useTheme.label "Kasuta teemat">
 <!ENTITY cmd.useTheme.accesskey "t">
-<!ENTITY cmd.useTheme.tooltip "Muudab &brandShortName;\'i teemat">
+<!ENTITY cmd.useTheme.tooltip "Muudab &brandShortName;i teemat">
 <!ENTITY cmd.options.label "Sätted">
 <!ENTITY cmd.options.accesskey "S">
-<!ENTITY cmd.options.tooltip "Muuda valitud laienduse omadusi">
+<!ENTITY cmd.options.tooltip "Muuda valitud laienduse sätteid">
 <!ENTITY cmd.optionsUnix.label "Eelistused">
 <!ENTITY cmd.optionsUnix.accesskey "E">
 <!ENTITY cmd.optionsUnix.tooltip "Muuda valitud laienduse eelistusi">
 <!ENTITY cmd.enable.label "Luba">
 <!ENTITY cmd.enable.accesskey "L">
-<!ENTITY cmd.enable.tooltip "Luba see lisa, kui &brandShortName; on taaskäivitatud">
+<!ENTITY cmd.enable.tooltip "Luba see lisa &brandShortName;i taaskäivitamisel">
 <!ENTITY cmd.disable.label "Keela">
 <!ENTITY cmd.disable.accesskey "K">
-<!ENTITY cmd.disable.tooltip "Keela see lisa, kui &brandShortName; on taaskäivitatud">
+<!ENTITY cmd.disable.tooltip "Keela see lisa &brandShortName;i taaskäivitamisel">
 <!ENTITY cmd.uninstall.label "Eemalda">
 <!ENTITY cmd.uninstall2.accesskey "E">
-<!ENTITY cmd.uninstall2.tooltip "Eemalda see lisa, kui &brandShortName; on taaskäivitatud">
+<!ENTITY cmd.uninstall2.tooltip "Eemalda see lisa &brandShortName;i taaskäivitamisel">
 <!ENTITY cmd.cancelUninstall.label "Loobu eemaldamisest">
 <!ENTITY cmd.cancelUninstall.accesskey "L">
 <!ENTITY cmd.cancelUninstall.tooltip "Loobu selle lisa eemaldamisest">
@@ -110,7 +110,7 @@
 <!ENTITY toBeEnabled.label "See lisa lubatakse &brandShortName;i taaskäivitamisel.">
 <!ENTITY toBeInstalled.label "See lisa paigaldatakse &brandShortName;i taaskäivitamisel.">
 <!ENTITY toBeUninstalled.label "See lisa eemaldatakse &brandShortName;i taaskäivitamisel.">
-<!ENTITY toBeUpdated.label "Seda lisa uuendatakse, kui &brandShortName; on taaskäivitatud.">
+<!ENTITY toBeUpdated.label "See lisa uuendatakse &brandShortName;i taaskäivitamisel.">
 <!ENTITY getExtensions.label "Hangi laiendusi">
 <!ENTITY getThemes.label "Hangi teemasid">
 <!ENTITY getPlugins.label "Hangi pluginaid">
@@ -145,7 +145,7 @@
 <!ENTITY infoUpdateInfoError.label "Uuenduse lisainfo laadimisel esines viga">
 <!ENTITY updateSuccess.label "Uuendamine edukalt lõpetatud.">
 <!ENTITY installSuccess.label "Paigaldamine edukalt lõpetatud.">
-<!ENTITY installSuccessRestart.label "Paigalduse lõpetamiseks taaskäivita &brandShortName;">
+<!ENTITY installSuccessRestart.label "Paigalduse lõpetamiseks taaskäivita &brandShortName;.">
 <!ENTITY updateSuccessRestart.label "Uuendamise lõpetamiseks taaskäivita &brandShortName;.">
 <!ENTITY installWaiting.label "Ootamine...">
 <!ENTITY installIncompatibleUpdate.label "Ühilduvuse kontrollimine...">

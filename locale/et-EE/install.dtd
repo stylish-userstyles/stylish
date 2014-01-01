@@ -1,8 +1,8 @@
-<!ENTITY entername "Anna sellele stiilile nimi">
-<!ENTITY install "Install">
+<!ENTITY entername "Anna sellele stiilile nimi:">
+<!ENTITY install "Installi">
 <!ENTITY install.ak "I">
 <!ENTITY preview "Eelvaade">
-<!ENTITY preview.ak "P">
-<!ENTITY switchtoedit "vali redigeerimine">
-<!ENTITY switchtoedit.ak "E">
-<!ENTITY title "Installeeri kasutaja stiil">
+<!ENTITY preview.ak "E">
+<!ENTITY switchtoedit "Lülitu muutmisvaatele">
+<!ENTITY switchtoedit.ak "L">
+<!ENTITY title "Kasutaja stiili installimine">

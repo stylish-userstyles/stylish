@@ -1,24 +1,24 @@
 <!ENTITY chromefolder "Chrome kausta asukoht">
 <!ENTITY chromefolder.ak "C">
-<!ENTITY dataURI "teabe URI...">
+<!ENTITY dataURI "Andmete URI...">
 <!ENTITY dataURI.ak "D">
-<!ENTITY htmlnamespace "HTML nimekoht vaikevalikuna">
+<!ENTITY htmlnamespace "HTML nimeruum vaikeväärtusega">
 <!ENTITY htmlnamespace.ak "H">
 <!ENTITY insert "Sisesta">
-<!ENTITY insert.ak "I">
+<!ENTITY insert.ak "T">
 <!ENTITY name "Nimi">
 <!ENTITY name.ak "N">
-<!ENTITY openintexternaleditor "Ava eraldi redigeerijas">
-<!ENTITY openintexternaleditor.ak "O">
+<!ENTITY openintexternaleditor "Ava eraldi redaktoris">
+<!ENTITY openintexternaleditor.ak "V">
 <!ENTITY preview "Eelvaade">
-<!ENTITY preview.ak "P">
+<!ENTITY preview.ak "E">
 <!ENTITY save "Salvesta">
 <!ENTITY save.ak "S">
-<!ENTITY switchtoinstall "vaheta installile">
-<!ENTITY switchtoinstall.ak "I">
+<!ENTITY switchtoinstall "Lülitu installimisvaatele">
+<!ENTITY switchtoinstall.ak "L">
 <!ENTITY tags "Sildid">
-<!ENTITY tags.ak "T">
-<!ENTITY wraplines "murra read">
-<!ENTITY wraplines.ak "W">
-<!ENTITY xulnamespace "XUL nimekoht vaikavalikuna">
+<!ENTITY tags.ak "d">
+<!ENTITY wraplines "Murra pikad read">
+<!ENTITY wraplines.ak "M">
+<!ENTITY xulnamespace "XUL nimeruum vaikeväärtusega">
 <!ENTITY xulnamespace.ak "X">
