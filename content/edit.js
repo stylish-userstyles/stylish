@@ -26,7 +26,12 @@ function init() {
 
 	if (prefs.getIntPref("editor") == 0) {
 		// sourceeditor, firefox 27+
-		let Editor = require("devtools/sourceeditor/editor");
+		let Editor = null;
+		try {
+			Editor = require("devtools/sourceeditor/editor");
+		} catch (ex) {
+			//unavailable
+		}
 		if (Editor && ("modes" in Editor)) {
 			document.getElementById("itsalltext").style.visibility = "hidden";
 			sourceEditor = new Editor({
