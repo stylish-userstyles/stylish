@@ -48,7 +48,9 @@
 	</commandset>
 
 	<menupopup id="orion-context">
-		<menuitem id="stylish_menu_undo" label="&undoCmd.label;" key="key_undo" accesskey="&undoCmd.accesskey;" command="stylish_cmd_undo"/>
+		<!-- custom undo for orion -->
+		<menuitem id="stylish_menu_undo" label="&undoCmd.label;" key="key_undo" accesskey="&undoCmd.accesskey;" command="stylish_cmd_undo" style="display: none"/>
+		<menuitem id="menu_undo"/>
 		<menuseparator/>
 		<menuitem id="menu_cut"/>
 		<menuitem id="menu_copy"/>

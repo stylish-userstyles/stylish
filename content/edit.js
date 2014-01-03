@@ -36,7 +36,8 @@ function init() {
 			document.getElementById("itsalltext").style.visibility = "hidden";
 			sourceEditor = new Editor({
 				mode: Editor.modes.css,
-				lineNumbers: true
+				lineNumbers: true,
+				contextMenu: "orion-context"
 			});
 			var sourceEditorElement = document.getElementById("sourceeditor");
 			document.getElementById("editor").selectedIndex = 2;
@@ -137,6 +138,9 @@ function initOrion() {
 			orionElement.addEventListener("keypress", handleOrionUndo, false);
 		}
 		window.controllers.insertControllerAt(0, undoController);
+		// only use our custom undo
+		document.getElementById("menu_undo").style.display = "none";
+		document.getElementById("stylish_menu_undo").style.display = "";
 }
 
 function init2() {
