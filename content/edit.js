@@ -148,7 +148,7 @@ function init2() {
 	if (sourceEditorType == "orion") {
 		sourceEditor.addEventListener("ContextMenu", handleOrionContext, false);
 	}
-	if (sourceEditorType == "textarea") {
+	if (sourceEditorType == "textarea" || (sourceEditorType == "sourceeditor" && "setOption" in sourceEditor)) {
 		var wrapLines = prefs.getBoolPref("wrap_lines");
 		refreshWordWrap(wrapLines);
 		var wrapLinesE = document.getElementById("wrap-lines");
@@ -389,7 +389,11 @@ function changeWordWrap(on) {
 }
 
 function refreshWordWrap(on) {
-	codeE.setAttribute("wrap", on ? "on" : "off");
+	if (sourceEditorType == "textarea") {
+		codeE.setAttribute("wrap", on ? "on" : "off");
+	} else if (sourceEditorType == "sourceeditor") {
+		sourceEditor.setOption("lineWrapping", on);
+	}
 }
 
 function insertChromePath() {
