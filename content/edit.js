@@ -1,6 +1,11 @@
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
-var require = Components.utils.import("resource://gre/modules/devtools/Loader.jsm", {}).devtools.require;
+var require = null;
+try {
+	require = Components.utils.import("resource://gre/modules/devtools/Loader.jsm", {}).devtools.require;
+} catch (ex) {
+	// file not available...
+}
 
 var saved = false;
 var style = null;
@@ -27,10 +32,12 @@ function init() {
 	if (prefs.getIntPref("editor") == 0) {
 		// sourceeditor, firefox 27+
 		let Editor = null;
-		try {
-			Editor = require("devtools/sourceeditor/editor");
-		} catch (ex) {
-			//unavailable
+		if (require) {
+			try {
+				Editor = require("devtools/sourceeditor/editor");
+			} catch (ex) {
+				//unavailable
+			}
 		}
 		if (Editor && ("modes" in Editor)) {
 			document.getElementById("itsalltext").style.visibility = "hidden";
