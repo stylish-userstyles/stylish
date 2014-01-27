@@ -1,6 +1,6 @@
 <!ENTITY addfile "安装文件...">
 <!ENTITY addfile.ak "I">
-<!ENTITY findstylebrowser "查找适合该页面的样式...">
+<!ENTITY findstylebrowser "查找适合此网站的样式...">
 <!ENTITY findstylebrowser.ak "F">
 <!ENTITY managestyles "管理样式...">
 <!ENTITY managestyles.ak "M">

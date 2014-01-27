@@ -18,7 +18,7 @@
 <!ENTITY cmd.checkUpdatesAll.accesskey "F">
 <!ENTITY cmd.checkUpdatesAllAddon.tooltip "查找附加组件的更新">
 <!ENTITY cmd.checkUpdatesAllTheme.tooltip "查找主题的更新">
-<!ENTITY cmd.checkUpdatesAllPlugin.tooltip "发现您插件的更新">
+<!ENTITY cmd.checkUpdatesAllPlugin.tooltip "查找您的插件的更新">
 <!ENTITY cmd.installLocalFile.label "安装…">
 <!ENTITY cmd.installLocalFile.accesskey "n">
 <!ENTITY cmd.installFileAddon.tooltip "安装附加组件">
@@ -37,10 +37,10 @@
 <!ENTITY cmd.continue.tooltip "继续载入 &brandShortName;">
 <!ENTITY cmd.enableAll.label "全部启用">
 <!ENTITY cmd.enableAll.accesskey "a">
-<!ENTITY cmd.enableAll.tooltip "启用全部显示的附加组件">
+<!ENTITY cmd.enableAll.tooltip "启用显示的所有附加组件">
 <!ENTITY cmd.disableAll.label "全部禁用">
 <!ENTITY cmd.disableAll.accesskey "s">
-<!ENTITY cmd.disableAll.tooltip "禁用全部显示的附加组件">
+<!ENTITY cmd.disableAll.tooltip "禁用所有显示的附加组件">
 <!-- Displayed in the selected Add-on\'s richlistitem and context menu -->
 <!ENTITY cmd.useTheme.label "使用主题">
 <!ENTITY cmd.useTheme.accesskey "T">
@@ -53,19 +53,19 @@
 <!ENTITY cmd.optionsUnix.tooltip "编辑所选扩展的首选项">
 <!ENTITY cmd.enable.label "启用">
 <!ENTITY cmd.enable.accesskey "E">
-<!ENTITY cmd.enable.tooltip "&brandShortName; 重启后启用此附加组件">
+<!ENTITY cmd.enable.tooltip "&brandShortName; 重启后将启用此附加组件">
 <!ENTITY cmd.disable.label "禁用">
 <!ENTITY cmd.disable.accesskey "D">
-<!ENTITY cmd.disable.tooltip "&brandShortName; 重启后禁用此附加组件">
+<!ENTITY cmd.disable.tooltip "&brandShortName; 重启后将禁用此附加组件">
 <!ENTITY cmd.uninstall.label "卸载">
 <!ENTITY cmd.uninstall2.accesskey "U">
-<!ENTITY cmd.uninstall2.tooltip "在 &brandShortName; 重启后卸载此附加组件">
+<!ENTITY cmd.uninstall2.tooltip "&brandShortName; 重启后将卸载此附加组件">
 <!ENTITY cmd.cancelUninstall.label "取消卸载">
 <!ENTITY cmd.cancelUninstall.accesskey "C">
-<!ENTITY cmd.cancelUninstall.tooltip "取消安装附加组件">
+<!ENTITY cmd.cancelUninstall.tooltip "取消卸载此附加组件">
 <!ENTITY cmd.cancelInstall.label "取消安装">
 <!ENTITY cmd.cancelInstall.accesskey "C">
-<!ENTITY cmd.cancelInstall.tooltip "取消安装附加组件">
+<!ENTITY cmd.cancelInstall.tooltip "取消安装此附加组件">
 <!ENTITY cmd.cancelUpgrade.label "取消更新">
 <!ENTITY cmd.cancelUpgrade.accesskey "C">
 <!ENTITY cmd.cancelUpgrade.tooltip "取消更新此附加组件">
@@ -101,15 +101,15 @@
 <!ENTITY includeUpdate.accesskey "n">
 <!ENTITY includeUpdate.tooltip "安装更新时包括此附加组件">
 <!-- Status Messsages -->
-<!ENTITY insecureUpdate.label "不提供安全更新。">
+<!ENTITY insecureUpdate.label "没有提供安全地更新。">
 <!ENTITY needsDependencies.label "需要其他项。">
-<!ENTITY blocklisted.label "出于保护目的禁用">
+<!ENTITY blocklisted.label "出于保护目的禁用。">
 <!ENTITY softBlocklisted.label "已知会导致安全或稳定性的问题。">
-<!ENTITY outdated.label "新的更安全的版本已可用。">
+<!ENTITY outdated.label "更新更安全的版本现已可用。">
 <!ENTITY toBeDisabled.label "此附加组件将在 &brandShortName; 重启后禁用。">
 <!ENTITY toBeEnabled.label "此附加组件将在 &brandShortName; 重启后启用。">
 <!ENTITY toBeInstalled.label "此附加组件将在 &brandShortName; 重启后安装。">
-<!ENTITY toBeUninstalled.label "此附加组件将在 &brandShortName; 重启后卸载。 ">
+<!ENTITY toBeUninstalled.label "此附加组件将在 &brandShortName; 重启后卸载。">
 <!ENTITY toBeUpdated.label "此附加组件将在重启 &brandShortName; 时更新。">
 <!ENTITY getExtensions.label "获取扩展">
 <!ENTITY getThemes.label "获取主题">
@@ -143,14 +143,14 @@
 <!ENTITY infoNoAddonSelected.label "未选中更新">
 <!ENTITY infoNoUpdateInfo.label "此更新不包含任何附加信息">
 <!ENTITY infoUpdateInfoError.label "载入此更新的信息时出错">
-<!ENTITY updateSuccess.label "成功完成更新。">
-<!ENTITY installSuccess.label "安装成功完成">
+<!ENTITY updateSuccess.label "更新已成功完成。">
+<!ENTITY installSuccess.label "安装已成功完成。">
 <!ENTITY installSuccessRestart.label "重启以完成安装。">
 <!ENTITY updateSuccessRestart.label "重启以完成更新。">
 <!ENTITY installWaiting.label "等待…">
-<!ENTITY installIncompatibleUpdate.label "检查兼容性…">
+<!ENTITY installIncompatibleUpdate.label "正在检查兼容性…">
 <!ENTITY installFinishing.label "正在安装…">
-<!ENTITY installFailure.label "安装失败">
+<!ENTITY installFailure.label "安装失败。">
 <!ENTITY progressStatus.label "检查更新">
 <!ENTITY eula.title "用户协议">
 <!ENTITY eula.width "560px">

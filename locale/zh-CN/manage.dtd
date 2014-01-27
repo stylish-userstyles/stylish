@@ -3,7 +3,7 @@
 <!ENTITY done "完成">
 <!ENTITY done.ak "D">
 <!ENTITY filter "搜索">
-<!ENTITY installfromurls "Install from URLs...">
+<!ENTITY installfromurls "从 URL 安装...">
 <!ENTITY manageaddonstitle "用户样式">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "浏览">
@@ -12,7 +12,7 @@
 <!ENTITY sortname "名称">
 <!ENTITY sorttag "标签">
 <!ENTITY sorttype "类型">
-<!ENTITY sortgroup "分类：">
+<!ENTITY sortgroup "排序按：">
 <!ENTITY update "更新">
 <!ENTITY update.ak "U">
 <!ENTITY writenew "编写新样式">
