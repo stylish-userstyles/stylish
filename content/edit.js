@@ -432,31 +432,58 @@ function insertDataURI() {
 }
 
 var finder = {
-	QueryInterface: XPCOMUtils.generateQI([Components.interfaces.nsITypeAheadFind, Components.interfaces.nsISupports]),
-	nsITAF: Components.interfaces.nsITypeAheadFind,
+	_listeners: [],
+	searchString: null,
+	caseSensitive: false,
 
-	init: function(docshell) {},
-
-	find: function(s, linksOnly) {
-		this.searchString = s;
-		return this.findFromIndex(0, false);
+	addResultListener: function (aListener) {
+		if (this._listeners.indexOf(aListener) === -1)
+			this._listeners.push(aListener);
 	},
 
-	findAgain: function(backwards, linksOnly) {
-		return this.findFromIndex(codeElementWrapper.selectionStart + (backwards ? 0 : 1), backwards);
+	removeResultListener: function (aListener) {
+		this._listeners = this._listeners.filter(l => l != aListener);
 	},
 
-	findFromIndex: function(index, backwards) {
+	_notify: function (aSearchString, aResult, aFindBackwards, aDrawOutline) {
+		this.searchString = aSearchString;
+
+		let data = {
+			result: aResult,
+			findBackwards: aFindBackwards,
+			linkURL: null,
+			rect: {top: 0, right: 0, bottom: 0, left: 0};
+			searchString: this._searchString,
+		};
+
+		for (let l of this._listeners) {
+			l.onFindResult(data);
+		}
+	},
+
+	fastFind: function(aSearchString, aLinksOnly, aDrawOutline) {
+		this.searchString = aSearchString;
+		let result = this._findFromIndex(0, false);
+		this._notify(aSearchString, result, false, aDrawOutline);
+	},
+
+	findAgain: function(aFindBackwards, aLinksOnly, aDrawOutline) {
+		let result = this._findFromIndex(codeElementWrapper.selectionStart + (aFindBackwards ? 0 : 1), aFindBackwards);
+		this._notify(this.searchString, result, aFindBackwards, aDrawOutline);
+	},
+
+	_findFromIndex: function(index, backwards) {
 		var start = backwards ? codeElementWrapper.value.substring(0, index).lastIndexOf(this.searchString) : codeElementWrapper.value.indexOf(this.searchString, index);
 		var result;
+		var iface = Ci.nsITypeAheadFind;
 		if (start >= 0) {
-			result = this.nsITAF.FIND_FOUND;
+			result = iface.FIND_FOUND;
 		} else if (index == 0) {
-			result = this.nsITAF.FIND_NOTFOUND;
+			result = iface.FIND_NOTFOUND;
 		} else {
 			// try again, start from the start
 			start = backwards ? codeElementWrapper.value.lastIndexOf(this.searchString) : codeElementWrapper.value.indexOf(this.searchString);
-			result = start == -1 ? this.nsITAF.FIND_NOTFOUND : this.nsITAF.FIND_WRAPPED;
+			result = start == -1 ? iface.FIND_NOTFOUND : iface.FIND_WRAPPED;
 		}
 		codeE.editor.selection.removeAllRanges();
 		if (start >= 0) {
@@ -468,16 +495,12 @@ var finder = {
 		return result;
 	},
 
-	setDocShell: function(docshell) {},
-	setSelectionModeAndRepaint: function(toggle) {},
-	collapseSelection: function(toggle) {},
-
-	searchString: null,
-	caseSensitive: false,
-	foundLink: null,
-	foundEditable: null,
-	currentWindow: null
-}
+	highlight: function(aHighlight, aWord) {},
+	enableSelection: function() {},
+	removeSelection: function() {},
+	focusContent: function() {},
+	keyPress: function (aEvent) {}
+};
 
 var codeElementWrapper = {
 	get value() {
@@ -550,7 +573,9 @@ window.addEventListener("load", function() {
 	// sourceeditor has its own way of doing this
 	if (sourceEditorType != "sourceeditor") {
 		var findBar = document.getElementById("findbar");
-		document.getElementById("internal-code").fastFind = finder;
+		var editor = document.getElementById("internal-code");
+		editor.finder = finder;
+		findBar.browser = editor;
 		findBar.open();
 	}
 }, false);
