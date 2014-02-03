@@ -58,12 +58,15 @@ var stylishInstallOverlay = {
 
 	checkUpdateEvent: function(doc, style) {
 		var code = stylishInstallOverlay.getCodeFromPage(doc);
+		// Give the page the updateUrl so it can initialize settings. exposedProps lets us get around security restrictions.
+		var data = {updateUrl: style.updateUrl, __exposedProps__ : { updateUrl : "r"}};
 		if (!stylishCommon.cssAreEqual((style.originalCode || style.code), code)) {
-			stylishCommon.dispatchEvent(doc, "styleCanBeUpdated");
-			doc.addEventListener("stylishUpdate", stylishInstallOverlay.updateFromSite, false);
+			stylishCommon.dispatchEvent(doc, "styleCanBeUpdated", data);
 		} else {
-			stylishCommon.dispatchEvent(doc, "styleAlreadyInstalled");
+			stylishCommon.dispatchEvent(doc, "styleAlreadyInstalled", data);
 		}
+		// listen to this regardless, the page may decide to allow updates anyway (e.g. for styles with settings)
+		doc.addEventListener("stylishUpdate", stylishInstallOverlay.updateFromSite, false);
 	},
 
 	getIdUrl: function(doc) {
@@ -78,12 +81,13 @@ var stylishInstallOverlay = {
 			//style installed status
 			var style = stylishInstallOverlay.service.findByUrl(stylishInstallOverlay.getIdUrl(doc), 0);
 			if (style) {
-				//if the code isn't available, ask for it and wait
+				// If the code isn't available, ask for it and wait
 				var code = stylishInstallOverlay.getCodeFromPage(doc);
 				if (code) {
 					stylishInstallOverlay.checkUpdateEvent(doc, style);
 				} else {
 					doc.addEventListener("stylishCodeLoaded", function(){stylishInstallOverlay.checkUpdateEvent(doc, style)}, false);
+					doc.addEventListener("stylishCodeCantBeLoaded", function(){stylishInstallOverlay.checkUpdateEvent(doc, style)}, false);
 					stylishCommon.dispatchEvent(doc, "styleLoadCode");
 				}
 			} else {
@@ -127,10 +131,20 @@ var stylishInstallOverlay = {
 		var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
 		if (prompts.confirmEx(window, stylishInstallOverlay.STRINGS.formatStringFromName("updatestyletitle", [], 0), prompt, prompts.BUTTON_POS_0 * prompts.BUTTON_TITLE_IS_STRING + prompts.BUTTON_POS_1 * prompts.BUTTON_TITLE_CANCEL, stylishInstallOverlay.STRINGS.formatStringFromName("updatestyleok", [], 0), null, null, null, {}) == 0) {
 			style.code = code;
-			//we're now in sync with the remote style
+
+			//we're now in sync with the remote style, so let's set things appropriately
 			style.originalCode = code;
-			style.save();
-			stylishCommon.dispatchEvent(doc, "styleInstalled");
+			// we want both the url and the content of the md5
+			var md5Url = stylishCommon.getMeta(doc, "stylish-md5-url");
+			style.md5Url = md5Url;
+			var originalMd5 = null;
+			var resourcesNeeded = [{name: "stylish-update-url"}, {name: "stylish-md5-url", download: true}];
+			stylishCommon.getResourcesFromMetas(doc, resourcesNeeded, function(results) {
+				style.updateUrl = results["stylish-update-url"];
+				style.originalMd5 = results["stylish-md5-url"];
+				style.save();
+				stylishCommon.dispatchEvent(doc, "styleInstalled");
+			});
 		}
 	},
 

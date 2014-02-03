@@ -18,12 +18,22 @@ var stylishCommon = {
 			element.setAttribute(i, json[i]);
 	},
 
-	dispatchEvent: function(doc, type) {
+	// CustomEvent is available in Firefox 11. Before that, the "data" parameter does nothing. If "data"
+	// is a custom object, __exposedProps__ must be set.
+	dispatchEvent: function(doc, type, data) {
 		if (!doc) {
 			return;
 		}
-		var stylishEvent = doc.createEvent("Events");
-		stylishEvent.initEvent(type, false, false, doc.defaultView, null);
+		if (typeof data == "undefined") {
+			data = null;
+		}
+		var stylishEvent = null;
+		if (typeof doc.defaultView.CustomEvent != "undefined") {
+			stylishEvent = new doc.defaultView.CustomEvent(type, {detail: data});
+		} else {
+			stylishEvent = doc.createEvent("Events");
+			stylishEvent.initEvent(type, false, false, doc.defaultView, null);
+		}
 		doc.dispatchEvent(stylishEvent);
 	},
 
@@ -213,8 +223,10 @@ var stylishCommon = {
 	
 	// Callback passes a string parameter - installed, failure, cancelled, existing
 	installFromSite: function(doc, callback) {
-		var resourcesNeeded = [{name: "stylish-code", download: true}, {name: "stylish-description", download: true}, {name: "stylish-install-ping-url"}, {name: "stylish-update-url"}, {name: "stylish-md5-url"}, {name: "stylish-id-url"}];
-		
+		// we want both the url and the content of the md5
+		var md5Url = stylishCommon.getMeta(doc, "stylish-md5-url");
+		var resourcesNeeded = [{name: "stylish-code", download: true}, {name: "stylish-description", download: true}, {name: "stylish-install-ping-url"}, {name: "stylish-update-url"}, {name: "stylish-md5-url", download: true}, {name: "stylish-id-url"}];
+
 		stylishCommon.getResourcesFromMetas(doc, resourcesNeeded, function(results) {
 			// This is the only required property
 			if (results["stylish-code"] == null || results["stylish-code"].length == 0) {
@@ -228,7 +240,7 @@ var stylishCommon = {
 
 			var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 			style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
-			style.init(uri, results["stylish-id-url"], results["stylish-update-url"], results["stylish-md5-url"], results["stylish-description"], results["stylish-code"], false, results["stylish-code"], null);
+			style.init(uri, results["stylish-id-url"], results["stylish-update-url"], md5Url, results["stylish-description"], results["stylish-code"], false, results["stylish-code"], results["stylish-md5-url"], null);
 
 			stylishCommon.openInstall({style: style, installPingURL: results["stylish-install-ping-url"], installCallback: callback});
 
@@ -324,7 +336,7 @@ var stylishCommon = {
 		uri = stylishCommon.cleanURI(uri);
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
-		style.init(uri, uri, uri, null, null, css, false, css, null);
+		style.init(uri, uri, uri, null, null, css, false, css, null, null);
 		stylishCommon.openInstall({style: style, installCallback: callback});
 	},
 
@@ -417,7 +429,7 @@ var stylishCommon = {
 	addCode: function(code) {
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
-		style.init(null, null, null, null, null, code, false, null, null);
+		style.init(null, null, null, null, null, code, false, null, null, null);
 		stylishCommon.openEdit(stylishCommon.getWindowName("stylishEdit"), {style: style});
 	},
 

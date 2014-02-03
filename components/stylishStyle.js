@@ -6,6 +6,8 @@ function Style() {
 	this.idUrl = null;
 	this.updateUrl = null;
 	this.md5Url = null;
+	this.originalCode = null;
+	this.originalMd5 = null;
 	this.appliedInfo = null;
 	this.lastSavedCode = null;
 	this.applyBackgroundUpdates = null;
@@ -140,7 +142,7 @@ Style.prototype = {
 	/*
 		stylishStyle instance methods
 	*/
-	init: function(url, idUrl, updateUrl, md5Url, name, code, enabled, originalCode, applyBackgroundUpdates) {
+	init: function(url, idUrl, updateUrl, md5Url, name, code, enabled, originalCode, originalMd5, applyBackgroundUpdates) {
 		//the mode may contain a flag that indicates that this is a load rather than a new style
 		var shouldRegister;
 		if (this.mode & this.INTERNAL_LOAD_EVENT) {
@@ -149,7 +151,7 @@ Style.prototype = {
 		} else {
 			shouldRegister = this.shouldRegisterOnChange()
 		}
-		this.initInternal(url, idUrl, updateUrl, md5Url, name, code, enabled, originalCode, shouldRegister, applyBackgroundUpdates);
+		this.initInternal(url, idUrl, updateUrl, md5Url, name, code, enabled, originalCode, originalMd5, shouldRegister, applyBackgroundUpdates);
 	},
 
 	get name() {
@@ -229,9 +231,9 @@ Style.prototype = {
 			that.bind(statement, name, value);
 		}
 		if (this.id == 0) {
-			statement = connection.createStatement("INSERT INTO styles (`url`, `idUrl`, `updateUrl`, `md5Url`, `name`, `code`, `enabled`, `originalCode`, `applyBackgroundUpdates`) VALUES (:url, :idUrl, :updateUrl, :md5Url, :name, :code, :enabled, :originalCode, :applyBackgroundUpdates);");
+			statement = connection.createStatement("INSERT INTO styles (`url`, `idUrl`, `updateUrl`, `md5Url`, `name`, `code`, `enabled`, `originalCode`, `applyBackgroundUpdates`, `originalMd5`) VALUES (:url, :idUrl, :updateUrl, :md5Url, :name, :code, :enabled, :originalCode, :applyBackgroundUpdates, :originalMd5);");
 		} else {
-			statement = connection.createStatement("UPDATE styles SET `url` = :url, `idUrl` = :idUrl, `updateUrl` = :updateUrl, `md5Url` = :md5Url, `name` = :name, `code` = :code, `enabled` = :enabled, `originalCode` = :originalCode, `applyBackgroundUpdates` = :applyBackgroundUpdates WHERE `id` = :id;");
+			statement = connection.createStatement("UPDATE styles SET `url` = :url, `idUrl` = :idUrl, `updateUrl` = :updateUrl, `md5Url` = :md5Url, `name` = :name, `code` = :code, `enabled` = :enabled, `originalCode` = :originalCode, `applyBackgroundUpdates` = :applyBackgroundUpdates, `originalMd5` = :originalMd5 WHERE `id` = :id;");
 			b("id", this.id);
 		}
 
@@ -262,6 +264,7 @@ Style.prototype = {
 		b("code", this.code);
 		b("enabled", this.enabled);
 		b("applyBackgroundUpdates", this.applyBackgroundUpdates);
+		b("originalMd5", this.originalMd5);
 
 		try {
 			statement.execute();
@@ -409,6 +412,9 @@ Style.prototype = {
 	},
 
 	get md5() {
+		if (this.originalMd5 != null) {
+			return this.originalMd5;
+		}
 		//https://developer.mozilla.org/en/nsICryptoHash#Computing_the_Hash_of_a_String
 		var converter = Components.classes["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Components.interfaces.nsIScriptableUnicodeConverter);
 		converter.charset = "UTF-8";
@@ -475,7 +481,7 @@ Style.prototype = {
 		}
 	},
 
-	applyUpdate: function() {
+	applyUpdate: function(observer) {
 		var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
 		observerService.notifyObservers(this, "stylish-style-update-start", null);
 
@@ -483,6 +489,9 @@ Style.prototype = {
 
 		function notifyDone(result) {
 			observerService.notifyObservers(that, "stylish-style-update-done", result);
+			if (observer) {
+				observer.observe(that, "stylish-style-update-done", result);
+			}
 		}
 
 		function handleFailure() {
@@ -494,11 +503,16 @@ Style.prototype = {
 				notifyDone("update-failure");
 				return;
 			}
-			that.code = code;
 			//we're back to being in sync
 			that.originalCode = code;
-			that.save("update");
-			notifyDone("update-success");
+			that.code = code;
+			that.downloadMd5(that.md5Url, function(md5Sum) {
+				if (md5Sum != null) {
+					that.originalMd5 = md5Sum;
+				}
+				that.save("update");
+				notifyDone("update-success");
+			});
 		}
 		if (this.updateUrl) {
 			this.download(this.updateUrl, handleSuccess, handleFailure);
@@ -793,7 +807,7 @@ Style.prototype = {
 					style.mode = mode;
 				// since we can't call initInternal because we're not "inside" the new style, we'll pass a secret flag in the mode
 				style.mode += this.INTERNAL_LOAD_EVENT
-				style.init(e("url"), e("idUrl"), e("updateUrl"), e("md5Url"), e("name"), e("code"), e("enabled"), e("originalCode"), e("applyBackgroundUpdates"));
+				style.init(e("url"), e("idUrl"), e("updateUrl"), e("md5Url"), e("name"), e("code"), e("enabled"), e("originalCode"), e("originalMd5"), e("applyBackgroundUpdates"));
 				style.id = e("id");
 				styles.push(style);
 				styleMap[style.id] = style;
@@ -861,7 +875,7 @@ Style.prototype = {
 		this.calculateInternalMeta();
 	},
 
-	initInternal: function(url, idUrl, updateUrl, md5Url, name, code, enabled, originalCode, shouldRegister, applyBackgroundUpdates) {
+	initInternal: function(url, idUrl, updateUrl, md5Url, name, code, enabled, originalCode, originalMd5, shouldRegister, applyBackgroundUpdates) {
 		this.url = url;
 		this.idUrl = idUrl;
 		this.updateUrl = updateUrl;
@@ -869,6 +883,7 @@ Style.prototype = {
 		this.name = name;
 		this._enabled = enabled;
 		this.originalCode = originalCode;
+		this.originalMd5 = originalMd5;
 		this.setCode(code, shouldRegister);
 		if (!shouldRegister && this.enabled) {
 			this.appliedInfoToBeCalculated = true;
@@ -928,7 +943,9 @@ Style.prototype = {
 					successCallback(request.responseText, contentType);
 				} else {
 					Components.utils.reportError("Download of '" + url + "' resulted in status " + request.status);
-					failureCallback();
+					if (failureCallback) {
+						failureCallback();
+					}
 				}
 			}
 		}, false);
@@ -974,6 +991,23 @@ Style.prototype = {
 			return this.sss.AGENT_SHEET;
 		}
 		return this.sss.AUTHOR_SHEET;
+	},
+
+	downloadMd5: function(md5Url, callback) {
+		if (!md5Url) {
+			callback(null);
+			return;
+		}
+		this.download(md5Url,
+			function(text, contentType) {
+				if (text.length == 32) {
+					callback(text);
+				} else {
+					Components.utils.reportError("Invalid md5 at URL '" + md5Url + "'.");
+					callback(null)
+				}
+			}, null
+		);
 	}
 
 };

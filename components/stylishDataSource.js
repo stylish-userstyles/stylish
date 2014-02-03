@@ -68,7 +68,7 @@ StylishDataSource.prototype = {
 	_file: null,
 
 	migrate: function(connection) {
-		var expectedDataVersion = 5;
+		var expectedDataVersion = 6;
 		var currentDataVersion = connection.schemaVersion;
 		if (currentDataVersion >= expectedDataVersion)
 			return;
@@ -93,6 +93,10 @@ StylishDataSource.prototype = {
 			case 4:
 				try {
 					connection.executeSimpleSQL("ALTER TABLE styles ADD COLUMN applyBackgroundUpdates INTEGER NOT NULL DEFAULT 1;"); // 1 = AddonManager.AUTOUPDATE_DEFAULT
+				} catch (ex) {}
+			case 5:
+				try {
+					connection.executeSimpleSQL("ALTER TABLE styles ADD COLUMN originalMd5 TEXT NULL;");
 				} catch (ex) {}
 		}
 		connection.schemaVersion = expectedDataVersion;

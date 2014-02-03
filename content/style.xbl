@@ -193,7 +193,7 @@
 			</method>
 			<method name="update">
 				<body>
-					this.styleObject.applyUpdate();
+					this.styleObject.applyUpdate(null);
 				</body>
 			</method>
 			<method name="delete">

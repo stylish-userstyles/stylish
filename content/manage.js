@@ -257,7 +257,7 @@ var stylishManage = {
 	newStyle: function() {
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
-		style.init(null, null, null, null, null, "", false, null, null);
+		style.init(null, null, null, null, null, "", false, null, null, null);
 		stylishCommon.openEdit(stylishCommon.getWindowName("stylishEdit"), {style: style});
 	},
 

@@ -146,7 +146,9 @@ function getUserStyleWrapper(style) {
 		},
 
 		get permissions() {
-			return AddonManager.PERM_CAN_UNINSTALL | (style.enabled ? AddonManager.PERM_CAN_DISABLE : AddonManager.PERM_CAN_ENABLE) | (style.updateUrl != null && style.updateUrl != "" && Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).getBoolPref("extensions.stylish.updatesEnabled") ? AddonManager.PERM_CAN_UPGRADE : 0);
+			return AddonManager.PERM_CAN_UNINSTALL | 
+				(style.enabled ? AddonManager.PERM_CAN_DISABLE : AddonManager.PERM_CAN_ENABLE) | 
+				(style.updateUrl != null && style.updateUrl != "" && style.updateUrl.length <= 2000 && Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).getBoolPref("extensions.stylish.updatesEnabled") ? AddonManager.PERM_CAN_UPGRADE : 0); // if the url length is too long, a GET won't work, and it's probably going to be too much server-side to handle
 		},
 
 		get isActive() {
@@ -210,7 +212,7 @@ function getUserStyleWrapper(style) {
 		},
 
 		findUpdates: function(listener, flags) {
-			style.checkForUpdates(getUserStyleObserver(this, listener));
+			style.checkForUpdates(getUserStyleUpdateCheckObserver(this, listener));
 		},
 
 		isCompatibleWith: function(appVersion, platformVersion) {
@@ -228,70 +230,97 @@ function getUserStyleWrapper(style) {
 	};
 }
 
-function getUserStyleObserver(addonItem, listener) {
+// An observer for style update checks.
+function getUserStyleUpdateCheckObserver(addonItem, listener) {
 	return {
 		addonItem: addonItem,
 		listener: listener,
 		observe: function(subject, topic, data) {
+			var mainUpdateObject = this;
 			if (subject.id == this.addonItem.id) {
+				// Results of "check for updates"
 				switch (topic) {
 					case "stylish-style-update-check-done":
 						if (data == "update-available" && "onUpdateAvailable" in this.listener) {
-							var installItem = {
-								name: addonItem.name,
-								type: "userstyle",
-								state: AddonManager.STATE_AVAILABLE,
-								addon: addonItem,
-								existingAddon: addonItem,
-								listeners: [],
-								install: function() {
-									this.listeners.forEach(function(l) {
-										if ("onInstallStarted" in l) {
-											l.onInstallStarted(this, this.addon);
-										}
-									}, this);
-									var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
-									service.find(this.existingAddon.id, service.CALCULATE_META | service.REGISTER_STYLE_ON_CHANGE).applyUpdate();
-									pendingUpdates = pendingUpdates.filter(function(item) {
-										return item.addon.id != this.addon.id;
-									}, this);
-									this.listeners.forEach(function(l) {
-										if ("onInstallEnded" in l) {
-											l.onInstallEnded(this, this.addon);
-										}
-									}, this);
-								},
-								cancel: function() {
-									throw "Cancelling updates not implemented.";
-								},
-								addListener: function(listener) {
-									if (this.listeners.indexOf(listener) == -1) {
-										this.listeners.push(listener);
-									}
-								},
-								removeListener: function(listener) {
-									this.listeners = this.listeners.filter(function(l) {
-										return l != listener;
-									});
-								}
-							}
+							var installItem = getUserStyleUpdateInstallItem(this.addonItem);
 							if (!pendingUpdates.some(function(item) {
 								return item.addon.id == installItem.addon.id;
 							})) {
 								pendingUpdates.push(installItem);
 							}
-							this.listener.onUpdateAvailable(this.addonItem, installItem);
+							mainUpdateObject.listener.onUpdateAvailable(mainUpdateObject.addonItem, installItem);
 							AddonManagerPrivate.callInstallListeners("onNewInstall", [], installItem);
 						} else if ((data == "no-update-available" || data == "update-check-error") && "onNoUpdateAvailable" in this.listener) {
-							this.listener.onNoUpdateAvailable(this.addonItem);
+							mainUpdateObject.listener.onNoUpdateAvailable(mainUpdateObject.addonItem);
 						}
-						if ("onUpdateFinished" in this.listener) {
-							this.listener.onUpdateFinished(this.addonItem, (data == "update-available" || data == "no-update-available") ? AddonManager.UPDATE_STATUS_NO_ERROR : AddonManager.UPDATE_STATUS_DOWNLOAD_ERROR);
+						if ("onUpdateFinished" in mainUpdateObject.listener) {
+							mainUpdateObject.listener.onUpdateFinished(mainUpdateObject.addonItem, (data == "update-available" || data == "no-update-available") ? AddonManager.UPDATE_STATUS_NO_ERROR : AddonManager.UPDATE_STATUS_DOWNLOAD_ERROR);
 						}
 				}
 			}
 		}
 	}
+}
+
+// Returns an InstallItem representing an update to the user style
+function getUserStyleUpdateInstallItem(addonItem) {
+	return {
+		name: addonItem.name,
+		type: "userstyle",
+		state: AddonManager.STATE_AVAILABLE,
+		addon: addonItem,
+		existingAddon: addonItem,
+		listeners: [],
+		install: function() {
+			this.listeners.forEach(function(l) {
+				if ("onInstallStarted" in l) {
+					l.onInstallStarted(this, this.addon);
+				}
+			}, this);
+			var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
+			var that = this;
+			
+			// Results for "apply updates"
+			var updateAttemptObserver = {
+				observe: function(subject, topic, data) {
+					if (topic != "stylish-style-update-done") {
+						return;
+					}
+					switch (data) {
+						case "update-failure":
+						case "no-update-possible":
+							// This is what XPIProvider.jsm does, but for some reason this isn't giving us the right message in the addons manager on an individual check.
+							that.state = AddonManager.STATE_DOWNLOAD_FAILED;
+							that.error = AddonManager.ERROR_FILE_ACCESS;
+							AddonManagerPrivate.callInstallListeners("onDownloadFailed", that.listeners, that);
+							break;
+						case "update-success":
+							AddonManagerPrivate.callInstallListeners("onInstallEnded", that.listeners, that);
+							break;
+					}
+
+					pendingUpdates = pendingUpdates.filter(function(item) {
+						return item.addon.id != this.addon.id;
+					}, that);
+				}
+			}
+			service.find(this.existingAddon.id, service.CALCULATE_META | service.REGISTER_STYLE_ON_CHANGE).applyUpdate(updateAttemptObserver);
+		},
+		cancel: function() {
+			throw "Cancelling updates not implemented.";
+		},
+		addListener: function(listener) {
+			if (this.listeners.indexOf(listener) == -1) {
+				this.listeners.push(listener);
+			}
+		},
+		removeListener: function(listener) {
+			this.listeners = this.listeners.filter(function(l) {
+				return l != listener;
+			});
+		}
+	}
+
 }
 
 var pendingUpdates = [];

@@ -3,7 +3,7 @@
 #include "nsIConsoleListener.idl"
 #include "nsIObserver.idl"
 
-[scriptable, uuid(ea17a766-cdd4-444b-8d8d-b5bb935a2a22)]
+[scriptable, uuid(6cd15928-080e-4c0f-b3af-90922cf4f9e8)]
 interface stylishStyle : nsIClassInfo
 {
 	attribute unsigned long id;
@@ -17,6 +17,7 @@ interface stylishStyle : nsIClassInfo
 	attribute boolean enabled;
 	// the original code installed. can be null if it's the same as "code" or this wasn't an install
 	attribute AString originalCode;
+	attribute AString originalMd5;
 	attribute short applyBackgroundUpdates;
 
 	//see the flags below. you can set this before initing the style
@@ -38,7 +39,7 @@ interface stylishStyle : nsIClassInfo
 	AString regexToSample(in AString regex);
 
 	// applyBackgroundUpdates is really a short, but set as a string here so that we can pass null for default
-	void init(in AString url, in AString idUrl, in AString updateUrl, in AString md5Url, in AString name, in AString code, in boolean enabled, in AString originalCode, in AString applyBackgroundUpdates);
+	void init(in AString url, in AString idUrl, in AString updateUrl, in AString md5Url, in AString name, in AString code, in boolean enabled, in AString originalCode, in AString originalMd5, in AString applyBackgroundUpdates);
 	void save();
 	void delete();
 	boolean appliesToUrl(in AString url);
@@ -50,7 +51,13 @@ interface stylishStyle : nsIClassInfo
 	//     - update-available
 	//     - no-update-possible
 	void checkForUpdates(in nsIObserver observer);
-	void applyUpdate();
+	// observer's topics can be:
+	//   - stylish-style-update-start
+	//   - stylish-style-update-done with data:
+	//     - update-failure
+	//     - update-success
+	//     - no-update-possible
+	void applyUpdate(in nsIObserver observer);
 	void setPreview(in boolean on);
 	void revert();
 	void addMeta(in AString name, in AString value);

@@ -232,7 +232,7 @@
 		var ui = getUI(id);
 		var button = ui.querySelector('.update-style');
 		updateButtonStatus(button, true);
-		get(id).applyUpdate();
+		get(id).applyUpdate(null);
 		// that should fire stylish-style-change when done, which we're listening to above, and refresh it
 	}
 	
