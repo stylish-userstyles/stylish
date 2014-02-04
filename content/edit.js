@@ -1,8 +1,10 @@
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
 var require = null;
+var autocompleter = null;
 try {
 	require = Components.utils.import("resource://gre/modules/devtools/Loader.jsm", {}).devtools.require;
+	autocompleter = require("devtools/sourceeditor/autocomplete");
 } catch (ex) {
 	// file not available...
 }
@@ -161,6 +163,10 @@ function init2() {
 		var wrapLinesE = document.getElementById("wrap-lines");
 		wrapLinesE.checked = wrapLines;
 		wrapLinesE.style.display = "";
+	}
+	if (sourceEditorType == "sourceeditor" && autocompleter != null) {
+		sourceEditor.extend(autocompleter);
+		sourceEditor.setupAutoCompletion(null);
 	}
 
 	initStyle();
