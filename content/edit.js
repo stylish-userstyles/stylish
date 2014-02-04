@@ -164,9 +164,13 @@ function init2() {
 		wrapLinesE.checked = wrapLines;
 		wrapLinesE.style.display = "";
 	}
-	if (sourceEditorType == "sourceeditor" && autocompleter != null) {
-		sourceEditor.extend(autocompleter);
-		sourceEditor.setupAutoCompletion(null);
+	if (sourceEditorType == "sourceeditor") {
+		// Up to Firefox 28, sometimes "require" will return an object when something is not available instead of throwing.
+		// Rather than trying to detect if autocompleter is available, let's just try to use it.
+		try {
+			sourceEditor.extend(autocompleter);
+			sourceEditor.setupAutoCompletion(null);
+		} catch (ex) { }
 	}
 
 	initStyle();
