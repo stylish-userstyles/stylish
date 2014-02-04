@@ -23,7 +23,6 @@
 	ondialogcancel="return cancelDialog()"
 	ondialogextra2="preview();"
 	ondialogextra1="switchToInstall();"
-	onkeypress="if (event.keyCode == 13) {return false;}"
 	buttonlabelaccept="&save;"
 	buttonaccesskeyaccept="&save.ak;"
 	buttonlabelextra2="&preview;"

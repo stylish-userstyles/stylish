@@ -643,6 +643,16 @@ window.addEventListener("load", function() {
 		findBar._findField.value = "";
 		findBar.open();
 	}
+	// On the find bar, swallow any enter keypresses that would close the dialog
+	document.getElementById("findbar").addEventListener("keypress", function(event) {
+		if (event.keyCode == 13) {
+			// why this is different, i don't know
+			if (!finderJsmStyle) {
+				event.target._findAgain();
+			}
+			event.preventDefault();
+		}
+	}, false);
 }, false);
 
 // if the style we're editing has been deleted, turn off preview and close the window
