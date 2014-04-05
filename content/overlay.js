@@ -30,7 +30,7 @@ var stylishOverlay = {
 					try {
 						BrowserToolboxCustomizeDone(true);
 					} catch (e) {
-						Comonpents.utils.reportError(e);
+						Components.utils.reportError(e);
 					}
 				}
 				prefService.setIntPref("extensions.stylish.firstRun", 3);
