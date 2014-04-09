@@ -68,7 +68,7 @@ StylishDataSource.prototype = {
 	_file: null,
 
 	migrate: function(connection) {
-		var expectedDataVersion = 6;
+		var expectedDataVersion = 7;
 		var currentDataVersion = connection.schemaVersion;
 		if (currentDataVersion >= expectedDataVersion)
 			return;
@@ -83,21 +83,40 @@ StylishDataSource.prototype = {
 					connection.executeSimpleSQL("ALTER TABLE styles ADD COLUMN originalCode TEXT NULL;");
 				} catch (ex) {
 					// this can happen if the user downgrades to a version with schema 1 then upgrades. they will then already have the column.
+					Components.utils.reportError("Error on migrate version 1 - " + ex);
 				}
 			case 2:
 				try {
 					connection.executeSimpleSQL("ALTER TABLE styles ADD COLUMN idUrl TEXT NULL; UPDATE styles SET idUrl = url;");
-				} catch (ex) {}
+				} catch (ex) {
+					Components.utils.reportError("Error on migrate version 2 - " + ex);
+				}
 			case 3:
+				try {
 					connection.executeSimpleSQL("UPDATE styles SET md5Url = REPLACE(md5Url, 'http://userstyles.org/styles/', 'http://update.userstyles.org/') WHERE md5Url LIKE 'http://userstyles.org/styles/%.md5';");
+				} catch (ex) {
+					Components.utils.reportError("Error on migrate version 3 - " + ex);
+				}
 			case 4:
 				try {
 					connection.executeSimpleSQL("ALTER TABLE styles ADD COLUMN applyBackgroundUpdates INTEGER NOT NULL DEFAULT 1;"); // 1 = AddonManager.AUTOUPDATE_DEFAULT
-				} catch (ex) {}
+				} catch (ex) {
+					Components.utils.reportError("Error on migrate version 4 - " + ex);
+				}
 			case 5:
 				try {
 					connection.executeSimpleSQL("ALTER TABLE styles ADD COLUMN originalMd5 TEXT NULL;");
-				} catch (ex) {}
+				} catch (ex) {
+					Components.utils.reportError("Error on migrate version 5 - " + ex);
+				}
+			case 6:
+				try {
+					connection.executeSimpleSQL("UPDATE styles SET url = REPLACE(url, 'http://userstyles.org/', 'https://userstyles.org/') WHERE url LIKE 'http://userstyles.org/%';");
+					connection.executeSimpleSQL("UPDATE styles SET updateUrl = REPLACE(updateUrl, 'http://userstyles.org/', 'https://userstyles.org/') WHERE updateUrl LIKE 'http://userstyles.org/%';");
+					connection.executeSimpleSQL("UPDATE styles SET md5Url = REPLACE(md5Url, 'http://update.userstyles.org/', 'https://update.userstyles.org/') WHERE md5Url LIKE 'http://update.userstyles.org/%';");
+				} catch (ex) {
+					Components.utils.reportError("Error on migrate version 6 - " + ex);
+				}
 		}
 		connection.schemaVersion = expectedDataVersion;
 		connection.commitTransaction();
