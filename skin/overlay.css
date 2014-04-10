@@ -1,25 +1,24 @@
+/* Pre-Firefox 29 sizes - 16 for small, 24 for large */
 #stylish-toolbar-button {
-	list-style-image: url("chrome://stylish/skin/24w.png");
-}
-toolbar[iconsize="small"] #stylish-toolbar-button {
-	list-style-image: url("chrome://stylish/skin/16w.png");
-}
-
-#stylish-toolbar-button[styles-applied~="site"] {
 	list-style-image: url("chrome://stylish/skin/24.png");
 }
-toolbar[iconsize="small"] #stylish-toolbar-button[styles-applied~="site"] {
+toolbar[iconsize="small"] #stylish-toolbar-button {
 	list-style-image: url("chrome://stylish/skin/16.png");
 }
 
-#stylish-panel {
+#stylish-toolbar-button:not([styles-applied~="site"]) {
+	list-style-image: url("chrome://stylish/skin/24w.png");
+}
+toolbar[iconsize="small"] #stylish-toolbar-button:not([styles-applied~="site"]) {
 	list-style-image: url("chrome://stylish/skin/16w.png");
 }
-#stylish-panel[styles-applied~="site"] {
-	list-style-image: url("chrome://stylish/skin/16.png");
+
+/* Firefox 29+ sizes - 16 on the toolbar, 32 elsewhere */
+#stylish-toolbar-button[cui-areatype="menu-panel"], toolbarpaletteitem[place="palette"] > #stylish-toolbar-button {
+    list-style-image: url("chrome://stylish/skin/32.png");
 }
 
 /* Things that don't make sense in a non-browser */
-#messengerWindow #stylish-find-styles, #messengerWindow #stylish-write-style-menu, #messengerWindow #stylish-panel {
+#messengerWindow #stylish-find-styles, #messengerWindow #stylish-write-style-menu {
 	display: none;
 }

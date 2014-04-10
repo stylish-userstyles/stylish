@@ -5,7 +5,7 @@ var stylishOverlay = {
 	//cached number of global styles
 	globalCount: null,
 
-	uiElementIds: ["stylish-panel", "stylish-toolbar-button"],
+	uiElementIds: ["stylish-toolbar-button"],
 
 	init: function() {
 		stylishOverlay.STRINGS = document.getElementById("stylish-strings");
@@ -412,7 +412,7 @@ var stylishOverlay = {
 
 	handleStatusClick: function(event) {
 		//open manage styles on middle click
-		if ((event.target.id == "stylish-panel" || event.target.id == "stylish-toolbar-button") && event.button == 1) {
+		if (event.target.id == "stylish-toolbar-button" && event.button == 1) {
 			stylishOverlay.openManage();
 		}
 	}

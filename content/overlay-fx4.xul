@@ -69,11 +69,11 @@
 	</popupset>
 
 	<toolbarpalette id="BrowserToolbarPalette">
-		<toolbarbutton id="stylish-toolbar-button" label="&stylish;" orient="horizontal" popup="stylish-popup" tooltip="stylish-tooltip" onclick="stylishOverlay.handleStatusClick(event)" class="toolbarbutton-1" type="menu"/>
+		<toolbarbutton id="stylish-toolbar-button" label="&stylish;" popup="stylish-popup" tooltip="stylish-tooltip" onclick="stylishOverlay.handleStatusClick(event)" class="toolbarbutton-1"/>
 	</toolbarpalette>
 
 	<toolbarpalette id="MailToolbarPalette">
-		<toolbarbutton id="stylish-toolbar-button" label="&stylish;" orient="horizontal" popup="stylish-popup" tooltip="stylish-tooltip" onclick="stylishOverlay.handleStatusClick(event)" class="toolbarbutton-1" type="menu"/>
+		<toolbarbutton id="stylish-toolbar-button" label="&stylish;" popup="stylish-popup" tooltip="stylish-tooltip" onclick="stylishOverlay.handleStatusClick(event)" class="toolbarbutton-1"/>
 	</toolbarpalette>
 
 	<broadcasterset id="mainBroadcasterSet">
