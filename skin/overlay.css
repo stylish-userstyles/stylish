@@ -22,3 +22,7 @@ toolbar[iconsize="small"] #stylish-toolbar-button:not([styles-applied~="site"]) 
 #messengerWindow #stylish-find-styles, #messengerWindow #stylish-write-style-menu {
 	display: none;
 }
+
+#stylish-toolbar-button .toolbarbutton-menu-dropmarker {
+	display: none;
+}
