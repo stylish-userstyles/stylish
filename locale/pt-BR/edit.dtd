@@ -1,6 +1,6 @@
 <!ENTITY chromefolder "Caminho da pasta do Chrome">
 <!ENTITY chromefolder.ak "C">
-<!ENTITY dataURI "URI de dados...">
+<!ENTITY dataURI "URI de dados…">
 <!ENTITY dataURI.ak "d">
 <!ENTITY htmlnamespace "Namespace HTML como padrão">
 <!ENTITY htmlnamespace.ak "H">
@@ -16,7 +16,7 @@
 <!ENTITY save.ak "S">
 <!ENTITY switchtoinstall "Mudar para Instalação">
 <!ENTITY switchtoinstall.ak "I">
-<!ENTITY tags "Marcas">
+<!ENTITY tags "Marcadores">
 <!ENTITY tags.ak "M">
 <!ENTITY wraplines "Quebrar linhas">
 <!ENTITY wraplines.ak "Q">

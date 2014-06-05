@@ -1,12 +1,12 @@
 <!ENTITY addons.title "Complementos">
 <!-- Default window size for the addon manager in pixels -->
-<!ENTITY em.width "600">
-<!ENTITY em.height "430">
+<!ENTITY em.width "520">
+<!ENTITY em.height "380">
 <!ENTITY cmd.info.commandKey "I">
 <!ENTITY cmd.options.commandKey ",">
-<!ENTITY cmd.close.commandKey "W">
+<!ENTITY cmd.close.commandKey "w">
 <!-- View labels -->
-<!ENTITY search.label "Adicionar">
+<!ENTITY search.label "Adicionar complementos">
 <!ENTITY extensions.label "Extensões">
 <!ENTITY themes.label "Temas">
 <!ENTITY locales.label "Idiomas">
@@ -47,7 +47,7 @@
 <!ENTITY cmd.useTheme.tooltip "Modifica o tema do &brandShortName;">
 <!ENTITY cmd.options.label "Opções">
 <!ENTITY cmd.options.accesskey "o">
-<!ENTITY cmd.options.tooltip "Define as opções da extensão selecionada">
+<!ENTITY cmd.options.tooltip "Define opções da extensão selecionada">
 <!ENTITY cmd.optionsUnix.label "Preferências">
 <!ENTITY cmd.optionsUnix.accesskey "P">
 <!ENTITY cmd.optionsUnix.tooltip "Define as preferências da extensão selecionada">
@@ -80,7 +80,7 @@
 <!ENTITY cmd.hideUpdateInfo.tooltip "Oculta informações sobre estas atualizações">
 <!ENTITY cmd.installSearchResult.label "Adicionar ao &brandShortName;…">
 <!ENTITY cmd.installSearchResult.accesskey "A">
-<!ENTITY cmd.installSearchResult.tooltip "Recebe e instala este complemento">
+<!ENTITY cmd.installSearchResult.tooltip "Baixa e instala este complemento">
 <!-- The selected add-on\'s cancel action button label -->
 <!ENTITY cancel.label "Cancelar">
 <!ENTITY cancel.accesskey "C">
@@ -97,7 +97,7 @@
 <!ENTITY cmd.checkUpdate.accesskey "P">
 <!ENTITY cmd.includeUpdate.label "Incluir atualização">
 <!ENTITY cmd.includeUpdate.accesskey "n">
-<!ENTITY includeUpdate.label "Incluir atualização">
+<!ENTITY includeUpdate.label "Incluir esta atualização">
 <!ENTITY includeUpdate.accesskey "n">
 <!ENTITY includeUpdate.tooltip "Inclui este complemento ao instalar as atualizações">
 <!-- Status Messsages -->
@@ -137,12 +137,12 @@
 <!ENTITY addonTypeExtension.label "Extensão">
 <!ENTITY addonTypeTheme.label "Tema">
 <!ENTITY missingThumbnail.label "Sem visualização">
-<!ENTITY previewNoThemeSelected.label "Nenhum tema selecionado.">
+<!ENTITY previewNoThemeSelected.label "Nenhum tema selecionado">
 <!ENTITY previewNoPreviewImage.label "Este tema não tem uma imagem para visualização">
 <!ENTITY moreInfo.label "Mais informações">
 <!ENTITY infoNoAddonSelected.label "Nenhuma atualização selecionada">
 <!ENTITY infoNoUpdateInfo.label "Esta atualização não tem nenhuma informação adicional">
-<!ENTITY infoUpdateInfoError.label "Houve um erro durante o carregamento de informações sobre esta atualização">
+<!ENTITY infoUpdateInfoError.label "Houve um erro ao carregar informações sobre esta atualização">
 <!ENTITY updateSuccess.label "Atualização concluída com êxito.">
 <!ENTITY installSuccess.label "Instalação concluída com êxito.">
 <!ENTITY installSuccessRestart.label "Reinicie para concluir a instalação.">
@@ -155,6 +155,6 @@
 <!ENTITY eula.title "Acordo de licença para o usuário final">
 <!ENTITY eula.width "560px">
 <!ENTITY eula.height "400px">
-<!ENTITY eula.accept "Aceitar e instalar">
+<!ENTITY eula.accept "Aceitar e instalar…">
 <!ENTITY blocklist.blocked.label "Bloqueado">
 <!ENTITY blocklist.checkbox.label "Desativar">
