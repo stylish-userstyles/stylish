@@ -44,10 +44,10 @@
 <!-- Displayed in the selected Add-on\'s richlistitem and context menu -->
 <!ENTITY cmd.useTheme.label "Käytä teemaa">
 <!ENTITY cmd.useTheme.accesskey "t">
-<!ENTITY cmd.useTheme.tooltip "Muuta sovelluksen &brandShortName; teeman">
+<!ENTITY cmd.useTheme.tooltip "Muuttaa sovelluksen &brandShortName; teeman">
 <!ENTITY cmd.options.label "Valinnat">
 <!ENTITY cmd.options.accesskey "v">
-<!ENTITY cmd.options.tooltip "Aseta valinnat kuten valitulla lisäosalla">
+<!ENTITY cmd.options.tooltip "Aseta valinnat, kuten valitulla lisäosalla">
 <!ENTITY cmd.optionsUnix.label "Asetukset">
 <!ENTITY cmd.optionsUnix.accesskey "A">
 <!ENTITY cmd.optionsUnix.tooltip "Muokkaa valitun laajennuksen asetuksia">

@@ -1,0 +1,19 @@
+<!ENTITY changetags "Cambiar Etiquetas">
+<!ENTITY changetags.ak "C">
+<!ENTITY done "Feito">
+<!ENTITY done.ak "F">
+<!ENTITY filter "Procurar">
+<!ENTITY installfromurls "Instalar dende ligazóns...">
+<!ENTITY manageaddonstitle "Estilos do Usuario">
+<!ENTITY managetitle "Xeitosiño">
+<!ENTITY nostylesstart "Visitar">
+<!ENTITY nostylesend "para información sobre como usar o Xeitosiño.">
+<!ENTITY sortenabled "Activar">
+<!ENTITY sortname "Nome">
+<!ENTITY sorttag "Etiqueta">
+<!ENTITY sorttype "Tipo">
+<!ENTITY sortgroup "Ordear por:">
+<!ENTITY update "Actualizar">
+<!ENTITY update.ak "A">
+<!ENTITY writenew "Escribir Novo Estilo">
+<!ENTITY writenew.ak "E">
