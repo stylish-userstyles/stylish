@@ -88,5 +88,7 @@ function preview() {
 }
 
 function callCallback() {
-	installCallback(saved ? "installed" : "cancelled");
+	if (installCallback) {
+		installCallback(saved ? "installed" : "cancelled");
+	}
 }

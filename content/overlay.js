@@ -341,48 +341,23 @@ var stylishOverlay = {
 	},
 
 	openManage: function() {
-		var manageView = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).getIntPref("extensions.stylish.manageView");
-		var appInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo);
-		var versionChecker = Components.classes["@mozilla.org/xpcom/version-comparator;1"].getService(Components.interfaces.nsIVersionComparator);
-
 		function getWindow(name) {
 			return Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow(name);
 		}
-		// seamonkey 2 can't do add-ons dialog
-		if (manageView == 0 && appInfo.ID == "{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}" && versionChecker.compare(appInfo.version, "2.1b1") < 0) {
-			manageView = 1;
-		}
-		switch (manageView) {
-			case 2: // sidebar
-				var em = getWindow("navigator:browser");
-				if (em) {
-					em.toggleSidebar('viewStylishSidebar', true);
-					break;
-				}
-			case 1: // stand-alone dialog
-				var em = getWindow("stylishManage");
-				if (em) {
-					em.focus();
-				} else {
-					window.openDialog("chrome://stylish/content/manage-standalone.xul", "", "chrome,menubar,extra-chrome,toolbar,dialog=no,resizable");
-				}
-				break;
-			default: // add-ons
-				if (typeof BrowserOpenAddonsMgr != "undefined") {
-					BrowserOpenAddonsMgr("addons://list/userstyle");
-				} else if (typeof toEM != "undefined") {
-					toEM("addons://list/userstyle");
-				} else if (typeof openAddonsMgr != "undefined") {
-					openAddonsMgr("addons://list/userstyle");
-				} else {
-					var em = getWindow("Extension:Manager");
-					if (em) {
-						em.document.getElementById("userstyles-view").click();
-						em.focus();
-						return;
-					}
-					window.openDialog("chrome://mozapps/content/extensions/extensions.xul", "", "chrome,menubar,extra-chrome,toolbar,dialog=no,resizable", "userstyles");
-				}
+		if (typeof BrowserOpenAddonsMgr != "undefined") {
+			BrowserOpenAddonsMgr("addons://list/userstyle");
+		} else if (typeof toEM != "undefined") {
+			toEM("addons://list/userstyle");
+		} else if (typeof openAddonsMgr != "undefined") {
+			openAddonsMgr("addons://list/userstyle");
+		} else {
+			var em = getWindow("Extension:Manager");
+			if (em) {
+				em.document.getElementById("userstyles-view").click();
+				em.focus();
+				return;
+			}
+			window.openDialog("chrome://mozapps/content/extensions/extensions.xul", "", "chrome,menubar,extra-chrome,toolbar,dialog=no,resizable", "userstyles");
 		}
 	},
 
@@ -415,6 +390,11 @@ var stylishOverlay = {
 		if (event.target.id == "stylish-toolbar-button" && event.button == 1) {
 			stylishOverlay.openManage();
 		}
+	},
+
+	installFromFile: function(event) {
+		var doc = content.document;
+		stylishCommon.installFromString(doc.body.textContent, doc.location.href);
 	}
 };
 

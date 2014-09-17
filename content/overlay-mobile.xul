@@ -12,6 +12,5 @@
 		};
 	</script>
 	<script type="application/javascript" src="common.js"/>
-	<script type="application/javascript" src="install-overlay.js"/>
 
 </overlay>

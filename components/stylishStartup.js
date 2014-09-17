@@ -25,6 +25,7 @@ StylishStartup.prototype = {
 				viewType: AddonManager.VIEW_TYPE_LIST
 			}]);
 		}
+		wireUpMessaging();
 	}
 }
 
@@ -357,8 +358,71 @@ observerService.addObserver(addonsObserver, "stylish-style-delete", false);
 
 Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).QueryInterface(Components.interfaces.nsIPrefBranch2).addObserver("extensions.stylish.styleRegistrationEnabled", turnOnOffObserver, false);
 
+function wireUpMessaging() {
+	Components.utils.import("chrome://stylish/content/common.js", this);
+	var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
+	var STRINGS = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://stylish/locale/overlay.properties");
+
+	var globalMM = Components.classes["@mozilla.org/globalmessagemanager;1"].getService(Components.interfaces.nsIMessageListenerManager);
+	globalMM.loadFrameScript("chrome://stylish/content/install-frame-script.js", true);
+
+	function reply(incomingMessage, name, data) {
+		incomingMessage.target.messageManager.sendAsyncMessage(name, data);
+	}
+
+	function messageToWindow(message) {
+		return message.target.ownerDocument.defaultView;
+	}
+
+	globalMM.addMessageListener("stylish:get-style-install-status", function(message) {
+		var style = service.findByUrl(message.data.idUrl, 0);
+		if (style) {
+			if (style.originalMd5 == message.data.md5) {
+				reply(message, "stylish:style-already-installed");
+			} else {
+				reply(message, "stylish:style-can-be-updated");
+			}
+		} else {
+			reply(message, "stylish:style-can-be-installed");
+		}
+	});
+
+	globalMM.addMessageListener("stylish:install-style", function(message) {
+		stylishCommon.installFromStyleInfo(message.data, function(result) {
+			if (result == "installed") {
+				reply(message, "stylish:style-installed");
+			}
+		}, messageToWindow(message));
+	});
+
+	globalMM.addMessageListener("stylish:update-style", function(message) {
+		var style = service.findByUrl(message.data.idUrl, service.REGISTER_STYLE_ON_CHANGE + service.CALCULATE_META);
+		var code = message.data.code;
+		var md5 = message.data.md5;
+		var md5Url = message.data.md5Url;
+		var updateUrl = message.data.updateUrl;
+		if (!style || !code) {
+			return;
+		}
+		var prompt = STRINGS.formatStringFromName("updatestyle", [style.name], 1);
+		var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+		if (prompts.confirmEx(messageToWindow(message), STRINGS.formatStringFromName("updatestyletitle", [], 0), prompt, prompts.BUTTON_POS_0 * prompts.BUTTON_TITLE_IS_STRING + prompts.BUTTON_POS_1 * prompts.BUTTON_TITLE_CANCEL, STRINGS.formatStringFromName("updatestyleok", [], 0), null, null, null, {}) == 0) {
+			style.code = code;
+
+			//we're now in sync with the remote style, so let's set things appropriately
+			style.originalCode = code;
+			style.md5Url = md5Url;
+			style.originalMd5 = md5;
+			style.updateUrl = updateUrl;
+
+			style.save();
+			reply(message, "stylish:style-updated");
+		}
+	});
+
+}
+
 if (XPCOMUtils.generateNSGetFactory)
     var NSGetFactory = XPCOMUtils.generateNSGetFactory([StylishStartup]);
 else
     var NSGetModule = XPCOMUtils.generateNSGetModule([StylishStartup]);
-

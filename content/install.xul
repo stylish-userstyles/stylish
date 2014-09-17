@@ -28,7 +28,8 @@
 	buttonaccesskeyextra2="&preview.ak;"
 	buttonlabelextra1="&switchtoedit;"
 	buttonaccesskeyextra1="&switchtoedit.ak;">
-	
+
+	<script type="application/javascript" src="frame-utils.js"/>
 	<script type="application/javascript" src="common.js"/>
 	<script type="application/javascript" src="install.js"/>
 

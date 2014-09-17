@@ -140,12 +140,6 @@ function initOrion() {
 		var orionElement = document.getElementById("orion");
 		sourceEditor.init(orionElement, {mode: sourceEditor.MODES.CSS, showLineNumbers: true}, init2);
 		document.getElementById("editor").selectedIndex = 1;
-		var appInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo);
-		var versionChecker = Components.classes["@mozilla.org/xpcom/version-comparator;1"].getService(Components.interfaces.nsIVersionComparator);
-		// before firefox 11, we need to set up our own undo key binding
-		if ((appInfo.ID == "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}" || appInfo.ID == "{3550f703-e582-4d05-9a08-453d09bdfdc6}") && versionChecker.compare(appInfo.version, "11.0a1") < 0) {
-			orionElement.addEventListener("keypress", handleOrionUndo, false);
-		}
 		window.controllers.insertControllerAt(0, undoController);
 		// only use our custom undo
 		document.getElementById("menu_undo").style.display = "none";
@@ -187,20 +181,6 @@ function init2() {
 			codeElementWrapper.setSelectionRange(0, 0);
 		}
 	},100);
-}
-
-function handleOrionUndo(event) {
-	if (event.ctrlKey) {
-		if (event.which == 122 || event.which == 90) { // Z
-			if (event.shiftKey) {
-				sourceEditor.redo();
-			} else {
-				sourceEditor.undo()
-			}
-		} else if (event.which == 121 || event.which == 89) { // Y
-			sourceEditor.redo();
-		}
-	}
 }
 
 var undoController = {
@@ -318,7 +298,7 @@ function dialogClosing() {
 	}
 	
 	if (installCallback) {
-		installCallback(saved ? "success" : "cancelled");
+		installCallback(saved ? "installed" : "cancelled");
 	}
 }
 

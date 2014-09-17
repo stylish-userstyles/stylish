@@ -15,7 +15,6 @@
 
 	<script type="application/javascript" src="common.js"/>
 	<script type="application/javascript" src="overlay.js"/>
-	<script type="application/javascript" src="install-overlay.js"/>
 
 	<stringbundleset id="stringbundleset">
 		<stringbundle id="stylish-strings" src="chrome://stylish/locale/overlay.properties"/>
@@ -28,7 +27,7 @@
 			<menuitem id="stylish-manage" label="&managestyles;" accesskey="&managestyles.ak;" oncommand="stylishOverlay.openManage()"/>
 			<menuitem id="stylish-turn-on" label="&turnon;" accesskey="&turnon.ak;" oncommand="stylishOverlay.turnOnOff(true)"/>
 			<menuitem id="stylish-turn-off" label="&turnoff;" accesskey="&turnoff.ak;" oncommand="stylishOverlay.turnOnOff(false)"/>
-			<menuitem id="stylish-add-file" label="&addfile;" accesskey="&addfile.ak;" oncommand="stylishInstallOverlay.installFromFile(event)"/>
+			<menuitem id="stylish-add-file" label="&addfile;" accesskey="&addfile.ak;" oncommand="stylishOverlay.installFromFile(event)"/>
 			<menuitem id="stylish-find-styles" label="&findstylebrowser;" accesskey="&findstylebrowser.ak;" oncommand="stylishOverlay.findStyle(event)" onclick="checkForMiddleClick(this, event)"/>
 			<menu id="stylish-write-style-menu" label="&writestyle;" accesskey="&writestyle.ak;">
 				<menupopup onpopupshowing="stylishOverlay.writeStylePopupShowing(event)" onpopuphiding="stylishCommon.clearAllMenuItems(event)"/>
@@ -75,13 +74,5 @@
 	<toolbarpalette id="MailToolbarPalette">
 		<toolbarbutton id="stylish-toolbar-button" label="&stylish;" popup="stylish-popup" tooltip="stylish-tooltip" onclick="stylishOverlay.handleStatusClick(event)" class="toolbarbutton-1" type="menu"/>
 	</toolbarpalette>
-
-	<broadcasterset id="mainBroadcasterSet">
-		<broadcaster id="viewStylishSidebar" autoCheck="false" label="&stylish;" type="checkbox" group="sidebar" sidebarurl="chrome://stylish/content/manage-standalone.xul?sidebar" sidebartitle="&stylish;" oncommand="toggleSidebar('viewStylishSidebar');"/>
-	</broadcasterset>
-
-	<menupopup id="viewSidebarMenu">
-		<menuitem id="stylish-view-sidebar" observes="viewStylishSidebar"/>
-	</menupopup>
 
 </overlay>

@@ -1,3 +1,5 @@
+var EXPORTED_SYMBOLS = ["stylishCommon"];
+
 var stylishCommon = {
 
 	XULNS: "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul",
@@ -16,25 +18,6 @@ var stylishCommon = {
 	domApplyAttributes: function(element, json) {
 		for (var i in json)
 			element.setAttribute(i, json[i]);
-	},
-
-	// CustomEvent is available in Firefox 11. Before that, the "data" parameter does nothing. If "data"
-	// is a custom object, __exposedProps__ must be set.
-	dispatchEvent: function(doc, type, data) {
-		if (!doc) {
-			return;
-		}
-		if (typeof data == "undefined") {
-			data = null;
-		}
-		var stylishEvent = null;
-		if (typeof doc.defaultView.CustomEvent != "undefined") {
-			stylishEvent = new doc.defaultView.CustomEvent(type, {detail: data});
-		} else {
-			stylishEvent = doc.createEvent("Events");
-			stylishEvent.initEvent(type, false, false, doc.defaultView, null);
-		}
-		doc.dispatchEvent(stylishEvent);
 	},
 
 	getAppName: function() {
@@ -94,12 +77,20 @@ var stylishCommon = {
 		return false;
 	},
 
-	openEdit: function(name, params) {
+	/* Open the edit dialog.
+	 *   name: a window name - if that window is already open, it will be focuss
+	 *   params: a hash containing style
+	 *   win: (optional) a window object to use in case there isn't one on the global scope
+	 */
+	openEdit: function(name, params, win) {
 		if (stylishCommon.focusWindow(name)) {
 			return;
 		}
+		if (!win) {
+			win = window;
+		}
 		params.windowType = name;
-		return openDialog("chrome://stylish/content/edit.xul", name, "chrome,resizable,dialog=no,centerscreen", params);		
+		return win.openDialog("chrome://stylish/content/edit.xul", name, "chrome,resizable,dialog=no,centerscreen", params);
 	},
 
 	openEditForStyle: function(style) {
@@ -111,7 +102,28 @@ var stylishCommon = {
 		var style = service.find(id, service.REGISTER_STYLE_ON_CHANGE | service.CALCULATE_META);
 		return stylishCommon.openEditForStyle(style);
 	},
-	
+
+	// Callback passes a string parameter - installed, failure, cancelled, existing
+	installFromSite: function(doc, callback) {
+		stylishFrameUtils.gatherStyleInfo(doc, function(results) {stylishCommon.installFromStyleInfo(results, callback);});
+	},
+
+	/* Fire the install process based on a hash of style info.
+	 *   results: the hash of style info
+	 *   callback: the callback to fire when the style is installed. Will be fired with one of: installed, existing, cancelled, failure
+	 *   win: (optional) a window object to use in case there isn't one on the global scope
+	 */
+	installFromStyleInfo: function(results, callback, win) {
+		if (results == null) {
+			callback("failure");
+			return;
+		}
+		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
+		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
+		style.init(results["uri"], results["stylish-id-url"], results["stylish-update-url"], results["stylish-md5-url"], results["stylish-description"], results["stylish-code"], false, results["stylish-code"], results["stylish-md5"], null);
+		stylishCommon.openInstall({style: style, installPingURL: results["stylish-install-ping-url"], installCallback: callback}, win);
+	},
+
 	// Installing from URLs, with prompting and UI and such. startedCallback is called after the user has entered their URLs,
 	// endedCallback is called when the process is done.
 	startInstallFromUrls: function(startedCallback, endedCallback) {
@@ -220,127 +232,23 @@ var stylishCommon = {
 		xhr.open("GET", url);
 		xhr.send();
 	},
-	
-	// Callback passes a string parameter - installed, failure, cancelled, existing
-	installFromSite: function(doc, callback) {
-		// we want both the url and the content of the md5
-		var md5Url = stylishCommon.getMeta(doc, "stylish-md5-url");
-		var resourcesNeeded = [{name: "stylish-code", download: true}, {name: "stylish-description", download: true}, {name: "stylish-install-ping-url"}, {name: "stylish-update-url"}, {name: "stylish-md5-url", download: true}, {name: "stylish-id-url"}];
 
-		stylishCommon.getResourcesFromMetas(doc, resourcesNeeded, function(results) {
-			// This is the only required property
-			if (results["stylish-code"] == null || results["stylish-code"].length == 0) {
-				callback("failure")
-				return;
-			}
-			var uri = stylishCommon.cleanURI("documentURI" in doc ? doc.documentURI : doc.location.href);
-			if (results["stylish-id-url"] == null) {
-				results["stylish-id-url"] = uri
-			}
-
-			var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-			style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
-			style.init(uri, results["stylish-id-url"], results["stylish-update-url"], md5Url, results["stylish-description"], results["stylish-code"], false, results["stylish-code"], results["stylish-md5-url"], null);
-
-			stylishCommon.openInstall({style: style, installPingURL: results["stylish-install-ping-url"], installCallback: callback});
-
-		});
-	},
-	
-	// Results the value of the <link> with a "rel" of the passed name.
-	getMeta: function(doc, name) {
-		var e = doc.querySelector("link[rel='" + name + "']");
-		return e ? e.getAttribute("href") : null;
-	},
-	
-	// Gets the values of the passed meta names.
-	//   doc
-	//   resourcesToGet: an array of:
-	//     name: meta name to get
-	//     download: if true, will download if the value is a remote URL
-	//   callback: called with a hash of name to value
-	getResourcesFromMetas: function(doc, resourcesToGet, callback) {
-		var keyUrls = {};
-		var resourcesToDownload = [];
-		resourcesToGet.forEach(function(r) {
-			var c = stylishCommon.getMeta(doc, r.name);
-			if (r.download) {
-				resourcesToDownload.push({name: r.name, url: c});
-			} else {
-				keyUrls[r.name] = c;
-			}
-		});
-		stylishCommon.getResources(doc, resourcesToDownload, function(results) {
-			results.forEach(function(r) {
-				keyUrls[r.name] = r.value;
-			});
-			callback(keyUrls);
-		});
-	},
-	
-	// Gets the values of the passed URLs.
-	//   doc
-	//   resources: an array of:
-	//     name: name of the resource
-	//     url: url of the resource
-	//   callback: called with a hash of name to value
-	getResources: function(doc, resources, callback) {
-		var results = [];
-		
-		function assembleResults(name, value) {
-			results.push({name: name, value: value});
-			if (results.length == resources.length) {
-				callback(results);
-			}
-		}
-		
-		resources.forEach(function(resource) {
-			stylishCommon.getResource(doc, resource.name, resource.url, assembleResults);
-		});
-	},
-	
-	// Get the value of the passed URL.
-	getResource: function(doc, name, url, callback) {
-		if (url == null) {
-			callback(name, null);
-			return;
-		}
-		if (url.indexOf("#") == 0) {
-			callback(name, doc.getElementById(url.substring(1)).textContent);
-			return;
-		}
-		var xhr = new XMLHttpRequest();
-		xhr.onload = function() {
-			if (xhr.status >= 400) {
-				callback(name, null);
-			} else {
-				callback(name, xhr.responseText);
-			}
-		}
-		if (url.length > 2000) {
-			var parts = url.split("?");
-			xhr.open("POST", parts[0], true);
-			xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			xhr.send(parts[1]);
-		} else {
-			xhr.open("GET", url, true);
-			xhr.send();
-		}
-	},
-	
-	installFromFile: function(doc) {
-		stylishCommon.installFromString(doc.body.textContent, doc.location.href);
-	},
-	
 	installFromString: function(css, uri, callback) {
-		uri = stylishCommon.cleanURI(uri);
+		uri = stylishFrameUtils.cleanURI(uri);
 		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
 		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
 		style.init(uri, uri, uri, null, null, css, false, css, null, null);
 		stylishCommon.openInstall({style: style, installCallback: callback});
 	},
 
-	openInstall: function(params) {
+	/* Open the installation dialog.
+	 *   params: a hash containing style and installCallback. installCallback will be fired with one of: installed, existing, cancelled, failure
+	 *   win: (optional) a window object to use in case there isn't one on the global scope
+	 */
+	openInstall: function(params, win) {
+		if (!win) {
+			win = window;
+		}
 		var style = params.style;
 		// let's check if it's already installed
 		var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
@@ -350,7 +258,7 @@ var stylishCommon = {
 			}
 			return;
 		}
-		
+
 		if (!stylishCommon.isXULAvailable) {
 			var installStrings = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://stylish/locale/install.properties");
 			var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
@@ -389,25 +297,17 @@ var stylishCommon = {
 		}
 		
 		function fillName(prefix) {
-			params.windowType = stylishCommon.getWindowName(prefix, params.triggeringDocument ? stylishCommon.cleanURI(params.triggeringDocument.location.href) : null);
+			params.windowType = stylishCommon.getWindowName(prefix, params.triggeringDocument ? stylishFrameUtils.cleanURI(params.triggeringDocument.location.href) : null);
 		}
 		if (Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).getBoolPref("extensions.stylish.editOnInstall")) {
 			fillName("stylishEdit");
-			stylishCommon.openEdit(params.windowType, params);
+			stylishCommon.openEdit(params.windowType, params, win);
 		} else {
 			fillName("stylishInstall");
 			if (!stylishCommon.focusWindow(params.windowType)) {
-				openDialog("chrome://stylish/content/install.xul", params.windowType, "chrome,resizable,dialog=no,centerscreen,resizable", params);
+				win.openDialog("chrome://stylish/content/install.xul", params.windowType, "chrome,resizable,dialog=no,centerscreen,resizable", params);
 			}
 		}
-	},
-
-	cleanURI: function(uri) {
-		var hash = uri.indexOf("#");
-		if (hash > -1) {
-			uri = uri.substring(0, hash);
-		}
-		return uri;
 	},
 
 	// Removes whitespace and duplicate tags. Pass in a string and receive an array.

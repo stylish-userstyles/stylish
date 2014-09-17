@@ -9,6 +9,7 @@
 <overlay id="stylish-overlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
+	<script type="application/javascript" src="frame-utils.js"/>
 	<script type="application/javascript" src="common.js"/>
 	<script type="application/javascript" src="domiOverlay.js"/>
 

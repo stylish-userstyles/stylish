@@ -3,7 +3,6 @@ pref("extensions.stylish.wrap_lines", true);
 pref("extensions.stylish.install.allowedDomains", "userstyles.org");
 pref("extensions.stylish.styleRegistrationEnabled", true);
 pref("extensions.stylish.editOnInstall", false);
-pref("extensions.stylish.manageView", 0);
 pref("extensions.stylish.firstRun", 0);
 pref("extensions.stylish.dbFile", "");
 pref("extensions.stylish.closedContainers", "");

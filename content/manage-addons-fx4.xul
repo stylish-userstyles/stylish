@@ -10,6 +10,7 @@
 
 <overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
+	<script src="chrome://stylish/content/frame-utils.js"></script>
 	<script src="chrome://stylish/content/common.js"></script>
 	<script src="chrome://stylish/content/manage-addons-fx4.js"></script>
 

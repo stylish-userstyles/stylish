@@ -33,6 +33,7 @@
 	
 	<script type="application/javascript" src="chrome://global/content/globalOverlay.js"/>
 	<script type="application/javascript" src="edit.js"/>
+	<script type="application/javascript" src="frame-utils.js"/>
 	<script type="application/javascript" src="common.js"/>
 
 	<script type="application/javascript" src="chrome://itsalltext/content/API.js"/>

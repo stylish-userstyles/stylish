@@ -5,6 +5,6 @@
 <vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	<setting type="control">
 		<script type="application/javascript" src="chrome://stylish/content/options.js"/>  
-		<button id="addons-stylish-manage" label="&managestyles;" oncommand="var view = document.getElementById('category-userstyle');if (view) { view.click(); } else { location.href = 'chrome://stylish/content/manage-standalone.xul'; }"/>  
+		<button id="addons-stylish-manage" label="&managestyles;" oncommand="var view = document.getElementById('category-userstyle');if (view) { view.click(); } else { location.href = 'chrome://stylish/content/manage.html'; }"/>  
 	</setting>
 </vbox>
