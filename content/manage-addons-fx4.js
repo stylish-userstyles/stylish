@@ -4,6 +4,17 @@ var stylishManageAddonsFx4 = {
 		return document.getElementById('userstyle-sorting').getElementsByTagName('button');
 	},
 
+	getActiveSort: function() {
+		var buttons = stylishManageAddonsFx4.getSortButtons();
+		var checkedButton = Array.filter(buttons, function(b) { return b.hasAttribute('checkState'); })[0];
+		if (checkedButton == null) {
+			checkedButton = buttons[0];
+		}
+		var ascending = checkedButton.getAttribute('checkState') != "1";
+		var sortBy = checkedButton.getAttribute('sortBy').split(',');
+		return [sortBy, ascending];
+	},
+
 	changeSort: function(event) {
 		var button = event.target;
 
@@ -19,25 +30,8 @@ var stylishManageAddonsFx4 = {
 
 	applySort: function() {
 		var list = document.getElementById('addon-list');
-		var buttons = stylishManageAddonsFx4.getSortButtons();
-		var checkedButton = Array.filter(buttons, function(b) { return b.hasAttribute('checkState'); })[0];
-		if (checkedButton == null) {
-			checkedButton = buttons[0];
-		}
-
-		var ascending = checkedButton.getAttribute('checkState') != "1";
-		var sortBy = checkedButton.getAttribute('sortBy').split(',');
-
-		var items = Array.slice(list.childNodes, 0);
-		sortElements(items, sortBy, ascending);
-		while (list.hasChildNodes()) {
-			list.removeChild(list.lastChild);
-		}
-		var frag = document.createDocumentFragment();
-		items.forEach(function(el) {
-			frag.appendChild(el);
-		});
-		list.appendChild(frag);
+		// this stuff doesn't matter, we're overriding sortElements below
+		sortList(list, "name", true);
 	},
 	
 	startInstallFromUrls: function(button) {
@@ -63,14 +57,13 @@ createItem = function(addon, b, c) {
 	return item;
 }
 
-window.addEventListener('ViewChanged', function(e) {
-	if (e.target.getAttribute("type") == "userstyle") {
-		stylishManageAddonsFx4.applySort();
+// override sortElements so that we can use a different sort on load
+stylishManageAddonsFx4._sortElements = sortElements;
+sortElements = function(aList, aSortBy, aAscending) {
+	if (aList.length == 0 || aList[0].getAttribute("type") != "userstyle") {
+		stylishManageAddonsFx4._sortElements(aList, aSortBy, aAscending);
+		return;
 	}
-}, false);
-window.addEventListener("load", function(e) {
-	if (document.getElementById("list-view").getAttribute("type") == "userstyle") {
-		stylishManageAddonsFx4.applySort();
-	}
-}, false);
-
+	var sort = stylishManageAddonsFx4.getActiveSort();
+	stylishManageAddonsFx4._sortElements(aList, sort[0], sort[1]);
+}

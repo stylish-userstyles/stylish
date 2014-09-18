@@ -41,6 +41,8 @@ var turnOnOffObserver = {
 	}
 }
 
+var prefService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+
 var UserStyleManager = {
 
 	getAddonsByTypes: function(aTypes, aCallback) {
@@ -149,7 +151,7 @@ function getUserStyleWrapper(style) {
 		get permissions() {
 			return AddonManager.PERM_CAN_UNINSTALL | 
 				(style.enabled ? AddonManager.PERM_CAN_DISABLE : AddonManager.PERM_CAN_ENABLE) | 
-				(style.updateUrl != null && style.updateUrl != "" && style.updateUrl.length <= 2000 && Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).getBoolPref("extensions.stylish.updatesEnabled") ? AddonManager.PERM_CAN_UPGRADE : 0); // if the url length is too long, a GET won't work, and it's probably going to be too much server-side to handle
+				(style.updateUrl != null && style.updateUrl != "" && style.updateUrl.length <= 2000 && prefService.getBoolPref("extensions.stylish.updatesEnabled") ? AddonManager.PERM_CAN_UPGRADE : 0); // if the url length is too long, a GET won't work, and it's probably going to be too much server-side to handle
 		},
 
 		get isActive() {
