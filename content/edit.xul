@@ -41,7 +41,7 @@
 	<stringbundle id="strings" src="chrome://stylish/locale/edit.properties"/>
 
 	<keyset>
-		<key id="save-key" modifiers="control" key="S" oncommand="save()"/>
+		<key id="save-key" modifiers="control" key="S" oncommand="saveAndClose()"/>
 		<key id="find-key" modifiers="control" key="F" oncommand="document.getElementById('findbar').open();document.getElementById('findbar')._findField.focus()"/>
 	</keyset>
 

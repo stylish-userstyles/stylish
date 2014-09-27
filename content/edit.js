@@ -52,6 +52,13 @@ function init() {
 			document.getElementById("editor").selectedIndex = 2;
 			sourceEditorType = "sourceeditor";
 			sourceEditor.appendTo(sourceEditorElement).then(init2);
+			// this seems to eat all Ctrl keypresses
+			sourceEditorElement.addEventListener("keydown", function(event) {
+				// Ctrl+S
+				if (event.ctrlKey && event.keyCode == 83) {
+					saveAndClose();
+				}
+			});
 			return;
 		}
 		
@@ -221,6 +228,12 @@ function switchToInstall() {
 	}
 	stylishCommon.openInstall({style: style, installPingURL: installPingURL, installCallback: installCallback});
 	window.close();
+}
+
+function saveAndClose() {
+	if (save()) {
+		close();
+	}
 }
 
 function save() {
