@@ -205,19 +205,7 @@ function getUserStyleWrapper(s) {
 					return bundle.GetStringFromName("appstyledescription");
 				}
 			}
-
-			var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
-
-			var domains = this.style.getMeta("domain", {});
-			var urls = this.style.getMeta("url", {});
-			var urlPrefixes = this.style.getMeta("url-prefix", {});
-			var regexps = this.style.getMeta("regexp", {});
-
-			var affects = domains.concat(urls).concat(urlPrefixes.map(function(u) { 
-				return u + "*"
-			})).concat(regexps.map(function(a) {
-				return service.regexToSample(a);
-			}));
+			var affects = this.style.getPrettyAppliesTo({});
 			if (affects.length > 0) {
 				return bundle.formatStringFromName("sitestyledescription", [affects.join(", ")], 1);
 			}

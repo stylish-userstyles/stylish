@@ -351,6 +351,8 @@ function testType() {
 	ensureType("No namespace, http only URL prefix rule isn't global", "global");
 	style.code = "@-moz-document domain(google.com){* {color: blue}}";
 	ensureType("No namespace, domain rule", "site");
+	style.code = "@-moz-document regexp('h'){* {color: blue}}";
+	ensureType("Bad regexp", "site");
 }
 
 function testFindByUrl() {

@@ -347,7 +347,7 @@ Style.prototype = {
 		}
 		return this.regexpRules.some(function(rule) {
 			try {
-				var re = new RegExp(rule);
+				var re = new RegExp(this.ensureFullMatchRegexp(rule));
 			} catch (ex) {
 				//bad regexp
 				return false;
@@ -666,7 +666,7 @@ Style.prototype = {
 		else if (
 			(hasGlobal && (namespaces.length == 0 || namespaces.indexOf(this.HTMLNS) != -1))
 			|| urlLikeRules.some(function(url) { return genericPattern.test(url) })
-			|| this.regexpRules.some(function(r) { return (new RegExp(r)).test("http://www.somesiteimadeup.com/");})
+			|| this.regexpRules.some(function(r) { return (new RegExp(that.ensureFullMatchRegexp(r))).test("http://www.somesiteimadeup.com/");})
 		)
 			this.addMeta("type", "global");
 		// everything else is site
@@ -995,6 +995,20 @@ Style.prototype = {
 				}
 			}, null
 		);
+	},
+
+	// Make sure a regexp is set to match the entire string, as opposed to just a portion
+	ensureFullMatchRegexp: function(pattern) {
+		if (pattern == null) {
+			return pattern;
+		}
+		if (pattern[0] != "^") {
+			pattern = "^" + pattern;
+		}
+		if (pattern[pattern.length - 1] != "$") {
+			pattern = pattern + "$";
+		}
+		return pattern;
 	}
 
 };
