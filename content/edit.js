@@ -31,6 +31,8 @@ function init() {
 	strings = document.getElementById("strings");
 	codeE = document.getElementById("internal-code");
 
+	initStyle();
+
 	if (prefs.getIntPref("editor") == 0) {
 		// sourceeditor, firefox 27+
 		let Editor = null;
@@ -46,7 +48,8 @@ function init() {
 			sourceEditor = new Editor({
 				mode: Editor.modes.css,
 				lineNumbers: true,
-				contextMenu: "orion-context"
+				contextMenu: "orion-context",
+				value: style.code
 			});
 			var sourceEditorElement = document.getElementById("sourceeditor");
 			document.getElementById("editor").selectedIndex = 2;
@@ -124,7 +127,6 @@ function initStyle() {
 		nameE.value = style.name;
 		tagsE.value = style.getMeta("tag", {}).join(" ");
 		updateUrlE.value = style.updateUrl;
-		codeElementWrapper.value = style.code;
 		// if the style already has an id, it's been previously saved, so this is an edit
 		// if the style has no id but has a url, it's an install
 		document.documentElement.getButton("extra1").hidden = style.id || !style.url;
@@ -178,7 +180,10 @@ function init2() {
 		} catch (ex) { }
 	}
 
-	initStyle();
+	// the initial value for sourceeditor is set in the Editor constructor, which has the benefit of not being undoable
+	if (sourceEditorType != "sourceeditor") {
+		codeElementWrapper.value = style.code;
+	}
 
 	setTimeout(function(){
 		// the code returned is different for some reason a little later...
