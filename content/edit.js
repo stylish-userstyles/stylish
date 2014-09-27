@@ -176,7 +176,7 @@ function init2() {
 		// Rather than trying to detect if autocompleter is available, let's just try to use it.
 		try {
 			sourceEditor.extend(autocompleter);
-			sourceEditor.setupAutoCompletion(null);
+			sourceEditor.setupAutoCompletion({});
 		} catch (ex) { }
 	}
 
