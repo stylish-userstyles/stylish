@@ -951,22 +951,9 @@ Style.prototype = {
 		}, false);
 		// QI it to nsIXMLHttpRequest to open and send the request:
 		request.QueryInterface(Components.interfaces.nsIXMLHttpRequest);
+		request.overrideMimeType("text/plain");
 		request.open("GET", url, true);
-		this.fixXHR(request);
 		request.send(null);
-	},
-
-	fixXHR: function(request) {
-		//only a problem on 1.9 toolkit
-		var appInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo);
-		var versionChecker = Components.classes["@mozilla.org/xpcom/version-comparator;1"].getService(Components.interfaces.nsIVersionComparator);
-		if (versionChecker.compare(appInfo.version, "1.9") >= 0 && Components.classes["@mozilla.org/webshell;1"]) {
-			//https://bugzilla.mozilla.org/show_bug.cgi?id=437174
-			var ds = Components.classes["@mozilla.org/webshell;1"].createInstance(Components.interfaces.nsIDocShellTreeItem).QueryInterface(Components.interfaces.nsIInterfaceRequestor);
-			ds.itemType = Components.interfaces.nsIDocShellTreeItem.typeContent;
-			request.channel.loadGroup = ds.getInterface(Components.interfaces.nsILoadGroup);
-			request.channel.loadFlags |= Components.interfaces.nsIChannel.LOAD_DOCUMENT_URI;
-		}
 	},
 
 	get stylishOn() {

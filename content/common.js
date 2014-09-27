@@ -221,6 +221,7 @@ var stylishCommon = {
 
 	installFromUrlCss: function(url, callback) {
 		var xhr = new XMLHttpRequest();
+		xhr.overrideMimeType("text/css");
 		xhr.onload = function() {
 			if (xhr.status >= 400) {
 				Components.utils.reportError("Stylish install from URL '" + url + "' resulted in HTTP error code " + this.status + ".");

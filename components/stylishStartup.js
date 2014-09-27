@@ -29,11 +29,6 @@ StylishStartup.prototype = {
 	}
 }
 
-// this throws and is unnecessary in firefox 4+
-try {
-Components.classes["@mozilla.org/categorymanager;1"].getService(Components.interfaces.nsICategoryManager).addCategoryEntry("profile-after-change", "StylishStartup", StylishStartup.prototype.contractID, true, true);
-} catch (ex) {}
-
 var turnOnOffObserver = {
 	observe: function(subject, topic, data) {
 		var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
@@ -124,25 +119,44 @@ var UserStyleManager = {
 	}
 };
 
-function getUserStyleWrapper(style) {
-	return {
-		id: style.id.toString(),
+function getUserStyleWrapper(s) {
+	var w = {
+		style: s,
 		type: "userstyle",
-		name: style.name,
-		homepageURL: style.url,
 		appDisabled: false,
 		pendingOperations: AddonManager.PENDING_NONE,
 		isCompatible: true,
 		isPlatformCompatible: true,
 		iconURL: "chrome://stylish/skin/32.png",
-		size: style.code.length,
 		scope: AddonManager.SCOPE_PROFILE,
 		blocklistState: Components.interfaces.nsIBlocklistService.STATE_NOT_BLOCKED,
 		pendingOperations: AddonManager.PENDING_NONE,
-		providesUpdatesSecurely: style.updateUrl == null || style.updateUrl == "",
 		version: "",
 		operationsRequiringRestart: AddonManager.OP_NEEDS_RESTART_NONE,
-		styleTypes: style.getTypes({}).sort().join(","),
+
+		get id() {
+			return this.style.id.toString();
+		},
+
+		get name() {
+			return this.style.name;
+		},
+
+		get homepageURL() {
+			return this.style.url;
+		},
+
+		get size() {
+			return this.style.code.length;
+		},
+
+		get providesUpdatesSecurely() {
+			return this.style.updateUrl == null || this.style.updateUrl == "";
+		},
+
+		get styleTypes() {
+			return this.style.getTypes({}).sort().join(",");
+		},
 
 		get optionsURL() {
 			return null;
@@ -150,8 +164,8 @@ function getUserStyleWrapper(style) {
 
 		get permissions() {
 			return AddonManager.PERM_CAN_UNINSTALL | 
-				(style.enabled ? AddonManager.PERM_CAN_DISABLE : AddonManager.PERM_CAN_ENABLE) | 
-				(style.updateUrl != null && style.updateUrl != "" && style.updateUrl.length <= 2000 && prefService.getBoolPref("extensions.stylish.updatesEnabled") ? AddonManager.PERM_CAN_UPGRADE : 0); // if the url length is too long, a GET won't work, and it's probably going to be too much server-side to handle
+				(this.style.enabled ? AddonManager.PERM_CAN_DISABLE : AddonManager.PERM_CAN_ENABLE) |
+				(this.style.updateUrl != null && this.style.updateUrl != "" && this.style.updateUrl.length <= 2000 && prefService.getBoolPref("extensions.stylish.updatesEnabled") ? AddonManager.PERM_CAN_UPGRADE : 0); // if the url length is too long, a GET won't work, and it's probably going to be too much server-side to handle
 		},
 
 		get isActive() {
@@ -159,17 +173,17 @@ function getUserStyleWrapper(style) {
 		},
 
 		get userDisabled() {
-			return !style.enabled;
+			return !this.style.enabled;
 		},
 
 		set userDisabled(val) {
-			style.enabled = !val;
-			style.save();
+			this.style.enabled = !val;
+			this.style.save();
 			AddonManagerPrivate.callAddonListeners(val ? "onEnabling" : "onDisabling", this, false);
 		},
 
 		get description() {
-			var tagsA = style.getMeta("tag", {})
+			var tagsA = this.style.getMeta("tag", {})
 			var tags = "";
 			if (tagsA.length > 0) {
 				tags = bundle.formatStringFromName("tagstyledescription", [tagsA.join(", ")], 1);
@@ -182,7 +196,7 @@ function getUserStyleWrapper(style) {
 		},
 
 		getAppliesString: function() {
-			var types = style.getTypes({});
+			var types = this.style.getTypes({});
 			if (types.length == 1) {
 				if (types[0] == "global") {
 					return bundle.GetStringFromName("globalstyledescription");
@@ -192,12 +206,12 @@ function getUserStyleWrapper(style) {
 				}
 			}
 
-			var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle)
+			var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
 
-			var domains = style.getMeta("domain", {});
-			var urls = style.getMeta("url", {});
-			var urlPrefixes = style.getMeta("url-prefix", {});
-			var regexps = style.getMeta("regexp", {});
+			var domains = this.style.getMeta("domain", {});
+			var urls = this.style.getMeta("url", {});
+			var urlPrefixes = this.style.getMeta("url-prefix", {});
+			var regexps = this.style.getMeta("regexp", {});
 
 			var affects = domains.concat(urls).concat(urlPrefixes.map(function(u) { 
 				return u + "*"
@@ -211,11 +225,11 @@ function getUserStyleWrapper(style) {
 		},
 
 		uninstall: function() {
-			style.delete();
+			this.style.delete();
 		},
 
 		findUpdates: function(listener, flags) {
-			style.checkForUpdates(getUserStyleUpdateCheckObserver(this, listener));
+			this.style.checkForUpdates(getUserStyleUpdateCheckObserver(this, listener));
 		},
 
 		isCompatibleWith: function(appVersion, platformVersion) {
@@ -223,14 +237,21 @@ function getUserStyleWrapper(style) {
 		},
 
 		get applyBackgroundUpdates() {
-			return parseInt(style.applyBackgroundUpdates);
+			return parseInt(this.style.applyBackgroundUpdates);
 		},
 
 		set applyBackgroundUpdates(abu) {
-			style.applyBackgroundUpdates = abu;
-			style.save();
+			this.style.applyBackgroundUpdates = abu;
+			this.style.save();
+		},
+
+		observe: function(subject, topic, data) {
+			this.style = subject;
 		}
 	};
+	var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
+	observerService.addObserver(w, "stylish-style-change", false);
+	return w;
 }
 
 // An observer for style update checks.
@@ -282,7 +303,7 @@ function getUserStyleUpdateInstallItem(addonItem) {
 			}, this);
 			var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
 			var that = this;
-			
+
 			// Results for "apply updates"
 			var updateAttemptObserver = {
 				observe: function(subject, topic, data) {
@@ -298,7 +319,7 @@ function getUserStyleUpdateInstallItem(addonItem) {
 							AddonManagerPrivate.callInstallListeners("onDownloadFailed", that.listeners, that);
 							break;
 						case "update-success":
-							AddonManagerPrivate.callInstallListeners("onInstallEnded", that.listeners, that);
+							AddonManagerPrivate.callInstallListeners("onInstallEnded", that.listeners, that, that.addon);
 							break;
 					}
 
