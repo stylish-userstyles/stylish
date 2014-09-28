@@ -1,6 +1,7 @@
 var stylishOverlay = {
 	service: Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle),
 	styleMenuItemTemplate: null,
+	bundle: Components.classes["@mozilla.org/intl/stringbundle;1"].createInstance(Components.interfaces.nsIStringBundleService).createBundle("chrome://stylish/locale/overlay.properties"),
 
 	//cached number of global styles
 	globalCount: null,
@@ -220,6 +221,7 @@ var stylishOverlay = {
 	popupShowing: function(event) {
 		var popup = event.target;
 
+		// This fires for children too!
 		if (popup.id != "stylish-popup") {
 			return;
 		}
@@ -228,31 +230,132 @@ var stylishOverlay = {
 			popup.triggerNode.setAttribute("open", "true");
 		}
 
-		//popup.position = document.popupNode.nodeName == "toolbarbutton" ? "after_start" : "";
-
-		//XXX fix for non-browsers (maybe list everything?)
-		var menuitems = stylishOverlay.service.findForUrl(content.location.href, true, stylishOverlay.service.REGISTER_STYLE_ON_CHANGE, {}).map(function(style, index) {
-			var menuitem = stylishOverlay.styleMenuItemTemplate.cloneNode(true);
-			menuitem.addEventListener("command", function(event) {stylishOverlay.toggleStyle(this.stylishStyle);event.stopPropagation();}, false);
-			stylishCommon.domApplyAttributes(menuitem, {
-				"label": style.name,
-				"checked": style.enabled,
-				"style-type": style.getTypes({}).join(" ")
-			});		
-			if (index < 9) {
-				menuitem.setAttribute("accesskey", index + 1);
+		// Add the passed styles as menuitems under the passed parent, with startIndex indicating the number of menuitems already added (for creating an accesskey)
+		function addStyleMenuItems(styles, parent, startIndex) {
+			if (!startIndex) {
+				startIndex = 0;
 			}
-			menuitem.stylishStyle = style;
-			return menuitem;
-		});
-		if (menuitems.length > 0) {
-			var separator = document.createElementNS(stylishCommon.XULNS, "menuseparator");
-			separator.className = "stylish-menuseparator";
-			popup.appendChild(separator);
+			var items = styles.map(function(style, index) {
+				var menuitem = stylishOverlay.styleMenuItemTemplate.cloneNode(true);
+				menuitem.addEventListener("command", function(event) {stylishOverlay.toggleStyle(this.stylishStyle);event.stopPropagation();}, false);
+				stylishCommon.domApplyAttributes(menuitem, {
+					"label": style.name,
+					"checked": style.enabled,
+					"style-type": style.getTypes({}).join(" ")
+				});
+				if ((startIndex + index) < 9) {
+					menuitem.setAttribute("accesskey", startIndex + index + 1);
+				}
+				menuitem.stylishStyle = style;
+				return menuitem;
+			});
+			items.forEach(function(menuitem) {
+				parent.appendChild(menuitem);
+			});
 		}
-		menuitems.forEach(function(menuitem) {
-			popup.appendChild(menuitem);
-		});
+
+		// Add the passed styles in a submenu with the passed label, and add that submenu
+		function addStylesInSubmenu(styles, menuLabel) {
+			if (styles.length == 0) {
+				return;
+			}
+			addSeparatorIfNecessary();
+			var menu = document.createElement("menu");
+			stylishCommon.domApplyAttributes(menu, {label: menuLabel, class: "style-menu-item"});
+			menu.appendChild(document.createElement("menupopup"));
+			addStyleMenuItems(styles, menu.firstChild);
+			popup.appendChild(menu);
+		}
+
+		var separatorAdded = false;
+		function addSeparatorIfNecessary() {
+			if (!separatorAdded) {
+				var separator = document.createElement("menuseparator");
+				separator.className = "stylish-menuseparator";
+				popup.appendChild(separator);
+				separatorAdded = true;
+			}
+		}
+
+		var _stylesForCurrentSite = null;
+		function stylesForCurrentSite() {
+			if (_stylesForCurrentSite == null) {
+				_stylesForCurrentSite = stylishOverlay.service.findForUrl(content.location.href, false, stylishOverlay.service.REGISTER_STYLE_ON_CHANGE, {});
+			}
+			return _stylesForCurrentSite;
+		}
+
+		function nonMatchingStyles() {
+			var styles = stylishOverlay.service.findByMeta("type", "site", stylishOverlay.service.REGISTER_STYLE_ON_CHANGE, {});
+			// Remove the matching ones
+			stylesForCurrentSite().forEach(function(style) {
+				var i = styles.indexOf(style);
+				if (i != -1) {
+					styles.splice(i, 1);
+				}
+			});
+			return styles;
+		}
+
+		function globalStyles() {
+			return stylishOverlay.service.findByMeta("type", "global", stylishOverlay.service.REGISTER_STYLE_ON_CHANGE, {});
+		}
+
+		function appStyles() {
+			return stylishOverlay.service.findByMeta("type", "app", stylishOverlay.service.REGISTER_STYLE_ON_CHANGE, {});
+		}
+
+		const SHOW = 'show';
+		const SHOW_IN_SUBMENU = 'submenu';
+		const DONT_SHOW = 'hide';
+
+		var prefService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).QueryInterface(Components.interfaces.nsIPrefBranch2);
+
+		var showMatchingSiteStyles = prefService.getCharPref("extensions.stylish.buttonStylesDisplay.siteMatching");
+		var showNonMatchingSiteStyles = prefService.getCharPref("extensions.stylish.buttonStylesDisplay.siteNonMatching");
+		var showGlobalStyles = prefService.getCharPref("extensions.stylish.buttonStylesDisplay.global");
+		var showAppStyles = prefService.getCharPref("extensions.stylish.buttonStylesDisplay.app");
+
+		if (showMatchingSiteStyles == SHOW_IN_SUBMENU) {
+			addStylesInSubmenu(stylesForCurrentSite(), this.bundle.GetStringFromName("submenuformatchingsite"));
+		}
+
+		if (showNonMatchingSiteStyles == SHOW_IN_SUBMENU) {
+			addStylesInSubmenu(nonMatchingStyles(), this.bundle.GetStringFromName("submenufornonmatchingsite"));
+		}
+
+		if (showGlobalStyles == SHOW_IN_SUBMENU) {
+			addStylesInSubmenu(globalStyles(), this.bundle.GetStringFromName("submenuforglobal"));
+		}
+
+		if (showAppStyles == SHOW_IN_SUBMENU) {
+			addStylesInSubmenu(appStyles(), this.bundle.GetStringFromName("submenuforapp"));
+		}
+
+		// Add the passed styles to the main menu
+		// Keep track of the index so we have proper accesskeys
+		var mainMenuIndex = 0;
+		function addStylesToMainMenu(styles) {
+			addSeparatorIfNecessary();
+			addStyleMenuItems(styles, popup, mainMenuIndex);
+			mainMenuIndex += styles.length;
+		}
+
+		if (showMatchingSiteStyles == SHOW) {
+			addStylesToMainMenu(stylesForCurrentSite());
+		}
+
+		if (showNonMatchingSiteStyles == SHOW) {
+			addStylesToMainMenu(nonMatchingStyles());
+		}
+
+		if (showGlobalStyles == SHOW) {
+			addStylesToMainMenu(globalStyles());
+		}
+
+		if (showAppStyles == SHOW) {
+			addStylesToMainMenu(appStyles())
+		}
 
 		//you can only add CSS files
 		document.getElementById("stylish-add-file").style.display = (content.document.contentType == "text/css") ? "-moz-box" : "none";
@@ -263,6 +366,12 @@ var stylishOverlay = {
 
 	popupHiding: function(event) {
 		var popup = event.target;
+
+		// This fires for children too!
+		if (popup.id != "stylish-popup") {
+			return;
+		}
+
 		if (popup.triggerNode) {
 			popup.triggerNode.removeAttribute("open");
 		}

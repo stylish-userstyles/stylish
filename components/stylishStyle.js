@@ -61,6 +61,7 @@ Style.prototype = {
 
 	list: function(mode, count) {
 		var styles = this.findSql("SELECT * FROM styles;", {}, mode);
+		styles.sort(this.nameSort);
 		count.value = styles.length;
 		return styles;
 	},
@@ -77,6 +78,7 @@ Style.prototype = {
 
 	findEnabled: function(enabled, mode, count) {
 		var styles = this.findSql("SELECT * FROM styles WHERE enabled = :enabled;", {enabled: enabled}, mode);
+		styles.sort(this.nameSort);
 		count.value = styles.length;
 		return styles;
 	},
@@ -86,6 +88,7 @@ Style.prototype = {
 		styles = styles.filter(function(style) {
 			return style.appliesToUrl(url) || (includeGlobal && style.getTypes({}).indexOf("global") > -1);
 		});
+		styles.sort(this.nameSort);
 		count.value = styles.length;
 		return styles;
 	},
@@ -101,6 +104,7 @@ Style.prototype = {
 			while (statement.executeStep()) {
 				styles.push(this.find(this.extract(statement, "style_id"), mode, connection));
 			}
+			styles.sort(this.nameSort);
 			count.value = styles.length;
 			return styles;
 		} catch (ex) {
@@ -1009,6 +1013,10 @@ Style.prototype = {
 			pattern = pattern + "$";
 		}
 		return pattern;
+	},
+
+	nameSort: function(a, b) {
+		return a.name.localeCompare(b.name);
 	}
 
 };

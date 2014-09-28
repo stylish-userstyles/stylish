@@ -10,4 +10,7 @@ pref("extensions.stylish.promptOnInstall", true);
 pref("extensions.stylish.promptOnClear", true);
 pref("extensions.stylish.updatesEnabled", true);
 pref("extensions.stylish.editor", 0);
-
+pref("extensions.stylish.buttonStylesDisplay.siteMatching", 'show');
+pref("extensions.stylish.buttonStylesDisplay.siteNonMatching", 'hide');
+pref("extensions.stylish.buttonStylesDisplay.global", 'submenu');
+pref("extensions.stylish.buttonStylesDisplay.app", 'hide');
