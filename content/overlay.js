@@ -12,7 +12,7 @@ var stylishOverlay = {
 		stylishOverlay.STRINGS = document.getElementById("stylish-strings");
 		stylishOverlay.URL_STRINGS = document.getElementById("stylish-url-strings");
 
-		var prefService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).QueryInterface(Components.interfaces.nsIPrefBranch2);
+		var prefService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).QueryInterface(Components.interfaces.nsIPrefBranch);
 		switch (prefService.getIntPref("extensions.stylish.firstRun")) {
 			case 0:
 				// show firstrun page
@@ -161,7 +161,7 @@ var stylishOverlay = {
 			tooltip.appendChild(document.createTextNode(string));
 		}
 
-		if (!Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).QueryInterface(Components.interfaces.nsIPrefBranch2).getBoolPref("extensions.stylish.styleRegistrationEnabled")) {
+		if (!Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).QueryInterface(Components.interfaces.nsIPrefBranch).getBoolPref("extensions.stylish.styleRegistrationEnabled")) {
 			updateAttribute("styles-off");
 			updateTooltip(stylishOverlay.STRINGS.getString("tooltipStylesOff"));
 			return;
@@ -309,7 +309,7 @@ var stylishOverlay = {
 		const SHOW_IN_SUBMENU = 'submenu';
 		const DONT_SHOW = 'hide';
 
-		var prefService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).QueryInterface(Components.interfaces.nsIPrefBranch2);
+		var prefService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).QueryInterface(Components.interfaces.nsIPrefBranch);
 
 		var showMatchingSiteStyles = prefService.getCharPref("extensions.stylish.buttonStylesDisplay.siteMatching");
 		var showNonMatchingSiteStyles = prefService.getCharPref("extensions.stylish.buttonStylesDisplay.siteNonMatching");

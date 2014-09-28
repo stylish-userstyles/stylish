@@ -32,7 +32,7 @@ StylishStartup.prototype = {
 var turnOnOffObserver = {
 	observe: function(subject, topic, data) {
 		var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
-		service.findEnabled(true, subject.QueryInterface(Components.interfaces.nsIPrefBranch2).getBoolPref(data) ? service.REGISTER_STYLE_ON_LOAD : service.UNREGISTER_STYLE_ON_LOAD, {});
+		service.findEnabled(true, subject.QueryInterface(Components.interfaces.nsIPrefBranch).getBoolPref(data) ? service.REGISTER_STYLE_ON_LOAD : service.UNREGISTER_STYLE_ON_LOAD, {});
 	}
 }
 
@@ -367,7 +367,7 @@ observerService.addObserver(addonsObserver, "stylish-style-add", false);
 observerService.addObserver(addonsObserver, "stylish-style-change", false);
 observerService.addObserver(addonsObserver, "stylish-style-delete", false);
 
-Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).QueryInterface(Components.interfaces.nsIPrefBranch2).addObserver("extensions.stylish.styleRegistrationEnabled", turnOnOffObserver, false);
+Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).QueryInterface(Components.interfaces.nsIPrefBranch).addObserver("extensions.stylish.styleRegistrationEnabled", turnOnOffObserver, false);
 
 function wireUpMessaging() {
 	Components.utils.import("chrome://stylish/content/common.js", this);
