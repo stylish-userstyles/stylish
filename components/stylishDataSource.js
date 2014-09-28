@@ -52,7 +52,7 @@ StylishDataSource.prototype = {
 		if (!this._file) {
 			var path = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).getCharPref("extensions.stylish.dbFile");
 			if (path) {
-				this._file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+				this._file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 				this._file.initWithPath(path);
 			} else {
 				this._file = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties).get("ProfD", Components.interfaces.nsIFile);
