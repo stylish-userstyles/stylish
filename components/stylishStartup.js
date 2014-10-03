@@ -234,7 +234,10 @@ function getUserStyleWrapper(s) {
 		},
 
 		observe: function(subject, topic, data) {
-			this.style = subject;
+			// Update our stuff if the style was changed
+			if (this.style.id == subject.id) {
+				this.style = subject;
+			}
 		}
 	};
 	var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);

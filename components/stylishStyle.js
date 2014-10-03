@@ -102,7 +102,11 @@ Style.prototype = {
 			this.bind(statement, "value", value);
 			var styles = [];
 			while (statement.executeStep()) {
-				styles.push(this.find(this.extract(statement, "style_id"), mode, connection));
+				// theoretically we shouldn't find a style that doesn't exist, but who knows?
+				var s = this.find(this.extract(statement, "style_id"), mode, connection);
+				if (s) {
+					styles.push(s);
+				}
 			}
 			styles.sort(this.nameSort);
 			count.value = styles.length;
