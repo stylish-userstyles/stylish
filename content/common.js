@@ -78,8 +78,8 @@ var stylishCommon = {
 	},
 
 	/* Open the edit dialog.
-	 *   name: a window name - if that window is already open, it will be focuss
-	 *   params: a hash containing style
+	 *   name: a window name - if that window is already open, it will be focussed
+	 *   params: a hash containing URL parameters to pass - id or code
 	 *   win: (optional) a window object to use in case there isn't one on the global scope
 	 */
 	openEdit: function(name, params, win) {
@@ -89,18 +89,27 @@ var stylishCommon = {
 		if (!win) {
 			win = window;
 		}
+		var url = "chrome://stylish/content/edit.xul";
+		var first = true;
+		for (i in params) {
+			if (params[i]) {
+				url += (first ? "?" : "&") + encodeURIComponent(i) + "=" + encodeURIComponent(params[i])
+			}
+		}
+		if (typeof win.gBrowser != "undefined" && Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).getIntPref("extensions.stylish.editorWindowMode") == 0) {
+			win.gBrowser.loadOneTab(url, {inBackground: false, relatedToCurrent: true});
+			return;
+		}
 		params.windowType = name;
-		return win.openDialog("chrome://stylish/content/edit.xul", name, "chrome,resizable,dialog=no,centerscreen", params);
+		return win.openDialog(url, name, "chrome,resizable,dialog=no,centerscreen");
 	},
 
-	openEditForStyle: function(style) {
-		return stylishCommon.openEdit(stylishCommon.getWindowName("stylishEdit", style.id), {style: style});
+	openEditForStyle: function(style, win) {
+		return stylishCommon.openEditForId(style.id, win);
 	},
 
-	openEditForId: function(id) {
-		var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
-		var style = service.find(id, service.REGISTER_STYLE_ON_CHANGE | service.CALCULATE_META);
-		return stylishCommon.openEditForStyle(style);
+	openEditForId: function(id, win) {
+		return stylishCommon.openEdit(stylishCommon.getWindowName("stylishEdit", id), {id: id}, win);
 	},
 
 	// Callback passes a string parameter - installed, failure, cancelled, existing
@@ -300,14 +309,9 @@ var stylishCommon = {
 		function fillName(prefix) {
 			params.windowType = stylishCommon.getWindowName(prefix, params.triggeringDocument ? stylishFrameUtils.cleanURI(params.triggeringDocument.location.href) : null);
 		}
-		if (Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).getBoolPref("extensions.stylish.editOnInstall")) {
-			fillName("stylishEdit");
-			stylishCommon.openEdit(params.windowType, params, win);
-		} else {
-			fillName("stylishInstall");
-			if (!stylishCommon.focusWindow(params.windowType)) {
-				win.openDialog("chrome://stylish/content/install.xul", params.windowType, "chrome,resizable,dialog=no,centerscreen,resizable", params);
-			}
+		fillName("stylishInstall");
+		if (!stylishCommon.focusWindow(params.windowType)) {
+			win.openDialog("chrome://stylish/content/install.xul", params.windowType, "chrome,resizable,dialog=no,centerscreen,resizable", params);
 		}
 	},
 
@@ -327,11 +331,8 @@ var stylishCommon = {
 		return uniqueTags;
 	},
 
-	addCode: function(code) {
-		var style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
-		style.init(null, null, null, null, null, code, false, null, null, null);
-		stylishCommon.openEdit(stylishCommon.getWindowName("stylishEdit"), {style: style});
+	addCode: function(code, win) {
+		stylishCommon.openEdit(stylishCommon.getWindowName("stylishEdit"), {code: code}, win);
 	},
 
 	generateSelectors: function(node) {

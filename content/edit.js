@@ -12,9 +12,7 @@ try {
 var saved = false;
 var style = null;
 var strings = null;
-var codeE, nameE, tagsE, updateUrlE;
-var installPingURL = null;
-var installCallback = null;
+var codeE, nameE, updateUrlE;
 //because some editors can have different CRLF settings than what we've saved as, we'll only save if the code in the editor has changed. this will prevent update notifications when there are none
 var initialCode;
 var prefs = Services.prefs.getBranch("extensions.stylish.");
@@ -26,7 +24,6 @@ var sourceEditorType = null;
 var sourceEditor = null;
 function init() {
 	nameE = document.getElementById("name");
-	tagsE = document.getElementById("tags");
 	updateUrlE = document.getElementById("update-url")
 	strings = document.getElementById("strings");
 	codeE = document.getElementById("internal-code");
@@ -59,8 +56,11 @@ function init() {
 			sourceEditorElement.addEventListener("keydown", function(event) {
 				// Ctrl+S
 				if (event.ctrlKey && event.keyCode == 83) {
-					saveAndClose();
+					save();
 				}
+			});
+			sourceEditorElement.addEventListener("input", function(event) {
+				enableSave(true);
 			});
 			return;
 		}
@@ -95,49 +95,49 @@ function init() {
 function initStyle() {
 	var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
 
-	// See if the ID is in the URL
+	// See if the ID/code is in the URL
 	var id;
+	var code = null;
 	var urlParts = location.href.split("?");
 	if (urlParts.length > 1) {
 		params = urlParts[1].split("&");
 		params.forEach(function(param) {
 			var kv = param.split("=");
-			if (kv.length > 1 && kv[0] == "id") {
-				id = kv[1];
+			if (kv.length > 1) {
+				if (kv[0] == "id") {
+					id = decodeURIComponent(kv[1]);
+				} else if (kv[0] == "code") {
+					code = decodeURIComponent(kv[1]);
+				}
 			}
 		});
 	}
 	if (id) {
 		style = service.find(id, service.CALCULATE_META | service.REGISTER_STYLE_ON_CHANGE);
-
-	// See the arguments passed in
-	} else if (window.arguments) {
-		if ("id" in window.arguments[0]) {
-			style = service.find(window.arguments[0].id, service.CALCULATE_META | service.REGISTER_STYLE_ON_CHANGE);
-		} else if ("style" in window.arguments[0]) {
-			style = window.arguments[0].style;
-			style.mode = service.CALCULATE_META | service.REGISTER_STYLE_ON_CHANGE;
+		enableSave(false);
+	} else {
+		if (code == null) {
+			code = "";
 		}
-		installPingURL = window.arguments[0].installPingURL;
-		installCallback = window.arguments[0].installCallback;
-		document.documentElement.setAttribute("windowtype", window.arguments[0].windowType);
+		style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
+		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
+		style.init(null, null, null, null, null, code, false, null, null, null);
+		enableSave(true);
 	}
 
 	if (style) {
 		nameE.value = style.name;
-		tagsE.value = style.getMeta("tag", {}).join(" ");
 		updateUrlE.value = style.updateUrl;
-		// if the style already has an id, it's been previously saved, so this is an edit
-		// if the style has no id but has a url, it's an install
-		document.documentElement.getButton("extra1").hidden = style.id || !style.url;
-		if (style.id) {
-			document.title = strings.getFormattedString("editstyletitle", [style.name]);
-		} else {
-			document.title = strings.getString("newstyletitle");
-		}
+		updateTitle();
+	}
+}
+
+function updateTitle() {
+	// if the style already has an id, it's been previously saved, so this is an edit
+	// if the style has no id but has a url, it's an install
+	if (style.id) {
+		document.title = strings.getFormattedString("editstyletitle", [style.name]);
 	} else {
-		style = Components.classes["@userstyles.org/style;1"].createInstance(Components.interfaces.stylishStyle);
-		document.documentElement.getButton("extra1").hidden = true;
 		document.title = strings.getString("newstyletitle");
 	}
 }
@@ -145,7 +145,7 @@ function initStyle() {
 function initOrion() {
 		// orion and it's all text don't get along. it's all text will update display later, so let's use visibility
 		document.getElementById("itsalltext").style.visibility = "hidden";
-		
+
 		var orionElement = document.getElementById("orion");
 		sourceEditor.init(orionElement, {mode: sourceEditor.MODES.CSS, showLineNumbers: true}, init2);
 		document.getElementById("editor").selectedIndex = 1;
@@ -193,6 +193,10 @@ function init2() {
 			codeElementWrapper.setSelectionRange(0, 0);
 		}
 	},100);
+
+	initFinder();
+
+	codeElementWrapper.focus();
 }
 
 var undoController = {
@@ -225,22 +229,6 @@ function handleOrionContext(event) {
 	}
 }
 
-function switchToInstall() {
-	Services.prefs.setBoolPref("extensions.stylish.editOnInstall", false);
-	style.name = nameE.value;
-	if (codeElementWrapper.value != initialCode) {
-		style.code = codeElementWrapper.value;
-	}
-	stylishCommon.openInstall({style: style, installPingURL: installPingURL, installCallback: installCallback});
-	window.close();
-}
-
-function saveAndClose() {
-	if (save()) {
-		close();
-	}
-}
-
 function save() {
 	style.name = nameE.value;
 	if (!style.name) {
@@ -267,57 +255,34 @@ function save() {
 		style.revert();
 	}
 
-	style.removeAllMeta("tag")
-	stylishCommon.cleanTags(tagsE.value).forEach(function(v) {
-		style.addMeta("tag", v);
-	});
 	style.updateUrl = updateUrlE.value;
+
+	var newStyle = !style.id;
+
 	style.save();
 	saved = true;
-	if (installPingURL) {
-		var req = new XMLHttpRequest();
-		req.open("GET", installPingURL, true);
-		stylishCommon.fixXHR(req);
-		req.send(null);
+
+	if (newStyle) {
+		location.href = "?id=" + style.id;
+		return true;
 	}
 
+	updateTitle();
+
+	enableSave(false);
+
 	return true;
+}
+
+function enableSave(enabled) {
+	document.getElementById("save-button").disabled = false //!enabled;
 }
 
 function preview() {
 	style.name = nameE.value;
 	style.code = codeElementWrapper.value;
-	checkForErrors();
 	// delay this so checkForErrors doesn't pick up on what happens
 	setTimeout(function() { style.setPreview(true);}, 50);
-}
-
-function cancelDialog() {
-	if (!saved && initialCode != codeElementWrapper.value) {
-		var ps = Components.interfaces.nsIPromptService
-		var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(ps);
-		switch (promptService.confirmEx(window, strings.getString("unsavedchangestitle"), strings.getString("unsavedchanges"), ps.BUTTON_POS_0 * ps.BUTTON_TITLE_SAVE + ps.BUTTON_POS_1 * ps.BUTTON_TITLE_DONT_SAVE + ps.BUTTON_POS_2 * ps.BUTTON_TITLE_CANCEL, "", "", "", null, {})) {
-			case 0:
-				return save();
-			case 1:
-				return true;
-			case 2:
-				return false;
-		}
-	}
-	return true;
-}
-
-function dialogClosing() {
-	//turn off preview!
-	style.setPreview(false);
-	if (!saved) {
-		style.revert();
-	}
-	
-	if (installCallback) {
-		installCallback(saved ? "installed" : "cancelled");
-	}
 }
 
 function checkForErrors() {
@@ -641,7 +606,7 @@ var codeElementWrapper = {
 
 }
 
-window.addEventListener("load", function() {
+function initFinder() {
 	// sourceeditor has its own way of doing this
 	if (sourceEditorType != "sourceeditor") {
 		var findBar = document.getElementById("findbar");
@@ -665,7 +630,7 @@ window.addEventListener("load", function() {
 			event.preventDefault();
 		}
 	}, false);
-}, false);
+}
 
 // if the style we're editing has been deleted, turn off preview and close the window
 var deleteObserver = {
@@ -680,3 +645,20 @@ var deleteObserver = {
 	}
 };
 Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService).addObserver(deleteObserver, "stylish-style-delete", false);
+
+window.addEventListener("beforeunload", function(event) {
+	if (!saved && initialCode != codeElementWrapper.value) {
+		// Firefox will show its own stuff, so the text doesn't matter as long as it's text
+		event.returnValue = "You're going to lose your changes - close anyway?";
+	}
+});
+
+window.addEventListener("unload", function(event) {
+	//turn off preview!
+	style.setPreview(false);
+	if (!saved) {
+		style.revert();
+	}
+});
+
+window.addEventListener("load", init);

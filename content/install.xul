@@ -14,20 +14,17 @@
 	persist="screenX screenY width height sizemode"
 	width="500"
 	height="300"
-	buttons="accept,cancel,extra1,extra2"
+	buttons="accept,cancel,extra1"
 	onload="init()"
 	onunload="callCallback()"
 	title="&title;"
 	ondialogaccept="return save(true)"
-	ondialogextra2="preview();"
-	ondialogextra1="switchToEdit();"
+	ondialogextra1="preview();"
 	ondialogcancel="style.setPreview(false)"
 	buttonlabelaccept="&install;"
 	buttonaccesskeyaccept="&install.ak;"
-	buttonlabelextra2="&preview;"
-	buttonaccesskeyextra2="&preview.ak;"
-	buttonlabelextra1="&switchtoedit;"
-	buttonaccesskeyextra1="&switchtoedit.ak;">
+	buttonlabelextra1="&preview;"
+	buttonaccesskeyextra1="&preview.ak;">
 
 	<script type="application/javascript" src="frame-utils.js"/>
 	<script type="application/javascript" src="common.js"/>

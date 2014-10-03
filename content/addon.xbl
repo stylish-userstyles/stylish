@@ -9,7 +9,9 @@
 		<implementation>
 			<method name="openEdit">
 				<body>
-					stylishCommon.openEditForId(this.mAddon.id);
+					// get the chrome window so we can open in tab if necessary
+					var win = Components.classes["@mozilla.org/embedcomp/window-watcher;1"]   .getService(Components.interfaces.nsIWindowWatcher).activeWindow;
+					stylishCommon.openEditForId(this.mAddon.id, win);
 				</body>
 			</method>
 		</implementation>

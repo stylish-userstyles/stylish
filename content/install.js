@@ -54,12 +54,6 @@ function init() {
 	}
 }
 
-function switchToEdit() {
-	Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).setBoolPref("extensions.stylish.editOnInstall", true);
-	stylishCommon.openEdit(stylishCommon.getWindowName("stylishEdit", style.idUrl), {style: style, installPingURL: installPingURL, installCallback: installCallback});
-	window.close();
-}
-
 function save(andClose) {
 	if (!nameElement.value) {
 		alert(strings.getString("missingname"));

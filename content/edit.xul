@@ -4,33 +4,22 @@
 <?xml-stylesheet href="chrome://browser/skin/devtools/common.css" type="text/css"?>
 <?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>
 
-<!DOCTYPE dialog [
+<!DOCTYPE window [
 	<!ENTITY % edit SYSTEM "chrome://stylish/locale/edit.dtd">
 	<!ENTITY % internaledit SYSTEM "chrome://global/locale/editMenuOverlay.dtd">
 	%edit;
 	%internaledit;
 ]>
 
-<dialog
+<window
 	id="stylish"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
 	buttons="accept,cancel,extra1,extra2"
-	persist="screenX screenY width height sizemode"
-	width="600"
-	height="400"
-	onload="init()"
-	onunload="dialogClosing()"
-	ondialogaccept="return save()"
-	ondialogcancel="return cancelDialog()"
-	ondialogextra2="preview();"
-	ondialogextra1="switchToInstall();"
-	buttonlabelaccept="&save;"
-	buttonaccesskeyaccept="&save.ak;"
-	buttonlabelextra2="&preview;"
-	buttonaccesskeyextra2="&preview.ak;"
-	buttonlabelextra1="&switchtoinstall;"
-	buttonaccesskeyextra1="&switchtoinstall.ak;">
-	
+	persist="screenX screenY width height sizemode">
+
+	<html:link rel="icon" href="chrome://stylish/skin/16.png" style="display:none"/>
+
 	<script type="application/javascript" src="chrome://global/content/globalOverlay.js"/>
 	<script type="application/javascript" src="edit.js"/>
 	<script type="application/javascript" src="frame-utils.js"/>
@@ -41,7 +30,7 @@
 	<stringbundle id="strings" src="chrome://stylish/locale/edit.properties"/>
 
 	<keyset>
-		<key id="save-key" modifiers="control" key="S" oncommand="saveAndClose()"/>
+		<key id="save-key" modifiers="control" key="S" oncommand="save()"/>
 		<key id="find-key" modifiers="control" key="F" oncommand="document.getElementById('findbar').open();document.getElementById('findbar')._findField.focus()"/>
 	</keyset>
 
@@ -65,6 +54,11 @@
 	<commandset id="editMenuCommands"/>
 
 	<vbox flex="1">
+		<hbox>
+			<button id="save-button" label="&save;" accesskey="&save.ak;" oncommand="save()"/>
+			<button label="&preview;" accesskey="&preview.ak;" oncommand="preview()"/>
+			<button label="&checkforerrors;" accesskey="&checkforerrors.ak;" oncommand="checkForErrors()"/>
+		</hbox>
 		<grid>
 			<columns>
 				<column/>
@@ -74,10 +68,6 @@
 				<row align="center">
 					<label control="name" accesskey="&name.ak;">&name;</label>
 					<textbox id="name" flex="1"/>
-				</row>
-				<row align="center">
-					<label control="tags" accesskey="&tags.ak;">&tags;</label>
-					<textbox id="tags" flex="1"/>
 				</row>
 			</rows>
 		</grid>
@@ -103,4 +93,4 @@
 		<vbox id="errors" style="display:none;"/>
 	</vbox>
 
-</dialog>
+</window>

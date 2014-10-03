@@ -33,7 +33,7 @@ var stylishManageAddonsFx4 = {
 		// this stuff doesn't matter, we're overriding sortElements below
 		sortList(list, "name", true);
 	},
-	
+
 	startInstallFromUrls: function(button) {
 		var startedCallback = function() {
 			button.setAttribute("image", "chrome://browser/skin/tabbrowser/connecting.png");
@@ -44,6 +44,12 @@ var stylishManageAddonsFx4 = {
 			button.setAttribute("disabled", "");
 		}
 		stylishCommon.startInstallFromUrls(startedCallback, endedCallback);
+	},
+
+	openAdd: function() {
+		// get the chrome window so we can open in tab if necessary
+		var win = Components.classes["@mozilla.org/embedcomp/window-watcher;1"]   .getService(Components.interfaces.nsIWindowWatcher).activeWindow;
+		stylishCommon.addCode('', win);
 	}
 }
 
