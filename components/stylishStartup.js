@@ -21,7 +21,7 @@ StylishStartup.prototype = {
 			AddonManagerPrivate.registerProvider(UserStyleManager, [{
 				id: "userstyle",
 				name: bundle.GetStringFromName("manageaddonstitle"),
-				uiPriority: 7000,
+				uiPriority: 4600,
 				viewType: AddonManager.VIEW_TYPE_LIST
 			}]);
 		}

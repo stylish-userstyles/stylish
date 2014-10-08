@@ -1,4 +1,4 @@
-#category-userstyles > .category-icon, #category-userstyle > .category-icon {
+#category-userstyle > .category-icon {
 	list-style-image: url("chrome://stylish/skin/32.png");
 }
 richlistitem[type="userstyle"]:not([pending]) {
@@ -51,5 +51,12 @@ richlistitem[type="userstyle"] [anonid="date-updated"] {
 }
 /* Override Gnome "no images in buttons" */
 #install-from-url:not([image=""]) .button-icon, #no-styles-install-from-url:not([image=""]) .button-icon {
+	display: -moz-box;
+}
+#install-from-url, #no-styles-install-from-url {
+	display: none;
+}
+/* Show buttons only when userstyle category is the active view */
+#list-view[type="userstyle"] :-moz-any(#install-from-url, #no-styles-install-from-url) {
 	display: -moz-box;
 }

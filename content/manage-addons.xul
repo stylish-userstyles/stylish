@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<?xml-stylesheet href="chrome://stylish/skin/manage-addons-fx4.css" type="text/css"?>
+<?xml-stylesheet href="chrome://stylish/skin/manage-addons.css" type="text/css"?>
 
 <!DOCTYPE overlay [
 	<!ENTITY % manage SYSTEM "chrome://stylish/locale/manage.dtd">
@@ -12,11 +12,10 @@
 
 	<script src="chrome://stylish/content/frame-utils.js"></script>
 	<script src="chrome://stylish/content/common.js"></script>
-	<script src="chrome://stylish/content/manage-addons-fx4.js"></script>
+	<script src="chrome://stylish/content/manage-addons.js"></script>
 
 	<richlistbox id="categories">
 		<stringbundle id="stylishStrings" src="chrome://stylish/locale/manage.properties"/>
-		<richlistitem id="category-userstyles" insertafter="category-plugins" name="&manageaddonstitle;" class="category" value="addons://list/userstyle"/>
 	</richlistbox>
 
 	<vbox id="list-view">

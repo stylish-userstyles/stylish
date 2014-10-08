@@ -1,7 +1,0 @@
-#install-from-url, #no-styles-install-from-url {
-	display: none;
-}
-/* Show buttons only when userstyle category is the active view */
-#list-view[type="userstyle"] :-moz-any(#install-from-url, #no-styles-install-from-url) {
-	display: -moz-box;
-}
