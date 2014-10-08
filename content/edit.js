@@ -673,6 +673,19 @@ function initFinder() {
 	}, false);
 }
 
+// if the style we're editing has been changed, turn off preview
+var changeObserver = {
+	observe: function(subject, topic, data) {
+		if (subject.id == style.id) {
+			// unapply any preview and get our internal style object in sync with the changes
+			style.setPreview(false);
+			style.code = subject.code;
+			style.enabled = subject.enabled;
+		}
+	}
+};
+Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService).addObserver(changeObserver, "stylish-style-change", false);
+
 // if the style we're editing has been deleted, turn off preview and close the window
 var deleteObserver = {
 	observe: function(subject, topic, data) {

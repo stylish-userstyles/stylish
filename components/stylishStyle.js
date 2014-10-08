@@ -701,7 +701,9 @@ Style.prototype = {
 		var registrationMethod = this.calculateRegistrationMethod();
 		// Save what we applied so we know what to remove later
 		this.appliedInfo = [dataUrl, registrationMethod];
-		this.sss.loadAndRegisterSheet(dataUrl, registrationMethod);
+		if (!this.sss.sheetRegistered(dataUrl, registrationMethod)) {
+			this.sss.loadAndRegisterSheet(dataUrl, registrationMethod);
+		}
 	},
 
 	unregister: function() {
@@ -718,11 +720,12 @@ Style.prototype = {
 			unregisterMethod = this.appliedInfo[1];
 		}
 		
-		if (this.sss.sheetRegistered(unregisterUrl, unregisterMethod))
+		if (this.sss.sheetRegistered(unregisterUrl, unregisterMethod)) {
 			this.sss.unregisterSheet(unregisterUrl, unregisterMethod);
 		// ignore unregistered styles if stylish isn't on
-		else if (this.stylishOn)
+		} else if (this.stylishOn) {
 			Components.utils.reportError("Stylesheet is supposed to be unregistered, but it's not registered in the first place.");
+		}
 		this.appliedInfo = null;
 	},
 
