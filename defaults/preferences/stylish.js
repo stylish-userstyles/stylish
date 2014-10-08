@@ -9,6 +9,7 @@ pref("extensions.stylish.promptOnClear", true);
 pref("extensions.stylish.updatesEnabled", true);
 pref("extensions.stylish.editor", 0);
 pref("extensions.stylish.editorWindowMode", 0);
+pref("extensions.stylish.editorWindowPersist", "{\"screenX\": 100, \"screenY\": 100, \"width\": 800, \"height\": 600, \"windowState\": 3}");
 pref("extensions.stylish.buttonStylesDisplay.siteMatching", 'show');
 pref("extensions.stylish.buttonStylesDisplay.siteNonMatching", 'hide');
 pref("extensions.stylish.buttonStylesDisplay.global", 'submenu');

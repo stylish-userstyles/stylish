@@ -20,6 +20,36 @@ var prefs = Services.prefs.getBranch("extensions.stylish.");
 const CSSXULNS = "@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);";
 const CSSHTMLNS = "@namespace url(http://www.w3.org/1999/xhtml);";
 
+// Because the edit windows have different URL, we need to do this ourselves to persist the position for all edit windows
+var windowPersist = JSON.parse(prefs.getCharPref("editorWindowPersist"));
+var de = document.documentElement;
+de.width = windowPersist.width;
+de.height = windowPersist.height;
+window.moveTo(windowPersist.screenX, windowPersist.screenY);
+if (windowPersist.windowState == 1) {
+	//https://bugzilla.mozilla.org/show_bug.cgi?id=1079962
+	window.addEventListener("load", function() {
+		setTimeout(function() {
+			window.maximize();
+		}, 100);
+	});
+} else {
+	window.moveTo(windowPersist.screenX, windowPersist.screenY);
+}
+window.addEventListener("unload", function() {
+	// save windowState if it's maximized or normal - otherwise use value
+	var ws = (window.windowState == 1 || windowState == 3) ? window.windowState : windowPersist.windowState;
+	// save the other stuff if it's normal state, otherwise use previous
+	if (ws == 3) {
+		// width and height get read from document but set from document.documentElement
+		windowPersist = {width: document.width, height: document.height, screenX: window.screenX, screenY: window.screenY}
+	}
+	windowPersist.windowState = ws;
+
+	prefs.setCharPref("editorWindowPersist", JSON.stringify(windowPersist));
+});
+
+
 var sourceEditorType = null;
 var sourceEditor = null;
 function init() {

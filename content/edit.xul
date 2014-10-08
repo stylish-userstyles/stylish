@@ -12,11 +12,9 @@
 ]>
 
 <window
-	id="stylish"
+	id="stylish-edit"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	xmlns:html="http://www.w3.org/1999/xhtml"
-	buttons="accept,cancel,extra1,extra2"
-	persist="screenX screenY width height sizemode">
+	xmlns:html="http://www.w3.org/1999/xhtml">
 
 	<html:link rel="icon" href="chrome://stylish/skin/16.png" style="display:none"/>
 

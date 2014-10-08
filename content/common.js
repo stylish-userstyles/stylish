@@ -101,7 +101,7 @@ var stylishCommon = {
 			return;
 		}
 		params.windowType = name;
-		return win.openDialog(url, name, "chrome,resizable,dialog=no,centerscreen");
+		return win.openDialog(url, name, "chrome,resizable,dialog=no");
 	},
 
 	openEditForStyle: function(style, win) {
