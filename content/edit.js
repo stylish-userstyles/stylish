@@ -145,6 +145,7 @@ function initStyle() {
 	if (id) {
 		style = service.find(id, service.CALCULATE_META | service.REGISTER_STYLE_ON_CHANGE);
 		enableSave(false);
+		document.documentElement.setAttribute("windowtype", stylishCommon.getWindowName("stylishEdit", id));
 	} else {
 		if (code == null) {
 			code = "";

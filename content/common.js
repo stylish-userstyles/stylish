@@ -74,6 +74,19 @@ var stylishCommon = {
 			win.focus();
 			return true;
 		}
+		// how about if it's open in tab?
+		var tbEnumerator = windowsMediator.getEnumerator("navigator:browser");
+		while (tbEnumerator.hasMoreElements()) {
+			var tbWin = tbEnumerator.getNext();
+			var browsers = tbWin.gBrowser.browsers;
+			for (var i = 0; i < browsers.length; i++) {
+				if (browsers[i].contentDocument.documentElement.getAttribute("windowtype") == name) {
+					tbWin.gBrowser.selectTabAtIndex(i);
+					tbWin.focus();
+					return true;
+				}
+			}
+		}
 		return false;
 	},
 
