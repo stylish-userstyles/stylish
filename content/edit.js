@@ -38,11 +38,21 @@ if (windowPersist.windowState == 1) {
 }
 window.addEventListener("unload", function() {
 	// save windowState if it's maximized or normal - otherwise use value
-	var ws = (window.windowState == 1 || windowState == 3) ? window.windowState : windowPersist.windowState;
+	var ws = (window.windowState == 1 || window.windowState == 3) ? window.windowState : windowPersist.windowState;
 	// save the other stuff if it's normal state, otherwise use previous
 	if (ws == 3) {
 		// width and height get read from document but set from document.documentElement
-		windowPersist = {width: document.width, height: document.height, screenX: window.screenX, screenY: window.screenY}
+		// this can fail if this is in a tab. if so, don't save.
+		try {
+			windowPersist = {
+				width: document.width,
+				height: document.height,
+				screenX: window.screenX,
+				screenY: window.screenY
+			}
+		} catch (ex) {
+			return;
+		}
 	}
 	windowPersist.windowState = ws;
 
