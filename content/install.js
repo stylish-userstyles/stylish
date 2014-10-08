@@ -65,7 +65,6 @@ function save(andClose) {
 	if (installPingURL) {
 		var req = new XMLHttpRequest();
 		req.open("GET", installPingURL, true);
-		stylishCommon.fixXHR(req);
 		req.send(null);
 	}
 	saved = true;

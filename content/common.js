@@ -39,19 +39,6 @@ var stylishCommon = {
 		return true;
 	},
 
-	fixXHR: function(request) {
-		//only a problem on 1.9 toolkit
-		var appInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo);
-		var versionChecker = Components.classes["@mozilla.org/xpcom/version-comparator;1"].getService(Components.interfaces.nsIVersionComparator);
-		if (versionChecker.compare(appInfo.version, "1.9") >= 0 && versionChecker.compare(appInfo.version, "1.9.3a1pre") <= 0) {
-			//https://bugzilla.mozilla.org/show_bug.cgi?id=437174
-			var ds = Components.classes["@mozilla.org/webshell;1"].createInstance(Components.interfaces.nsIDocShellTreeItem).QueryInterface(Components.interfaces.nsIInterfaceRequestor);
-			ds.itemType = Components.interfaces.nsIDocShellTreeItem.typeContent;
-			request.channel.loadGroup = ds.getInterface(Components.interfaces.nsILoadGroup);
-			request.channel.loadFlags |= Components.interfaces.nsIChannel.LOAD_DOCUMENT_URI;
-		}
-	},
-
 	getWindowName: function(prefix, id) {
 		return (prefix + (id || Math.random())).replace(/\W/g, "");
 	},
@@ -305,7 +292,6 @@ var stylishCommon = {
 				if (params.installPingURL) {
 					var req = new XMLHttpRequest();
 					req.open("GET", params.installPingURL, true);
-					stylishCommon.fixXHR(req);
 					req.send(null);
 				}
 				if (params.installCallback) {
