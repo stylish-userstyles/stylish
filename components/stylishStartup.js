@@ -350,14 +350,14 @@ var addonsObserver = {
 					name: subject.name,
 					type: "userstyle",
 					state: AddonManager.STATE_INSTALLED,
-					addon: getUserStyleWrapper(subject)
+					addon: itemWrapper
 				};
 				AddonManagerPrivate.callInstallListeners("onNewInstall", [], install);
 				AddonManagerPrivate.callInstallListeners("onInstallStarted", [], install);
 				AddonManagerPrivate.callInstallListeners("onInstallEnded", [], install, itemWrapper);
 				break;
 			case "stylish-style-change":
-				AddonManagerPrivate.callInstallListeners("onExternalInstall", null, itemWrapper, itemWrapper, false);
+				AddonManagerPrivate.callInstallListeners("onExternalInstall", [], itemWrapper, itemWrapper, false);
 				break;
 			case "stylish-style-delete":
 				AddonManagerPrivate.callAddonListeners("onUninstalled", itemWrapper);

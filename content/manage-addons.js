@@ -69,11 +69,11 @@ var stylishManageAddonsFx4 = {
 
 // add some more properties so we can sort on them
 stylishManageAddonsFx4._createItem = createItem,
-createItem = function(addon, b, c) {
-	var item = stylishManageAddonsFx4._createItem(addon, b, c);
-	if (addon.type == "userstyle") {
-		item.setAttribute("styleTypes", addon.styleTypes);
-		item.setAttribute("reportable", addon.style.idUrl == null ? false : (addon.style.idUrl.indexOf("http://userstyles.org/") == 0));
+createItem = function(o, aIsInstall, aIsRemote) {
+	var item = stylishManageAddonsFx4._createItem(o, aIsInstall, aIsRemote);
+	if (item.mAddon.type == "userstyle") {
+		item.setAttribute("styleTypes", item.mAddon.styleTypes);
+		item.setAttribute("reportable", item.mAddon.style.idUrl == null ? false : (item.mAddon.style.idUrl.indexOf("http://userstyles.org/") == 0));
 	}
 	return item;
 }
