@@ -66,7 +66,9 @@ var sourceEditorType = null;
 var sourceEditor = null;
 function init() {
 	nameE = document.getElementById("name");
+	nameE.addEventListener("input", function() {enableSave(true);});
 	updateUrlE = document.getElementById("update-url")
+	updateUrlE.addEventListener("input", function() {enableSave(true);});
 	strings = document.getElementById("strings");
 	codeE = document.getElementById("internal-code");
 
@@ -84,25 +86,23 @@ function init() {
 		}
 		if (Editor && ("modes" in Editor)) {
 			document.getElementById("itsalltext").style.visibility = "hidden";
+			var extraKeys = {};
+			extraKeys[Editor.accel(document.getElementById("save-button").getAttribute("accesskey"))] = save;
 			sourceEditor = new Editor({
 				mode: Editor.modes.css,
 				lineNumbers: true,
 				contextMenu: "orion-context",
-				value: style.code
+				value: style.code,
+				extraKeys: extraKeys
 			});
 			var sourceEditorElement = document.getElementById("sourceeditor");
 			document.getElementById("editor").selectedIndex = 2;
 			sourceEditorType = "sourceeditor";
 			sourceEditor.appendTo(sourceEditorElement).then(init2);
-			// this seems to eat all Ctrl keypresses
-			sourceEditorElement.addEventListener("keydown", function(event) {
-				// Ctrl+S
-				if (event.ctrlKey && event.keyCode == 83) {
-					save();
-				}
-			});
-			sourceEditorElement.addEventListener("input", function(event) {
+			sourceEditor.on("change", function(cm, changeObj) {
 				enableSave(true);
+				enablePreview(true);
+				enableCheckForErrors(true);
 			});
 			return;
 		}
@@ -131,6 +131,12 @@ function init() {
 	// textbox
 	sourceEditorType = "textarea";
 	sourceEditor = codeE;
+	codeE.addEventListener("input", function() {
+		enableSave(true);
+		enablePreview(true);
+		enableCheckForErrors(true);
+	});
+
 	setTimeout(init2, 100);
 }
 
@@ -157,6 +163,7 @@ function initStyle() {
 	if (id) {
 		style = service.find(id, service.CALCULATE_META | service.REGISTER_STYLE_ON_CHANGE);
 		enableSave(false);
+		enablePreview(!style.enabled);
 		document.documentElement.setAttribute("windowtype", stylishCommon.getWindowName("stylishEdit", id));
 	} else {
 		if (code == null) {
@@ -166,6 +173,7 @@ function initStyle() {
 		style.mode = style.CALCULATE_META | style.REGISTER_STYLE_ON_CHANGE;
 		style.init(null, null, null, null, null, code, false, null, null, null);
 		enableSave(true);
+		enablePreview(true);
 	}
 
 	if (style) {
@@ -313,12 +321,21 @@ function save() {
 	updateTitle();
 
 	enableSave(false);
+	enablePreview(!style.enabled);
 
 	return true;
 }
 
 function enableSave(enabled) {
-	document.getElementById("save-button").disabled = false //!enabled;
+	document.getElementById("save-button").disabled = !enabled;
+}
+
+function enablePreview(enabled) {
+	document.getElementById("preview-button").disabled = !enabled;
+}
+
+function enableCheckForErrors(enabled) {
+	document.getElementById("check-for-errors-button").disabled = !enabled;
 }
 
 function preview() {
@@ -326,6 +343,7 @@ function preview() {
 	style.code = codeElementWrapper.value;
 	// delay this so checkForErrors doesn't pick up on what happens
 	setTimeout(function() { style.setPreview(true);}, 50);
+	enablePreview(false);
 }
 
 function checkForErrors() {
@@ -359,6 +377,7 @@ function checkForErrors() {
 		}
 	}
 	style.checkForErrors(codeElementWrapper.value, errorListener);
+	enableCheckForErrors(false);
 }
 
 function goToLine(line, col) {

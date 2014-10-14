@@ -51,11 +51,11 @@
 
 	<commandset id="editMenuCommands"/>
 
-	<vbox flex="1">
+	<vbox id="main-area" flex="1">
 		<hbox>
 			<button id="save-button" label="&save;" accesskey="&save.ak;" oncommand="save()"/>
-			<button label="&preview;" accesskey="&preview.ak;" oncommand="preview()"/>
-			<button label="&checkforerrors;" accesskey="&checkforerrors.ak;" oncommand="checkForErrors()"/>
+			<button id="preview-button" label="&preview;" accesskey="&preview.ak;" oncommand="preview()"/>
+			<button id="check-for-errors-button" label="&checkforerrors;" accesskey="&checkforerrors.ak;" oncommand="checkForErrors()"/>
 		</hbox>
 		<grid>
 			<columns>
