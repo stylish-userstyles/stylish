@@ -963,7 +963,16 @@ Style.prototype = {
 		// QI it to nsIXMLHttpRequest to open and send the request:
 		request.QueryInterface(Components.interfaces.nsIXMLHttpRequest);
 		request.overrideMimeType("text/plain");
-		request.open("GET", url, true);
+		try {
+			// this can fail if URL is malformed
+			request.open("GET", url, true);
+		} catch(ex) {
+			Components.utils.reportError("Could not download URL '" + url + "'.");
+			if (failureCallback) {
+				failureCallback();
+			}
+			return;
+		}
 		request.send(null);
 	},
 
