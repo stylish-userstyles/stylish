@@ -10,6 +10,13 @@ richlistitem[type="userstyle"] .control-container {
 richlistitem[type="userstyle"] [anonid="date-updated"] {
 	display: none;
 }
+richlistitem[type="userstyle"][pending="uninstall"][reportable="true"] .pending {
+	-moz-binding: url("chrome://stylish/content/addon.xbl#addon-uninstalled-buttons");
+}
+/* Remove existing spacer as we add our own */
+richlistitem[type="userstyle"][pending="uninstall"][reportable="true"] button[anonid="undo-btn"] + spacer {
+	display: none;
+}
 #menuitem_userstyle_edit {
 	display: none;
 }

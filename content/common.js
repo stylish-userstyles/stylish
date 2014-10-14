@@ -24,7 +24,7 @@ var stylishCommon = {
 		var appInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo);
 		return appInfo.name;
 	},
-	
+
 	isXULAvailable: Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULRuntime).widgetToolkit.toLowerCase() != "android",
 
 	deleteWithPrompt: function(style) {

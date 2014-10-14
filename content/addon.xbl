@@ -23,4 +23,14 @@
 		</content>
 		<implementation/>
 	</binding>
+	<binding id="addon-uninstalled-buttons">
+		<content>
+			<xbl:children/>
+			<xul:button anonid="report-style" label="&reportstyle;" class="button-link" oncommand="this.nextSibling.style.display = '';this.style.display = 'none';stylishManageAddonsFx4.reportStyle(document.getBindingParent(document.getBindingParent(this)).mAddon.id);"/>
+			<xul:label anonid="reported-style" value="&reportedstyle;" style="display: none"/>
+			<!-- We made the original spacer display: none so that we could put our button before it -->
+			<xul:spacer flex="5000"/>
+		</content>
+		<implementation/>
+	</binding>
 </bindings>

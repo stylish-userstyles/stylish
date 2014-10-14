@@ -48,8 +48,22 @@ var stylishManageAddonsFx4 = {
 
 	openAdd: function() {
 		// get the chrome window so we can open in tab if necessary
-		var win = Components.classes["@mozilla.org/embedcomp/window-watcher;1"]   .getService(Components.interfaces.nsIWindowWatcher).activeWindow;
+		var win = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher).activeWindow;
 		stylishCommon.addCode('', win);
+	},
+
+	reportStyle: function(id) {
+		var style = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle).find(id, 0);
+		if (!style || !style.idUrl) {
+			return;
+		}
+		var http = new XMLHttpRequest();
+		http.open("POST", "https://userstyles.org/report", true);
+		var params = "idUrl=" + encodeURIComponent(style.idUrl);
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		http.setRequestHeader("Content-length", params.length);
+		http.setRequestHeader("Connection", "close");
+		http.send(params);
 	}
 }
 
@@ -59,6 +73,7 @@ createItem = function(addon, b, c) {
 	var item = stylishManageAddonsFx4._createItem(addon, b, c);
 	if (addon.type == "userstyle") {
 		item.setAttribute("styleTypes", addon.styleTypes);
+		item.setAttribute("reportable", addon.style.idUrl == null ? false : (addon.style.idUrl.indexOf("http://userstyles.org/") == 0));
 	}
 	return item;
 }
