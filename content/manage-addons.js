@@ -1,11 +1,11 @@
-var stylishManageAddonsFx4 = {
+var stylishManageAddons = {
 
 	getSortButtons: function() {
 		return document.getElementById('userstyle-sorting').getElementsByTagName('button');
 	},
 
 	getActiveSort: function() {
-		var buttons = stylishManageAddonsFx4.getSortButtons();
+		var buttons = stylishManageAddons.getSortButtons();
 		var checkedButton = Array.filter(buttons, function(b) { return b.hasAttribute('checkState'); })[0];
 		if (checkedButton == null) {
 			checkedButton = buttons[0];
@@ -19,13 +19,13 @@ var stylishManageAddonsFx4 = {
 		var button = event.target;
 
 		// remove checkState from other buttons
-		var buttons = stylishManageAddonsFx4.getSortButtons();
+		var buttons = stylishManageAddons.getSortButtons();
 		Array.filter(buttons, function(b) { return b != button; }).forEach(function(b) { b.removeAttribute("checkState");b.removeAttribute("checked");});
 
 		button.setAttribute('checkState', button.getAttribute('checkState') == "2" ? "1" : "2");
 		button.setAttribute("checked", "true");
 
-		stylishManageAddonsFx4.applySort();
+		stylishManageAddons.applySort();
 	},
 
 	applySort: function() {
@@ -68,9 +68,9 @@ var stylishManageAddonsFx4 = {
 }
 
 // add some more properties so we can sort on them
-stylishManageAddonsFx4._createItem = createItem,
+stylishManageAddons._createItem = createItem,
 createItem = function(o, aIsInstall, aIsRemote) {
-	var item = stylishManageAddonsFx4._createItem(o, aIsInstall, aIsRemote);
+	var item = stylishManageAddons._createItem(o, aIsInstall, aIsRemote);
 	if (item.mAddon.type == "userstyle") {
 		item.setAttribute("styleTypes", item.mAddon.styleTypes);
 		item.setAttribute("reportable", item.mAddon.style.idUrl == null ? false : (item.mAddon.style.idUrl.indexOf("http://userstyles.org/") == 0));
@@ -79,12 +79,12 @@ createItem = function(o, aIsInstall, aIsRemote) {
 }
 
 // override sortElements so that we can use a different sort on load
-stylishManageAddonsFx4._sortElements = sortElements;
+stylishManageAddons._sortElements = sortElements;
 sortElements = function(aList, aSortBy, aAscending) {
 	if (aList.length == 0 || aList[0].getAttribute("type") != "userstyle") {
-		stylishManageAddonsFx4._sortElements(aList, aSortBy, aAscending);
+		stylishManageAddons._sortElements(aList, aSortBy, aAscending);
 		return;
 	}
-	var sort = stylishManageAddonsFx4.getActiveSort();
-	stylishManageAddonsFx4._sortElements(aList, sort[0], sort[1]);
+	var sort = stylishManageAddons.getActiveSort();
+	stylishManageAddons._sortElements(aList, sort[0], sort[1]);
 }

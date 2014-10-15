@@ -20,16 +20,16 @@
 
 	<vbox id="list-view">
 		<hbox id="userstyle-sorting" class="view-header" insertafter="addon-list-empty">
-			<button id="new-userstyle" label="&writenew;" oncommand="stylishManageAddonsFx4.openAdd()" class="addon-control"/>
-			<button id="install-from-url" label="&installfromurls;" oncommand="stylishManageAddonsFx4.startInstallFromUrls(this)" class="addon-control"/>
+			<button id="new-userstyle" label="&writenew;" oncommand="stylishManageAddons.openAdd()" class="addon-control"/>
+			<button id="install-from-url" label="&installfromurls;" oncommand="stylishManageAddons.startInstallFromUrls(this)" class="addon-control"/>
 			<spacer flex="1"/>
 			<button id="userstyle-sorting-status" label="&sortenabled;" tooltiptext="&sortenabled;"
 				class="sorter" sortBy="uiState,name"
-				onclick="stylishManageAddonsFx4.changeSort(event)" persist="checkState,checked"/>
+				onclick="stylishManageAddons.changeSort(event)" persist="checkState,checked"/>
 			<button id="userstyle-sorting-name" label="&sortname;" tooltiptext="&sortname;"
-				class="sorter" sortBy="name" onclick="stylishManageAddonsFx4.changeSort(event)" persist="checkState,checked"/>
+				class="sorter" sortBy="name" onclick="stylishManageAddons.changeSort(event)" persist="checkState,checked"/>
 			<button id="userstyle-sorting-type" label="&sorttype;" tooltiptext="&sorttype;"
-				class="sorter" sortBy="styleTypes,name" onclick="stylishManageAddonsFx4.changeSort(event)" persist="checkState,checked"/>
+				class="sorter" sortBy="styleTypes,name" onclick="stylishManageAddons.changeSort(event)" persist="checkState,checked"/>
 		</hbox>
 		<hbox id="userstyle-footer" insertafter="addon-list">
 			<description id="userstyles-note">&nostylesstart;<label href="https://userstyles.org/" class="text-link">userstyles.org</label>&nostylesend;</description>
@@ -43,7 +43,7 @@
 		</hbox>
 		<hbox>
 			<button id="no-styles-write-new" position="4" label="&writenew;" oncommand="stylishCommon.addCode('')" class="addon-control"/>
-			<button id="no-styles-install-from-url" label="&installfromurls;" oncommand="stylishManageAddonsFx4.startInstallFromUrls(this)" class="addon-control"/>
+			<button id="no-styles-install-from-url" label="&installfromurls;" oncommand="stylishManageAddons.startInstallFromUrls(this)" class="addon-control"/>
 		</hbox>
 	</vbox>
 
