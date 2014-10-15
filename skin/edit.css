@@ -1,6 +1,3 @@
-sourceeditor {
-  -moz-binding: url('chrome://diavolo/content/sourceeditor.xml#sourceeditor');
-}
 #errors {
 	min-height: 3em;
 	max-height: 8em;

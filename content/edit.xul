@@ -32,13 +32,7 @@
 		<key id="find-key" modifiers="control" key="F" oncommand="document.getElementById('findbar').open();document.getElementById('findbar')._findField.focus()"/>
 	</keyset>
 
-	<commandset>
-		<command id="stylish_cmd_undo" oncommand="goDoCommand('stylish_cmd_undo')" disabled="true"/>
-	</commandset>
-
-	<menupopup id="orion-context">
-		<!-- custom undo for orion -->
-		<menuitem id="stylish_menu_undo" label="&undoCmd.label;" key="key_undo" accesskey="&undoCmd.accesskey;" command="stylish_cmd_undo" style="display: none"/>
+	<menupopup id="sourceeditor-context">
 		<menuitem id="menu_undo"/>
 		<menuseparator/>
 		<menuitem id="menu_cut"/>
@@ -84,7 +78,6 @@
 		</hbox>
 		<deck id="editor" flex="1">
 			<textbox id="internal-code" multiline="true" flex="1"/>
-			<hbox id="orion" flex="1"/>
 			<hbox id="sourceeditor" flex="1"/>
 		</deck>
 		<findbar id="findbar" browserid="internal-code"/>

@@ -91,12 +91,12 @@ function init() {
 			sourceEditor = new Editor({
 				mode: Editor.modes.css,
 				lineNumbers: true,
-				contextMenu: "orion-context",
+				contextMenu: "sourceeditor-context",
 				value: style.code,
 				extraKeys: extraKeys
 			});
 			var sourceEditorElement = document.getElementById("sourceeditor");
-			document.getElementById("editor").selectedIndex = 2;
+			document.getElementById("editor").selectedIndex = 1;
 			sourceEditorType = "sourceeditor";
 			sourceEditor.appendTo(sourceEditorElement).then(init2);
 			sourceEditor.on("change", function(cm, changeObj) {
@@ -104,27 +104,6 @@ function init() {
 				enablePreview(true);
 				enableCheckForErrors(true);
 			});
-			return;
-		}
-		
-		// orion, firefox 8-26
-		var obj = {};
-		try {
-			Components.utils.import("resource:///modules/source-editor.jsm", obj);
-		} catch (ex) {
-			try {
-				// (moved circa firefox 27)
-				Components.utils.import("resource:///modules/devtools/sourceeditor/source-editor.jsm", obj);
-			} catch (ex) {
-				// orion not available
-			}
-		}
-		// check orion's pref
-		if ("SourceEditor" in obj && Services.prefs.getCharPref(obj.SourceEditor.PREFS.COMPONENT) != "textarea") {
-			// use orion
-			sourceEditor = new obj.SourceEditor();
-			sourceEditorType = "orion";
-			initOrion();
 			return;
 		}
 	}
@@ -193,24 +172,8 @@ function updateTitle() {
 	}
 }
 
-function initOrion() {
-		// orion and it's all text don't get along. it's all text will update display later, so let's use visibility
-		document.getElementById("itsalltext").style.visibility = "hidden";
-
-		var orionElement = document.getElementById("orion");
-		sourceEditor.init(orionElement, {mode: sourceEditor.MODES.CSS, showLineNumbers: true}, init2);
-		document.getElementById("editor").selectedIndex = 1;
-		window.controllers.insertControllerAt(0, undoController);
-		// only use our custom undo
-		document.getElementById("menu_undo").style.display = "none";
-		document.getElementById("stylish_menu_undo").style.display = "";
-}
-
 function init2() {
 
-	if (sourceEditorType == "orion") {
-		sourceEditor.addEventListener("ContextMenu", handleOrionContext, false);
-	}
 	if (sourceEditorType == "textarea" || (sourceEditorType == "sourceeditor" && "setOption" in sourceEditor)) {
 		var wrapLines = prefs.getBoolPref("wrap_lines");
 		refreshWordWrap(wrapLines);
@@ -268,16 +231,6 @@ var undoController = {
 	},
 
 	onEvent: function() {}
-}
-
-function handleOrionContext(event) {
-	sourceEditor.focus();
-	goUpdateGlobalEditMenuItems();
-	goUpdateCommand("stylish_cmd_undo");
-	var menu = document.getElementById("orion-context");
-	if (menu.state == "closed") {
-		menu.openPopupAtScreen(event.screenX, event.screenY, true);
-	}
 }
 
 function save() {
@@ -603,14 +556,14 @@ if (finderJsmStyle) {
 
 var codeElementWrapper = {
 	get value() {
-		if (sourceEditorType == "orion" || sourceEditorType == "sourceeditor") {
+		if (sourceEditorType == "sourceeditor") {
 			return sourceEditor.getText();
 		}
 		return sourceEditor.value;
 	},
 
 	set value(v) {
-		if (sourceEditorType == "orion" || sourceEditorType == "sourceeditor") {
+		if (sourceEditorType == "sourceeditor") {
 			sourceEditor.setText(v);
 		} else {
 			sourceEditor.value = v;
@@ -618,9 +571,7 @@ var codeElementWrapper = {
 	},
 
 	setSelectionRange: function(start, end) {
-		if (sourceEditorType == "orion") {
-			sourceEditor.setSelection(start, end);
-		} else if (sourceEditorType == "sourceeditor") {
+		if (sourceEditorType == "sourceeditor") {
 			sourceEditor.setSelection(sourceEditor.getPosition(start), sourceEditor.getPosition(end));
 		} else {
 			sourceEditor.setSelectionRange(start, end);
@@ -632,9 +583,6 @@ var codeElementWrapper = {
 	},
 
 	get selectionStart() {
-		if (sourceEditorType == "orion") {
-			return sourceEditor.getSelection().start;
-		}
 		if (sourceEditorType == "sourceeditor") {
 			return sourceEditor.getOffset(sourceEditor.getCursor("start"));
 		}
@@ -642,9 +590,6 @@ var codeElementWrapper = {
 	},
 
 	get selectionEnd() {
-		if (sourceEditorType == "orion") {
-			return sourceEditor.getSelection().end;
-		}
 		if (sourceEditorType == "sourceeditor") {
 			return sourceEditor.getOffset(sourceEditor.getCursor("end"));
 		}
@@ -660,9 +605,6 @@ var codeElementWrapper = {
 	},
 
 	get scrollElement() {
-		if (sourceEditorType == "orion") {
-			return sourceEditor._view._viewDiv;
-		}
 		return sourceEditor.inputField;
 	}
 
