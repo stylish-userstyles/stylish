@@ -128,10 +128,10 @@ var stylishOverlay = {
 	lastUrl: null,
 
 	urlUpdated: function() {
-		if (stylishOverlay.lastUrl == content.location.href)
+		if (stylishOverlay.lastUrl == content.document.location.href)
 			return;
-		stylishOverlay.lastUrl = content.location.href;
-		document.documentElement.setAttribute("stylish-url", content.location.href);
+		stylishOverlay.lastUrl = content.document.location.href;
+		document.documentElement.setAttribute("stylish-url", content.document.location.href);
 		try {
 			if (content.document.domain)
 				document.documentElement.setAttribute("stylish-domain", content.document.domain);
