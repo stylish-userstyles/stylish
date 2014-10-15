@@ -26,3 +26,7 @@ toolbar[iconsize="small"] #stylish-toolbar-button:not([styles-applied~="site"]) 
 #stylish-toolbar-button .toolbarbutton-menu-dropmarker {
 	display: none;
 }
+/* On Windows this is 17px, which makes it look weird when the dropmarker is gone */
+#nav-bar #stylish-toolbar-button > .toolbarbutton-icon {
+	-moz-padding-end: 7px !important;
+}
