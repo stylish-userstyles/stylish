@@ -89,7 +89,7 @@ var stylishCommon = {
 		if (!win) {
 			win = window;
 		}
-		var url = "chrome://stylish/content/edit.xul";
+		var url = "about:stylish-edit";
 		var first = true;
 		for (i in params) {
 			if (params[i]) {

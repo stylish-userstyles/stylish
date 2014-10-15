@@ -54,6 +54,9 @@ component {6ff9ed70-e673-11dc-95ff-0800200c9a66} components/stylishStartup.js
 contract @stylish/startup;2 {6ff9ed70-e673-11dc-95ff-0800200c9a66}
 category profile-after-change StylishStartup @stylish/startup;2
 
+component {3d4ef6d0-548b-11e4-916c-0800200c9a66} components/aboutStylishEdit.js
+contract @mozilla.org/network/protocol/about;1?what=stylish-edit {3d4ef6d0-548b-11e4-916c-0800200c9a66}
+
 skin	stylish	classic/1.0	skin/
 
 style	chrome://global/content/customizeToolbar.xul	chrome://stylish/skin/overlay.css
