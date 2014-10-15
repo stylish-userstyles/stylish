@@ -1,19 +1,10 @@
-<!ENTITY changetags "Byt taggar">
-<!ENTITY changetags.ak "B">
-<!ENTITY done "Klar">
-<!ENTITY done.ak "K">
 <!ENTITY filter "Sök">
 <!ENTITY installfromurls "Installera från URL:er…">
-<!ENTITY manageaddonstitle "Userstyles">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Gå till">
 <!ENTITY nostylesend "för information om hur du använder Stylish.">
 <!ENTITY sortenabled "Aktiverad">
 <!ENTITY sortname "Namn">
-<!ENTITY sorttag "Tagg">
 <!ENTITY sorttype "Typ">
-<!ENTITY sortgroup "Sortera efter:">
-<!ENTITY update "Uppdatera">
-<!ENTITY update.ak "U">
 <!ENTITY writenew "Skriv ny style">
 <!ENTITY writenew.ak "n">

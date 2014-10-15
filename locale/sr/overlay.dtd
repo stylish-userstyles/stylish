@@ -1,5 +1,11 @@
 <!ENTITY addfile "Инсталирај датотеку...">
 <!ENTITY addfile.ak "Д">
+<!ENTITY cmd.enable.label "Омогући">
+<!ENTITY cmd.enable.accesskey "О">
+<!ENTITY cmd.disable.label "Онемогући">
+<!ENTITY cmd.disable.accesskey "н">
+<!ENTITY cmd.uninstall.label "Уклони">
+<!ENTITY cmd.uninstall2.accesskey "У">
 <!ENTITY findstylebrowser "Нађи стилове за ову страницу...">
 <!ENTITY findstylebrowser.ak "Н">
 <!ENTITY managestyles "Управљање стиловима...">

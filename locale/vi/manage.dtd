@@ -1,19 +1,10 @@
-<!ENTITY changetags "Thay đổi Thẻ">
-<!ENTITY changetags.ak "a">
-<!ENTITY done "Xong">
-<!ENTITY done.ak "X">
 <!ENTITY filter "Tìm kiếm">
 <!ENTITY installfromurls "Install from URLs...">
-<!ENTITY manageaddonstitle "Style Người dùng">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Vào">
 <!ENTITY nostylesend "để biết thêm thông tin về cách sử dụng Stylish.">
 <!ENTITY sortenabled "Bật">
 <!ENTITY sortname "Tên">
-<!ENTITY sorttag "Tag">
 <!ENTITY sorttype "Kiểu">
-<!ENTITY sortgroup "Sắp theo:">
-<!ENTITY update "Cập nhật">
-<!ENTITY update.ak "p">
 <!ENTITY writenew "Viết Style mới">
 <!ENTITY writenew.ak "V">

@@ -1,5 +1,11 @@
 <!ENTITY addfile "התקנת קובץ...">
 <!ENTITY addfile.ak "ב">
+<!ENTITY cmd.enable.label "הפוך לזמין">
+<!ENTITY cmd.enable.accesskey "פ">
+<!ENTITY cmd.disable.label "הפוך ללא זמין">
+<!ENTITY cmd.disable.accesskey "מ">
+<!ENTITY cmd.uninstall.label "הסרה">
+<!ENTITY cmd.uninstall2.accesskey "ס">
 <!ENTITY findstylebrowser "מצא סגנונות עבור אתר זה...">
 <!ENTITY findstylebrowser.ak "מ">
 <!ENTITY managestyles "ניהול סגנונות...">

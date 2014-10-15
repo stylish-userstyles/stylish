@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "E">
 <!ENTITY save "Salvesta">
 <!ENTITY save.ak "S">
-<!ENTITY switchtoinstall "Lülitu installimisvaatele">
-<!ENTITY switchtoinstall.ak "L">
-<!ENTITY tags "Sildid">
-<!ENTITY tags.ak "d">
 <!ENTITY wraplines "Murra pikad read">
 <!ENTITY wraplines.ak "M">
 <!ENTITY xulnamespace "XUL nimeruum vaikeväärtusega">

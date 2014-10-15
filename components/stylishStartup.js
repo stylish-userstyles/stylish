@@ -183,16 +183,7 @@ function getUserStyleWrapper(s) {
 		},
 
 		get description() {
-			var tagsA = this.style.getMeta("tag", {})
-			var tags = "";
-			if (tagsA.length > 0) {
-				tags = bundle.formatStringFromName("tagstyledescription", [tagsA.join(", ")], 1);
-			}
-			var applies = this.getAppliesString();
-			if (applies != "" && tags != "") {
-				return applies + " \n\n" + tags;
-			}
-			return applies + tags;
+			return this.getAppliesString();
 		},
 
 		getAppliesString: function() {

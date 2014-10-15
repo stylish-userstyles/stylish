@@ -1,8 +1,14 @@
-<!ENTITY addfile "Install file...">
+<!ENTITY addfile "Install file…">
 <!ENTITY addfile.ak "I">
-<!ENTITY findstylebrowser "Find styles for this site...">
+<!ENTITY cmd.enable.label "Enable">
+<!ENTITY cmd.enable.accesskey "E">
+<!ENTITY cmd.disable.label "Disable">
+<!ENTITY cmd.disable.accesskey "D">
+<!ENTITY cmd.uninstall.label "Uninstall">
+<!ENTITY cmd.uninstall2.accesskey "U">
+<!ENTITY findstylebrowser "Find styles for this site…">
 <!ENTITY findstylebrowser.ak "F">
-<!ENTITY managestyles "Manage styles...">
+<!ENTITY managestyles "Manage styles…">
 <!ENTITY managestyles.ak "M">
 <!ENTITY turnon "Turn all styles on">
 <!ENTITY turnon.ak "T">

@@ -3,10 +3,8 @@
 <?xml-stylesheet href="chrome://stylish/skin/overlay.css" type="text/css"?>
 
 <!DOCTYPE overlay [
-	<!ENTITY % extensions SYSTEM "chrome://stylish/locale/extensions.dtd">
 	<!ENTITY % overlay SYSTEM "chrome://stylish/locale/overlay.dtd">
 	<!ENTITY % common SYSTEM "chrome://stylish/locale/common.dtd">
-	%extensions;
 	%overlay;
 	%common;
 ]>

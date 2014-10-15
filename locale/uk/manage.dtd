@@ -1,19 +1,10 @@
-<!ENTITY changetags "Змінити мітки">
-<!ENTITY changetags.ak "м">
-<!ENTITY done "Готово">
-<!ENTITY done.ak "Г">
 <!ENTITY filter "Шукати:">
 <!ENTITY installfromurls "Install from URLs...">
-<!ENTITY manageaddonstitle "Стилі">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Завітайте">
 <!ENTITY nostylesend "по інформацію як використовувати Stylish.">
 <!ENTITY sortenabled "Станом">
 <!ENTITY sortname "Назвою">
-<!ENTITY sorttag "Міткою">
 <!ENTITY sorttype "Типом">
-<!ENTITY sortgroup "Сортувати за:">
-<!ENTITY update "Оновити">
-<!ENTITY update.ak "О">
 <!ENTITY writenew "Написати новий стиль">
 <!ENTITY writenew.ak "Н">

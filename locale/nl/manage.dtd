@@ -1,19 +1,10 @@
-<!ENTITY changetags "Labels wijzigen">
-<!ENTITY changetags.ak "w">
-<!ENTITY done "Voltooid">
-<!ENTITY done.ak "V">
 <!ENTITY filter "Zoeken">
 <!ENTITY installfromurls "Install from URLs...">
-<!ENTITY manageaddonstitle "Stijlen">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Bezoek">
 <!ENTITY nostylesend "voor informatie hoe Stylish te gebruiken.">
 <!ENTITY sortenabled "Ingeschakeld">
 <!ENTITY sortname "Naam">
-<!ENTITY sorttag "Label">
 <!ENTITY sorttype "Type">
-<!ENTITY sortgroup "Sorteren op:">
-<!ENTITY update "Bijwerken">
-<!ENTITY update.ak "B">
 <!ENTITY writenew "Nieuwe stijl schrijven">
 <!ENTITY writenew.ak "s">

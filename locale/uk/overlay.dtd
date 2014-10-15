@@ -1,5 +1,11 @@
 <!ENTITY addfile "Встановити файл…">
 <!ENTITY addfile.ak "В">
+<!ENTITY cmd.enable.label "Увімкнути">
+<!ENTITY cmd.enable.accesskey "м">
+<!ENTITY cmd.disable.label "Вимкнути">
+<!ENTITY cmd.disable.accesskey "В">
+<!ENTITY cmd.uninstall.label "Вилучити">
+<!ENTITY cmd.uninstall2.accesskey "и">
 <!ENTITY findstylebrowser "Знайти стилі для цього сайта…">
 <!ENTITY findstylebrowser.ak "З">
 <!ENTITY managestyles "Керування стилями…">

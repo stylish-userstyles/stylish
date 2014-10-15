@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "X">
 <!ENTITY save "Lưu">
 <!ENTITY save.ak "L">
-<!ENTITY switchtoinstall "Chuyển sang Cài đặt">
-<!ENTITY switchtoinstall.ak "y">
-<!ENTITY tags "Tag">
-<!ENTITY tags.ak "T">
 <!ENTITY wraplines "Bẻ dòng">
 <!ENTITY wraplines.ak "B">
 <!ENTITY xulnamespace "Không gian tên XML làm mặc định">

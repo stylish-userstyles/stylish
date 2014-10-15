@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "E">
 <!ENTITY save "Mentés">
 <!ENTITY save.ak "s">
-<!ENTITY switchtoinstall "Váltás telepítésre">
-<!ENTITY switchtoinstall.ak "V">
-<!ENTITY tags "Címkék">
-<!ENTITY tags.ak "k">
 <!ENTITY wraplines "Sorok tördelése">
 <!ENTITY wraplines.ak "r">
 <!ENTITY xulnamespace "XUL névtér beállítása alapértelmezettként">

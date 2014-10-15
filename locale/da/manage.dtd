@@ -1,19 +1,10 @@
-<!ENTITY changetags "Rediger Tags">
-<!ENTITY changetags.ak "T">
-<!ENTITY done "Færdig">
-<!ENTITY done.ak "F">
 <!ENTITY filter "Søg">
 <!ENTITY installfromurls "Install from URLs...">
-<!ENTITY manageaddonstitle "User Styles">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Besøg">
 <!ENTITY nostylesend "For information omkring brugen af Stylish.">
 <!ENTITY sortenabled "Aktiveret">
 <!ENTITY sortname "Navn">
-<!ENTITY sorttag "Tag">
 <!ENTITY sorttype "Type">
-<!ENTITY sortgroup "Sorter efter:">
-<!ENTITY update "Opdater">
-<!ENTITY update.ak "O">
 <!ENTITY writenew "Skriv en ny style">
 <!ENTITY writenew.ak "S">

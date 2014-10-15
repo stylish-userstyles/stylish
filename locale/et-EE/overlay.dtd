@@ -1,5 +1,11 @@
 <!ENTITY addfile "Installi fail...">
 <!ENTITY addfile.ak "I">
+<!ENTITY cmd.enable.label "Luba">
+<!ENTITY cmd.enable.accesskey "L">
+<!ENTITY cmd.disable.label "Keela">
+<!ENTITY cmd.disable.accesskey "K">
+<!ENTITY cmd.uninstall.label "Eemalda">
+<!ENTITY cmd.uninstall2.accesskey "E">
 <!ENTITY findstylebrowser "Leia stiile sellele lehele">
 <!ENTITY findstylebrowser.ak "L">
 <!ENTITY managestyles "Halda stiile...">

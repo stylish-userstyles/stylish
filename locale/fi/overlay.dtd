@@ -1,5 +1,11 @@
 <!ENTITY addfile "Asenna tiedosto...">
 <!ENTITY addfile.ak "A">
+<!ENTITY cmd.enable.label "Ota käyttöön">
+<!ENTITY cmd.enable.accesskey "O">
+<!ENTITY cmd.disable.label "Poista käytöstä">
+<!ENTITY cmd.disable.accesskey "P">
+<!ENTITY cmd.uninstall.label "Poista">
+<!ENTITY cmd.uninstall2.accesskey "o">
 <!ENTITY findstylebrowser "Etsi tyylejä tälle sivustolle...">
 <!ENTITY findstylebrowser.ak "E">
 <!ENTITY managestyles "Hallitse tyylejä...">

@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "P">
 <!ENTITY save "저장">
 <!ENTITY save.ak "S">
-<!ENTITY switchtoinstall "설치로 전환">
-<!ENTITY switchtoinstall.ak "I">
-<!ENTITY tags "태그">
-<!ENTITY tags.ak "T">
 <!ENTITY wraplines "자동 줄 바꿈">
 <!ENTITY wraplines.ak "W">
 <!ENTITY xulnamespace "XUL 이름공간 선언">

@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "V">
 <!ENTITY save "Salva">
 <!ENTITY save.ak "S">
-<!ENTITY switchtoinstall "Passa alla modalità di aggiunta">
-<!ENTITY switchtoinstall.ak "m">
-<!ENTITY tags "Etichette:">
-<!ENTITY tags.ak "E">
 <!ENTITY wraplines "Righe a capo">
 <!ENTITY wraplines.ak "c">
 <!ENTITY xulnamespace "Spazio dei nomi XUL">

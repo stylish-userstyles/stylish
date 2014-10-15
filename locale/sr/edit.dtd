@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "П">
 <!ENTITY save "Сачувај">
 <!ENTITY save.ak "С">
-<!ENTITY switchtoinstall "Пребаци на инсталирање">
-<!ENTITY switchtoinstall.ak "И">
-<!ENTITY tags "Ознаке">
-<!ENTITY tags.ak "З">
 <!ENTITY wraplines "Преламање текста">
 <!ENTITY wraplines.ak "Т">
 <!ENTITY xulnamespace "XUL именски простор као подразумевани">

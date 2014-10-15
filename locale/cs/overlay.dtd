@@ -1,5 +1,11 @@
 <!ENTITY addfile "Instalovat soubor...">
 <!ENTITY addfile.ak "I">
+<!ENTITY cmd.enable.label "Povolit">
+<!ENTITY cmd.enable.accesskey "P">
+<!ENTITY cmd.disable.label "Zakázat">
+<!ENTITY cmd.disable.accesskey "Z">
+<!ENTITY cmd.uninstall.label "Odinstalovat">
+<!ENTITY cmd.uninstall2.accesskey "O">
 <!ENTITY findstylebrowser "Najít styly pro tuto stránku...">
 <!ENTITY findstylebrowser.ak "N">
 <!ENTITY managestyles "Spravovat styly...">

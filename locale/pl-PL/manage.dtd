@@ -1,19 +1,10 @@
-<!ENTITY changetags "Zmień znaczniki">
-<!ENTITY changetags.ak "Z">
-<!ENTITY done "Gotowe">
-<!ENTITY done.ak "G">
 <!ENTITY filter "Szukaj">
 <!ENTITY installfromurls "Install from URLs...">
-<!ENTITY manageaddonstitle "Style">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Przejdź na witrynę">
 <!ENTITY nostylesend "gdzie uzyskasz informacje o tym, jak używać Stylish.">
 <!ENTITY sortenabled "włączenia">
 <!ENTITY sortname "nazwy">
-<!ENTITY sorttag "znacznika">
 <!ENTITY sorttype "typu">
-<!ENTITY sortgroup "Sortuj wg:">
-<!ENTITY update "Uaktualnij">
-<!ENTITY update.ak "U">
 <!ENTITY writenew "Napisz nowy styl">
 <!ENTITY writenew.ak "N">

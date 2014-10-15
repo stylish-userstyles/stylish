@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "F">
 <!ENTITY save "Spara">
 <!ENTITY save.ak "S">
-<!ENTITY switchtoinstall "Växla till Installation">
-<!ENTITY switchtoinstall.ak "I">
-<!ENTITY tags "Taggar">
-<!ENTITY tags.ak "T">
 <!ENTITY wraplines "Radbrytning">
 <!ENTITY wraplines.ak "R">
 <!ENTITY xulnamespace "XUL-namnrymd som standard">

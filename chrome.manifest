@@ -12,7 +12,6 @@ overlay chrome://messenger/content/mailWindowOverlay.xul	chrome://stylish/conten
 locale	stylish	cs	locale/cs/
 locale	stylish	da	locale/da/
 locale	stylish	de	locale/de/
-locale	stylish	en-GB	locale/en-GB/
 locale	stylish	en-US	locale/en-US/
 locale	stylish	es-AR	locale/es-AR/
 locale	stylish	es-ES	locale/es-ES/

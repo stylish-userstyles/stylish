@@ -1,5 +1,11 @@
 <!ENTITY addfile "Aggiungi stile a &stylish;…">
 <!ENTITY addfile.ak "A">
+<!ENTITY cmd.enable.label "Attiva">
+<!ENTITY cmd.enable.accesskey "A">
+<!ENTITY cmd.disable.label "Disattiva">
+<!ENTITY cmd.disable.accesskey "D">
+<!ENTITY cmd.uninstall.label "Disinstalla">
+<!ENTITY cmd.uninstall2.accesskey "i">
 <!ENTITY findstylebrowser "Trova stili per questa pagina">
 <!ENTITY findstylebrowser.ak "T">
 <!ENTITY managestyles "Gestione degli stili…">

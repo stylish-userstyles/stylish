@@ -1,5 +1,11 @@
 <!ENTITY addfile "Установить файл...">
 <!ENTITY addfile.ak "У">
+<!ENTITY cmd.enable.label "Включить">
+<!ENTITY cmd.enable.accesskey "ч">
+<!ENTITY cmd.disable.label "Отключить">
+<!ENTITY cmd.disable.accesskey "т">
+<!ENTITY cmd.uninstall.label "Удалить">
+<!ENTITY cmd.uninstall2.accesskey "д">
 <!ENTITY findstylebrowser "Найти стили для текущего сайта...">
 <!ENTITY findstylebrowser.ak "Н">
 <!ENTITY managestyles "Управление стилями...">

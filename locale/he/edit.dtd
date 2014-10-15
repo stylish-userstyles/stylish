@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "צ">
 <!ENTITY save "שמור">
 <!ENTITY save.ak "מ">
-<!ENTITY switchtoinstall "עבור להתקנה">
-<!ENTITY switchtoinstall.ak "ע">
-<!ENTITY tags "תגיות">
-<!ENTITY tags.ak "ג">
 <!ENTITY wraplines "גלישת שורות">
 <!ENTITY wraplines.ak "ש">
 <!ENTITY xulnamespace "שם מרחב XUL כברירת מחדל">

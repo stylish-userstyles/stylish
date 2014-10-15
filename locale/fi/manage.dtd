@@ -1,19 +1,10 @@
-<!ENTITY changetags "Muuta tunnuksia">
-<!ENTITY changetags.ak "M">
-<!ENTITY done "Valmis">
-<!ENTITY done.ak "V">
 <!ENTITY filter "Etsi">
 <!ENTITY installfromurls "Asenna tyyli...">
-<!ENTITY manageaddonstitle "E">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Vieraile sivulla">
 <!ENTITY nostylesend "saadaksesi tietoa kuinka käyttää Stylishia.">
 <!ENTITY sortenabled "Käytössä">
 <!ENTITY sortname "Nimi">
-<!ENTITY sorttag "Tunnus">
 <!ENTITY sorttype "Tyyppi">
-<!ENTITY sortgroup "Lajittelujärjestys:">
-<!ENTITY update "Päivitä">
-<!ENTITY update.ak "P">
 <!ENTITY writenew "Kirjoita uusi tyyli">
 <!ENTITY writenew.ak "K">

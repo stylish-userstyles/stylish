@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "E">
 <!ENTITY save "Tallenna">
 <!ENTITY save.ak "T">
-<!ENTITY switchtoinstall "Siirry asennukseen">
-<!ENTITY switchtoinstall.ak "u">
-<!ENTITY tags "Tunnukset">
-<!ENTITY tags.ak "u">
 <!ENTITY wraplines "Mahduta rivit">
 <!ENTITY wraplines.ak "M">
 <!ENTITY xulnamespace "XUL-nimiavaruus">

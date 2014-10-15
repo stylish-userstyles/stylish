@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "V">
 <!ENTITY save "Salvar">
 <!ENTITY save.ak "S">
-<!ENTITY switchtoinstall "Mudar para Instalação">
-<!ENTITY switchtoinstall.ak "I">
-<!ENTITY tags "Marcadores">
-<!ENTITY tags.ak "M">
 <!ENTITY wraplines "Quebrar linhas">
 <!ENTITY wraplines.ak "Q">
 <!ENTITY xulnamespace "Namespace XUL como padrão">

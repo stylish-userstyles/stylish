@@ -1,19 +1,10 @@
-<!ENTITY changetags "Muuda silte">
-<!ENTITY changetags.ak "M">
-<!ENTITY done "Valmis">
-<!ENTITY done.ak "V">
 <!ENTITY filter "Otsi">
 <!ENTITY installfromurls "Installi URL-ilt...">
-<!ENTITY manageaddonstitle "Kasutaja stiilid">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Stylishi kasutamise kohta lähema teabe saamiseks mine lehele">
 <!ENTITY nostylesend ".">
 <!ENTITY sortenabled "Lubatud">
 <!ENTITY sortname "Nimi">
-<!ENTITY sorttag "Silt">
 <!ENTITY sorttype "Tüüp">
-<!ENTITY sortgroup "Sorteerimisalus:">
-<!ENTITY update "Uuendus">
-<!ENTITY update.ak "U">
 <!ENTITY writenew "Kirjuta uus stiil">
 <!ENTITY writenew.ak "K">

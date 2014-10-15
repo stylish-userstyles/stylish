@@ -1,19 +1,10 @@
-<!ENTITY changetags "修改標籤(C)">
-<!ENTITY changetags.ak "C">
-<!ENTITY done "完成(D)">
-<!ENTITY done.ak "D">
 <!ENTITY filter "搜尋">
 <!ENTITY installfromurls "從 URL 安裝...">
-<!ENTITY manageaddonstitle "使用者樣式">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "瀏覽">
 <!ENTITY nostylesend "關於如何使用 Stylish。">
 <!ENTITY sortenabled "啟用">
 <!ENTITY sortname "名稱">
-<!ENTITY sorttag "標籤">
 <!ENTITY sorttype "類型">
-<!ENTITY sortgroup "排序:">
-<!ENTITY update "更新(U)">
-<!ENTITY update.ak "U">
 <!ENTITY writenew "編寫新樣式(W)">
 <!ENTITY writenew.ak "W">

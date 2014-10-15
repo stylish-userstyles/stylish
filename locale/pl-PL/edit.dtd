@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "D">
 <!ENTITY save "Zapisz">
 <!ENTITY save.ak "Z">
-<!ENTITY switchtoinstall "Przełącz na instalację">
-<!ENTITY switchtoinstall.ak "I">
-<!ENTITY tags "Znaczniki">
-<!ENTITY tags.ak "K">
 <!ENTITY wraplines "Zawijaj wiersze">
 <!ENTITY wraplines.ak "R">
 <!ENTITY xulnamespace "Przestrzenie nazw XUL jako domyślne">

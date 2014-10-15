@@ -314,22 +314,6 @@ var stylishCommon = {
 		}
 	},
 
-	// Removes whitespace and duplicate tags. Pass in a string and receive an array.
-	cleanTags: function(tags) {
-		tags = tags.split(/[\s,]+/);
-		var uniqueTags = [];
-		tags.filter(function(tag) {
-			return !/^\s*$/.test(tag);
-		}).forEach(function(tag) {
-			if (!uniqueTags.some(function(utag) {
-				return utag.toLowerCase() == tag.toLowerCase();
-			})) {
-				uniqueTags.push(tag);
-			}
-		});
-		return uniqueTags;
-	},
-
 	addCode: function(code, win) {
 		stylishCommon.openEdit(stylishCommon.getWindowName("stylishEdit"), {code: code}, win);
 	},

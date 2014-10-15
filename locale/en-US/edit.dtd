@@ -16,10 +16,6 @@
 <!ENTITY preview.ak "P">
 <!ENTITY save "Save">
 <!ENTITY save.ak "S">
-<!ENTITY switchtoinstall "Switch to Install">
-<!ENTITY switchtoinstall.ak "I">
-<!ENTITY tags "Tags">
-<!ENTITY tags.ak "T">
 <!ENTITY wraplines "Wrap lines">
 <!ENTITY wraplines.ak "W">
 <!ENTITY xulnamespace "XUL namespace as default">

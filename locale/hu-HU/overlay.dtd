@@ -1,5 +1,11 @@
 <!ENTITY addfile "Fájl telepítése...">
 <!ENTITY addfile.ak "t">
+<!ENTITY cmd.enable.label "Engedélyezés">
+<!ENTITY cmd.enable.accesskey "E">
+<!ENTITY cmd.disable.label "Letiltás">
+<!ENTITY cmd.disable.accesskey "s">
+<!ENTITY cmd.uninstall.label "Eltávolítás">
+<!ENTITY cmd.uninstall2.accesskey "l">
 <!ENTITY findstylebrowser "Stílusfájlok keresése ehhez az oldalhoz">
 <!ENTITY findstylebrowser.ak "k">
 <!ENTITY managestyles "Stílusfájlok kezelése">

@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "S">
 <!ENTITY save "Gem">
 <!ENTITY save.ak "G">
-<!ENTITY switchtoinstall "Gå til installation">
-<!ENTITY switchtoinstall.ak "I">
-<!ENTITY tags "Tags">
-<!ENTITY tags.ak "T">
 <!ENTITY wraplines "Ombryd tekst">
 <!ENTITY wraplines.ak "W">
 <!ENTITY xulnamespace "XUL namespace som standard">

@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "N">
 <!ENTITY save "Uložit">
 <!ENTITY save.ak "U">
-<!ENTITY switchtoinstall "Přepnout na instalaci">
-<!ENTITY switchtoinstall.ak "i">
-<!ENTITY tags "Štítky">
-<!ENTITY tags.ak "š">
 <!ENTITY wraplines "Zalamovat řádky">
 <!ENTITY wraplines.ak "Z">
 <!ENTITY xulnamespace "Jmenný prostor XUL jako výchozí">

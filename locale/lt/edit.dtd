@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "P">
 <!ENTITY save "Įrašyti">
 <!ENTITY save.ak "I">
-<!ENTITY switchtoinstall "Perjungti į diegimą">
-<!ENTITY switchtoinstall.ak "E">
-<!ENTITY tags "Žymos">
-<!ENTITY tags.ak "m">
 <!ENTITY wraplines "Laužyti eilutes">
 <!ENTITY wraplines.ak "L">
 <!ENTITY xulnamespace "XUL vardai kaip numatyta">

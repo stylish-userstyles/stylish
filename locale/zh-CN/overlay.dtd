@@ -1,5 +1,11 @@
 <!ENTITY addfile "安装文件...">
 <!ENTITY addfile.ak "I">
+<!ENTITY cmd.enable.label "启用">
+<!ENTITY cmd.enable.accesskey "E">
+<!ENTITY cmd.disable.label "禁用">
+<!ENTITY cmd.disable.accesskey "D">
+<!ENTITY cmd.uninstall.label "卸载">
+<!ENTITY cmd.uninstall2.accesskey "U">
 <!ENTITY findstylebrowser "查找适合此网站的样式...">
 <!ENTITY findstylebrowser.ak "F">
 <!ENTITY managestyles "管理样式...">

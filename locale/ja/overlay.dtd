@@ -1,5 +1,11 @@
 <!ENTITY addfile "ファイルをインストール...">
 <!ENTITY addfile.ak "I">
+<!ENTITY cmd.enable.label "有効化">
+<!ENTITY cmd.enable.accesskey "E">
+<!ENTITY cmd.disable.label "無効化">
+<!ENTITY cmd.disable.accesskey "D">
+<!ENTITY cmd.uninstall.label "削除">
+<!ENTITY cmd.uninstall2.accesskey "U">
 <!ENTITY findstylebrowser "このサイト用のスタイルを探す">
 <!ENTITY findstylebrowser.ak "F">
 <!ENTITY managestyles "スタイルの管理...">

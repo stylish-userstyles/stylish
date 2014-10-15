@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "P">
 <!ENTITY save "保存">
 <!ENTITY save.ak "S">
-<!ENTITY switchtoinstall "インストールに切り替える">
-<!ENTITY switchtoinstall.ak "I">
-<!ENTITY tags "タグ">
-<!ENTITY tags.ak "T">
 <!ENTITY wraplines "行を折り返す">
 <!ENTITY wraplines.ak "W">
 <!ENTITY xulnamespace "XUL 名前空間を標準とする">

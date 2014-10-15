@@ -1,5 +1,11 @@
 <!ENTITY addfile "安裝檔案…(I)">
 <!ENTITY addfile.ak "I">
+<!ENTITY cmd.enable.label "啟用(E)">
+<!ENTITY cmd.enable.accesskey "E">
+<!ENTITY cmd.disable.label "停用(D)">
+<!ENTITY cmd.disable.accesskey "D">
+<!ENTITY cmd.uninstall.label "移除(U)">
+<!ENTITY cmd.uninstall2.accesskey "U">
 <!ENTITY findstylebrowser "尋找此網站的樣式…(F)">
 <!ENTITY findstylebrowser.ak "F">
 <!ENTITY managestyles "管理樣式…(M)">

@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "П">
 <!ENTITY save "Зберегти">
 <!ENTITY save.ak "З">
-<!ENTITY switchtoinstall "Перемкніть щоб встановити">
-<!ENTITY switchtoinstall.ak "П">
-<!ENTITY tags "Мітки">
-<!ENTITY tags.ak "М">
 <!ENTITY wraplines "Переноси для довгих рядків">
 <!ENTITY wraplines.ak "П">
 <!ENTITY xulnamespace "Простір імен XUL">

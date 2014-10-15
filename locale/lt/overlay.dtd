@@ -1,5 +1,11 @@
 <!ENTITY addfile "Įdiegti failą...">
 <!ENTITY addfile.ak "I">
+<!ENTITY cmd.enable.label "Įjungti">
+<!ENTITY cmd.enable.accesskey "j">
+<!ENTITY cmd.disable.label "Išjungti">
+<!ENTITY cmd.disable.accesskey "I">
+<!ENTITY cmd.uninstall.label "Pašalinti">
+<!ENTITY cmd.uninstall2.accesskey "P">
 <!ENTITY findstylebrowser "Ieškoti stilių šiai svetainei...">
 <!ENTITY findstylebrowser.ak "E">
 <!ENTITY managestyles "Tvarkyti stilius...">

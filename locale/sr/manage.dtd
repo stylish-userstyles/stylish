@@ -1,19 +1,10 @@
-<!ENTITY changetags "Примени ознаке">
-<!ENTITY changetags.ak "О">
-<!ENTITY done "Готово">
-<!ENTITY done.ak "Г">
 <!ENTITY filter "Претражи">
 <!ENTITY installfromurls "Install from URLs...">
-<!ENTITY manageaddonstitle "Кориснички стилови">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Посетите">
 <!ENTITY nostylesend "да бисте добили више информација о коришћењу додатка Stylish.">
 <!ENTITY sortenabled "Омогућен">
 <!ENTITY sortname "Назив">
-<!ENTITY sorttag "Ознака">
 <!ENTITY sorttype "Тип">
-<!ENTITY sortgroup "Поређај по:">
-<!ENTITY update "Ажурирано">
-<!ENTITY update.ak "А">
 <!ENTITY writenew "Упиши нов стил">
 <!ENTITY writenew.ak "Н">

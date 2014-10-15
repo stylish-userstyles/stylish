@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "П">
 <!ENTITY save "Сохранить">
 <!ENTITY save.ak "С">
-<!ENTITY switchtoinstall "Переключиться к установке">
-<!ENTITY switchtoinstall.ak "у">
-<!ENTITY tags "Теги">
-<!ENTITY tags.ak "Т">
 <!ENTITY wraplines "Перенос строк">
 <!ENTITY wraplines.ak "П">
 <!ENTITY xulnamespace "Пространство имен XUL">

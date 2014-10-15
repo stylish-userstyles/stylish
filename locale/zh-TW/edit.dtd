@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "P">
 <!ENTITY save "儲存(S)">
 <!ENTITY save.ak "S">
-<!ENTITY switchtoinstall "切換到安裝模式(I)">
-<!ENTITY switchtoinstall.ak "I">
-<!ENTITY tags "標籤(T)">
-<!ENTITY tags.ak "T">
 <!ENTITY wraplines "換行(W)">
 <!ENTITY wraplines.ak "W">
 <!ENTITY xulnamespace "預設的 XUL 命名空間">

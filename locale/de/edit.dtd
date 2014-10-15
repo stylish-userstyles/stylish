@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "V">
 <!ENTITY save "Speichern">
 <!ENTITY save.ak "S">
-<!ENTITY switchtoinstall "Zur Installation wechseln">
-<!ENTITY switchtoinstall.ak "w">
-<!ENTITY tags "Schlagwörter">
-<!ENTITY tags.ak "S">
 <!ENTITY wraplines "Zeilen umbrechen">
 <!ENTITY wraplines.ak "Z">
 <!ENTITY xulnamespace "XUL-Namensraum als Vorgabe">

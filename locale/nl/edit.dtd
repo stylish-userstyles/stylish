@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "V">
 <!ENTITY save "Opslaan">
 <!ENTITY save.ak "O">
-<!ENTITY switchtoinstall "Naar installatie omschakelen">
-<!ENTITY switchtoinstall.ak "i">
-<!ENTITY tags "Labels">
-<!ENTITY tags.ak "L">
 <!ENTITY wraplines "Tekstregels afbreken">
 <!ENTITY wraplines.ak "R">
 <!ENTITY xulnamespace "XUL namespace als standaard">

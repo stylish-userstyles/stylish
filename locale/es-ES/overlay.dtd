@@ -1,5 +1,11 @@
 <!ENTITY addfile "Instalar archivo...">
 <!ENTITY addfile.ak "I">
+<!ENTITY cmd.enable.label "Activar">
+<!ENTITY cmd.enable.accesskey "c">
+<!ENTITY cmd.disable.label "Desactivar">
+<!ENTITY cmd.disable.accesskey "c">
+<!ENTITY cmd.uninstall.label "Desinstalar">
+<!ENTITY cmd.uninstall2.accesskey "D">
 <!ENTITY findstylebrowser "Buscar estilos para esta página...">
 <!ENTITY findstylebrowser.ak "B">
 <!ENTITY managestyles "Administrar estilos...">

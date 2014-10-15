@@ -14,10 +14,6 @@
 <!ENTITY preview.ak "P">
 <!ENTITY save "Salvare">
 <!ENTITY save.ak "S">
-<!ENTITY switchtoinstall "Schimbă pentru a instala">
-<!ENTITY switchtoinstall.ak "I">
-<!ENTITY tags "Etichete">
-<!ENTITY tags.ak "T">
 <!ENTITY wraplines "Împachetează liniile">
 <!ENTITY wraplines.ak "W">
 <!ENTITY xulnamespace "Spaţiu de nume XUL ca valoare implicită">
