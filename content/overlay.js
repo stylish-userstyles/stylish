@@ -336,6 +336,9 @@ var stylishOverlay = {
 		// Keep track of the index so we have proper accesskeys
 		var mainMenuIndex = 0;
 		function addStylesToMainMenu(styles) {
+			if (styles.length == 0) {
+				return;
+			}
 			addSeparatorIfNecessary();
 			addStyleMenuItems(styles, popup, mainMenuIndex);
 			mainMenuIndex += styles.length;
