@@ -1,10 +1,31 @@
-Stylish - a user style manager for Firefox.
+Stylish - a user style manager for Firefox, Thunderbird, SeaMonkey, Pale Moon, and other Mozilla-based software. Install styles from [userstyles.org](https://userstyles.org/) to change how web pages look.
 
 * Releases - https://addons.mozilla.org/en-US/firefox/addon/stylish/
 * Source respository - https://github.com/JasonBarnabe/stylish
-* Help - http://userstyles.org/help/stylish_firefox
+* Help - https://userstyles.org/help/stylish_firefox
 
-Copyright (C) 2005-2013 Jason Barnabe <jason.barnabe@gmail.com>
+Contributing
+------------
+
+Pull requests are welcome. Translation work can be done [on Transifex](https://www.transifex.com/projects/p/stylish/) or with a pull request.
+
+Other Stylishes
+---------------
+
+* [Chrome/Opera/other WebKit](https://github.com/JasonBarnabe/stylish-chrome)
+* [Safari](https://github.com/350d/stylish)
+* [Opera (Presto)](https://github.com/gera2ld/Stylish-oex)
+* [Dolphin](https://github.com/Pmmlabs/StylishForDolphin)
+
+Related probjects
+-----------------
+
+ * [userstyles.org](https://github.com/JasonBarnabe/userstyles)
+
+License
+-------
+
+Copyright (C) 2005-2014 Jason Barnabe <jason.barnabe@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
