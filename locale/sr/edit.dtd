@@ -1,3 +1,5 @@
+<!ENTITY checkforerrors "Check for Errors">
+<!ENTITY checkforerrors.ak "C">
 <!ENTITY chromefolder "Путања фасцикле Chrome">
 <!ENTITY chromefolder.ak "Ф">
 <!ENTITY dataURI "URI података...">

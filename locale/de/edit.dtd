@@ -1,3 +1,5 @@
+<!ENTITY checkforerrors "Check for Errors">
+<!ENTITY checkforerrors.ak "C">
 <!ENTITY chromefolder "Chrome-Pfad">
 <!ENTITY chromefolder.ak "C">
 <!ENTITY dataURI "Daten-URI…">

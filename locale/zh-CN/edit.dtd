@@ -1,3 +1,5 @@
+<!ENTITY checkforerrors "Check for Errors">
+<!ENTITY checkforerrors.ak "C">
 <!ENTITY chromefolder "Chrome 文件夹路径">
 <!ENTITY chromefolder.ak "C">
 <!ENTITY dataURI "数据 URL...">

@@ -1,3 +1,5 @@
+<!ENTITY checkforerrors "Check for Errors">
+<!ENTITY checkforerrors.ak "C">
 <!ENTITY chromefolder "크롬 폴더 경로">
 <!ENTITY chromefolder.ak "C">
 <!ENTITY dataURI "데이터 URI">

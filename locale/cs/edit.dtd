@@ -1,3 +1,5 @@
+<!ENTITY checkforerrors "Check for Errors">
+<!ENTITY checkforerrors.ak "C">
 <!ENTITY chromefolder "Cesta ke složce chrome">
 <!ENTITY chromefolder.ak "C">
 <!ENTITY dataURI "Datová URI...">

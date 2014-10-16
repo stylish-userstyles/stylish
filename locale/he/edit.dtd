@@ -1,3 +1,5 @@
+<!ENTITY checkforerrors "Check for Errors">
+<!ENTITY checkforerrors.ak "C">
 <!ENTITY chromefolder "נתיב תיקית Chrome">
 <!ENTITY chromefolder.ak "נ">
 <!ENTITY dataURI "Data URI...">
