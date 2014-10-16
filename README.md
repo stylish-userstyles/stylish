@@ -1,8 +1,8 @@
 Stylish - a user style manager for Firefox, Thunderbird, SeaMonkey, Pale Moon, and other Mozilla-based software. Install styles from [userstyles.org](https://userstyles.org/) to change how web pages look.
 
-* Releases - https://addons.mozilla.org/en-US/firefox/addon/stylish/
-* Source respository - https://github.com/JasonBarnabe/stylish
-* Help - https://userstyles.org/help/stylish_firefox
+* [Releases](https://addons.mozilla.org/en-US/firefox/addon/stylish/)
+* [Source](https://github.com/JasonBarnabe/stylish)
+* [Help](https://userstyles.org/help/stylish_firefox)
 
 Contributing
 ------------
