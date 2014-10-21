@@ -267,7 +267,7 @@ function save() {
 	saved = true;
 
 	if (newStyle) {
-		location.href = "?id=" + style.id;
+		location.href = location.href + "?id=" + style.id;
 		return true;
 	}
 
