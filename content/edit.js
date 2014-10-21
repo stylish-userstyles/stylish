@@ -1,10 +1,8 @@
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
 var require = null;
-var autocompleter = null;
 try {
 	require = Components.utils.import("resource://gre/modules/devtools/Loader.jsm", {}).devtools.require;
-	autocompleter = require("devtools/sourceeditor/autocomplete");
 } catch (ex) {
 	// file not available...
 }
@@ -93,7 +91,8 @@ function init() {
 				lineNumbers: true,
 				contextMenu: "sourceeditor-context",
 				value: style.code,
-				extraKeys: extraKeys
+				extraKeys: extraKeys,
+				autocomplete: true
 			});
 			var sourceEditorElement = document.getElementById("sourceeditor");
 			document.getElementById("editor").selectedIndex = 1;
@@ -180,18 +179,6 @@ function init2() {
 		var wrapLinesE = document.getElementById("wrap-lines");
 		wrapLinesE.checked = wrapLines;
 		wrapLinesE.style.display = "";
-	}
-	var autocompleteEnabled = false;
-	try {
-		autocompleteEnabled = Services.prefs.getBoolPref("devtools.styleeditor.autocompletion-enabled");
-	} catch (ex) {}
-	if (sourceEditorType == "sourceeditor" && autocompleteEnabled) {
-		// Up to Firefox 28, sometimes "require" will return an object when something is not available instead of throwing.
-		// Rather than trying to detect if autocompleter is available, let's just try to use it.
-		try {
-			sourceEditor.extend(autocompleter);
-			sourceEditor.setupAutoCompletion({});
-		} catch (ex) { }
 	}
 
 	// the initial value for sourceeditor is set in the Editor constructor, which has the benefit of not being undoable
