@@ -650,8 +650,12 @@ var deleteObserver = {
 };
 Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService).addObserver(deleteObserver, "stylish-style-delete", false);
 
+// Prompt for unsaved changes.
+// This is firing twice in some cases like on Seamonkey, so don't do it if we've shown it in the past 5 seconds.
+var lastBeforeUnload = null;
 window.addEventListener("beforeunload", function(event) {
-	if (!saved && initialCode != codeElementWrapper.value) {
+	if (!saved && initialCode != codeElementWrapper.value && (lastBeforeUnload == null || Date.now() - lastBeforeUnload > 5000)) {
+		lastBeforeUnload = Date.now();
 		// Firefox will show its own stuff, so the text doesn't matter as long as it's text
 		event.returnValue = "You're going to lose your changes - close anyway?";
 	}
