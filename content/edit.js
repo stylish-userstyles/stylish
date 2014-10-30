@@ -657,6 +657,12 @@ window.addEventListener("beforeunload", function(event) {
 	}
 });
 
+// Closing by closing the window (e.g. pressing the X when in windowed mode) doesn't fire beforeunload. Cancel the close event and close it ourselves so beforeunload runs.
+window.addEventListener("close", function(event) {
+	event.preventDefault();
+	window.close();
+})
+
 window.addEventListener("unload", function(event) {
 	//turn off preview!
 	style.setPreview(false);
