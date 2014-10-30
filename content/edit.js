@@ -92,6 +92,7 @@ function init() {
 				contextMenu: "sourceeditor-context",
 				value: style.code,
 				extraKeys: extraKeys,
+				themeSwitching: false,
 				autocomplete: true
 			});
 			var sourceEditorElement = document.getElementById("sourceeditor");
