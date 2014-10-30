@@ -9,6 +9,14 @@ Contributing
 
 Pull requests are welcome. Translation work can be done [on Transifex](https://www.transifex.com/projects/p/stylish/) or with a pull request.
 
+Donations
+---------
+
+If you like Stylish, consider making a donation. Suggested amount is $5.
+
+* [Donate by PayPal or credit card](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jason.barnabe@gmail.com&item_name=Contribution+for+Stylish)
+* Donate BitCoin to 1Q3snak84MbR2SvSX11Kyz3Rc4f61E5whq
+
 Other Stylishes
 ---------------
 
@@ -17,7 +25,7 @@ Other Stylishes
 * [Opera (Presto)](https://github.com/gera2ld/Stylish-oex)
 * [Dolphin](https://github.com/Pmmlabs/StylishForDolphin)
 
-Related probjects
+Related projects
 -----------------
 
  * [userstyles.org](https://github.com/JasonBarnabe/userstyles)
