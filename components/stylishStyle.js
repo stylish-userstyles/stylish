@@ -361,7 +361,7 @@ Style.prototype = {
 				return false;
 			}
 			return re.test(url);
-		});
+		}, this);
 	},
 
 	//previewing make it so that the code for this style is always applied, even if it's disabled
