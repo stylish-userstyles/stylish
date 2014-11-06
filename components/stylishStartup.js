@@ -177,6 +177,10 @@ function getUserStyleWrapper(s) {
 		},
 
 		set userDisabled(val) {
+			if (this.style.enabled == !val) {
+				// no op
+				return;
+			}
 			this.style.enabled = !val;
 			this.style.save();
 			AddonManagerPrivate.callAddonListeners(val ? "onEnabling" : "onDisabling", this, false);
