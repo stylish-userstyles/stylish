@@ -100,10 +100,15 @@ var stylishFrameUtils = {
 		var xhr = doc.defaultView ? new doc.defaultView.XMLHttpRequest() : new XMLHttpRequest();
 		xhr.onload = function() {
 			if (xhr.status >= 400) {
+				Components.utils.reportError("Download of '" + url + "' resulted in status '" + xhr.status + "'.");
 				callback(name, null);
 			} else {
 				callback(name, xhr.responseText);
 			}
+		}
+		xhr.onerror = function() {
+			Components.utils.reportError("Download of '" + url + "' resulted in error.");
+			callback(name, null);
 		}
 		if (url.length > 2000) {
 			var parts = url.split("?");
