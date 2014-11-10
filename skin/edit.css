@@ -20,6 +20,16 @@
 #editor-tools {
 	margin-top: 3px;
 	padding-top: 2px;
-	border-top: 2px solid -moz-use-text-color;
-	-moz-border-top-colors: threedshadow threedhighlight;
+}
+.devtools-horizontal-splitter {
+	/* Overriding global.css */
+	height: 3px !important;
+}
+.devtools-textinput {
+	padding: 0 2px;
+}
+.devtools-toolbarbutton {
+	border-radius: 2px !important;
+	border: 1px solid rgba(0,0,0,0.3) !important;
+	padding: 1px 5px !important;
 }

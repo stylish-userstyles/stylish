@@ -12,6 +12,7 @@
 ]>
 
 <window
+	class="theme-body"
 	id="stylish-edit"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml">
@@ -22,6 +23,7 @@
 	<script type="application/javascript" src="chrome://stylish/content/edit.js"/>
 	<script type="application/javascript" src="chrome://stylish/content/frame-utils.js"/>
 	<script type="application/javascript" src="chrome://stylish/content/common.js"/>
+	<script type="application/javascript;version=1.8" src="chrome://browser/content/devtools/theme-switching.js"></script>
 
 	<script type="application/javascript" src="chrome://itsalltext/content/API.js"/>
 
@@ -46,42 +48,45 @@
 	<commandset id="editMenuCommands"/>
 
 	<vbox id="main-area" flex="1">
-		<hbox>
-			<button id="save-button" label="&save;" accesskey="&save.ak;" oncommand="save()"/>
-			<button id="preview-button" label="&preview;" accesskey="&preview.ak;" oncommand="preview()"/>
-			<button id="check-for-errors-button" label="&checkforerrors;" accesskey="&checkforerrors.ak;" oncommand="checkForErrors()"/>
-		</hbox>
-		<grid>
-			<columns>
-				<column/>
-				<column flex="1"/>
-			</columns>
-			<rows>
-				<row align="center">
-					<label control="name" accesskey="&name.ak;">&name;</label>
-					<textbox id="name" flex="1"/>
-				</row>
-			</rows>
-		</grid>
-		<textbox id="update-url" style="display:none"/>
-		<hbox id="editor-tools">
-			<button label="&insert;" accesskey="&insert.ak;" type="menu">
-				<menupopup>
-					<menuitem id="insert-html" label="&htmlnamespace;" accesskey="&htmlnamespace.ak;" oncommand="insertCodeAtStart(CSSHTMLNS);"/>
-					<menuitem id="insert-xul" label="&xulnamespace;" accesskey="&xulnamespace.ak;" oncommand="insertCodeAtStart(CSSXULNS);"/>
-					<menuitem id="insert-chrome-folder" label="&chromefolder;" accesskey="&chromefolder.ak;" oncommand="insertChromePath()"/>
-					<menuitem id="insert-data-uri" label="&dataURI;" accesskey="&dataURI.ak;" oncommand="insertDataURI()"/>
-				</menupopup>
-			</button>
-			<button id="itsalltext" label="&openintexternaleditor;" accesskey="&openintexternaleditor.ak;" itsalltext-control="internal-code" itsalltext-extension=".css" style="display: none;"/>
-			<checkbox id="wrap-lines" label="&wraplines;" accesskey="&wraplines.ak;" oncommand="changeWordWrap(this.checked)" style="display: none"/>
-		</hbox>
+		<vbox class="theme-toolbar">
+			<hbox>
+				<button class="devtools-toolbarbutton" id="save-button" label="&save;" accesskey="&save.ak;" oncommand="save()"/>
+				<button class="devtools-toolbarbutton" id="preview-button" label="&preview;" accesskey="&preview.ak;" oncommand="preview()"/>
+				<button class="devtools-toolbarbutton" id="check-for-errors-button" label="&checkforerrors;" accesskey="&checkforerrors.ak;" oncommand="checkForErrors()"/>
+			</hbox>
+			<grid>
+				<columns>
+					<column/>
+					<column flex="1"/>
+				</columns>
+				<rows>
+					<row align="center">
+						<label control="name" accesskey="&name.ak;">&name;</label>
+						<textbox class="devtools-textinput" id="name" flex="1"/>
+					</row>
+				</rows>
+			</grid>
+			<textbox class="devtools-textinput" id="update-url" style="display:none"/>
+			<hbox id="editor-tools">
+				<button class="devtools-toolbarbutton" label="&insert;" accesskey="&insert.ak;" type="menu">
+					<menupopup>
+						<menuitem id="insert-html" label="&htmlnamespace;" accesskey="&htmlnamespace.ak;" oncommand="insertCodeAtStart(CSSHTMLNS);"/>
+						<menuitem id="insert-xul" label="&xulnamespace;" accesskey="&xulnamespace.ak;" oncommand="insertCodeAtStart(CSSXULNS);"/>
+						<menuitem id="insert-chrome-folder" label="&chromefolder;" accesskey="&chromefolder.ak;" oncommand="insertChromePath()"/>
+						<menuitem id="insert-data-uri" label="&dataURI;" accesskey="&dataURI.ak;" oncommand="insertDataURI()"/>
+					</menupopup>
+				</button>
+				<button id="itsalltext" label="&openintexternaleditor;" accesskey="&openintexternaleditor.ak;" itsalltext-control="internal-code" itsalltext-extension=".css" style="display: none;"/>
+				<checkbox id="wrap-lines" label="&wraplines;" accesskey="&wraplines.ak;" oncommand="changeWordWrap(this.checked)" style="display: none"/>
+			</hbox>
+		</vbox>
+		<separator orient="horizontal" class="devtools-horizontal-splitter"/>
 		<deck id="editor" flex="1">
 			<textbox id="internal-code" multiline="true" flex="1"/>
 			<hbox id="sourceeditor" flex="1"/>
 		</deck>
-		<findbar id="findbar" browserid="internal-code"/>
-		<vbox id="errors" style="display:none;"/>
+		<findbar class="theme-toolbar" id="findbar" browserid="internal-code"/>
+		<vbox class="theme-toolbar" id="errors" style="display:none;"/>
 	</vbox>
 
 </window>
