@@ -48,12 +48,7 @@
 	<commandset id="editMenuCommands"/>
 
 	<vbox id="main-area" flex="1">
-		<vbox class="theme-toolbar">
-			<hbox>
-				<button class="devtools-toolbarbutton" id="save-button" label="&save;" accesskey="&save.ak;" oncommand="save()"/>
-				<button class="devtools-toolbarbutton" id="preview-button" label="&preview;" accesskey="&preview.ak;" oncommand="preview()"/>
-				<button class="devtools-toolbarbutton" id="check-for-errors-button" label="&checkforerrors;" accesskey="&checkforerrors.ak;" oncommand="checkForErrors()"/>
-			</hbox>
+		<vbox class="theme-toolbar" id="toolbox">
 			<grid>
 				<columns>
 					<column/>
@@ -68,6 +63,12 @@
 			</grid>
 			<textbox class="devtools-textinput" id="update-url" style="display:none"/>
 			<hbox id="editor-tools">
+				<button class="devtools-toolbarbutton" id="save-button" label="&save;" accesskey="&save.ak;" oncommand="save()"/>
+				<button class="devtools-toolbarbutton" id="preview-button" label="&preview;" accesskey="&preview.ak;" oncommand="preview()"/>
+				<button class="devtools-toolbarbutton" id="check-for-errors-button" label="&checkforerrors;" accesskey="&checkforerrors.ak;" oncommand="checkForErrors()"/>
+
+				<vbox class="devtools-separator"></vbox>
+
 				<button class="devtools-toolbarbutton" label="&insert;" accesskey="&insert.ak;" type="menu">
 					<menupopup>
 						<menuitem id="insert-html" label="&htmlnamespace;" accesskey="&htmlnamespace.ak;" oncommand="insertCodeAtStart(CSSHTMLNS);"/>

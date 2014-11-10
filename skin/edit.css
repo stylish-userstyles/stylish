@@ -17,6 +17,9 @@
 #findbar {
 	border-top: 0;
 }
+#toolbox {
+	padding: 5px 0;
+}
 #editor-tools {
 	margin-top: 3px;
 	padding-top: 2px;
@@ -32,4 +35,7 @@
 	border-radius: 2px !important;
 	border: 1px solid rgba(0,0,0,0.3) !important;
 	padding: 1px 5px !important;
+}
+.devtools-separator {
+	margin: 0 5px 0 4px !important;
 }
