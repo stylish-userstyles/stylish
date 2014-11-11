@@ -49,19 +49,6 @@
 
 	<vbox id="main-area" flex="1">
 		<vbox class="theme-toolbar" id="toolbox">
-			<grid>
-				<columns>
-					<column/>
-					<column flex="1"/>
-				</columns>
-				<rows>
-					<row align="center">
-						<label control="name" accesskey="&name.ak;">&name;</label>
-						<textbox class="devtools-textinput" id="name" flex="1"/>
-					</row>
-				</rows>
-			</grid>
-			<textbox class="devtools-textinput" id="update-url" style="display:none"/>
 			<hbox id="editor-tools">
 				<button class="devtools-toolbarbutton" id="save-button" label="&save;" accesskey="&save.ak;" oncommand="save()"/>
 				<button class="devtools-toolbarbutton" id="preview-button" label="&preview;" accesskey="&preview.ak;" oncommand="preview()"/>
@@ -80,6 +67,19 @@
 				<button id="itsalltext" label="&openintexternaleditor;" accesskey="&openintexternaleditor.ak;" itsalltext-control="internal-code" itsalltext-extension=".css" style="display: none;"/>
 				<checkbox id="wrap-lines" label="&wraplines;" accesskey="&wraplines.ak;" oncommand="changeWordWrap(this.checked)" style="display: none"/>
 			</hbox>
+			<grid>
+				<columns>
+					<column/>
+					<column flex="1"/>
+				</columns>
+				<rows>
+					<row align="center">
+						<label control="name" accesskey="&name.ak;">&name;</label>
+						<textbox class="devtools-textinput" id="name" flex="1"/>
+					</row>
+				</rows>
+			</grid>
+			<textbox class="devtools-textinput" id="update-url" style="display:none"/>
 		</vbox>
 		<separator orient="horizontal" class="devtools-horizontal-splitter"/>
 		<deck id="editor" flex="1">
