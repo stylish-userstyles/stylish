@@ -17,13 +17,6 @@
 #findbar {
 	border-top: 0;
 }
-#toolbox {
-	padding: 5px 0;
-}
-#editor-tools {
-	margin-top: 3px;
-	padding-top: 2px;
-}
 .devtools-horizontal-splitter {
 	/* Overriding global.css */
 	height: 3px !important;
@@ -38,4 +31,13 @@
 }
 .devtools-separator {
 	margin: 0 5px 0 4px !important;
+}
+.update-url-row {
+	display: none;
+}
+grid {
+	margin: 2px 0;
+}
+#editor-tools {
+	padding: 5px 0;
 }

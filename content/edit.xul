@@ -47,40 +47,42 @@
 
 	<commandset id="editMenuCommands"/>
 
-	<vbox id="main-area" flex="1">
-		<vbox class="theme-toolbar" id="toolbox">
-			<hbox id="editor-tools">
-				<button class="devtools-toolbarbutton" id="save-button" label="&save;" accesskey="&save.ak;" oncommand="save()"/>
-				<button class="devtools-toolbarbutton" id="preview-button" label="&preview;" accesskey="&preview.ak;" oncommand="preview()"/>
-				<button class="devtools-toolbarbutton" id="check-for-errors-button" label="&checkforerrors;" accesskey="&checkforerrors.ak;" oncommand="checkForErrors()"/>
+	<vbox id="main-area" flex="1" class="theme-toolbar">
+		<hbox id="editor-tools">
+			<button class="devtools-toolbarbutton" id="save-button" label="&save;" accesskey="&save.ak;" oncommand="save()"/>
+			<button class="devtools-toolbarbutton" id="preview-button" label="&preview;" accesskey="&preview.ak;" oncommand="preview()"/>
+			<button class="devtools-toolbarbutton" id="check-for-errors-button" label="&checkforerrors;" accesskey="&checkforerrors.ak;" oncommand="checkForErrors()"/>
 
-				<vbox class="devtools-separator"></vbox>
+			<vbox class="devtools-separator"></vbox>
 
-				<button class="devtools-toolbarbutton" label="&insert;" accesskey="&insert.ak;" type="menu">
-					<menupopup>
-						<menuitem id="insert-html" label="&htmlnamespace;" accesskey="&htmlnamespace.ak;" oncommand="insertCodeAtStart(CSSHTMLNS);"/>
-						<menuitem id="insert-xul" label="&xulnamespace;" accesskey="&xulnamespace.ak;" oncommand="insertCodeAtStart(CSSXULNS);"/>
-						<menuitem id="insert-chrome-folder" label="&chromefolder;" accesskey="&chromefolder.ak;" oncommand="insertChromePath()"/>
-						<menuitem id="insert-data-uri" label="&dataURI;" accesskey="&dataURI.ak;" oncommand="insertDataURI()"/>
-					</menupopup>
-				</button>
-				<button id="itsalltext" label="&openintexternaleditor;" accesskey="&openintexternaleditor.ak;" itsalltext-control="internal-code" itsalltext-extension=".css" style="display: none;"/>
-				<checkbox id="wrap-lines" label="&wraplines;" accesskey="&wraplines.ak;" oncommand="changeWordWrap(this.checked)" style="display: none"/>
-			</hbox>
-			<grid>
-				<columns>
-					<column/>
-					<column flex="1"/>
-				</columns>
-				<rows>
-					<row align="center">
-						<label control="name" accesskey="&name.ak;">&name;</label>
-						<textbox class="devtools-textinput" id="name" flex="1"/>
-					</row>
-				</rows>
-			</grid>
-			<textbox class="devtools-textinput" id="update-url" style="display:none"/>
-		</vbox>
+			<button class="devtools-toolbarbutton" label="&insert;" accesskey="&insert.ak;" type="menu">
+				<menupopup>
+					<menuitem id="insert-html" label="&htmlnamespace;" accesskey="&htmlnamespace.ak;" oncommand="insertCodeAtStart(CSSHTMLNS);"/>
+					<menuitem id="insert-xul" label="&xulnamespace;" accesskey="&xulnamespace.ak;" oncommand="insertCodeAtStart(CSSXULNS);"/>
+					<menuitem id="insert-chrome-folder" label="&chromefolder;" accesskey="&chromefolder.ak;" oncommand="insertChromePath()"/>
+					<menuitem id="insert-data-uri" label="&dataURI;" accesskey="&dataURI.ak;" oncommand="insertDataURI()"/>
+				</menupopup>
+			</button>
+			<button id="itsalltext" label="&openintexternaleditor;" accesskey="&openintexternaleditor.ak;" itsalltext-control="internal-code" itsalltext-extension=".css" style="display: none;"/>
+			<checkbox id="wrap-lines" label="&wraplines;" accesskey="&wraplines.ak;" oncommand="changeWordWrap(this.checked)" style="display: none"/>
+		</hbox>
+		<separator orient="horizontal" class="devtools-horizontal-splitter"/>
+		<grid>
+			<columns>
+				<column/>
+				<column flex="1"/>
+			</columns>
+			<rows>
+				<row align="center">
+					<label control="name" accesskey="&name.ak;">&name;</label>
+					<textbox class="devtools-textinput" id="name" flex="1"/>
+				</row>
+				<row align="center" class="update-url-row">
+					<label control="update-url">Update URL</label>
+					<textbox class="devtools-textinput" id="update-url" flex="1"/>
+				</row>
+			</rows>
+		</grid>
 		<separator orient="horizontal" class="devtools-horizontal-splitter"/>
 		<deck id="editor" flex="1">
 			<textbox id="internal-code" multiline="true" flex="1"/>
