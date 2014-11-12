@@ -3,8 +3,8 @@
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Для информации о том, как использовать Stylish, посетите">
 <!ENTITY nostylesend ".">
-<!ENTITY sortenabled "Состоянию">
-<!ENTITY sortname "Названию">
-<!ENTITY sorttype "Типу">
+<!ENTITY sortenabled "Состояние">
+<!ENTITY sortname "Название">
+<!ENTITY sorttype "Тип">
 <!ENTITY writenew "Создать новый стиль">
 <!ENTITY writenew.ak "С">

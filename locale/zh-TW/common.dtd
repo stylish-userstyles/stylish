@@ -1,5 +1,5 @@
-<!ENTITY editstyle "編輯(E)">
+<!ENTITY editstyle "編輯">
 <!ENTITY editstyle.ak "E">
-<!ENTITY reportstyle "報告樣式已失效">
-<!ENTITY reportedstyle "已報告樣式。">
+<!ENTITY reportstyle "回報樣式已失效">
+<!ENTITY reportedstyle "已回報樣式。">
 <!ENTITY stylish "Stylish">

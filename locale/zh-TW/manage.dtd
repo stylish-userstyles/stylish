@@ -6,5 +6,5 @@
 <!ENTITY sortenabled "啟用">
 <!ENTITY sortname "名稱">
 <!ENTITY sorttype "類型">
-<!ENTITY writenew "編寫新樣式(W)">
+<!ENTITY writenew "編寫新樣式">
 <!ENTITY writenew.ak "W">

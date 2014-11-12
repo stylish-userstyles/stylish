@@ -1,5 +1,5 @@
-<!ENTITY checkforerrors "Check for Errors">
-<!ENTITY checkforerrors.ak "C">
+<!ENTITY checkforerrors "Найти ошибки">
+<!ENTITY checkforerrors.ak "Н">
 <!ENTITY chromefolder "Путь к папке Chrome">
 <!ENTITY chromefolder.ak "П">
 <!ENTITY dataURI "Данные в формате URI...">

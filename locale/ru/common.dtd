@@ -1,5 +1,5 @@
 <!ENTITY editstyle "Правка">
 <!ENTITY editstyle.ak "П">
-<!ENTITY reportstyle "Report style as broken">
-<!ENTITY reportedstyle "Style reported.">
+<!ENTITY reportstyle "Сообщить о неработающем стиле">
+<!ENTITY reportedstyle "Сообщение отправлено.">
 <!ENTITY stylish "Stylish">
