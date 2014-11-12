@@ -85,7 +85,8 @@ function init() {
 		if (Editor && ("modes" in Editor)) {
 			document.getElementById("itsalltext").style.visibility = "hidden";
 			var extraKeys = {};
-			extraKeys[Editor.accel(document.getElementById("save-button").getAttribute("accesskey"))] = save;
+			// This needs to be uppercase to work, some locales use lowercase to match a character in the label
+			extraKeys[Editor.accel(document.getElementById("save-button").getAttribute("accesskey").toUpperCase())] = save;
 			sourceEditor = new Editor({
 				mode: Editor.modes.css,
 				lineNumbers: true,
