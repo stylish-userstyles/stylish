@@ -50,7 +50,7 @@
 	<vbox id="main-area" flex="1" class="theme-toolbar">
 		<hbox id="editor-tools">
 			<button class="devtools-toolbarbutton" id="save-button" label="&save;" accesskey="&save.ak;" oncommand="save()"/>
-			<button class="devtools-toolbarbutton" id="preview-button" label="&preview;" accesskey="&preview.ak;" oncommand="preview()"/>
+			<button class="devtools-toolbarbutton" id="preview-button" label="&preview;" accesskey="&preview.ak;" oncommand="checkForErrors();preview()"/>
 			<button class="devtools-toolbarbutton" id="check-for-errors-button" label="&checkforerrors;" accesskey="&checkforerrors.ak;" oncommand="checkForErrors()"/>
 
 			<vbox class="devtools-separator"></vbox>
