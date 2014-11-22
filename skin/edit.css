@@ -32,6 +32,9 @@
 .devtools-separator {
 	margin: 0 5px 0 4px !important;
 }
+.devtools-toolbarbutton[disabled="true"] {
+	opacity: 0.2;
+}
 .update-url-row {
 	display: none;
 }
