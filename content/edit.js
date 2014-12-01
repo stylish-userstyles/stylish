@@ -22,10 +22,8 @@ const CSSHTMLNS = "@namespace url(http://www.w3.org/1999/xhtml);";
 // Only do this if we're opened with openDialog, in which case window.opener is set
 if (window.opener) {
 	var windowPersist = JSON.parse(prefs.getCharPref("editorWindowPersist"));
-	var de = document.documentElement;
-	de.width = windowPersist.width;
-	de.height = windowPersist.height;
 	window.moveTo(windowPersist.screenX, windowPersist.screenY);
+	window.resizeTo(windowPersist.width, windowPersist.height);
 	if (windowPersist.windowState == 1) {
 		//https://bugzilla.mozilla.org/show_bug.cgi?id=1079962
 		window.addEventListener("load", function() {
@@ -45,8 +43,8 @@ if (window.opener) {
 			// this can fail if this is in a tab. if so, don't save.
 			try {
 				windowPersist = {
-					width: document.width,
-					height: document.height,
+					width: window.outerWidth,
+					height: window.outerHeight,
 					screenX: window.screenX,
 					screenY: window.screenY
 				}
