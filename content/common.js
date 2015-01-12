@@ -277,11 +277,11 @@ var stylishCommon = {
 			if (style.name) {
 				var installPrompt = installStrings.formatStringFromName("installintro", [style.name], 1);
 				// title is read from entity in overlay-mobile.xul, but not available in manage.html (which is not localized anyway!)
-				result = promptService.confirm(window, promptTitle, installPrompt);
+				result = promptService.confirm(win, promptTitle, installPrompt);
 			} else {
 				var installPrompt = "Give the style from '" + style.idUrl + "' a name.";
 				var name = {value: ""};
-				result = promptService.prompt(window, promptTitle, installPrompt, name, null, {});
+				result = promptService.prompt(win, promptTitle, installPrompt, name, null, {});
 				if (result) {
 					style.name = name.value;
 				}
@@ -290,7 +290,7 @@ var stylishCommon = {
 				style.enabled = true;
 				style.save();
 				if (params.installPingURL) {
-					var req = new XMLHttpRequest();
+					var req = new win.XMLHttpRequest();
 					req.open("GET", params.installPingURL, true);
 					req.send(null);
 				}
