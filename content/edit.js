@@ -87,7 +87,7 @@ function init() {
 			var extraKeys = {};
 			// This needs to be uppercase to work, some locales use lowercase to match a character in the label
 			extraKeys[Editor.accel(document.getElementById("save-button").getAttribute("accesskey").toUpperCase())] = save;
-			extraKeys["F3"] = "find";
+			extraKeys["F3"] = "findNext";
 			extraKeys["Shift-F3"] = "findPrev";
 			sourceEditor = new Editor({
 				mode: Editor.modes.css,
