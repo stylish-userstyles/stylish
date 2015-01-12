@@ -86,7 +86,8 @@ Style.prototype = {
 	findForUrl: function(url, includeGlobal, mode, count) {
 		var styles = this.list(mode, {});
 		styles = styles.filter(function(style) {
-			return style.appliesToUrl(url) || (includeGlobal && style.getTypes({}).indexOf("global") > -1);
+			var isGlobal = style.getTypes({}).indexOf("global") > -1
+			return includeGlobal ? (isGlobal || style.appliesToUrl(url)) : (!isGlobal && style.appliesToUrl(url));
 		});
 		styles.sort(this.nameSort);
 		count.value = styles.length;
