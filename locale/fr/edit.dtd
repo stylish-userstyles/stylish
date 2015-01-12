@@ -1,5 +1,5 @@
-<!ENTITY checkforerrors "Check for Errors">
-<!ENTITY checkforerrors.ak "C">
+<!ENTITY checkforerrors "Vérifier les erreurs">
+<!ENTITY checkforerrors.ak "V">
 <!ENTITY chromefolder "Chemin vers le répertoire Chrome">
 <!ENTITY chromefolder.ak "C">
 <!ENTITY dataURI "URI des données…">
@@ -13,7 +13,7 @@
 <!ENTITY openintexternaleditor "Ouvrir dans un éditeur dédié">
 <!ENTITY openintexternaleditor.ak "O">
 <!ENTITY preview "Aperçu">
-<!ENTITY preview.ak "p">
+<!ENTITY preview.ak "A">
 <!ENTITY save "Enregistrer">
 <!ENTITY save.ak "E">
 <!ENTITY wraplines "Aller à la ligne">
