@@ -67,7 +67,8 @@ var stylishCommon = {
 			var tbWin = tbEnumerator.getNext();
 			var browsers = tbWin.gBrowser.browsers;
 			for (var i = 0; i < browsers.length; i++) {
-				if (browsers[i].contentDocument.documentElement.getAttribute("windowtype") == name) {
+				var de = browsers[i].contentDocument.documentElement;
+				if (de && de.getAttribute("windowtype") == name) {
 					tbWin.gBrowser.selectTabAtIndex(i);
 					tbWin.focus();
 					return true;
