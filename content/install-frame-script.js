@@ -93,3 +93,20 @@ function dispatchEvent(type, data) {
 	var stylishEvent = new content.CustomEvent(type, {detail: data});
 	content.document.dispatchEvent(stylishEvent);
 }
+
+addMessageListener("stylish:page-info", function(message) {
+	sendAsyncMessage(message.data.reply, {
+		namespace: content.document.documentElement.namespaceURI,
+		contentType: content.document.contentType,
+		url: content.document.location.href
+	});
+});
+
+addMessageListener("stylish:page-content", function(message) {
+	sendAsyncMessage(message.data.reply, {
+		namespace: content.document.documentElement.namespaceURI,
+		contentType: content.document.contentType,
+		url: content.document.location.href,
+		content: content.document.body.textContent
+	});
+});

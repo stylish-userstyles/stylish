@@ -113,7 +113,7 @@ var stylishOverlay = {
 		},
 		onLocationChange: function(progress, request, uri) {
 			// only if it's the current tab
-			if (uri && uri.spec == content.document.location.href) {
+			if (uri && uri.spec == stylishOverlay.currentURI.spec) {
 				stylishOverlay.urlUpdated();
 			}
 		},
@@ -128,13 +128,14 @@ var stylishOverlay = {
 	lastUrl: null,
 
 	urlUpdated: function() {
-		if (stylishOverlay.lastUrl == content.document.location.href)
+		var uri = stylishOverlay.currentURI;
+		if (stylishOverlay.lastUrl == uri.spec)
 			return;
-		stylishOverlay.lastUrl = content.document.location.href;
-		document.documentElement.setAttribute("stylish-url", content.document.location.href);
+		stylishOverlay.lastUrl = uri.spec;
+		document.documentElement.setAttribute("stylish-url", uri.spec);
 		try {
-			if (content.document.domain)
-				document.documentElement.setAttribute("stylish-domain", content.document.domain);
+			if (uri.host)
+				document.documentElement.setAttribute("stylish-domain", uri.host);
 			else
 				document.documentElement.setAttribute("stylish-domain", "");
 		} catch (ex) {
@@ -171,7 +172,7 @@ var stylishOverlay = {
 			return style.enabled;
 		}
 
-		var siteStyles = stylishOverlay.service.findForUrl(content.location.href, false, 0, {}).filter(isEnabled).length;
+		var siteStyles = stylishOverlay.service.findForUrl(stylishOverlay.currentURI.spec, false, 0, {}).filter(isEnabled).length;
 
 		if (stylishOverlay.globalCount == null)
 			stylishOverlay.globalCount = stylishOverlay.service.findByMeta("type", "global", 0, {}).filter(isEnabled).length;
@@ -201,11 +202,11 @@ var stylishOverlay = {
 
 		var domain = null;
 		try {
-			domain = content.document.domain;
+			domain = stylishOverlay.currentURI.host;
 		} catch (ex) {}
 		if (domain) {
 			var domains = [];
-			stylishOverlay.getDomainList(content.document.domain, domains);
+			stylishOverlay.getDomainList(domain, domains);
 			for (var i = 0; i < domains.length; i++) {
 				popup.appendChild(stylishOverlay.getDomainMenuItem(domains[i]));
 			}
@@ -229,6 +230,14 @@ var stylishOverlay = {
 		if (popup.triggerNode) {
 			popup.triggerNode.setAttribute("open", "true");
 		}
+
+		// You can only add CSS files. Assume it's not CSS to avoid the item showing then disappearing.
+		document.getElementById("stylish-add-file").style.display = "none";
+		stylishOverlay.getFromContent("stylish:page-info", function(message) {
+			if (message.data.contentType == "text/css") {
+				document.getElementById("stylish-add-file").style.display = "-moz-box";
+			}
+		});
 
 		// Add the passed styles as menuitems under the passed parent, with startIndex indicating the number of menuitems already added (for creating an accesskey)
 		function addStyleMenuItems(styles, parent, startIndex) {
@@ -280,7 +289,7 @@ var stylishOverlay = {
 		var _stylesForCurrentSite = null;
 		function stylesForCurrentSite() {
 			if (_stylesForCurrentSite == null) {
-				_stylesForCurrentSite = stylishOverlay.service.findForUrl(content.location.href, false, stylishOverlay.service.REGISTER_STYLE_ON_CHANGE, {});
+				_stylesForCurrentSite = stylishOverlay.service.findForUrl(stylishOverlay.currentURI.spec, false, stylishOverlay.service.REGISTER_STYLE_ON_CHANGE, {});
 			}
 			return _stylesForCurrentSite;
 		}
@@ -360,8 +369,6 @@ var stylishOverlay = {
 			addStylesToMainMenu(appStyles())
 		}
 
-		//you can only add CSS files
-		document.getElementById("stylish-add-file").style.display = (content.document.contentType == "text/css") ? "-moz-box" : "none";
 		var stylesOn = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).getBoolPref("extensions.stylish.styleRegistrationEnabled");
 		document.getElementById("stylish-turn-on").style.display = stylesOn ? "none" : "-moz-box";
 		document.getElementById("stylish-turn-off").style.display = stylesOn ? "-moz-box" : "none";
@@ -420,7 +427,7 @@ var stylishOverlay = {
 	},
 
 	findStyle: function(e) {
-		openUILinkIn(stylishOverlay.URL_STRINGS.getFormattedString("findstylesforthissiteurl", [encodeURIComponent(content.location.href)]), "tab");
+		openUILinkIn(stylishOverlay.URL_STRINGS.getFormattedString("findstylesforthissiteurl", [encodeURIComponent(stylishOverlay.currentURI.spec)]), "tab");
 	},
 
 	menuItemClassesToClear: ["stylish-menuseparator", "style-menu-item", "no-style-menu-item"],
@@ -437,10 +444,10 @@ var stylishOverlay = {
 	},
 
 	addSite: function() {
-		var url = content.location.href;
-		var namespaceURI = content.document.documentElement.namespaceURI;
-		var code = "@namespace url(" + namespaceURI + ");\n\n@-moz-document url(\"" + url + "\") {\n\n}";
-		stylishOverlay.addCode(code);
+		stylishOverlay.getFromContent("stylish:page-info", function(message) {
+			var code = "@namespace url(" + message.data.namespace + ");\n\n@-moz-document url(\"" + message.data.url + "\") {\n\n}";
+			stylishOverlay.addCode(code);
+		});
 	},
 
 	addDomain: function(domain) {
@@ -505,8 +512,23 @@ var stylishOverlay = {
 	},
 
 	installFromFile: function(event) {
-		var doc = content.document;
-		stylishCommon.installFromString(doc.body.textContent, doc.location.href);
+		stylishOverlay.getFromContent("stylish:page-content", function(message) {
+			stylishCommon.installFromString(message.data.content, message.data.url);
+		});
+	},
+
+	get currentURI() {
+		return gBrowser.currentURI;
+	},
+
+	getFromContent: function(contentMessage, callback) {
+		var replyName = "stylish:" + Date.now();
+		var mm = gBrowser.selectedBrowser.messageManager;
+		mm.addMessageListener(replyName, function(message) {
+			mm.removeMessageListener(replyName, callback);
+			callback(message);
+		});
+		mm.sendAsyncMessage(contentMessage, {reply: replyName});
 	}
 };
 

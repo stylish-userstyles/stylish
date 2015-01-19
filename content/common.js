@@ -67,11 +67,14 @@ var stylishCommon = {
 			var tbWin = tbEnumerator.getNext();
 			var browsers = tbWin.gBrowser.browsers;
 			for (var i = 0; i < browsers.length; i++) {
-				var de = browsers[i].contentDocument.documentElement;
-				if (de && de.getAttribute("windowtype") == name) {
-					tbWin.gBrowser.selectTabAtIndex(i);
-					tbWin.focus();
-					return true;
+				// We can't read into remote documents easily. We only work with about:, anyway.
+				if (browsers[i].currentURI.schemeIs("about")) {
+					var de = browsers[i].contentDocument.documentElement;
+					if (de && de.getAttribute("windowtype") == name) {
+						tbWin.gBrowser.selectTabAtIndex(i);
+						tbWin.focus();
+						return true;
+					}
 				}
 			}
 		}
