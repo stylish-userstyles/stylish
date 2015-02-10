@@ -7,7 +7,7 @@ try {
 	// file not available...
 }
 
-var saved = false;
+var skipConfirmClosePrompt = false;
 var style = null;
 var strings = null;
 var codeE, nameE, updateUrlE;
@@ -244,6 +244,7 @@ function save() {
 
 	if (code != initialCode) {
 		style.code = code;
+		initialCode = style.code
 	} else {
 		// we don't want to change the code, but we want to undo any preview
 		style.revert();
@@ -254,7 +255,6 @@ function save() {
 	var newStyle = !style.id;
 
 	style.save();
-	saved = true;
 
 	if (newStyle) {
 		location.href = location.href.split("?")[0] + "?id=" + style.id;
@@ -645,8 +645,7 @@ var deleteObserver = {
 		if (subject.id == style.id) {
 			style.enabled = false;
 			style.setPreview(false);
-			// just so the user is not prompted to save
-			saved = true;
+			skipConfirmClosePrompt = true;
 			window.close();
 		}
 	}
@@ -657,7 +656,7 @@ Components.classes["@mozilla.org/observer-service;1"].getService(Components.inte
 // This is firing twice in some cases like on Seamonkey, so don't do it if we've shown it in the past 5 seconds.
 var lastBeforeUnload = null;
 window.addEventListener("beforeunload", function(event) {
-	if (!saved && initialCode != codeElementWrapper.value && (lastBeforeUnload == null || Date.now() - lastBeforeUnload > 5000)) {
+	if (!skipConfirmClosePrompt && initialCode != codeElementWrapper.value && (lastBeforeUnload == null || Date.now() - lastBeforeUnload > 5000)) {
 		lastBeforeUnload = Date.now();
 		// Firefox will show its own stuff, so the text doesn't matter as long as it's text
 		event.returnValue = "You're going to lose your changes - close anyway?";
@@ -673,7 +672,7 @@ window.addEventListener("close", function(event) {
 window.addEventListener("unload", function(event) {
 	//turn off preview!
 	style.setPreview(false);
-	if (!saved) {
+	if (initialCode != codeElementWrapper.value) {
 		style.revert();
 	}
 });
