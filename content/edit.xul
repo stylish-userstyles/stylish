@@ -61,6 +61,11 @@
 					<menuitem id="insert-xul" label="&xulnamespace;" accesskey="&xulnamespace.ak;" oncommand="insertCodeAtStart(CSSXULNS);"/>
 					<menuitem id="insert-chrome-folder" label="&chromefolder;" accesskey="&chromefolder.ak;" oncommand="insertChromePath()"/>
 					<menuitem id="insert-data-uri" label="&dataURI;" accesskey="&dataURI.ak;" oncommand="insertDataURI()"/>
+					<menuseparator/>
+					<menuitem id="insert-document-url" label="&docURL;" accesskey="&docURL.ak;" oncommand="insertCodeAtStart(MOZDOC_URL);"/>
+					<menuitem id="insert-document-url-prefix" label="&docUrlPrefix;" accesskey="&docUrlPrefix.ak;" oncommand="insertCodeAtStart(MOZDOC_URL_PREFIX);"/>
+					<menuitem id="insert-document-domain" label="&docDomain;" accesskey="&docDomain.ak;" oncommand="insertCodeAtStart(MOZDOC_DOMAIN);"/>
+					<menuitem id="insert-document-regexp" label="&docRegexp;" accesskey="&docRegexp.ak;" oncommand="insertCodeAtStart(MOZDOC_REGEXP);"/>
 				</menupopup>
 			</button>
 			<button id="itsalltext" label="&openintexternaleditor;" accesskey="&openintexternaleditor.ak;" itsalltext-control="internal-code" itsalltext-extension=".css" style="display: none;"/>

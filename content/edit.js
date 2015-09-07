@@ -17,6 +17,10 @@ var prefs = Services.prefs.getBranch("extensions.stylish.");
 
 const CSSXULNS = "@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);";
 const CSSHTMLNS = "@namespace url(http://www.w3.org/1999/xhtml);";
+const MOZDOC_URL = "@-moz-document url(http://www.w3.org/) {\n\n};\n";
+const MOZDOC_URL_PREFIX = "@-moz-document url-prefix(http://www.w3.org/Style/) {\n\n};\n";
+const MOZDOC_DOMAIN = "@-moz-document domain(mozilla.org) {\n\n};\n";
+const MOZDOC_REGEXP = "@-moz-document regexp(\"https:.*\") {\n\n};\n";
 
 // Because the edit windows have different URL, we need to do this ourselves to persist the position for all edit windows.
 // Only do this if we're opened with openDialog, in which case window.opener is set
