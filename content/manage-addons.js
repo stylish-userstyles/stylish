@@ -71,7 +71,7 @@ var stylishManageAddons = {
 stylishManageAddons._createItem = createItem,
 createItem = function(o, aIsInstall, aIsRemote) {
 	var item = stylishManageAddons._createItem(o, aIsInstall, aIsRemote);
-	if (item.mAddon.type == "userstyle") {
+	if ("mAddon" in item && item.mAddon.type == "userstyle") {
 		item.setAttribute("styleTypes", item.mAddon.styleTypes);
 		item.setAttribute("reportable", item.mAddon.style.idUrl == null ? false : (item.mAddon.style.idUrl.indexOf("http://userstyles.org/") == 0));
 	}
