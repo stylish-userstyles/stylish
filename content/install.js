@@ -1,3 +1,5 @@
+"use strict";
+
 var style, strings, nameElement;
 var installPingURL = null;
 var installCallback = null;

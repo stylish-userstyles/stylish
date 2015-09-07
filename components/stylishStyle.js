@@ -1,3 +1,5 @@
+"use strict";
+
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 
 function Style() {
@@ -136,7 +138,7 @@ Style.prototype = {
 		// everything up to the first regex character
 		var re = /[\.\(\)\[\]]/g;
 		var match;
-		while (match = re.exec(r)) {
+		while ((match = re.exec(r)) !== null) {
 			if (r[match.index - 1] != "\\") {
 				break;
 			}
@@ -461,7 +463,7 @@ Style.prototype = {
 
 		//if we have a url for a hash, use that
 		if (this.md5Url) {
-			function handleMd5(text) {
+			var handleMd5 = function (text) {
 				if (text.length != 32) {
 					Components.utils.reportError("Could not update '" + that.name + "' - '" + that.md5Url + "' did not return a md5 hash.");
 					notifyDone("no-update-available");
@@ -474,7 +476,7 @@ Style.prototype = {
 			this.download(this.md5Url, handleMd5, handleFailure);
 		//otherwise use the update URL which makes us download the full code
 		} else if (this.updateUrl) {
-			function handleUpdateUrl(text, contentType) {
+			var handleUpdateUrl = function (text, contentType) {
 				if (contentType != "text/css") {
 					Components.utils.reportError("Could not update '" + that.name + "' - '" + that.updateUrl + "' returned content type '" + contentType + "'.");
 					notifyDone("no-update-available");
@@ -800,12 +802,12 @@ Style.prototype = {
 			closeConnection = true;
 		}
 		var statement = connection.createStatement(sql);
-		for (i in parameters) {
+		for (var i in parameters) {
 			this.bind(statement, i, parameters[i]);
 		}
 		try {
 			var that = this;
-			function e(name) {
+			var e = function (name) {
 				return that.extract(statement, name);
 			};
 			var styles = [];

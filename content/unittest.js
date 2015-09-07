@@ -1,3 +1,5 @@
+"use strict";
+
 function AssertionFailure(message) {
 	this.message = message;
 }

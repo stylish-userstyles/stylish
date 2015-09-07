@@ -1,3 +1,5 @@
+"use strict";
+
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 var Style = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
 var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);

@@ -1,3 +1,5 @@
+"use strict";
+
 var EXPORTED_SYMBOLS = ["stylishFrameUtils"];
 
 /* Functions to be used by both frame and chrome scripts */

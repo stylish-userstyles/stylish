@@ -1,3 +1,5 @@
+"use strict";
+
 var prefService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).QueryInterface(Components.interfaces.nsIPrefBranch);
 if (!prefService.getBoolPref("extensions.stylish.promptOnClear") || confirm("Are you sure you want to delete all Stylish styles?")) {
 	var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);

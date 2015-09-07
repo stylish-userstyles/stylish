@@ -1,3 +1,5 @@
+"use strict";
+
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 try {
 	Components.utils.import("resource://gre/modules/AddonManager.jsm");
@@ -368,7 +370,7 @@ observerService.addObserver(addonsObserver, "stylish-style-delete", false);
 Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).QueryInterface(Components.interfaces.nsIPrefBranch).addObserver("extensions.stylish.styleRegistrationEnabled", turnOnOffObserver, false);
 
 function wireUpMessaging() {
-	Components.utils.import("chrome://stylish/content/common.js", this);
+	Components.utils.import("chrome://stylish/content/common.js");
 	var service = Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle);
 	var STRINGS = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://stylish/locale/overlay.properties");
 

@@ -1,3 +1,5 @@
+"use strict";
+
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
 var require = null;
@@ -129,6 +131,7 @@ function initStyle() {
 	var code = null;
 	var urlParts = location.href.split("?");
 	if (urlParts.length > 1) {
+        let params;
 		params = urlParts[1].split("&");
 		params.forEach(function(param) {
 			var kv = param.split("=");
@@ -306,12 +309,12 @@ function checkForErrors() {
 				
 				// ignore other crap
 				if (error.category == "CSS Parser" && error.sourceName == "about:blank") {
-					var message = error.lineNumber + ":" + error.columnNumber + " " + error.errorMessage;
+					var newmessage = error.lineNumber + ":" + error.columnNumber + " " + error.errorMessage;
 					// don't duplicate
-					if (currentMessages.indexOf(message) == -1) {
-						currentMessages.push(message);
+					if (currentMessages.indexOf(newmessage) == -1) {
+						currentMessages.push(newmessage);
 						var label = document.createElementNS(stylishCommon.XULNS, "label");
-						label.appendChild(document.createTextNode(message));
+						label.appendChild(document.createTextNode(newmessage));
 						label.addEventListener("click", function() {goToLine(error.lineNumber, error.columnNumber) }, false);
 						errors.appendChild(label);
 					}
@@ -404,7 +407,7 @@ function insertDataURI() {
 	var file = fp.file;
 	var contentType = cc["@mozilla.org/mime;1"].getService(ci.nsIMIMEService).getTypeFromFile(file);
 	var inputStream = cc["@mozilla.org/network/file-input-stream;1"].createInstance(ci.nsIFileInputStream);
-	inputStream.init(file, 0x01, 0600, 0);
+	inputStream.init(file, parseInt("01", 16), parseInt("0600", 8), 0);
 	var stream = cc["@mozilla.org/binaryinputstream;1"].createInstance(ci.nsIBinaryInputStream);
 	stream.setInputStream(inputStream);
 	var encoded = btoa(stream.readBytes(stream.available()));

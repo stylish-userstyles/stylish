@@ -1,3 +1,5 @@
+"use strict";
+
 var stylishOverlay = {
 	service: Components.classes["@userstyles.org/style;1"].getService(Components.interfaces.stylishStyle),
 	styleMenuItemTemplate: null,
