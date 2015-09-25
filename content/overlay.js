@@ -28,11 +28,6 @@ var stylishOverlay = {
 					navbar.currentSet = newCurrentSet; // for immediate display
 					navbar.setAttribute("currentset", newCurrentSet); // for persisting
 					document.persist(navbar.id, "currentset");
-					try {
-						BrowserToolboxCustomizeDone(true);
-					} catch (e) {
-						Components.utils.reportError(e);
-					}
 				}
 				prefService.setIntPref("extensions.stylish.firstRun", 3);
 		}
