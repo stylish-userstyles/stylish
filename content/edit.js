@@ -74,10 +74,14 @@ function init() {
 		// sourceeditor, firefox 27+
 		let Editor = null;
 		if (require) {
-			try {
-				Editor = require("devtools/sourceeditor/editor");
+			try { // for Firefox 44 and later, bug 912121
+				Editor = require("devtools/client/sourceeditor/editor")
 			} catch (ex) {
-				//unavailable
+				try { // for Firefox 43 and earlier
+					Editor = require("devtools/sourceeditor/editor");
+				} catch (ex) {
+					//Components.utils.reportError(ex) //unavailable
+				}
 			}
 		}
 		if (Editor && ("modes" in Editor)) {
