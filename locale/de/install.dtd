@@ -1,6 +1,6 @@
-<!ENTITY entername "Bitte geben Sie einen Namen für diesen Stil ein:">
+<!ENTITY entername "Diesem Style einen Namen geben:">
 <!ENTITY install "Installieren">
 <!ENTITY install.ak "I">
 <!ENTITY preview "Vorschau">
-<!ENTITY preview.ak "v">
-<!ENTITY title "Benutzerstil installieren">
+<!ENTITY preview.ak "V">
+<!ENTITY title "Benutzer-Style installieren">

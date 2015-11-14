@@ -9,9 +9,11 @@ overlay chrome://inspector/content/viewers/dom/dom.xul	chrome://stylish/content/
 overlay	chrome://navigator/content/navigator.xul	chrome://stylish/content/overlay.xul
 overlay chrome://messenger/content/mailWindowOverlay.xul	chrome://stylish/content/overlay.xul
 
+locale	stylish	ar	locale/ar/
 locale	stylish	cs	locale/cs/
 locale	stylish	da	locale/da/
 locale	stylish	de	locale/de/
+locale	stylish	el	locale/el/
 locale	stylish	en-US	locale/en-US/
 locale	stylish	es-AR	locale/es-AR/
 locale	stylish	es-ES	locale/es-ES/
@@ -32,6 +34,7 @@ locale	stylish	ro	locale/ro/
 locale	stylish	ru	locale/ru/
 locale	stylish	sr	locale/sr/
 locale	stylish	sv-SE	locale/sv-SE/
+locale	stylish	tr	locale/tr/
 locale	stylish	uk	locale/uk/
 locale	stylish	vi	locale/vi/
 locale	stylish	zh-CN	locale/zh-CN/

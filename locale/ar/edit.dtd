@@ -1,0 +1,22 @@
+<!ENTITY checkforerrors "التحقق من وجود أخطاء">
+<!ENTITY checkforerrors.ak "C">
+<!ENTITY chromefolder "مسار مجلد كروم">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "بيانات URI…">
+<!ENTITY dataURI.ak "D">
+<!ENTITY htmlnamespace "HTML مساحة الاسم افتراضياً">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "ادراج">
+<!ENTITY insert.ak "I">
+<!ENTITY name "الاسم">
+<!ENTITY name.ak "n">
+<!ENTITY openintexternaleditor "فتح في محرر خارجي">
+<!ENTITY openintexternaleditor.ak "O">
+<!ENTITY preview "عرض">
+<!ENTITY preview.ak "P">
+<!ENTITY save "حفظ">
+<!ENTITY save.ak "S">
+<!ENTITY wraplines "لف الخطوط">
+<!ENTITY wraplines.ak "W">
+<!ENTITY xulnamespace "XUL مساحة الاسم افتراضياً">
+<!ENTITY xulnamespace.ak "X">

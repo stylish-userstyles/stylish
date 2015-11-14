@@ -1,6 +1,6 @@
-<!ENTITY checkforerrors "Check for Errors">
-<!ENTITY checkforerrors.ak "C">
-<!ENTITY chromefolder "Chrome-mappens sökväg">
+<!ENTITY checkforerrors "Leta efter fel">
+<!ENTITY checkforerrors.ak "L">
+<!ENTITY chromefolder "Chrome-katalogens sökväg">
 <!ENTITY chromefolder.ak "C">
 <!ENTITY dataURI "Data URI…">
 <!ENTITY dataURI.ak "D">

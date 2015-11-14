@@ -1,6 +1,6 @@
-<!ENTITY checkforerrors "Check for Errors">
-<!ENTITY checkforerrors.ak "C">
-<!ENTITY chromefolder "Chrome-Pfad">
+<!ENTITY checkforerrors "Auf Fehler prüfen">
+<!ENTITY checkforerrors.ak "P">
+<!ENTITY chromefolder "Chrome-Verzeichnis">
 <!ENTITY chromefolder.ak "C">
 <!ENTITY dataURI "Daten-URI…">
 <!ENTITY dataURI.ak "D">
@@ -11,7 +11,7 @@
 <!ENTITY name "Name">
 <!ENTITY name.ak "n">
 <!ENTITY openintexternaleditor "In externem Editor öffnen">
-<!ENTITY openintexternaleditor.ak "I">
+<!ENTITY openintexternaleditor.ak "E">
 <!ENTITY preview "Vorschau">
 <!ENTITY preview.ak "V">
 <!ENTITY save "Speichern">

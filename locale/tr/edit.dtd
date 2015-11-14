@@ -1,0 +1,22 @@
+<!ENTITY checkforerrors "Hataları Denetleyin">
+<!ENTITY checkforerrors.ak "H">
+<!ENTITY chromefolder "Chrome klasörünün yolu">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "Veri URI'si…">
+<!ENTITY dataURI.ak "V">
+<!ENTITY htmlnamespace "HTML ad alanı varsayılan">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "Girin">
+<!ENTITY insert.ak "G">
+<!ENTITY name "Ad">
+<!ENTITY name.ak "A">
+<!ENTITY openintexternaleditor "Dış düzenleyicide açın">
+<!ENTITY openintexternaleditor.ak "D">
+<!ENTITY preview "Önizleme">
+<!ENTITY preview.ak "Ö">
+<!ENTITY save "Kaydedin">
+<!ENTITY save.ak "K">
+<!ENTITY wraplines "Kaydırıcı hatları">
+<!ENTITY wraplines.ak "W">
+<!ENTITY xulnamespace "XUL ad alanı varsayılan">
+<!ENTITY xulnamespace.ak "X">

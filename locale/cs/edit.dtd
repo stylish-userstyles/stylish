@@ -1,5 +1,5 @@
 <!ENTITY checkforerrors "Zkontrolovat">
-<!ENTITY checkforerrors.ak "C">
+<!ENTITY checkforerrors.ak "k">
 <!ENTITY chromefolder "Cesta ke složce chrome">
 <!ENTITY chromefolder.ak "C">
 <!ENTITY dataURI "Datová URI...">
@@ -9,7 +9,7 @@
 <!ENTITY insert "Vložit">
 <!ENTITY insert.ak "V">
 <!ENTITY name "Název">
-<!ENTITY name.ak "n">
+<!ENTITY name.ak "z">
 <!ENTITY openintexternaleditor "Otevřít v externím editoru">
 <!ENTITY openintexternaleditor.ak "O">
 <!ENTITY preview "Náhled">
@@ -17,6 +17,6 @@
 <!ENTITY save "Uložit">
 <!ENTITY save.ak "U">
 <!ENTITY wraplines "Zalamovat řádky">
-<!ENTITY wraplines.ak "Z">
+<!ENTITY wraplines.ak "a">
 <!ENTITY xulnamespace "Jmenný prostor XUL jako výchozí">
 <!ENTITY xulnamespace.ak "X">

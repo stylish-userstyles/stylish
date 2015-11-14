@@ -3,16 +3,16 @@
 <!ENTITY cmd.enable.label "Aktivieren">
 <!ENTITY cmd.enable.accesskey "A">
 <!ENTITY cmd.disable.label "Deaktivieren">
-<!ENTITY cmd.disable.accesskey "a">
-<!ENTITY cmd.uninstall.label "Entfernen">
-<!ENTITY cmd.uninstall2.accesskey "E">
-<!ENTITY findstylebrowser "Stile für diese Seite suchen">
+<!ENTITY cmd.disable.accesskey "D">
+<!ENTITY cmd.uninstall.label "Deinstallieren">
+<!ENTITY cmd.uninstall2.accesskey "D">
+<!ENTITY findstylebrowser "Nach Styles für diese Seite suchen...">
 <!ENTITY findstylebrowser.ak "s">
-<!ENTITY managestyles "Stile verwalten…">
+<!ENTITY managestyles "Styles verwalten…">
 <!ENTITY managestyles.ak "v">
-<!ENTITY turnon "Alle Stile einschalten">
-<!ENTITY turnon.ak "A">
-<!ENTITY turnoff "Alle Stile ausschalten">
-<!ENTITY turnoff.ak "A">
-<!ENTITY writestyle "Stil erstellen">
-<!ENTITY writestyle.ak "e">
+<!ENTITY turnon "Alle Styles einschalten">
+<!ENTITY turnon.ak "e">
+<!ENTITY turnoff "Alle Styles ausschalten">
+<!ENTITY turnoff.ak "a">
+<!ENTITY writestyle "Neuen Style erstellen">
+<!ENTITY writestyle.ak "N">

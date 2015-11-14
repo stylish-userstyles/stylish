@@ -1,0 +1,18 @@
+<!ENTITY addfile "Dosyayı kurun…">
+<!ENTITY addfile.ak "D">
+<!ENTITY cmd.enable.label "Etkinleştirin">
+<!ENTITY cmd.enable.accesskey "E">
+<!ENTITY cmd.disable.label "Etkisizleştirin">
+<!ENTITY cmd.disable.accesskey "E">
+<!ENTITY cmd.uninstall.label "Kaldırın">
+<!ENTITY cmd.uninstall2.accesskey "K">
+<!ENTITY findstylebrowser "Bu sitede stil bulun…">
+<!ENTITY findstylebrowser.ak "B">
+<!ENTITY managestyles "Stilleri yönetin…">
+<!ENTITY managestyles.ak "S">
+<!ENTITY turnon "Tüm stilleri etkinleştirin">
+<!ENTITY turnon.ak "T">
+<!ENTITY turnoff "Tüm stilleri etkisizleştirin">
+<!ENTITY turnoff.ak "T">
+<!ENTITY writestyle "Yeni stil yazın">
+<!ENTITY writestyle.ak "Y">

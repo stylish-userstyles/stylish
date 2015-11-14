@@ -1,0 +1,18 @@
+<!ENTITY addfile "تثبيت الملف...">
+<!ENTITY addfile.ak "I">
+<!ENTITY cmd.enable.label "تمكين">
+<!ENTITY cmd.enable.accesskey "E">
+<!ENTITY cmd.disable.label "تعطيل">
+<!ENTITY cmd.disable.accesskey "D">
+<!ENTITY cmd.uninstall.label "الغاء التثبيت">
+<!ENTITY cmd.uninstall2.accesskey "U">
+<!ENTITY findstylebrowser "البحث عن أنماط لهذا الموقع...">
+<!ENTITY findstylebrowser.ak "F">
+<!ENTITY managestyles "ادارة الأنماط...">
+<!ENTITY managestyles.ak "M">
+<!ENTITY turnon "تمكين كل الأنماط">
+<!ENTITY turnon.ak "T">
+<!ENTITY turnoff "تعطيل كل الأنماط">
+<!ENTITY turnoff.ak "T">
+<!ENTITY writestyle "كتابة نمط جديد">
+<!ENTITY writestyle.ak "W">

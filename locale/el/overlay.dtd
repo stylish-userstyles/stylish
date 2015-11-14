@@ -1,0 +1,18 @@
+<!ENTITY addfile "Εγκατάσταση αρχείου...">
+<!ENTITY addfile.ak "Ι">
+<!ENTITY cmd.enable.label "Ενεργοποίηση">
+<!ENTITY cmd.enable.accesskey "E">
+<!ENTITY cmd.disable.label "Απενεργοποίηση">
+<!ENTITY cmd.disable.accesskey "Δ">
+<!ENTITY cmd.uninstall.label "Απεγκατάσταση">
+<!ENTITY cmd.uninstall2.accesskey "Ου">
+<!ENTITY findstylebrowser "Αναζήτηση στυλ για αυτή την σελίδα...">
+<!ENTITY findstylebrowser.ak "Φ">
+<!ENTITY managestyles "Διαχείριση στυλ...">
+<!ENTITY managestyles.ak "Μ">
+<!ENTITY turnon "Ενεργοποιηση περιστροφης όλων των στυλ">
+<!ENTITY turnon.ak "Τ">
+<!ENTITY turnoff "Απενεργοποιηση περιστροφης όλων των στυλ">
+<!ENTITY turnoff.ak "Τ">
+<!ENTITY writestyle "Εγγραφη νεου στυλ">
+<!ENTITY writestyle.ak "Β">

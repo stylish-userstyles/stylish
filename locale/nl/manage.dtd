@@ -1,10 +1,10 @@
 <!ENTITY filter "Zoeken">
-<!ENTITY installfromurls "Install from URLs...">
+<!ENTITY installfromurls "Installeren vanaf URL's...">
 <!ENTITY managetitle "Stylish">
 <!ENTITY nostylesstart "Bezoek">
-<!ENTITY nostylesend "voor informatie hoe Stylish te gebruiken.">
+<!ENTITY nostylesend "om meer informatie te vinden over het gebruiken van Stylish.">
 <!ENTITY sortenabled "Ingeschakeld">
 <!ENTITY sortname "Naam">
 <!ENTITY sorttype "Type">
 <!ENTITY writenew "Nieuwe stijl schrijven">
-<!ENTITY writenew.ak "s">
+<!ENTITY writenew.ak "S">

@@ -1,22 +1,22 @@
 <!ENTITY checkforerrors "Controleren op fouten">
 <!ENTITY checkforerrors.ak "C">
-<!ENTITY chromefolder "Chrome map pad">
+<!ENTITY chromefolder "Chrome map-pad">
 <!ENTITY chromefolder.ak "C">
-<!ENTITY dataURI "URI gegevens...">
+<!ENTITY dataURI "URI-gegevens...">
 <!ENTITY dataURI.ak "U">
-<!ENTITY htmlnamespace "HTML namespace als standaard">
+<!ENTITY htmlnamespace "HTML-naamgeving als standaard">
 <!ENTITY htmlnamespace.ak "H">
 <!ENTITY insert "Invoegen">
 <!ENTITY insert.ak "I">
 <!ENTITY name "Naam">
 <!ENTITY name.ak "N">
-<!ENTITY openintexternaleditor "In externe bewerker openen">
+<!ENTITY openintexternaleditor "Openen in externe bewerker">
 <!ENTITY openintexternaleditor.ak "O">
 <!ENTITY preview "Voorbeeld">
 <!ENTITY preview.ak "V">
 <!ENTITY save "Opslaan">
 <!ENTITY save.ak "O">
-<!ENTITY wraplines "Tekstregels afbreken">
+<!ENTITY wraplines "Tekstterugloop">
 <!ENTITY wraplines.ak "R">
-<!ENTITY xulnamespace "XUL namespace als standaard">
+<!ENTITY xulnamespace "XUL-naamgeving als standaard">
 <!ENTITY xulnamespace.ak "X">

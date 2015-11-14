@@ -1,10 +1,10 @@
 <!ENTITY filter "Sök">
 <!ENTITY installfromurls "Installera från URL:er…">
 <!ENTITY managetitle "Stylish">
-<!ENTITY nostylesstart "Gå till">
-<!ENTITY nostylesend "för information om hur du använder Stylish.">
+<!ENTITY nostylesstart "Besök">
+<!ENTITY nostylesend "för information om hur Stylish används.">
 <!ENTITY sortenabled "Aktiverad">
 <!ENTITY sortname "Namn">
 <!ENTITY sorttype "Typ">
-<!ENTITY writenew "Skriv ny style">
-<!ENTITY writenew.ak "n">
+<!ENTITY writenew "Skriv Ny Stil">
+<!ENTITY writenew.ak "S">

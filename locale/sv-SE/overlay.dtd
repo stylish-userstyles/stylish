@@ -1,18 +1,18 @@
-<!ENTITY addfile "Installera fil…">
+<!ENTITY addfile "Installera fil...">
 <!ENTITY addfile.ak "I">
 <!ENTITY cmd.enable.label "Aktivera">
-<!ENTITY cmd.enable.accesskey "k">
+<!ENTITY cmd.enable.accesskey "A">
 <!ENTITY cmd.disable.label "Inaktivera">
-<!ENTITY cmd.disable.accesskey "k">
+<!ENTITY cmd.disable.accesskey "I">
 <!ENTITY cmd.uninstall.label "Avinstallera">
 <!ENTITY cmd.uninstall2.accesskey "A">
-<!ENTITY findstylebrowser "Hitta styles för denna webbplats…">
-<!ENTITY findstylebrowser.ak "W">
-<!ENTITY managestyles "Hantera styles…">
+<!ENTITY findstylebrowser "Hitta stilar för denna sida...">
+<!ENTITY findstylebrowser.ak "F">
+<!ENTITY managestyles "Hantera stilar...">
 <!ENTITY managestyles.ak "H">
-<!ENTITY turnon "Sätt på alla styles">
+<!ENTITY turnon "Slå på alla stilar">
 <!ENTITY turnon.ak "S">
-<!ENTITY turnoff "Stäng av alla styles">
+<!ENTITY turnoff "Stäng av alla stilar">
 <!ENTITY turnoff.ak "S">
-<!ENTITY writestyle "Skriv ny style">
-<!ENTITY writestyle.ak "n">
+<!ENTITY writestyle "Skriv ny stil">
+<!ENTITY writestyle.ak "S">

@@ -1,0 +1,22 @@
+<!ENTITY checkforerrors "Έλεγχος για σφάλματα">
+<!ENTITY checkforerrors.ak "Γ">
+<!ENTITY chromefolder "Chrome διαδρομή φακέλου">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "URI δεδομενων…">
+<!ENTITY dataURI.ak "Δ">
+<!ENTITY htmlnamespace "HTML ονομάτων ως προεπιλογή">
+<!ENTITY htmlnamespace.ak "Η">
+<!ENTITY insert "Εισαγωγή">
+<!ENTITY insert.ak "Ι">
+<!ENTITY name "Ονομα">
+<!ENTITY name.ak "ν">
+<!ENTITY openintexternaleditor "Άνοιγμα σε εξωτερικό πρόγραμμα επεξεργασίας">
+<!ENTITY openintexternaleditor.ak "O">
+<!ENTITY preview "Προεπισκόπηση">
+<!ENTITY preview.ak "Ρ">
+<!ENTITY save "Αποθήκευση">
+<!ENTITY save.ak "Σ">
+<!ENTITY wraplines "Γραμμές Αναδίπλωσης">
+<!ENTITY wraplines.ak "Β">
+<!ENTITY xulnamespace "XUL ονομάτων ως προεπιλογή">
+<!ENTITY xulnamespace.ak "Χ">
