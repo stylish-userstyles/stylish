@@ -1,3 +1,5 @@
+"use strict";
+
 var EXPORTED_SYMBOLS = ["stylishCommon"];
 
 var stylishCommon = {
@@ -95,7 +97,7 @@ var stylishCommon = {
 		}
 		var url = "about:stylish-edit";
 		var first = true;
-		for (i in params) {
+		for (var i in params) {
 			if (params[i]) {
 				url += (first ? "?" : "&") + encodeURIComponent(i) + "=" + encodeURIComponent(params[i])
 			}

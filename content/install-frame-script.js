@@ -1,3 +1,5 @@
+"use strict";
+
 Components.utils.import("chrome://stylish/content/frame-utils.js", this);
 
 function isAllowedToInstall(doc) {
