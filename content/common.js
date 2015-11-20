@@ -211,7 +211,7 @@ var stylishCommon = {
 				return;
 			}
 			var contentType = this.getResponseHeader("Content-Type");
-			if (contentType.indexOf("text/css") == 0) {
+			if (contentType.indexOf("text/css") == 0 || contentType.indexOf("text/plain") == 0) {
 				callback("css");
 				return;
 			}
