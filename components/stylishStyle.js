@@ -965,7 +965,6 @@ Style.prototype = {
 		}, false);
 		// QI it to nsIXMLHttpRequest to open and send the request:
 		request.QueryInterface(Components.interfaces.nsIXMLHttpRequest);
-		request.overrideMimeType("text/plain");
 		try {
 			// this can fail if URL is malformed
 			request.open("GET", url, true);
