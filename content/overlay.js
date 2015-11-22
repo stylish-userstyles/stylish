@@ -424,7 +424,8 @@ var stylishOverlay = {
 	},
 
 	findStyle: function(e) {
-		openUILinkIn(stylishOverlay.URL_STRINGS.getFormattedString("findstylesforthissiteurl", [encodeURIComponent(stylishOverlay.currentURI.spec)]), "tab");
+		// Strip request parameters from URL for privacy reasons.
+		openUILinkIn(stylishOverlay.URL_STRINGS.getFormattedString("findstylesforthissiteurl", [encodeURIComponent(stylishOverlay.currentURI.spec.split("?", 2)[0])]), "tab");
 	},
 
 	menuItemClassesToClear: ["stylish-menuseparator", "style-menu-item", "no-style-menu-item"],
