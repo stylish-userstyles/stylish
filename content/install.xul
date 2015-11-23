@@ -18,7 +18,7 @@
 	onload="init()"
 	onunload="callCallback()"
 	title="&title;"
-	ondialogaccept="return save(true)"
+	ondialogaccept="style.setPreview(false);return save(true)"
 	ondialogextra1="preview();"
 	ondialogcancel="style.setPreview(false)"
 	buttonlabelaccept="&install;"

@@ -151,7 +151,7 @@ function initStyle() {
 	if (id) {
 		style = service.find(id, service.CALCULATE_META | service.REGISTER_STYLE_ON_CHANGE);
 		enableSave(false);
-		enablePreview(!style.enabled);
+		enablePreview(!style.enabled || !style.stylishOn);
 		document.documentElement.setAttribute("windowtype", stylishCommon.getWindowName("stylishEdit", id));
 	} else {
 		if (code == null) {
