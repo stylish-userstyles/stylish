@@ -1,6 +1,6 @@
 <!ENTITY checkforerrors "Procurar por Erros">
 <!ENTITY checkforerrors.ak "C">
-<!ENTITY chromefolder "Caminho da pasta do Chrome">
+<!ENTITY chromefolder "Caminho da pasta Chrome">
 <!ENTITY chromefolder.ak "C">
 <!ENTITY dataURI "URI de dados…">
 <!ENTITY dataURI.ak "d">
