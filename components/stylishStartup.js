@@ -132,7 +132,6 @@ function getUserStyleWrapper(s) {
 		iconURL: "chrome://stylish/skin/32.png",
 		scope: AddonManager.SCOPE_PROFILE,
 		blocklistState: Components.interfaces.nsIBlocklistService.STATE_NOT_BLOCKED,
-		pendingOperations: AddonManager.PENDING_NONE,
 		version: "",
 		operationsRequiringRestart: AddonManager.OP_NEEDS_RESTART_NONE,
 
