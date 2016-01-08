@@ -438,7 +438,11 @@ Style.prototype = {
 		function toHexString(charCode) {
 			return ("0" + charCode.toString(16)).slice(-2);
 		}
-		return Array.from(hash, (c, i) => toHexChar(hash.charCodeAt(i))).join("");
+		var res = [];
+		for (var i in hash) {
+			res += toHexString(hash.charCodeAt(i));
+		}
+		return res.join("");
 	},
 
 	checkForUpdates: function(observer) {
