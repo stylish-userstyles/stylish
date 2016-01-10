@@ -1,0 +1,18 @@
+<!ENTITY addfile "Instalar ficheiro...">
+<!ENTITY addfile.ak "I">
+<!ENTITY cmd.enable.label "Ativar">
+<!ENTITY cmd.enable.accesskey "A">
+<!ENTITY cmd.disable.label "Desativar">
+<!ENTITY cmd.disable.accesskey "D">
+<!ENTITY cmd.uninstall.label "Desinstalar">
+<!ENTITY cmd.uninstall2.accesskey "D">
+<!ENTITY findstylebrowser "Encontrar estilos para este site...">
+<!ENTITY findstylebrowser.ak "E">
+<!ENTITY managestyles "Gerir estilos...">
+<!ENTITY managestyles.ak "G">
+<!ENTITY turnon "Ligar todos os estilos">
+<!ENTITY turnon.ak "L">
+<!ENTITY turnoff "Desligar todos os estilos">
+<!ENTITY turnoff.ak "D">
+<!ENTITY writestyle "Escrever novo estilo">
+<!ENTITY writestyle.ak "E">
