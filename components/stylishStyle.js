@@ -438,11 +438,11 @@ Style.prototype = {
 		function toHexString(charCode) {
 			return ("0" + charCode.toString(16)).slice(-2);
 		}
-		var res = [];
+		var res = "";
 		for (var i in hash) {
 			res += toHexString(hash.charCodeAt(i));
 		}
-		return res.join("");
+		return res;
 	},
 
 	checkForUpdates: function(observer) {
