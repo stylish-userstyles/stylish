@@ -30,6 +30,7 @@ locale	stylish lt	locale/lt/
 locale	stylish	nl	locale/nl/
 locale	stylish	pl	locale/pl/
 locale	stylish	pt-BR	locale/pt-BR/
+locale  stylish pt-PT locale/pt-PT/
 locale	stylish	ro	locale/ro/
 locale	stylish	ru	locale/ru/
 locale	stylish	sr	locale/sr/
