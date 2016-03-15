@@ -4,6 +4,7 @@ const Cc = Components.classes;
 const Ci = Components.interfaces;
 
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
+Components.utils.import("resource://gre/modules/Services.jsm");
 
 function AboutStylishEdit() { }
 AboutStylishEdit.prototype = {
@@ -16,9 +17,16 @@ AboutStylishEdit.prototype = {
 		return Ci.nsIAboutModule.ALLOW_SCRIPT;
 	},
 
-	newChannel: function(aURI) {
-		let ios = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
-		let channel = ios.newChannel("chrome://stylish/content/edit.xul", null, null);
+	newChannel: function(aURI, aSecurity_or_aLoadInfo) {
+		var channel;
+		if (Services.vc.compare(Services.appinfo.version, 47) > 0) {
+			// greater than or equal to firefox48 so aSecurity_or_aLoadInfo is aLoadInfo
+			let uri = Services.io.newURI("chrome://stylish/content/edit.xul", null, null);
+			channel = Services.io.newChannelFromURIWithLoadInfo(uri, aSecurity_or_aLoadInfo);
+		} else {
+			// less then firefox48 aSecurity_or_aLoadInfo is aSecurity
+			channel = Services.io.newChannel("chrome://stylish/content/edit.xul", null, null);
+		}
 		channel.originalURI = aURI;
 		return channel;
 	}
