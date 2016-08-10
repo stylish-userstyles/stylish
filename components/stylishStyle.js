@@ -373,14 +373,14 @@ Style.prototype = {
 			//no-op
 			return;
 		//if this style is enabled, then preview doesn't really have an effect atm
-		if (!this.enabled) {
+		this.previewOn = on;
+		if (!this.enabled || !this.stylishOn) {
 			//if preview is being turned on, register the style
 			if (on)
 				this.register();
 			else
 				this.unregister();
 		}
-		this.previewOn = on;
 	},
 
 	//set the code back to the saved state
@@ -699,7 +699,7 @@ Style.prototype = {
 	},
 
 	register: function() {
-		if (!this.stylishOn) {
+		if (!this.stylishOn && !this.previewOn) { // Allow user to preview
 			return;
 		}
 		var dataUrl = this.dataUrl;
