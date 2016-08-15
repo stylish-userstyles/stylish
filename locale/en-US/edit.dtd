@@ -4,6 +4,14 @@
 <!ENTITY chromefolder.ak "C">
 <!ENTITY dataURI "Data URI…">
 <!ENTITY dataURI.ak "D">
+<!ENTITY docURL "URL rule">
+<!ENTITY docURL.ak "U">
+<!ENTITY docUrlPrefix "URL Prefix rule">
+<!ENTITY docUrlPrefix.ak "P">
+<!ENTITY docDomain "Domain rule">
+<!ENTITY docDomain.ak "o">
+<!ENTITY docRegexp "Regexp rule">
+<!ENTITY docRegexp.ak "R">
 <!ENTITY htmlnamespace "HTML namespace as default">
 <!ENTITY htmlnamespace.ak "H">
 <!ENTITY insert "Insert">
