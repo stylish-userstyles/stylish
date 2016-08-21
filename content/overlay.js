@@ -88,6 +88,9 @@ var stylishOverlay = {
 		if (typeof gBrowser != "undefined") {
 			gBrowser.removeProgressListener(stylishOverlay.urlLoadedListener, Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT); 
 		}
+		var prefService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).QueryInterface(Components.interfaces.nsIPrefBranch);
+		prefService.removeObserver("extensions.stylish.styleRegistrationEnabled", stylishOverlay);
+
 		var observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
 		observerService.removeObserver(stylishOverlay, "stylish-style-add");
 		observerService.removeObserver(stylishOverlay, "stylish-style-change");
