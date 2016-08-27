@@ -38,9 +38,9 @@ if (window.opener) {
 	}
 	window.addEventListener("unload", function() {
 		// save windowState if it's maximized or normal - otherwise use value
-		var ws = (window.windowState == 1 || window.windowState == 3) ? window.windowState : windowPersist.windowState;
+		var ws = window.windowState;
 		// save the other stuff if it's normal state, otherwise use previous
-		if (ws == 3) {
+		if (ws === 3) {
 			// width and height get read from document but set from document.documentElement
 			// this can fail if this is in a tab. if so, don't save.
 			try {
@@ -54,7 +54,9 @@ if (window.opener) {
 				return;
 			}
 		}
-		windowPersist.windowState = ws;
+		if (ws === 1 || ws === 3) {
+			windowPersist.windowState = ws;
+		}
 
 		prefs.setCharPref("editorWindowPersist", JSON.stringify(windowPersist));
 	});
