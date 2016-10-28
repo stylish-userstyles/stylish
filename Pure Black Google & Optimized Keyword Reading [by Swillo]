@@ -1,7 +1,7 @@
 @-moz-document url-prefix("http://www.google"), url-prefix("https://www.google"), url-prefix("https://scholar.google"), url-prefix("https://translate.google"), url-prefix("http://translate.google"), regexp("images.google") {
-body,#viewport,#il_m,.hdtb-td-o,.qbip,.qbtbp,#gbx1,#maia-header,#corp-crumb,html,#maia-footer-local,#maia-footer-global,#extabar,#hdtbSum,.fbar,.maia-aux, div#mngb > div > div{background-color:#111 !important; color:#BDBDBD !important;}
+body,#viewport,#il_m,.hdtb-td-o,.qbip,.qbtbp,#gbx1,#maia-header,#corp-crumb,html,#maia-footer-local,#maia-footer-global,#extabar,#hdtbSum,.fbar,.maia-aux, div#mngb > div > div{background-color:#000 !important; color:#BDBDBD !important;}
 .gb_jb{background-color:#222 !important;}
-#maia-header{background:#111 !important;}
+#maia-header{background:#000!important;}
 .gb_qb{background-color:transparent;}
 .gbqfqw.gbqfqw:active, .gbqfqw.gbqfqwf.gbqfqwf {border-color:orange !important;}
 
@@ -61,7 +61,7 @@ a.gb_F:hover{box-shadow:0px 0px 5px 2px orange !important; cursor:pointer !impor
 .gs_hdr  {background-color:#000 !important;} /* maps result preview gray bkg */
   
     /*FUCKIN Search-Results BOXES Black bkg */
-._cy:not(:empty), .mnr-c:not(:empty) {background-color: #060000;}
+._cy:not(:empty), .mnr-c:not(:empty) {background-color: #000000;}
   
   /*Search-Results*/
   
@@ -71,7 +71,7 @@ a:link, .w, #prs a:visited, #prs a:active, .q:active, .q:visited, .kl:active, .t
   
 #tads,#bottomads,.ads-container{display:none !important;}
 h3.r > a:link, li.g > div > a:link, li.g > div > a:visited, li.g > a:link, li.g > a:visited{color:white !important;}
-h3.r > a:visited{color:silver !important;}
+h3.r > a:visited{color:gray !important;}
 div.s span.st{color:#BABABF !important;}
 div.s div.kv * {color:limegreen !important;}
 a.fl:link{color:cyan !important;}
@@ -113,7 +113,7 @@ div.rhsvw,div.rhsvw *{background-color:#333 !important; color:white !important;}
 
   
   /*Img-Search*/
-#rg_h,#cnt{background-color:#111 !important;}
+#rg_h,#cnt{background-color:#000 !important;}
 #rg_hr{color:limegreen !important;}
 /*Product-Overview*/
 #corp-crumb a:link, #corp-crumb a:visited,.maia-aux li a:link, .maia-aux li a:visited{color:silver !important; transition:color 0.2s ease !important;}
@@ -150,7 +150,7 @@ a:link, a:visited{color:#BDBDBD !important;}
 }
 
 @-moz-document url-prefix("http://translate.google"), url-prefix("https://translate.google") {
-#gt-appbar,#gt-apb-main,#gt-text-c{background-color:#111 !important;}
+#gt-appbar,#gt-apb-main,#gt-text-c{background-color:#000 !important;}
 #gt-ft-res{background-color:#222 !important;}
 #gt-ft-res a:link, #gt-ft-res a:visited,.gt-ft-promos a:link, .gt-ft-promos a:visited{color:silver !important; transition:color 0.2s ease !important;}
 #select_document a:link, #select_document a:visited{color:white !important; transition:color 0.2s ease !important;}
@@ -170,7 +170,7 @@ span.gt-baf-h1,.gt-baf-base{color:yellow !important;}
 }
 
 @-moz-document url-prefix("https://apis.google.com/u/0/_/+1/hover") {
-#widget_bounds{background-color:#111 !important; color:silver !important;}
+#widget_bounds{background-color:#000 !important; color:silver !important;}
 .Cg{background-color:#333 !important;}
 .yx,.wI *, .P0,.b-K{background-color:#333 !important; color:silver !important;}
 .rG *{background-color:#555 !important; color:white !important;}
