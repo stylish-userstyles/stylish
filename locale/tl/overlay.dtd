@@ -1,0 +1,18 @@
+<!ENTITY addfile "Italaga ang file…">
+<!ENTITY addfile.ak "I">
+<!ENTITY cmd.enable.label "Paganahin">
+<!ENTITY cmd.enable.accesskey "P">
+<!ENTITY cmd.disable.label "Huwag Paganahin">
+<!ENTITY cmd.disable.accesskey "H">
+<!ENTITY cmd.uninstall.label "Alisin">
+<!ENTITY cmd.uninstall2.accesskey "A">
+<!ENTITY findstylebrowser "Maghanap ng mga estilo para sa site na ito…">
+<!ENTITY findstylebrowser.ak "M">
+<!ENTITY managestyles "Pamahalaan ang mga estilo…">
+<!ENTITY managestyles.ak "M">
+<!ENTITY turnon "Paganahin ang lahat ng mga estilo">
+<!ENTITY turnon.ak "T">
+<!ENTITY turnoff "Huwag paganahin ang lahat ng mga estilo">
+<!ENTITY turnoff.ak "T">
+<!ENTITY writestyle "Magsulat ng bagong estilo">
+<!ENTITY writestyle.ak "W">
