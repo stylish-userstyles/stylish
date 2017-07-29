@@ -1,0 +1,22 @@
+<!ENTITY checkforerrors "Suriin para sa mga Error">
+<!ENTITY checkforerrors.ak "C">
+<!ENTITY chromefolder "Chrome folder path">
+<!ENTITY chromefolder.ak "C">
+<!ENTITY dataURI "Data URI…">
+<!ENTITY dataURI.ak "D">
+<!ENTITY htmlnamespace "HTML namespace as default">
+<!ENTITY htmlnamespace.ak "H">
+<!ENTITY insert "Insert">
+<!ENTITY insert.ak "I">
+<!ENTITY name "Pangalan">
+<!ENTITY name.ak "n">
+<!ENTITY openintexternaleditor "Buksan sa external editor">
+<!ENTITY openintexternaleditor.ak "O">
+<!ENTITY preview "I-preview">
+<!ENTITY preview.ak "P">
+<!ENTITY save "I-save">
+<!ENTITY save.ak "S">
+<!ENTITY wraplines "Wrap ang mga linya">
+<!ENTITY wraplines.ak "W">
+<!ENTITY xulnamespace "XUL namespace bilang default">
+<!ENTITY xulnamespace.ak "X">
