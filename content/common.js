@@ -71,11 +71,14 @@ var stylishCommon = {
 			for (var i = 0; i < browsers.length; i++) {
 				// We can't read into remote documents easily. We only work with about:, anyway.
 				if (browsers[i].currentURI.schemeIs("about")) {
-					var de = browsers[i].contentDocument.documentElement;
-					if (de && de.getAttribute("windowtype") == name) {
-						tbWin.gBrowser.selectTabAtIndex(i);
-						tbWin.focus();
-						return true;
+					var doc = browsers[i].contentDocument;
+					if (doc) {
+						var de = browsers[i].contentDocument.documentElement;
+						if (de && de.getAttribute("windowtype") == name) {
+							tbWin.gBrowser.selectTabAtIndex(i);
+							tbWin.focus();
+							return true;
+						}
 					}
 				}
 			}
