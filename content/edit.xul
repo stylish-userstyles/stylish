@@ -23,8 +23,8 @@
 	<script type="application/javascript" src="chrome://stylish/content/edit.js"/>
 	<script type="application/javascript" src="chrome://stylish/content/frame-utils.js"/>
 	<script type="application/javascript" src="chrome://stylish/content/common.js"/>
-	<script type="application/javascript;version=1.8" src="chrome://browser/content/devtools/theme-switching.js"></script>
-	<script type="application/javascript;version=1.8" src="chrome://devtools/content/shared/theme-switching.js"></script>
+	<script type="application/javascript" src="chrome://browser/content/devtools/theme-switching.js"></script>
+	<script type="application/javascript" src="chrome://devtools/content/shared/theme-switching.js"></script>
 
 	<script type="application/javascript" src="chrome://itsalltext/content/API.js"/>
 
