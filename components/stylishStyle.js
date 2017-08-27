@@ -48,7 +48,6 @@ Style.prototype = {
 	classDescription: "Stylish Style",
 	classID: Components.ID("{ea17a766-cdd4-444b-8d8d-b5bb935a2a22}"),
 	contractID: "@userstyles.org/style;1",
-	implementationLanguage: Components.interfaces.nsIProgrammingLanguage.JAVASCRIPT,
 	flags: 0,
 
 
@@ -101,8 +100,10 @@ Style.prototype = {
 		var connection = this.getConnection();
 		var statement = connection.createStatement("SELECT style_id FROM style_meta WHERE style_meta.name = :name AND style_meta.value = :value;");
 		try {
-			this.bind(statement, "name", name);
-			this.bind(statement, "value", value);
+			this.bind(statement, {
+				name: name,
+				value: value
+			});
 			var styles = [];
 			while (statement.executeStep()) {
 				// theoretically we shouldn't find a style that doesn't exist, but who knows?
@@ -209,7 +210,7 @@ Style.prototype = {
 		this.unregister();
 		var connection = this.getConnection();
 		var statement = connection.createStatement("DELETE FROM styles WHERE id = :id;");
-		this.bind(statement, "id", this.id);
+		this.bind(statement, {id: this.id});
 		try {
 			statement.execute();
 		} finally {
@@ -217,7 +218,7 @@ Style.prototype = {
 			statement.finalize();
 		}
 		var statement = connection.createStatement("DELETE FROM style_meta WHERE style_id = :id;");
-		this.bind(statement, "id", this.id);
+		this.bind(statement, {id: this.id});
 		try {
 			statement.execute();
 		} finally {
@@ -238,44 +239,43 @@ Style.prototype = {
 		var newStyle = this.id == 0;
 
 		var that = this;
-		function b(name, value) {
-			that.bind(statement, name, value);
-		}
+		var data = {};
 		if (this.id == 0) {
 			statement = connection.createStatement("INSERT INTO styles (`url`, `idUrl`, `updateUrl`, `md5Url`, `name`, `code`, `enabled`, `originalCode`, `applyBackgroundUpdates`, `originalMd5`) VALUES (:url, :idUrl, :updateUrl, :md5Url, :name, :code, :enabled, :originalCode, :applyBackgroundUpdates, :originalMd5);");
 		} else {
 			statement = connection.createStatement("UPDATE styles SET `url` = :url, `idUrl` = :idUrl, `updateUrl` = :updateUrl, `md5Url` = :md5Url, `name` = :name, `code` = :code, `enabled` = :enabled, `originalCode` = :originalCode, `applyBackgroundUpdates` = :applyBackgroundUpdates, `originalMd5` = :originalMd5 WHERE `id` = :id;");
-			b("id", this.id);
+			data.id = this.id;
 		}
 
 		// style is not updatable, original code is useless
 		if (!this.updateUrl && !this.md5Url) {
 			this.originalCode = null;
-			b("originalCode", this.originalCode);
+			data.originalCode = this.originalCode;
 		// original code matches current code, no need to remember original
 		} else if (this.originalCode == this.code) {
 			this.originalCode = null;
-			b("originalCode", this.originalCode);
+			data.originalCode = this.originalCode;
 		// original code exists and is different, don't touch
 		} else if (this.originalCode) {
-			b("originalCode", this.originalCode);
+			data.originalCode = this.originalCode;
 		// style has changed
 		} else if (this.lastSavedCode != this.code) {
 			this.originalCode = this.lastSavedCode;
-			b("originalCode", this.originalCode);
+			data.originalCode = this.originalCode;
 		} else {
-			b("originalCode", null);
+			data.originalCode = null;
 		}
 
-		b("url", this.url);
-		b("idUrl", this.idUrl);
-		b("updateUrl", this.updateUrl);
-		b("md5Url", this.md5Url);
-		b("name", this.name);
-		b("code", this.code);
-		b("enabled", this.enabled);
-		b("applyBackgroundUpdates", this.applyBackgroundUpdates);
-		b("originalMd5", this.originalMd5);
+		data.url = this.url;
+		data.idUrl = this.idUrl;
+		data.updateUrl = this.updateUrl;
+		data.md5Url = this.md5Url;
+		data.name = this.name;
+		data.code = this.code;
+		data.enabled = this.enabled;
+		data.applyBackgroundUpdates = this.applyBackgroundUpdates;
+		data.originalMd5 = this.originalMd5;
+		this.bind(statement, data);
 
 		try {
 			statement.execute();
@@ -306,16 +306,18 @@ Style.prototype = {
 				//delete the previous calculated meta data
 				if (!newStyle) {
 					statement = connection.createStatement("DELETE FROM style_meta WHERE style_id = :id;");
-					b("id", this.id);
+					this.bind(statement, {id: this.id});
 					statement.execute();
 					statement.finalize();
 				}
 
 				statement = connection.createStatement("INSERT INTO style_meta (`style_id`, `name`, `value`) VALUES (:id, :name, :value);");
 				this.meta.forEach(function(a) {
-					b("id", that.id);
-					b("name", a[0]);
-					b("value", a[1]);
+					that.bind(statement, {
+						id: that.id,
+						name: a[0],
+						value: a[1]
+					});
 					statement.execute();
 				});
 				connection.commitTransaction();
@@ -736,36 +738,30 @@ Style.prototype = {
 		this.appliedInfo = null;
 	},
 
-	bind: function(statement, name, value) {
-		var index;
-		try {
-			index = statement.getParameterIndex(":" + name);
-		} catch (ex) {
-			if (ex.name == "NS_ERROR_ILLEGAL_VALUE") {
-				index = statement.getParameterIndex(name);
-			} else {
-				throw ex;
+	bind: function(statement, data) {
+		let params = statement.newBindingParamsArray();
+		let binding = params.newBindingParams();
+		for (let [name, value] of Object.entries(data)) {
+			var index;
+			try {
+				index = statement.getParameterIndex(":" + name);
+			} catch (ex) {
+				if (ex.name == "NS_ERROR_ILLEGAL_VALUE") {
+					index = statement.getParameterIndex(name);
+				} else {
+					throw ex;
+				}
 			}
+			if (value === undefined)
+				throw "Attempted to bind undefined parameter '" + name + "'";
+			else if (value !== null && !["string", "number", "boolean"].includes(typeof value))
+				throw "Unknown value type '" + typeof value + "' for value '" + value + "'";
+			if (typeof value === "boolean")
+				value = +value;
+			binding.bindByIndex(index, value);
 		}
-		if (value === undefined)
-			throw "Attempted to bind undefined parameter '" + name + "'";
-		else if (value === null)
-			statement.bindNullParameter(index);
-		else {
-			switch(typeof value) {
-				case "string":
-					statement.bindStringParameter(index, value);
-					break;
-				case "number":
-					statement.bindInt32Parameter(index, value);
-					break;
-				case "boolean":
-					statement.bindInt32Parameter(index, value ? 1 : 0);
-					break;
-				default:
-					throw "Unknown value type '" + typeof value + "' for value '" + value + "'";
-			}
-		}
+		params.addParams(binding);
+    statement.bindParameters(params);
 	},
 
 	extract: function(statement, name) {
@@ -806,9 +802,7 @@ Style.prototype = {
 			closeConnection = true;
 		}
 		var statement = connection.createStatement(sql);
-		for (var i in parameters) {
-			this.bind(statement, i, parameters[i]);
-		}
+		this.bind(statement, parameters);
 		try {
 			var that = this;
 			var e = function (name) {

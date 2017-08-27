@@ -25,7 +25,6 @@ StylishDataSource.prototype = {
 	classDescription: "Stylish Data Source",
 	classID: Components.ID("{d6fe57ea-1126-4dc6-8636-d25d5b901929}"),
 	contractID: "@userstyles.org/stylish-data-source;1",
-	implementationLanguage: Components.interfaces.nsIProgrammingLanguage.JAVASCRIPT,
 	flags: 0,
 	alreadyComplained: false,
 
