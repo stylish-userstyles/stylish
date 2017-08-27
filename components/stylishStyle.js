@@ -48,7 +48,6 @@ Style.prototype = {
 	classDescription: "Stylish Style",
 	classID: Components.ID("{ea17a766-cdd4-444b-8d8d-b5bb935a2a22}"),
 	contractID: "@userstyles.org/style;1",
-	implementationLanguage: Components.interfaces.nsIProgrammingLanguage.JAVASCRIPT,
 	flags: 0,
 
 
